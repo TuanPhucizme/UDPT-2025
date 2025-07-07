@@ -1,41 +1,23 @@
 <?php
 session_start();
-
-// Nếu đã đăng nhập, chuyển hướng đến index
-if (isset($_SESSION['username'])) {
-    header("Location: index.php");
-    exit();
-}
+include('../admin/config/config.php'); // Kết nối CSDL
 
 $error = '';
 
-// Xử lý khi gửi form đăng nhập
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = trim($_POST['username'] ?? '');
-    $password = trim($_POST['password'] ?? '');
+if (isset($_POST['login'])) {
+    $username = $_POST['username'] ?? '';
+    $password = md5($_POST['password'] ?? '');
 
-    if ($username === '' || $password === '') {
-        $error = "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu!";
+    $sql = "SELECT * FROM admin WHERE username = '$username' AND password = '$password'";
+    $result = mysqli_query($mysqli, $sql);
+    $count = mysqli_num_rows($result);
+
+    if ($count > 0) {
+        $_SESSION['username'] = $username;
+        header("Location: index.php");
+        exit();
     } else {
-        // Đọc dữ liệu từ file users.json
-        $users = json_decode(file_get_contents("../data/users.json"), true);
-        $found = false;
-
-        // Kiểm tra tài khoản tồn tại và mật khẩu đúng
-        foreach ($users as $user) {
-            if ($user['username'] === $username && password_verify($password, $user['password'])) {
-                $found = true;
-                break;
-            }
-        }
-
-        if ($found) {
-            $_SESSION['username'] = $username;
-            header("Location: index.php");
-            exit();
-        } else {
-            $error = "Sai tên đăng nhập hoặc mật khẩu!";
-        }
+        $error = "Tên đăng nhập hoặc mật khẩu không đúng!";
     }
 }
 ?>
@@ -45,18 +27,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Đăng nhập - Quản lý bệnh viện</title>
-    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
-<body>
-    <form class="login-form" method="POST">
-        <h2>Đăng nhập</h2>
-        <?php if ($error): ?>
-            <p class="error"><?= htmlspecialchars($error) ?></p>
-        <?php endif; ?>
-        <input type="text" name="username" placeholder="Tên đăng nhập" required>
-        <input type="password" name="password" placeholder="Mật khẩu" required>
-        <button type="submit">Đăng nhập</button>
-        <p style="margin-top: 10px;">Chưa có tài khoản? <a href="register.php">Đăng ký</a></p>
-    </form>
+<body class="bg-light">
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow p-4 w-100" style="max-width: 400px;">
+        <form method="POST" action="" autocomplete="off">
+            <h2 class="text-center mb-4">Đăng nhập hệ thống</h2>
+
+            <?php if (!empty($error)) : ?>
+                <div class="alert alert-danger text-center" role="alert">
+                    <?= htmlspecialchars($error) ?>
+                </div>
+            <?php endif; ?>
+
+            <div class="mb-3">
+                <label for="username" class="form-label">Tên đăng nhập</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Nhập tên đăng nhập" required autofocus>
+            </div>
+
+            <div class="mb-3">
+                <label for="inputPassword" class="form-label">Mật khẩu</label>
+                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Nhập mật khẩu" required>
+            </div>
+
+            <button class="btn btn-primary w-100" type="submit" name="login">Đăng nhập</button>
+            <p class="text-center text-muted mt-3 small">© <?= date("Y") ?> Bệnh viện ABC</p>
+        </form>
+    </div>
+</div>
+
 </body>
 </html>
