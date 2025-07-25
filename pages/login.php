@@ -53,7 +53,7 @@ if (isset($_POST['login'])) {
             </div>
 
             <button class="btn btn-primary w-100" type="submit" name="login">Đăng nhập</button>
-            <p class="text-center text-muted mt-3 small">© <?= date("Y") ?> Bệnh viện ABC</p>
+            <p class="text-center text-muted mt-3 small pt-3"> <?= date("M d - Y") ?></p>
         </form>
     </div>
 </div>

@@ -33,10 +33,10 @@ if (!isset($_SESSION['username'])) {
         <div class="card-body">
             <h2 class="card-title text-center mb-4">📋 Danh mục quản lý</h2>
             <div class="d-grid gap-3">
-                <a href="../benhnhan/thembenhnhan.php" class="btn btn-outline-primary btn-lg">👨‍⚕️ Quản lý Bệnh nhân</a>
+                <a href="./loading/benhnhan.php" class="btn btn-outline-primary btn-lg">👨‍⚕️ Quản lý Bệnh nhân</a>
                 <a href="../bacsi/thembacsi.php" class="btn btn-outline-success btn-lg">👩‍⚕️ Quản lý Bác sĩ</a>
-                <a href="lichhen.php" class="btn btn-outline-warning btn-lg">📅 Lịch hẹn</a>
-                <a href="thuoc.php" class="btn btn-outline-info btn-lg">💊 Quản lý Thuốc</a>
+                <a href="./loading/lichkham.php" class="btn btn-outline-warning btn-lg">📅 Lịch Khám</a>
+                <a href="./loading/donthuoc.php" class="btn btn-outline-info btn-lg">💊 Quản lý Thuốc</a>
                 <a href="logout.php" class="btn btn-outline-danger btn-lg">🚪 Đăng xuất</a>
             </div>
         </div>
