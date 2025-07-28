@@ -1,0 +1,142 @@
+auth-service:
+CREATE DATABASE IF NOT EXISTS auth_service;
+USE auth_service;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  role ENUM('admin', 'doctor', 'nurse', 'user') DEFAULT 'user'
+);
+
+ALTER TABLE users MODIFY role ENUM('admin', 'doctor', 'patient') DEFAULT 'patient';
+
+patient-service:
+CREATE DATABASE IF NOT EXISTS patient_service;
+USE patient_service;
+
+CREATE TABLE patients (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  age INT,
+  gender ENUM('male', 'female', 'other'),
+  phone VARCHAR(20),
+  email VARCHAR(100)
+);
+CREATE TABLE medical_records (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  patient_id INT NOT NULL,
+  diagnosis TEXT,
+  treatment TEXT,
+  doctor_name VARCHAR(100),
+  visit_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE
+);
+ALTER TABLE medical_records
+ADD COLUMN appointment_id INT,
+ADD COLUMN doctor_id INT,
+ADD COLUMN created_at DATETIME DEFAULT CURRENT_TIMESTAMP;
+
+appointment-service:
+CREATE DATABASE IF NOT EXISTS appointment_service;
+USE appointment_service;
+
+CREATE TABLE appointments (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  patient_id INT NOT NULL,
+  doctor_id INT NOT NULL,
+  appointment_time DATETIME NOT NULL,
+  status ENUM('pending', 'confirmed', 'cancelled') DEFAULT 'pending',
+  note TEXT
+);
+
+prescription-service:
+CREATE DATABASE IF NOT EXISTS prescription_service;
+USE prescription_service;
+
+CREATE TABLE prescriptions (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  record_id INT NOT NULL,
+  patient_id INT NOT NULL,
+  doctor_id INT NOT NULL,
+  medicines TEXT, -- dạng JSON string: [{"name":"Paracetamol", "dosage":"500mg"}]
+  status ENUM('pending', 'collected') DEFAULT 'pending',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+report-service:
+CREATE DATABASE IF NOT EXISTS report_service;
+
+USE report_service;
+
+-- Bảng lưu thống kê số lượng bệnh nhân mỗi tháng
+CREATE TABLE patient_monthly_stats (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  month_year VARCHAR(7), -- format: YYYY-MM
+  patient_count INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Bảng lưu thống kê số lượng đơn thuốc
+CREATE TABLE prescription_stats (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  report_date DATE,
+  total_prescriptions INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE DATABASE IF NOT EXISTS reportdb;
+USE reportdb;
+
+CREATE TABLE IF NOT EXISTS patients (
+  id VARCHAR(50) PRIMARY KEY,
+  name VARCHAR(255),
+  gender VARCHAR(10),
+  created_at DATETIME
+);
+
+CREATE TABLE IF NOT EXISTS prescriptions (
+  id VARCHAR(50) PRIMARY KEY,
+  patient_id VARCHAR(50),
+  status VARCHAR(50),
+  issued_at DATETIME
+);
+
+CREATE DATABASE IF NOT EXISTS report_service;
+USE report_service;
+
+CREATE TABLE IF NOT EXISTS patients (
+  id VARCHAR(100) PRIMARY KEY,
+  name VARCHAR(255),
+  email VARCHAR(255),
+  createdAt DATETIME
+);
+
+CREATE TABLE IF NOT EXISTS prescriptions (
+  id VARCHAR(100) PRIMARY KEY,
+  patientId VARCHAR(100),
+  medicine VARCHAR(255),
+  status VARCHAR(50),
+  createdAt DATETIME
+);
+
+DROP TABLE IF EXISTS patients;
+
+CREATE TABLE IF NOT EXISTS patients (
+  id VARCHAR(100) PRIMARY KEY,
+  name VARCHAR(255),
+  email VARCHAR(255),
+  created_at DATETIME
+);
+
+DROP TABLE IF EXISTS prescriptions;
+
+CREATE TABLE IF NOT EXISTS prescriptions (
+  id VARCHAR(100) PRIMARY KEY,
+  patientId VARCHAR(100),
+  medicine VARCHAR(255),
+  status VARCHAR(50),
+  created_at DATETIME
+);
+ALTER TABLE prescriptions
+CHANGE COLUMN patientId patient_id VARCHAR(255);

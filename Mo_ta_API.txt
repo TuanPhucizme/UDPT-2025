@@ -1,0 +1,180 @@
+I. auth-service 
+Đăng ký tài khoản mới:
+POST http://localhost:3000/api/auth/register
+Body (JSON):
+json
+{
+  "username": "doctor1",
+  "password": "123456",
+  "role": "doctor"
+}
+
+Đăng nhập:
+POST http://localhost:3000/api/auth/login
+
+Body (JSON):
+json
+{
+  "username": "doctor1",
+  "password": "123456"
+}
+Kết quả sẽ trả về:
+json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+
+Gửi GET /api/auth/me để kiểm tra token
+URL: http://localhost:3000/api/auth/me
+Method: GET
+Header:
+Authorization: Bearer <TOKEN_BAN_LAY_O_BUOC_TREN>
+Kết quả nếu hợp lệ:
+json
+{
+  "message": "Xác thực thành công!",
+  "user": {
+    "id": 1,
+    "role": "doctor",
+    "iat": 123456789,
+    "exp": 123459999
+  }
+}
+
+II. patient-service
+
+Tạo bệnh nhân mới
+POST http://localhost:3001/api/patients
+Body (JSON):
+json
+{
+  "name": "Nguyen Van A",
+  "age": 32,
+  "gender": "male",
+  "phone": "0123456789",
+  "email": "nva@example.com"
+}
+Cần có token trong Header.
+
+Lấy danh sách bệnh nhân
+GET http://localhost:3001/api/patients
+Có thể thêm tìm kiếm:
+GET http://localhost:3001/api/patients?name=Nguyen&gender=male
+
+Tìm bệnh nhân theo ID
+GET http://localhost:3001/api/patients/1
+
+Cập nhật thông tin bệnh nhân
+PUT http://localhost:3001/api/patients/1
+Body (JSON):
+json
+{
+  "name": "Nguyen Van A",
+  "age": 33,
+  "gender": "male",
+  "phone": "0999888777",
+  "email": "nva_updated@example.com"
+}
+
+Tạo hồ sơ bệnh án (chỉ bác sĩ)
+POST http://localhost:3001/api/medical-records
+Body (JSON):
+json
+{
+  "patient_id": 1,
+  "diagnosis": "Sốt virus",
+  "treatment": "Uống nước, nghỉ ngơi",
+  "doctor_name": "Dr. Tran Van B"
+}
+Chỉ tài khoản có role: doctor mới được gửi!
+
+Lấy danh sách hồ sơ bệnh án của bệnh nhân
+GET http://localhost:3001/api/medical-records/patient/1
+Ai cũng được xem (nếu đã đăng nhập và có token hợp lệ)
+
+III. appointment-service
+Đặt lịch khám (bệnh nhân)
+POST http://localhost:3002/api/appointments
+Authorization: Bearer <TOKEN bệnh nhân>
+json
+{
+  "patient_id": 1,
+  "doctor_id": 2,
+  "appointment_time": "2025-07-12T10:00:00",
+  "note": "Khám ho"
+}
+Ghi lại appointment_id trả về (VD: 5)
+
+Xác nhận lịch (bác sĩ)
+PUT http://localhost:3002/api/appointments/5
+Authorization: Bearer <TOKEN bác sĩ>
+json
+{
+  "status": "confirmed"
+}
+Nếu code đúng: RabbitMQ sẽ gửi message sang patient-service
+
+Xem hồ sơ bệnh án qua API (patient-service)
+GET http://localhost:3001/api/medical-records/patient/1
+Authorization: Bearer <TOKEN>
+
+IV. prescription-service 
+Tạo đơn thuốc (doctor)
+POST http://localhost:3003/api/prescriptions
+Authorization: Bearer <token của doctor>
+json
+{
+  "record_id": 10,
+  "patient_id": 1,
+  "doctor_id": 2,
+  "medicines": [
+    { "name": "Paracetamol", "dosage": "500mg x 2 lần/ngày" },
+    { "name": "Vitamin C", "dosage": "1000mg x sáng" }
+  ]
+}
+
+Cập nhật trạng thái đơn thuốc (patient hoặc admin)
+PUT http://localhost:3003/api/prescriptions/1
+Authorization: Bearer <token>
+json
+{
+  "status": "collected"
+}
+
+Lấy đơn thuốc theo bệnh nhân
+GET http://localhost:3003/api/prescriptions/patient/1
+Authorization: Bearer <token>
+
+V. Notification-service:
+NOTIFICATION-SERVICE
+1. GET /api/notifications/:patientId
+Chức năng:
+Lấy tất cả thông báo của bệnh nhân theo patientId.
+
+Ví dụ URL:
+GET http://localhost:3004/api/notifications/patient123
+Response mẫu:
+[
+  {
+    "_id": "66a0d20f4f234b6f1b1e8b9c",
+    "type": "AppointmentConfirmed",
+    "patientId": "patient123",
+    "message": "Lịch khám của bạn vào 9h sáng mai đã được xác nhận.",
+    "createdAt": "2025-07-19T10:10:00Z"
+  }
+]
+
+VI. Report-service
+ 1. GET /api/reports/patients
+Chức năng:
+Thống kê số lượng bệnh nhân theo tháng (tính từ bảng patients đã đồng bộ trong MySQL).
+
+Ví dụ URL:
+GET http://localhost:3005/api/reports/patients
+
+2. GET /api/reports/prescriptions
+Chức năng:
+Thống kê số lượng đơn thuốc đã được cấp, phân theo trạng thái (ví dụ: Đã lấy, Chưa lấy...).
+
+Ví dụ URL:
+GET http://localhost:3005/api/reports/prescriptions
