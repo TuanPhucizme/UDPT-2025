@@ -4,6 +4,7 @@ import {
   getPrescriptionsByPatient
 } from '../models/prescription.model.js';
 import sendNotification from '../utils/sendNotification.js';
+import db from '../db.js';
 export const create = async (req, res) => {
   try {
     const { record_id, patient_id, doctor_id, medicines } = req.body;
@@ -47,4 +48,15 @@ export const getByPatient = async (req, res) => {
   const patient_id = req.params.patient_id;
   const prescriptions = await getPrescriptionsByPatient(patient_id);
   res.json(prescriptions);
+};
+
+export const getAllPrescriptions = async (req, res) => {
+  try {
+    const [rows] = await db.query('SELECT * FROM prescriptions');
+    res.json(rows);
+  } catch (err) {
+    
+    console.error('[✘] Lỗi truy vấn prescriptions:', err);
+    res.status(500).json({ message: 'Lỗi khi lấy danh sách đơn thuốc' });
+  }
 };

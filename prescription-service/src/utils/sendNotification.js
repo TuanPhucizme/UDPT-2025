@@ -1,5 +1,4 @@
-// utils/sendNotification.js
-const amqp = require('amqplib');
+import amqp from 'amqplib';
 
 let channel = null;
 
@@ -9,7 +8,7 @@ async function connectQueue() {
   await channel.assertQueue('hospital_notifications');
 }
 
-async function sendNotification(notification) {
+export default async function sendNotification(notification) {
   try {
     if (!channel) await connectQueue();
     channel.sendToQueue(
@@ -21,5 +20,3 @@ async function sendNotification(notification) {
     console.error('[X] Lỗi gửi thông báo:', err);
   }
 }
-
-module.exports = sendNotification;
