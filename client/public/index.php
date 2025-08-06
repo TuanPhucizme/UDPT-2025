@@ -1,25 +1,88 @@
 <?php
+session_start();
 require_once '../config/services.php';
+require_once '../app/middleware/AuthMiddleware.php';
 
-$route = $_GET['route'] ?? 'home';
+// Get the URI and remove leading/trailing slashes
+$uri = $_SERVER['REQUEST_URI'];
+$uri = parse_url($uri, PHP_URL_PATH);
+$uri = trim($uri, '/');
 
-switch ($route) {
-    case 'appointments/search':
-        require_once '../app/controllers/AppointmentController.php';
-        $controller = new AppointmentController();
-        $controller->search();
-        break;
+// Remove index.php from URI if present
+$uri = str_replace('index.php/', '', $uri);
+
+// Remove the base path if your application is in a subdirectory
+$basePath = 'UDPT/UDPT-2025/client/public';
+$uri = str_replace($basePath, '', $uri);
+
+// Default route
+if (empty($uri)) {
+    $uri = 'home';
+}
+
+// Parse route parameters
+$segments = explode('/', $uri);
+$controller = $segments[0] ?? 'home';
+$action = $segments[1] ?? 'index';
+$params = array_slice($segments, 2);
+
+// Define valid routes
+$routes = [
+    'auth' => ['login', 'logout', 'register'],
+    'patients' => ['index', 'create', 'update', 'delete', 'view'],
+    'home' => ['index']
+];
+
+try {
+    // Validate route
+    if (!array_key_exists($controller, $routes) || 
+        !in_array($action, $routes[$controller])) {
+        throw new Exception('Route not found', 404);
+    }
+
+    switch ($controller) {
+        case 'auth':
+            require_once '../app/controllers/AuthController.php';
+            $controller = new AuthController();
+            
+            if (method_exists($controller, $action)) {
+                call_user_func_array([$controller, $action], $params);
+            } else {
+                throw new Exception('Action not found', 404);
+            }
+            break;
+
+        case 'patients':
+            AuthMiddleware::authenticate();
+            require_once '../app/controllers/PatientController.php';
+            $controller = new PatientController();
+            
+            if (method_exists($controller, $action)) {
+                // Check role-based access
+                if ($action === 'create' || $action === 'update') {
+                    AuthMiddleware::authorizeRoles('doctor', 'admin')();
+                }
+                call_user_func_array([$controller, $action], $params);
+            } else {
+                throw new Exception('Action not found', 404);
+            }
+            break;
+
+        case 'home':
+            require_once '../app/views/home.php';
+            break;
+
+        default:
+            throw new Exception('Controller not found', 404);
+    }
+} catch (Exception $e) {
+    $statusCode = $e->getCode() ?: 500;
+    http_response_code($statusCode);
     
-    case 'appointments/create':
-        require_once '../app/controllers/AppointmentController.php';
-        $controller = new AppointmentController();
-        $controller->create();
-        break;
+    $error = [
+        'message' => $e->getMessage(),
+        'code' => $statusCode
+    ];
     
-    // Add other routes for different services
-    
-    default:
-        // Show 404 or homepage
-        require_once '../app/views/home.php';
-        break;
+    require '../app/views/error.php';
 }

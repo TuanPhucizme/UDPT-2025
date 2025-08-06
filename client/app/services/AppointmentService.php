@@ -1,4 +1,5 @@
 <?php
+require_once '../config/services.php';
 require_once 'BaseService.php';
 
 class AppointmentService extends BaseService {

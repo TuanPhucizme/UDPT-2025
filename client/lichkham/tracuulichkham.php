@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <title>Tìm kiếm lịch khám</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+<?php require_once '../app/views/layouts/header.php'; ?>
+
 <div class="container py-5 mt-5">
   <h2 class="mb-4 text-center">Tìm Kiếm Lịch Khám</h2>
 
@@ -68,5 +62,5 @@
     </tbody>
   </table>
 </div>
-</body>
-</html>
+
+<?php require_once '../app/views/layouts/footer.php'; ?>

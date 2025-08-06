@@ -15,6 +15,8 @@
   </script>
 </head>
 <body>
+<?php require_once '../app/views/layouts/header.php'; ?>
+
 <div class="container py-5">
   <h2 class="mb-4 text-center">🔍 Tra Cứu Bệnh Nhân</h2>
 
@@ -65,5 +67,7 @@
     </tbody>
   </table>
 </div>
+
+<?php require_once '../app/views/layouts/footer.php'; ?>
 </body>
 </html>

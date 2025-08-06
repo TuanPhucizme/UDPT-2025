@@ -6,6 +6,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<?php require_once '../app/views/layouts/header.php'; ?>
+
 <div class="container py-5">
   <h2 class="mb-4 text-center">Tra cứu đơn thuốc bệnh nhân</h2>
 
@@ -55,5 +57,7 @@
     </tbody>
   </table>
 </div>
+
+<?php require_once '../app/views/layouts/footer.php'; ?>
 </body>
 </html>

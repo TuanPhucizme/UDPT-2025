@@ -10,6 +10,8 @@
   </style>
 </head>
 <body>
+<?php require_once '../app/views/layouts/header.php'; ?>
+
 <div class="container py-5">
   <h2 class="mb-4 text-center">Tạo đơn thuốc</h2>
 
@@ -54,6 +56,8 @@
     </div>
   </form>
 </div>
+
+<?php require_once '../app/views/layouts/footer.php'; ?>
 
 <!-- Script -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
