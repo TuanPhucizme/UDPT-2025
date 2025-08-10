@@ -4,10 +4,15 @@ import { authMiddleware, authorizeRoles } from '../middleware/auth.middleware.js
 
 const router = express.Router();
 
-// ✅ Chỉ role "doctor" mới được thêm hồ sơ
-router.post('/', authMiddleware, authorizeRoles('doctor'), addMedicalRecord);
+// Chỉ role "doctor" và 'receptionist' mới được thêm hồ sơ
+router.post('/', authMiddleware, authorizeRoles('doctor', 'receptionist'), addMedicalRecord);
 
-// ✅ Ai cũng xem được (bác sĩ, admin, bệnh nhân) – hoặc bạn giới hạn sau
-router.get('/patient/:patientId', authMiddleware, getRecordsByPatient);
+router.get(
+  '/patient/:patientId',
+  authMiddleware,
+  authorizeRoles('doctor', 'pharmacist', 'admin', 'receptionist'), // Chỉ bác sĩ, dược sĩ, admin và lễ tân mới được xem hồ sơ bệnh nhân
+  getRecordsByPatient
+);
+
 
 export default router;

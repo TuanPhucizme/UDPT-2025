@@ -28,4 +28,25 @@ router.get('/doctor-only', authMiddleware, authorizeRoles('doctor'), (req, res) 
 router.get('/medical-staff', authMiddleware, authorizeRoles('doctor', 'admin'), (req, res) => {
   res.json({ message: 'Chào nhân viên y tế!' });
 });
+
+// Chỉ lễ tân
+router.get('/reception-only', authMiddleware, authorizeRoles('receptionist'), (req, res) => {
+  res.json({ message: 'Chào lễ tân!' });
+});
+
+// Chỉ dược sĩ
+router.get('/pharmacist-only', authMiddleware, authorizeRoles('pharmacist'), (req, res) => {
+  res.json({ message: 'Chào dược sĩ!' });
+});
+
+// Cả bác sĩ + lễ tân xem bệnh nhân
+router.get('/view-patient', authMiddleware, authorizeRoles('doctor', 'receptionist'), (req, res) => {
+  res.json({ message: 'Bạn được phép xem bệnh nhân!' });
+});
+
+// Dược sĩ và bác sĩ có quyền xử lý đơn thuốc
+router.get('/view-prescription', authMiddleware, authorizeRoles('pharmacist', 'doctor'), (req, res) => {
+  res.json({ message: 'Bạn được phép xem đơn thuốc!' });
+});
+
 export default router;
