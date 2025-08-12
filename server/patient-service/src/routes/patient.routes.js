@@ -6,7 +6,7 @@ import {
   updatePatientInfo,
 } from '../controllers/patient.controller.js';
 
-import { authMiddleware } from '../middleware/auth.middleware.js';
+import { authMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
 
