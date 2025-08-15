@@ -1,5 +1,5 @@
 <?php
-require_once('../configuration/config.php');
+require_once('../configuration/configuration.php');
 
 require_once(ROOT_PATH . '/configuration/access_control.php');
 

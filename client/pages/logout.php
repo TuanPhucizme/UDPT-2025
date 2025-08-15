@@ -1,8 +1,8 @@
 <?php
 // File: /pages/logout.php
 
-// Nạp file config để có BASE_URL
-require_once('../configuration/config.php');
+// Nạp file configuration để có BASE_URL
+require_once('../configuration/configuration.php');
 
 // Bắt đầu session để có thể hủy nó
 session_start();

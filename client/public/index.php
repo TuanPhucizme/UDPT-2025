@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../config/services.php';
+require_once '../configuration/services.php';
 require_once '../app/middleware/AuthMiddleware.php';
 
 // Get the URI and remove leading/trailing slashes

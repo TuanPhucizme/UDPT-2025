@@ -14,17 +14,39 @@
                         </div>
                     <?php endif; ?>
 
+                    <?php if (isset($errors) && !empty($errors)): ?>
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                <?php foreach ($errors as $fieldError): ?>
+                                    <li><?= htmlspecialchars($fieldError) ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
+
                     <form method="POST" action="/auth/login">
                         <div class="mb-3">
                             <label for="username" class="form-label">Tên đăng nhập</label>
-                            <input type="text" class="form-control" id="username" name="username" required>
+                            <input type="text" 
+                                   class="form-control <?= isset($errors['username']) ? 'is-invalid' : '' ?>" 
+                                   id="username" 
+                                   name="username" 
+                                   value="<?= htmlspecialchars($_POST['username'] ?? '') ?>"
+                                   required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Mật khẩu</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
+                            <input type="password" 
+                                   class="form-control <?= isset($errors['password']) ? 'is-invalid' : '' ?>" 
+                                   id="password" 
+                                   name="password" 
+                                   required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+                        <button type="submit" class="btn btn-primary w-100">Đăng Nhập</button>
                     </form>
+                </div>
+                <div class="card-footer text-center">
+                    <p class="mb-0">Chưa có tài khoản? <a href="/auth/register">Đăng ký ngay</a></p>
                 </div>
             </div>
         </div>

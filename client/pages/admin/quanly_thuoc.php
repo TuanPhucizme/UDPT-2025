@@ -1,7 +1,7 @@
 <?php
 
-// Bước 1: Nạp file config
-require_once('../../configuration/config.php');
+// Bước 1: Nạp file configuration
+require_once('../../configuration/configuration.php');
 
 // Bước 2: Nạp file kiểm tra quyền
 require_once(ROOT_PATH . '/configuration/access_control.php');

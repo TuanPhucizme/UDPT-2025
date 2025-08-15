@@ -8,10 +8,16 @@ class AuthService extends BaseService {
     }
 
     public function login($username, $password) {
-        return $this->request('POST', '/api/auth/login', [
-            'username' => $username,
-            'password' => $password
-        ]);
+        try {
+            $response = $this->request('POST', '/api/auth/login', [
+                'username' => $username,
+                'password' => $password
+            ]);
+            return $response;
+        } catch (Exception $e) {
+            error_log('Auth Service Error: ' . $e->getMessage());
+            throw $e;
+        }
     }
 
     public function register($userData) {

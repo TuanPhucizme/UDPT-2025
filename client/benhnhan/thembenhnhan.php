@@ -55,7 +55,7 @@
             </thead>
             <tbody>
                 <?php
-                include('../admin/config/config.php');
+                include('../admin/configuration/configuration.php');
                 $sql = "SELECT * FROM benhnhan ORDER BY ID";
                 $result = mysqli_query($mysqli, $sql);
 

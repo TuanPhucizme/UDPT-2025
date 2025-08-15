@@ -18,12 +18,19 @@ class AuthController {
             if ($user->validate()) {
                 try {
                     $result = $this->authService->login($user->username, $user->password);
-                    if ($result['statusCode'] === 200) {
-                        $_SESSION['user'] = $result['data'];
+                    
+                    if ($result['statusCode'] === 200 && isset($result['data']['token'])) {
                         $_SESSION['token'] = $result['data']['token'];
-                        header('Location: /');
-                        exit;
+                        
+                        // Verify token and get user data
+                        $userData = $this->authService->verifyToken();
+                        if ($userData['statusCode'] === 200) {
+                            $_SESSION['user'] = $userData['data']['user'];
+                            header('Location: /');
+                            exit;
+                        }
                     }
+                    
                     $error = $result['data']['message'] ?? 'Đăng nhập thất bại';
                 } catch (Exception $e) {
                     $error = $e->getMessage();
@@ -32,6 +39,7 @@ class AuthController {
                 $errors = $user->getErrors();
             }
         }
+        
         require '../app/views/auth/login.php';
     }
 
