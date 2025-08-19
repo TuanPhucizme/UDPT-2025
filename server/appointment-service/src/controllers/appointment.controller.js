@@ -62,7 +62,7 @@ export const confirmAppointment = async (req, res) => {
   }
 };
 */
-// src/controllers/appointment.controller.js
+/*// src/controllers/appointment.controller.js
 import {
   createAppointment,
   getAppointments,
@@ -146,5 +146,138 @@ export const confirmAppointment = async (req, res) => {
     res.json({ message: 'Cập nhật trạng thái thành công' });
   } catch (err) {
     res.status(500).json({ message: 'Lỗi cập nhật trạng thái', error: err.message });
+  }
+};
+*/
+
+import {
+  createAppointment,
+  getAppointments,
+  updateAppointmentStatus,
+  getAppointmentById,
+  proposeTime,         // NEW
+  confirmTime,         // NEW
+  declineRequest       // NEW
+} from '../models/appointment.model.js';
+
+import {
+  notifyAppointmentScheduled,
+  notifyAppointmentProposed,   // NEW
+  notifyAppointmentConfirmed,
+  notifyAppointmentDeclined    // NEW
+} from '../utils/notifications.js';
+
+export const bookAppointment = async (req, res) => {
+  try {
+    const { patient_id, doctor_id, appointment_time, requested_time, note } = req.body;
+
+    const result = await createAppointment({
+      patient_id,
+      doctor_id,
+      requested_time: requested_time || appointment_time || null,
+      note
+    });
+
+    const appointmentId = result.insertId;
+
+    await notifyAppointmentScheduled({
+      patientId: patient_id,
+      appointmentId,
+      time: requested_time || appointment_time || null
+    });
+
+    res.status(201).json({ message: 'Tạo yêu cầu lịch thành công', id: appointmentId });
+  } catch (err) {
+    res.status(500).json({ message: 'Lỗi tạo yêu cầu lịch', error: err.message });
+  }
+};
+
+export const listAppointments = async (req, res) => {
+  try {
+    const result = await getAppointments();
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ message: 'Lỗi lấy danh sách lịch', error: err.message });
+  }
+};
+
+// NEW: bác sĩ nhận đơn + đề xuất giờ
+export const proposeAppointmentTime = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { proposed_time } = req.body;
+
+    const apm = await getAppointmentById(id);
+    if (!apm) return res.status(404).json({ message: 'Không tìm thấy lịch' });
+
+    // chỉ đúng bác sĩ của lịch hoặc admin
+    if (apm.doctor_id !== req.user.id && req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Bạn không phải là bác sĩ của lịch này' });
+    }
+
+    await proposeTime(id, apm.doctor_id, proposed_time);
+
+    await notifyAppointmentProposed({
+      patientId: apm.patient_id,
+      appointmentId: apm.id,
+      time: proposed_time
+    });
+
+    res.json({ message: 'Đã đề xuất thời gian khám' });
+  } catch (err) {
+    res.status(500).json({ message: 'Lỗi đề xuất thời gian', error: err.message });
+  }
+};
+
+export const confirmAppointment = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { appointment_time } = req.body; // giờ chốt
+
+    const apm = await getAppointmentById(id);
+    if (!apm) return res.status(404).json({ message: 'Không tìm thấy lịch' });
+
+    if (apm.doctor_id !== req.user.id && req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Bạn không phải là bác sĩ của lịch này' });
+    }
+
+    await confirmTime(id, apm.doctor_id, appointment_time);
+
+    await notifyAppointmentConfirmed({
+      patientId: apm.patient_id,
+      appointmentId: apm.id,
+      time: appointment_time
+    });
+
+    res.json({ message: 'Đã xác nhận lịch khám' });
+  } catch (err) {
+    res.status(500).json({ message: 'Lỗi xác nhận lịch', error: err.message });
+  }
+};
+
+// NEW: bác sĩ từ chối
+export const declineAppointment = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { reason } = req.body;
+
+    const apm = await getAppointmentById(id);
+    if (!apm) return res.status(404).json({ message: 'Không tìm thấy lịch' });
+
+    if (apm.doctor_id !== req.user.id && req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Bạn không phải là bác sĩ của lịch này' });
+    }
+
+    await declineRequest(id, apm.doctor_id, reason || '');
+
+    await notifyAppointmentDeclined({
+      patientId: apm.patient_id,
+      appointmentId: apm.id,
+      reason
+    });
+
+    res.json({ message: 'Đã từ chối yêu cầu lịch' });
+  } catch (err) {
+    res.status(500).json({ message: 'Lỗi từ chối lịch', error: err.message });
   }
 };
