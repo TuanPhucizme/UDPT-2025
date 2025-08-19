@@ -14,28 +14,28 @@ const router = express.Router();
 router.post(
   '/',
   authMiddleware,
-  authorizeRoles('receptionist', 'admin'), // lễ tân có quyền tạo bệnh nhân
+  authorizeRoles('letan', 'admin'), // lễ tân có quyền tạo bệnh nhân
   registerPatient
 );
 
 router.get(
   '/',
   authMiddleware,
-  authorizeRoles('doctor', 'receptionist', 'admin'), // cho phép xem DS bệnh nhân
+  authorizeRoles('bacsi', 'letan', 'admin'), // cho phép xem DS bệnh nhân
   getPatients
 );
 
 router.get(
   '/:id',
   authMiddleware,
-  authorizeRoles('doctor', 'receptionist', 'pharmacist', 'admin'), // cho phép xem chi tiết bệnh nhân
+  authorizeRoles('bacsi', 'letan', 'duocsi', 'admin'), // cho phép xem chi tiết bệnh nhân
   getPatient
 );
 
 router.put(
   '/:id',
   authMiddleware,
-  authorizeRoles('receptionist', 'admin'), // chỉ lễ tân & admin được sửa
+  authorizeRoles('letan', 'admin'), // chỉ lễ tân & admin được sửa
   updatePatientInfo
 );
 

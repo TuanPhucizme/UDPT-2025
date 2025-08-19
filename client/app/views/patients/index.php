@@ -19,19 +19,19 @@
                     <th>Ngày Sinh</th>
                     <th>Giới Tính</th>
                     <th>Số Điện Thoại</th>
-                    <th>Email</th>
+                    <th>Địa Chỉ</th>
                     <th>Thao Tác</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($patients['data'] as $patient): ?>
+                <?php foreach ($patients as $patient): ?>
                     <tr>
                         <td><?= htmlspecialchars($patient['id']) ?></td>
-                        <td><?= htmlspecialchars($patient['name']) ?></td>
-                        <td><?= htmlspecialchars($patient['dob']) ?></td>
+                        <td><?= htmlspecialchars($patient['hoten_bn']) ?></td>
+                        <td><?= (new DateTime($patient['dob']))->format("M d, Y"); ?></td>
                         <td><?= htmlspecialchars($patient['gender']) ?></td>
-                        <td><?= htmlspecialchars($patient['phone']) ?></td>
-                        <td><?= htmlspecialchars($patient['email']) ?></td>
+                        <td><?= htmlspecialchars($patient['sdt']) ?></td>
+                        <td><?= htmlspecialchars($patient['diachi']) ?></td>
                         <td>
                             <a href="/patients/edit/<?= $patient['id'] ?>" class="btn btn-sm btn-primary">Sửa</a>
                             <a href="/patients/view/<?= $patient['id'] ?>" class="btn btn-sm btn-info">Chi tiết</a>

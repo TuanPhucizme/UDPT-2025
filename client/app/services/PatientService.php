@@ -23,4 +23,13 @@ class PatientService extends BaseService {
     public function updatePatient($id, $data) {
         return $this->request('PUT', "/api/patients/$id", $data);
     }
+
+    public function searchPatients($filters) {
+        $queryString = http_build_query($filters);
+        return $this->request('GET', "/api/patients/search?{$queryString}");
+    }
+
+    public function getMedicalRecords($patientId) {
+        return $this->request('GET', "/api/medical-records/patient/{$patientId}");
+    }
 }

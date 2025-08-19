@@ -10,7 +10,7 @@ export const createUser = async (username, hashedPassword, role) => {
 
 export const getUserByUsername = async (username) => {
   const [rows] = await db.query(
-    'SELECT * FROM users WHERE username = ?',
+    'SELECT * FROM users u join role r on u.role_id=r.id_role  WHERE username = ?',
     [username]
   );
   return rows[0];

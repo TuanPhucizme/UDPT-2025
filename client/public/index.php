@@ -29,7 +29,7 @@ $params = array_slice($segments, 2);
 // Define valid routes
 $routes = [
     'auth' => ['login', 'logout', 'register'],
-    'patients' => ['index', 'create', 'update', 'delete', 'view'],
+    'patients' => ['index', 'create', 'update', 'delete', 'view', 'edit', 'search'],
     'home' => ['index']
 ];
 
@@ -60,7 +60,7 @@ try {
             if (method_exists($controller, $action)) {
                 // Check role-based access
                 if ($action === 'create' || $action === 'update') {
-                    AuthMiddleware::authorizeRoles('doctor', 'admin')();
+                    AuthMiddleware::authorizeRoles('bacsi', 'admin')();
                 }
                 call_user_func_array([$controller, $action], $params);
             } else {

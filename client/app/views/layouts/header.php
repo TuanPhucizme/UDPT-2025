@@ -32,27 +32,27 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="/patients">
-                            <i class="fas fa-user-injured"></i> Bệnh Nhân
+                            Bệnh Nhân
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/doctors">
-                            <i class="fas fa-user-md"></i> Bác Sĩ
+                            Bác Sĩ
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/appointments">
-                            <i class="fas fa-calendar-alt"></i> Lịch Khám
+                            Lịch Khám
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/prescriptions">
-                            <i class="fas fa-prescription"></i> Đơn Thuốc
+                            Đơn Thuốc
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/reports">
-                            <i class="fas fa-chart-bar"></i> Báo Cáo
+                            Báo Cáo
                         </a>
                     </li>
                 </ul>

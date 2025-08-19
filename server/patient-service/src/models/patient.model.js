@@ -13,7 +13,7 @@ export const getAllPatients = async (filters = {}) => {
   const params = [];
 
   if (filters.name) {
-    sql += ' AND name LIKE ?';
+    sql += ' AND hoten_bn LIKE ?';
     params.push(`%${filters.name}%`);
   }
   if (filters.gender) {
