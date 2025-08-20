@@ -3,21 +3,22 @@ import {
   bookAppointment,
   listAppointments,
   confirmAppointment,
-  proposeAppointmentTime,   // NEW
-  declineAppointment
+  proposeAppointmentTime,
+  declineAppointment,
+  getAppointmentById
 } from '../controllers/appointment.controller.js';
-
-import { authMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
+import { authMiddleware, internalAuthMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
 
-// Bệnh nhân đặt lịch khám
-router.post('/', authMiddleware, authorizeRoles('patient'), bookAppointment);
+// Client routes
+router.post('/', authMiddleware, authorizeRoles('benhnhan'), bookAppointment);
+router.get('/', authMiddleware, authorizeRoles('letan', 'bacsi', 'admin'), listAppointments);
+router.put('/:id/propose', authMiddleware, authorizeRoles('bacsi'), proposeAppointmentTime);
+router.put('/:id/confirm', authMiddleware, authorizeRoles('bacsi', 'admin'), confirmAppointment);
+router.put('/:id/decline', authMiddleware, authorizeRoles('bacsi', 'admin'), declineAppointment);
 
-// Lễ tân, bác sĩ và admin xem danh sách lịch
-router.get('/', authMiddleware, authorizeRoles('receptionist', 'doctor', 'admin'), listAppointments);
-router.put('/:id/propose', authMiddleware, authorizeRoles('doctor'), proposeAppointmentTime);   // NEW
-// Bác sĩ hoặc admin xác nhận lịch khám
-router.put('/:id/confirm', authMiddleware, authorizeRoles('doctor', 'admin'), confirmAppointment); 
-router.put('/:id/decline', authMiddleware, authorizeRoles('doctor', 'admin'), declineAppointment); // NEW
+// Internal service routes
+router.get('/internal/:id', internalAuthMiddleware, getAppointmentById);
+
 export default router;

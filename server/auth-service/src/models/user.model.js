@@ -49,7 +49,7 @@ export const createUser = async ({
 
 export const getUserByUsername = async (username) => {
   const [rows] = await db.query(
-    'SELECT * FROM users WHERE username = ?',
+    'SELECT * FROM users u join role r on u.role_id=r.id_role WHERE username = ?',
     [username]
   );
   return rows[0];
@@ -69,4 +69,60 @@ export const getUserById = async (id) => {
     [id]
   );
   return rows[0];
+};
+
+export const getStaffById = async (id) => {
+  const [rows] = await db.query(
+    `SELECT 
+      s.id,
+      s.staff_code,
+      s.hoten_nv,
+      s.email,
+      s.sdt,
+      s.gender,
+      s.dob,
+      r.ten_role as role,
+      d.ten_ck as department,
+      d.id as department_id,
+      s.begin_date
+    FROM staff s
+    JOIN role r ON s.role_id = r.id_role
+    LEFT JOIN department d ON s.department_id = d.id
+    WHERE s.id = ?`,
+    [id]
+  );
+  return rows[0];
+};
+
+export const getDepartmentById = async (id) => {
+  const [rows] = await db.query(
+    'SELECT * FROM department WHERE id = ?',
+    [id]
+  );
+  return rows[0];
+};
+
+export const getAllDepartments = async () => {
+  const [rows] = await db.query(
+    'SELECT * FROM department ORDER BY ten_ck'
+  );
+  return rows;
+};
+
+export const getStaffByDepartment = async (departmentId) => {
+  const [rows] = await db.query(
+    `SELECT 
+      s.id,
+      s.staff_code,
+      s.hoten_nv,
+      s.email,
+      s.sdt,
+      s.gender,
+      r.ten_role as role
+    FROM staff s
+    JOIN role r ON s.role_id = r.id_role
+    WHERE s.department_id = ?`,
+    [departmentId]
+  );
+  return rows;
 };

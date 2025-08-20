@@ -111,7 +111,7 @@ export const login = async (req, res) => {
     if (!match) return res.status(401).json({ message: 'Sai mật khẩu' });
 
     const token = jwt.sign(
-      { id: user.id, role: user.role, name: user.full_name || user.username },
+      { id: user.id, role: user.ten_role, name: user.username },
       JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
     );

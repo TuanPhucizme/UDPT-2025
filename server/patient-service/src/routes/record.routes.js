@@ -1,18 +1,27 @@
 import express from 'express';
-import { addMedicalRecord, getRecordsByPatient } from '../controllers/record.controller.js';
-import { authMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
+import { 
+    createRecord, 
+    getPatientRecords, 
+    getRecordDetails,
+    updateRecord 
+} from '../controllers/record.controller.js';
+import { authMiddleware, internalAuthMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
 
-// Chỉ role "doctor" và 'receptionist' mới được thêm hồ sơ
-router.post('/', authMiddleware, authorizeRoles('bacsi', 'letan'), addMedicalRecord);
-
+// Client routes
+router.post('/', authMiddleware, authorizeRoles('bacsi'), createRecord);
 router.get(
-  '/patient/:patientId',
-  authMiddleware,
-  authorizeRoles('bacsi', 'duocsi', 'admin', 'letan'), // Chỉ bác sĩ, dược sĩ, admin và lễ tân mới được xem hồ sơ bệnh nhân
-  getRecordsByPatient
+    '/patient/:id',
+    authMiddleware,
+    authorizeRoles('bacsi', 'duocsi', 'letan', 'admin'),
+    getPatientRecords
 );
+router.get('/:id', authMiddleware, authorizeRoles('bacsi', 'duocsi', 'letan', 'admin'), getRecordDetails);
+router.put('/:id', authMiddleware, authorizeRoles('bacsi'), updateRecord);
 
+// Internal service routes
+router.get('/internal/:id', internalAuthMiddleware, getRecordDetails);
+router.get('/internal/patient/:id', internalAuthMiddleware, getPatientRecords);
 
 export default router;

@@ -3,40 +3,19 @@ import {
   registerPatient,
   getPatients,
   getPatient,
-  updatePatientInfo,
+  updatePatientInfo
 } from '../controllers/patient.controller.js';
-
-import { authMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
+import { authMiddleware, internalAuthMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
 
-// ✅ Gắn authMiddleware vào các route cần xác thực
-router.post(
-  '/',
-  authMiddleware,
-  authorizeRoles('letan', 'admin'), // lễ tân có quyền tạo bệnh nhân
-  registerPatient
-);
+// Client routes
+router.post('/', authMiddleware, authorizeRoles('letan', 'admin'), registerPatient);
+router.get('/', authMiddleware, authorizeRoles('bacsi', 'letan', 'admin'), getPatients);
+router.get('/:id', authMiddleware, authorizeRoles('bacsi', 'letan', 'duocsi', 'admin'), getPatient);
+router.put('/:id', authMiddleware, authorizeRoles('letan', 'admin'), updatePatientInfo);
 
-router.get(
-  '/',
-  authMiddleware,
-  authorizeRoles('bacsi', 'letan', 'admin'), // cho phép xem DS bệnh nhân
-  getPatients
-);
-
-router.get(
-  '/:id',
-  authMiddleware,
-  authorizeRoles('bacsi', 'letan', 'duocsi', 'admin'), // cho phép xem chi tiết bệnh nhân
-  getPatient
-);
-
-router.put(
-  '/:id',
-  authMiddleware,
-  authorizeRoles('letan', 'admin'), // chỉ lễ tân & admin được sửa
-  updatePatientInfo
-);
+// Internal service routes
+router.get('/internal/:id', internalAuthMiddleware, getPatient);
 
 export default router;

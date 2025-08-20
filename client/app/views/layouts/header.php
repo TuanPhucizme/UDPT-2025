@@ -61,7 +61,7 @@
                     <?php if (isset($_SESSION['user'])): ?>
                         <span class="user-info">
                             <i class="fas fa-user"></i> 
-                            <?= htmlspecialchars($_SESSION['user']['fullName']) ?>
+                            <?= htmlspecialchars($_SESSION['user']['name']) ?>
                         </span>
                         <a href="/auth/logout" class="btn btn-outline-light btn-sm">
                             <i class="fas fa-sign-out-alt"></i> Đăng Xuất

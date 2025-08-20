@@ -2,25 +2,28 @@ import express from 'express';
 import {
   create,
   updateStatus,
-  getByPatient
+  getByPatient,
+  getByRecordId
 } from '../controllers/prescription.controller.js';
-
-import { authMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
+import { authMiddleware, internalAuthMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
 
-// ✅ Bác sĩ tạo đơn thuốc
-router.post('/', authMiddleware, authorizeRoles('doctor'), create);
-
-// ✅ Dược sĩ (và admin) cập nhật tình trạng đơn thuốc
-router.put('/:id', authMiddleware, authorizeRoles('pharmacist', 'admin'), updateStatus);
-
-// ✅ Bác sĩ + dược sĩ + admin có thể xem đơn thuốc theo bệnh nhân
+// Client routes
+router.post('/', authMiddleware, authorizeRoles('bacsi'), create);
+router.put('/:id', authMiddleware, authorizeRoles('duocsi', 'admin'), updateStatus);
 router.get(
   '/patient/:patient_id',
   authMiddleware,
-  authorizeRoles('doctor', 'pharmacist', 'admin'),
+  authorizeRoles('bacsi', 'duocsi', 'admin'),
   getByPatient
+);
+
+// Internal service routes
+router.get(
+  '/internal/record/:record_id',
+  internalAuthMiddleware,
+  getByRecordId
 );
 
 export default router;
