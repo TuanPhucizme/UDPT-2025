@@ -37,11 +37,20 @@ export const login = async (req, res) => {
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { createUser, getUserByUsername, getUserByEmail } from '../models/user.model.js';
-
+import { listUsers } from '../models/user.model.js';
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const allowedRoles = ['admin', 'doctor', 'receptionist', 'pharmacist', 'patient', 'user'];
-
+// Helper: parse query chung
+function parseQuery(req) {
+  const { page = '1', limit = '20', q = '', specialty = '' } = req.query || {};
+  return {
+    page: Number(page) || 1,
+    limit: Number(limit) || 20,
+    q: q || undefined,
+    specialty: specialty || undefined
+  };
+}
 export const register = async (req, res) => {
   try {
     const {
@@ -120,5 +129,49 @@ export const login = async (req, res) => {
   } catch (err) {
     console.error('[auth] login error:', err);
     res.status(500).json({ message: 'Lỗi đăng nhập', error: err.message });
+  }
+};
+
+// GET /users/doctors
+export const getDoctors = async (req, res) => {
+  try {
+    const { page, limit, q, specialty } = parseQuery(req);
+    const result = await listUsers({ roles: ['doctor'], q, specialty, page, limit });
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ message: 'Lỗi lấy danh sách bác sĩ', error: err.message });
+  }
+};
+
+// GET /users/pharmacists
+export const getPharmacists = async (req, res) => {
+  try {
+    const { page, limit, q } = parseQuery(req);
+    const result = await listUsers({ roles: ['pharmacist'], q, page, limit });
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ message: 'Lỗi lấy danh sách dược sĩ', error: err.message });
+  }
+};
+
+// GET /users/receptionists
+export const getReceptionists = async (req, res) => {
+  try {
+    const { page, limit, q } = parseQuery(req);
+    const result = await listUsers({ roles: ['receptionist'], q, page, limit });
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ message: 'Lỗi lấy danh sách lễ tân', error: err.message });
+  }
+};
+
+// GET /users/patients
+export const getPatients = async (req, res) => {
+  try {
+    const { page, limit, q } = parseQuery(req);
+    const result = await listUsers({ roles: ['patient'], q, page, limit });
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ message: 'Lỗi lấy danh sách bệnh nhân', error: err.message });
   }
 };

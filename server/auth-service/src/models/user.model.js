@@ -71,58 +71,66 @@ export const getUserById = async (id) => {
   return rows[0];
 };
 
-export const getStaffById = async (id) => {
-  const [rows] = await db.query(
-    `SELECT 
-      s.id,
-      s.staff_code,
-      s.hoten_nv,
-      s.email,
-      s.sdt,
-      s.gender,
-      s.dob,
-      r.ten_role as role,
-      d.ten_ck as department,
-      d.id as department_id,
-      s.begin_date
-    FROM staff s
-    JOIN role r ON s.role_id = r.id_role
-    LEFT JOIN department d ON s.department_id = d.id
-    WHERE s.id = ?`,
-    [id]
-  );
-  return rows[0];
-};
+/**
+ * Liệt kê người dùng theo 1 hoặc nhiều role, có tìm kiếm & phân trang
+ * @param {Object} params
+ * @param {string[]} params.roles - danh sách vai trò cần lấy
+ * @param {string} [params.q] - từ khoá tìm kiếm (full_name/username/email/phone)
+ * @param {string} [params.specialty] - lọc chuyên khoa (chỉ áp dụng doctor)
+ * @param {number} [params.page=1]
+ * @param {number} [params.limit=20]
+ * @returns {{data:any[], page:number, limit:number, total:number}}
+ */
+export const listUsers = async ({ roles, q, specialty, page = 1, limit = 20 }) => {
+  if (!Array.isArray(roles) || roles.length === 0) {
+    throw new Error('roles is required');
+  }
 
-export const getDepartmentById = async (id) => {
-  const [rows] = await db.query(
-    'SELECT * FROM department WHERE id = ?',
-    [id]
-  );
-  return rows[0];
-};
+  const where = [];
+  const args = [];
 
-export const getAllDepartments = async () => {
-  const [rows] = await db.query(
-    'SELECT * FROM department ORDER BY ten_ck'
-  );
-  return rows;
-};
+  // role IN (...)
+  where.push(`role IN (${roles.map(() => '?').join(',')})`);
+  args.push(...roles);
 
-export const getStaffByDepartment = async (departmentId) => {
-  const [rows] = await db.query(
-    `SELECT 
-      s.id,
-      s.staff_code,
-      s.hoten_nv,
-      s.email,
-      s.sdt,
-      s.gender,
-      r.ten_role as role
-    FROM staff s
-    JOIN role r ON s.role_id = r.id_role
-    WHERE s.department_id = ?`,
-    [departmentId]
+  // keyword
+  if (q) {
+    where.push(`(
+      COALESCE(full_name,'') LIKE ? OR
+      COALESCE(username,'')  LIKE ? OR
+      COALESCE(email,'')     LIKE ? OR
+      COALESCE(phone,'')     LIKE ?
+    )`);
+    const kw = `%${q}%`;
+    args.push(kw, kw, kw, kw);
+  }
+
+  // specialty (chỉ khi có doctor trong roles)
+  if (specialty && roles.includes('doctor')) {
+    where.push(`COALESCE(specialty,'') LIKE ?`);
+    args.push(`%${specialty}%`);
+  }
+
+  const whereSql = where.length ? `WHERE ${where.join(' AND ')}` : '';
+  const offset = Math.max(0, (Number(page) - 1) * Number(limit));
+  const safeLimit = Math.min(Math.max(Number(limit) || 20, 1), 100);
+
+  // total
+  const [cntRows] = await db.query(
+    `SELECT COUNT(*) AS total FROM users ${whereSql}`,
+    args
   );
-  return rows;
+  const total = cntRows[0]?.total ?? 0;
+
+  // data
+  const [rows] = await db.query(
+    `SELECT id, username, role, full_name, email, phone, gender, specialty, created_at
+     FROM users
+     ${whereSql}
+     ORDER BY created_at DESC
+     LIMIT ? OFFSET ?`,
+    [...args, safeLimit, offset]
+  );
+
+  return { data: rows, page: Number(page) || 1, limit: safeLimit, total };
 };

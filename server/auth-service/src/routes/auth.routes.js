@@ -1,6 +1,12 @@
 import express from 'express';
 import { register, login } from '../controllers/auth.controller.js';
 import { authMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
+import {
+  getDoctors,
+  getPharmacists,
+  getReceptionists,
+  getPatients
+} from '../controllers/auth.controller.js';
 const router = express.Router();
 
 router.post('/register', register);
@@ -48,5 +54,37 @@ router.get('/view-patient', authMiddleware, authorizeRoles('doctor', 'receptioni
 router.get('/view-prescription', authMiddleware, authorizeRoles('pharmacist', 'doctor'), (req, res) => {
   res.json({ message: 'Bạn được phép xem đơn thuốc!' });
 });
+
+// Bác sĩ (lọc thêm ?specialty=Noi khoa)
+router.get(
+  '/doctors',
+  authMiddleware,
+  authorizeRoles('admin'),
+  getDoctors
+);
+
+// Dược sĩ
+router.get(
+  '/pharmacists',
+  authMiddleware,
+  authorizeRoles('admin'),
+  getPharmacists
+);
+
+// Lễ tân
+router.get(
+  '/receptionists',
+  authMiddleware,
+  authorizeRoles('admin'),
+  getReceptionists
+);
+
+// Bệnh nhân
+router.get(
+  '/patients',
+  authMiddleware,
+  authorizeRoles('admin', 'receptionist', 'doctor', 'pharmacist'),
+  getPatients
+);
 
 export default router;
