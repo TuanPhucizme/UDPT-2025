@@ -3,8 +3,23 @@
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Danh Sách Bệnh Nhân</h2>
-        <a href="/patients/create" class="btn btn-primary">Thêm Bệnh Nhân</a>
+        <div>
+            <a href="/patients/search" class="btn btn-info me-2">
+                <i class="fas fa-search"></i> Tìm Kiếm
+            </a>
+            <a href="/patients/create" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Thêm Bệnh Nhân
+            </a>
+        </div>
     </div>
+
+    <?php if (isset($_SESSION['success'])): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?= htmlspecialchars($_SESSION['success']) ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        <?php unset($_SESSION['success']); ?>
+    <?php endif; ?>
 
     <?php if (isset($error)): ?>
         <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>

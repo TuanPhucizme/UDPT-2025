@@ -29,33 +29,27 @@
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/patients">
-                            Bệnh Nhân
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/doctors">
-                            Bác Sĩ
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/appointments">
-                            Lịch Khám
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/prescriptions">
-                            Đơn Thuốc
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/reports">
-                            Báo Cáo
-                        </a>
-                    </li>
-                </ul>
+                <div class="navbar-nav me-auto">
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <a class="nav-link" href="/home">Trang Chủ</a>
+                        <a class="nav-link" href="/patients">Bệnh Nhân</a>
+                        <?php if (in_array($_SESSION['user']['role'], ['bacsi', 'admin'])): ?>
+                            <a class="nav-link" href="/appointments">Lịch Khám</a>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </div>
+
+                <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] !== 'benhnhan'): ?>
+                    <form class="d-flex me-3" action="/patients/search" method="GET">
+                        <input class="form-control me-2" type="search" 
+                               placeholder="Tìm bệnh nhân..." 
+                               name="name"
+                               aria-label="Search">
+                        <button class="btn btn-outline-light" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                <?php endif; ?>
 
                 <div class="d-flex align-items-center">
                     <?php if (isset($_SESSION['user'])): ?>

@@ -28,13 +28,19 @@ class PatientController {
     public function create() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
+                // Validate required fields
+                if (empty($_POST['hoten_bn']) || empty($_POST['dob']) || empty($_POST['gender'])) {
+                    throw new Exception('Vui lòng điền đầy đủ thông tin bắt buộc');
+                }
+
                 $patientData = [
-                    'name' => $_POST['name'],
+                    'hoten_bn' => $_POST['hoten_bn'],
                     'dob' => $_POST['dob'],
                     'gender' => $_POST['gender'],
-                    'address' => $_POST['address'],
-                    'phone' => $_POST['phone'],
-                    'email' => $_POST['email']
+                    'sdt' => $_POST['sdt'] ?? null,
+                    'diachi' => $_POST['diachi'] ?? null,
+                    'tiensu_benh' => $_POST['tiensu_benh'] ?? null,
+                    'lichsu_kham' => $_POST['lichsu_kham'] ?? null
                 ];
                 
                 $result = $this->patientService->createPatient($patientData);
@@ -64,10 +70,17 @@ class PatientController {
             'name' => $_GET['name'] ?? '',
             'gender' => $_GET['gender'] ?? '',
             'phone' => $_GET['phone'] ?? '',
+            'age' => !empty($_GET['age']) ? intval($_GET['age']) : null
         ];
 
         try {
             $result = $this->patientService->searchPatients($filters);
+            if ($result['statusCode'] === 401) {
+                session_destroy();
+                header('Location: /auth/login');
+                exit;
+            }
+            
             $patients = $result['data'];
             require '../app/views/patients/search.php';
         } catch (Exception $e) {
@@ -97,7 +110,6 @@ class PatientController {
                     'diachi' => $_POST['diachi'],
                     'sdt' => $_POST['sdt']
                 ];
-                
                 $result = $this->patientService->updatePatient($id, $patientData);
                 
                 if ($result['statusCode'] === 200) {

@@ -161,11 +161,15 @@ export const getPrescriptionById = async (id) => {
 
 export const getPrescriptionsByRecordId = async (recordId) => {
   try {
+    // Get prescriptions with medicine details
     const [prescriptions] = await db.query(
       `SELECT 
         p.*,
+        m.ten_thuoc as medicine_name,
+        m.don_vi as medicine_unit,
         DATE_FORMAT(p.created_at, '%Y-%m-%d %H:%i:%s') as created_at
       FROM prescriptions p 
+      JOIN medicines m ON p.medicine_id = m.id
       WHERE p.record_id = ? 
       ORDER BY p.created_at DESC`,
       [recordId]
@@ -175,20 +179,24 @@ export const getPrescriptionsByRecordId = async (recordId) => {
     const enrichedPrescriptions = await Promise.all(
       prescriptions.map(async (prescription) => {
         try {
-          const doctor = await serviceCall(
-            `${services.AUTH_SERVICE_URL}/api/internal/staff/${prescription.doctor_id}`
-          );
-
           const pharmacist = prescription.pharmacist_id ? 
             await serviceCall(
               `${services.AUTH_SERVICE_URL}/api/internal/staff/${prescription.pharmacist_id}`
             ) : null;
 
           return {
-            ...prescription,
-            medicines: JSON.parse(prescription.medicines),
-            doctor_name: doctor?.hoten_nv || 'Unknown',
-            pharmacist_name: pharmacist?.hoten_nv || null
+            id: prescription.id,
+            medicine: {
+              id: prescription.medicine_id,
+              name: prescription.medicine_name,
+              unit: prescription.medicine_unit,
+              dosage: prescription.lieu,
+              frequency: prescription.thoigian,
+              note: prescription.ghichu
+            },
+            status: prescription.status,
+            pharmacist_name: pharmacist?.hoten_nv || null,
+            created_at: prescription.created_at
           };
         } catch (error) {
           console.error(`Failed to fetch staff data: ${error.message}`);
@@ -196,7 +204,6 @@ export const getPrescriptionsByRecordId = async (recordId) => {
         }
       })
     );
-
     return enrichedPrescriptions;
   } catch (error) {
     console.error('Error in getPrescriptionsByRecordId:', error);

@@ -3,22 +3,20 @@ import {
   bookAppointment,
   listAppointments,
   confirmAppointment,
-  proposeAppointmentTime,
-  declineAppointment,
-  getAppointmentById
+  cancelAppointment,
+  getDoctorAvailability
 } from '../controllers/appointment.controller.js';
-import { authMiddleware, internalAuthMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
+import { authMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
 
-// Client routes
-router.post('/', authMiddleware, authorizeRoles('benhnhan'), bookAppointment);
-router.get('/', authMiddleware, authorizeRoles('letan', 'bacsi', 'admin'), listAppointments);
-router.put('/:id/propose', authMiddleware, authorizeRoles('bacsi'), proposeAppointmentTime);
-router.put('/:id/confirm', authMiddleware, authorizeRoles('bacsi', 'admin'), confirmAppointment);
-router.put('/:id/decline', authMiddleware, authorizeRoles('bacsi', 'admin'), declineAppointment);
+// Index route
+router.get('/', authMiddleware, authorizeRoles('bacsi', 'letan', 'admin'), listAppointments);
 
-// Internal service routes
-router.get('/internal/:id', internalAuthMiddleware, getAppointmentById);
+// Other routes
+router.post('/book', authMiddleware, authorizeRoles('letan', 'admin'), bookAppointment);
+router.put('/:id/confirm', authMiddleware, authorizeRoles('bacsi', 'admin'), confirmAppointment);
+router.put('/:id/cancel', authMiddleware, authorizeRoles('bacsi', 'letan', 'admin'), cancelAppointment);
+router.get('/doctor-schedule', authMiddleware, getDoctorAvailability);
 
 export default router;

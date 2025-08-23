@@ -57,55 +57,119 @@ export const register = async (req, res) => {
       username,
       password,
       role,
-      full_name,
+      staff_code,
+      hoten_nv,
       email,
-      phone,
-      gender,     // 'male' | 'female' | 'other'
-      specialty   // bắt buộc nếu role === 'doctor'
+      sdt,
+      gender,
+      dob,
+      department_id,
+      begin_date
     } = req.body;
 
+    // Basic validation
     if (!username || !password) {
       return res.status(400).json({ message: 'Thiếu username hoặc password' });
     }
 
-    const safeRole = allowedRoles.includes(role) ? role : 'user';
-    if (safeRole === 'doctor' && !specialty) {
-      return res.status(400).json({ message: 'Bác sĩ phải có chuyên khoa (specialty)' });
+    // Validate role
+    const validRoles = ['bacsi', 'duocsi', 'letan', 'admin'];
+    if (!validRoles.includes(role)) {
+      return res.status(400).json({ message: 'Role không hợp lệ' });
     }
 
-    if (email) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) return res.status(400).json({ message: 'Email không hợp lệ' });
-
-      const existedEmail = await getUserByEmail(email);
-      if (existedEmail) return res.status(400).json({ message: 'Email đã được sử dụng' });
+    // Check if username exists
+    const existingUser = await getUserByUsername(username);
+    if (existingUser) {
+      return res.status(400).json({ message: 'Username đã tồn tại' });
     }
 
-    if (phone) {
-      const phoneRegex = /^[0-9+\-\s()]{6,20}$/;
-      if (!phoneRegex.test(phone)) return res.status(400).json({ message: 'Số điện thoại không hợp lệ' });
+    // Start transaction
+    const connection = await db.getConnection();
+    await connection.beginTransaction();
+
+    try {
+      // 1. Create user account
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const [userResult] = await connection.query(
+        'INSERT INTO users (username, password, role_id) VALUES (?, ?, (SELECT id_role FROM role WHERE ten_role = ?))',
+        [username, hashedPassword, role]
+      );
+
+      // 2. Create staff record if role is not patient
+      if (role !== 'benhnhan') {
+        if (!staff_code || !hoten_nv || !email || !sdt || !gender) {
+          throw new Error('Thiếu thông tin nhân viên');
+        }
+
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          throw new Error('Email không hợp lệ');
+        }
+
+        // Validate phone format
+        const phoneRegex = /^[0-9]{10,11}$/;
+        if (!phoneRegex.test(sdt)) {
+          throw new Error('Số điện thoại không hợp lệ');
+        }
+
+        // Check if staff_code exists
+        const [existingStaff] = await connection.query(
+          'SELECT id FROM staff WHERE staff_code = ?',
+          [staff_code]
+        );
+        if (existingStaff.length > 0) {
+          throw new Error('Mã nhân viên đã tồn tại');
+        }
+
+        // Create staff record
+        await connection.query(
+          `INSERT INTO staff (
+            staff_code,
+            hoten_nv,
+            email,
+            sdt,
+            gender,
+            dob,
+            role_id,
+            department_id,
+            begin_date,
+            created_at
+          ) VALUES (?, ?, ?, ?, ?, ?, (SELECT id_role FROM role WHERE ten_role = ?), ?, ?, NOW())`,
+          [
+            staff_code,
+            hoten_nv,
+            email,
+            sdt,
+            gender,
+            dob || null,
+            role,
+            department_id || null,
+            begin_date || new Date()
+          ]
+        );
+      }
+
+      await connection.commit();
+      res.status(201).json({ 
+        message: 'Tạo tài khoản thành công',
+        userId: userResult.insertId
+      });
+
+    } catch (error) {
+      await connection.rollback();
+      throw error;
+    } finally {
+      connection.release();
     }
 
-    const existedUser = await getUserByUsername(username);
-    if (existedUser) return res.status(400).json({ message: 'Username đã tồn tại' });
-
-    const hashed = await bcrypt.hash(password, 10);
-
-    await createUser({
-      username,
-      hashedPassword: hashed,
-      role: safeRole,
-      full_name,
-      email,
-      phone,
-      gender,
-      specialty
-    });
-
-    res.status(201).json({ message: 'Tạo tài khoản thành công' });
   } catch (err) {
     console.error('[auth] register error:', err);
-    res.status(500).json({ message: 'Lỗi đăng ký', error: err.message });
+    res.status(500).json({ 
+      message: 'Lỗi đăng ký', 
+      error: err.message 
+    });
   }
 };
 
@@ -120,7 +184,7 @@ export const login = async (req, res) => {
     if (!match) return res.status(401).json({ message: 'Sai mật khẩu' });
 
     const token = jwt.sign(
-      { id: user.id, role: user.ten_role, name: user.username },
+      { id: user.id, role: user.ten_role, name: user.hoten_nv },
       JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
     );

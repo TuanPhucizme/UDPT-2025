@@ -49,7 +49,18 @@ export const createUser = async ({
 
 export const getUserByUsername = async (username) => {
   const [rows] = await db.query(
-    'SELECT * FROM users u join role r on u.role_id=r.id_role WHERE username = ?',
+    `SELECT 
+      u.*,
+      r.ten_role,
+      s.hoten_nv,
+      s.email,
+      s.sdt,
+      s.gender,
+      s.department_id
+    FROM users u 
+    JOIN role r ON u.role_id = r.id_role
+    LEFT JOIN staff s ON u.id = s.id
+    WHERE u.username = ?`,
     [username]
   );
   return rows[0];
@@ -133,4 +144,67 @@ export const listUsers = async ({ roles, q, specialty, page = 1, limit = 20 }) =
   );
 
   return { data: rows, page: Number(page) || 1, limit: safeLimit, total };
+};
+export const getStaffById = async (id) => {
+  const [rows] = await db.query(
+    `SELECT 
+      s.id,
+      s.staff_code,
+      s.hoten_nv,
+      s.email,
+      s.sdt,
+      s.gender,
+      s.dob,
+      r.ten_role as role,
+      d.ten_ck as department,
+      d.id as department_id,
+      s.begin_date
+    FROM staff s
+    JOIN role r ON s.role_id = r.id_role
+    LEFT JOIN department d ON s.department_id = d.id
+    WHERE s.id = ?`,
+    [id]
+  );
+  return rows[0];
+};
+
+export const getDepartmentById = async (id) => {
+  const [rows] = await db.query(
+    'SELECT * FROM department WHERE id = ?',
+    [id]
+  );
+  return rows[0];
+};
+
+export const getAllDepartments = async () => {
+  const [rows] = await db.query(
+    'SELECT * FROM department ORDER BY ten_ck'
+  );
+  return rows;
+};
+
+export const getStaffByDepartment = async (departmentId) => {
+  const [rows] = await db.query(
+    `SELECT 
+      s.id,
+      s.staff_code,
+      s.hoten_nv,
+      s.email,
+      s.sdt,
+      s.gender,
+      r.ten_role as role
+    FROM staff s
+    JOIN role r ON s.role_id = r.id_role
+    WHERE s.department_id = ?`,
+    [departmentId]
+  );
+  return rows;
+};
+
+export const checkStaffExists = async (connection, field, value) => {
+  const [rows] = await connection.query(
+    `SELECT id FROM staff WHERE ${field} = ?`,
+    [value]
+  );
+  return rows.length > 0;
 };

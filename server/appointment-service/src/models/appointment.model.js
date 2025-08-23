@@ -1,89 +1,204 @@
-/*import db from '../db.js';
-
-export const createAppointment = async (data) => {
-  const { patient_id, doctor_id, appointment_time, note } = data;
-  const [rows] = await db.query(
-    'INSERT INTO appointments (patient_id, doctor_id, appointment_time, note) VALUES (?, ?, ?, ?)',
-    [patient_id, doctor_id, appointment_time, note]
-  );
-  return rows;
-};
-
-export const getAppointments = async () => {
-  const [rows] = await db.query('SELECT * FROM appointments ORDER BY appointment_time DESC');
-  return rows;
-};
-
-export const updateAppointmentStatus = async (id, status) => {
-  const [rows] = await db.query('UPDATE appointments SET status = ? WHERE id = ?', [status, id]);
-  return rows;
-};
-
-export const getAppointmentById = async (id) => {
-  const [rows] = await db.query('SELECT * FROM appointments WHERE id = ?', [id]);
-  return rows[0];
-};
-*/
 import db from '../db.js';
+import { serviceCall } from '../utils/serviceCall.js';
+import services from '../config/services.js';
 
 export const createAppointment = async (data) => {
-  const { patient_id, doctor_id, appointment_time, requested_time, note } = data;
-  // chấp nhận cả appointment_time lẫn requested_time từ client
-  const reqTime = requested_time || appointment_time || null;
+  const { 
+    patient_id, 
+    department_id,
+    doctor_id, 
+    receptionist_id,
+    thoi_gian_hen,
+    lydo,
+    note 
+  } = data;
 
-  const [rows] = await db.query(
-    `INSERT INTO appointments (patient_id, doctor_id, requested_time, appointment_time, note, status)
-     VALUES (?, ?, ?, NULL, ?, 'pending')`,
-    [patient_id, doctor_id, reqTime, note]
-  );
-  return rows;
+  try {
+    // Verify patient exists
+    const patient = await serviceCall(
+      `${services.PATIENT_SERVICE_URL}/api/internal/patients/${patient_id}`
+    );
+    if (!patient) {
+      throw new Error('Patient not found');
+    }
+
+    // Verify doctor and department
+    const [doctor, department] = await Promise.all([
+      serviceCall(`${services.AUTH_SERVICE_URL}/api/internal/staff/${doctor_id}`),
+      serviceCall(`${services.AUTH_SERVICE_URL}/api/internal/departments/${department_id}`)
+    ]);
+
+    if (!doctor || !department) {
+      throw new Error('Invalid doctor or department');
+    }
+
+    // Create appointment
+    const [result] = await db.query(
+      `INSERT INTO appointments (
+        patient_id, 
+        department_id,
+        doctor_id, 
+        receptionist_id,
+        thoi_gian_hen,
+        lydo,
+        status,
+        note,
+        created_at
+      ) VALUES (?, ?, ?, ?, ?, ?, 'pending', ?, NOW())`,
+      [patient_id, department_id, doctor_id, receptionist_id, thoi_gian_hen, lydo, note]
+    );
+
+    return result;
+  } catch (error) {
+    console.error('Error in createAppointment:', error);
+    throw error;
+  }
 };
 
-export const getAppointments = async () => {
-  const [rows] = await db.query(
-    `SELECT * FROM appointments
-     ORDER BY COALESCE(appointment_time, proposed_time, requested_time, created_at) DESC`
-  );
-  return rows;
-};
+export const getAppointments = async (filters = {}) => {
+  try {
+    // Get base appointment data
+    let sql = `
+      SELECT 
+        a.id,
+        a.patient_id,
+        a.doctor_id,
+        a.department_id,
+        a.thoi_gian_hen,
+        a.lydo,
+        a.status,
+        a.note,
+        a.created_at,
+        a.updated_at
+      FROM appointments a
+      WHERE 1=1
+    `;
+    const params = [];
 
-export const updateAppointmentStatus = async (id, status) => {
-  const [rows] = await db.query('UPDATE appointments SET status = ? WHERE id = ?', [status, id]);
-  return rows;
+    if (filters.doctor_id) {
+      sql += ' AND a.doctor_id = ?';
+      params.push(filters.doctor_id);
+    }
+
+    if (filters.status) {
+      sql += ' AND a.status = ?';
+      params.push(filters.status);
+    }
+
+    sql += ' ORDER BY a.thoi_gian_hen DESC';
+
+    const [appointments] = await db.query(sql, params);
+
+    // Enrich with data from other services
+    const enrichedAppointments = await Promise.all(
+      appointments.map(async (apt) => {
+        try {
+          const [patient, doctor, department] = await Promise.all([
+            serviceCall(`${services.PATIENT_SERVICE_URL}/api/patients/internal/${apt.patient_id}`),
+            serviceCall(`${services.AUTH_SERVICE_URL}/api/internal/staff/${apt.doctor_id}`),
+            serviceCall(`${services.AUTH_SERVICE_URL}/api/internal/departments/${apt.department_id}`)
+          ]);
+          
+          return {
+            ...apt,
+            patient_name: patient?.hoten_bn,
+            patient_phone: patient?.sdt,
+            doctor_name: doctor?.hoten_nv,
+            department_name: department?.ten_ck
+          };
+        } catch (error) {
+          console.error(`Failed to enrich appointment ${apt.id}:`, error);
+          return apt;
+        }
+      })
+    );
+
+    return enrichedAppointments;
+  } catch (error) {
+    console.error('Error in getAppointments:', error);
+    throw error;
+  }
 };
 
 export const getAppointmentById = async (id) => {
-  const [rows] = await db.query('SELECT * FROM appointments WHERE id = ?', [id]);
-  return rows[0];
+  try {
+    const [appointments] = await db.query(
+      'SELECT * FROM appointments WHERE id = ?',
+      [id]
+    );
+
+    if (!appointments.length) return null;
+
+    const apt = appointments[0];
+
+    // Get related data from other services
+    const [patient, doctor, department] = await Promise.all([
+      serviceCall(`${services.PATIENT_SERVICE_URL}/api/internal/patients/${apt.patient_id}`),
+      serviceCall(`${services.AUTH_SERVICE_URL}/api/internal/staff/${apt.doctor_id}`),
+      serviceCall(`${services.AUTH_SERVICE_URL}/api/internal/departments/${apt.department_id}`)
+    ]);
+
+    return {
+      ...apt,
+      patient_name: patient?.hoten_bn,
+      patient_phone: patient?.sdt,
+      doctor_name: doctor?.hoten_nv,
+      department_name: department?.ten_ck
+    };
+  } catch (error) {
+    console.error('Error in getAppointmentById:', error);
+    throw error;
+  }
 };
 
-/* === mới thêm === */
-export const proposeTime = async (id, doctor_id, proposed_time) => {
-  const [res] = await db.query(
-    `UPDATE appointments
-     SET proposed_time = ?, status = 'proposed', updated_at = CURRENT_TIMESTAMP
-     WHERE id = ? AND doctor_id = ? AND status IN ('pending','proposed')`,
-    [proposed_time, id, doctor_id]
-  );
-  return res;
+export const getDoctorSchedule = async (doctorId, date) => {
+  try {
+    // Verify doctor exists
+    const doctor = await serviceCall(
+      `${services.AUTH_SERVICE_URL}/api/internal/staff/${doctorId}`
+    );
+    if (!doctor) {
+      throw new Error('Doctor not found');
+    }
+
+    // Get schedule
+    const [appointments] = await db.query(
+      `SELECT * FROM appointments 
+       WHERE doctor_id = ? 
+       AND DATE(thoi_gian_hen) = ?
+       AND status != 'cancelled'
+       ORDER BY thoi_gian_hen`,
+      [doctorId, date]
+    );
+
+    return appointments;
+  } catch (error) {
+    console.error('Error in getDoctorSchedule:', error);
+    throw error;
+  }
 };
 
-export const confirmTime = async (id, doctor_id, appointment_time) => {
-  const [res] = await db.query(
-    `UPDATE appointments
-     SET appointment_time = ?, status = 'confirmed', updated_at = CURRENT_TIMESTAMP
-     WHERE id = ? AND doctor_id = ? AND status IN ('pending','proposed')`,
-    [appointment_time, id, doctor_id]
-  );
-  return res;
-};
+export const updateAppointmentStatus = async (id, status, note = null) => {
+  try {
+    const updates = ['status = ?'];
+    const params = [status];
 
-export const declineRequest = async (id, doctor_id, reason) => {
-  const [res] = await db.query(
-    `UPDATE appointments
-     SET status = 'declined', note = CONCAT(IFNULL(note,''), ?), updated_at = CURRENT_TIMESTAMP
-     WHERE id = ? AND doctor_id = ? AND status IN ('pending','proposed')`,
-    [reason ? `\n[Declined reason]: ${reason}` : '\n[Declined]', id, doctor_id]
-  );
-  return res;
+    if (note) {
+      updates.push('note = CONCAT(IFNULL(note,""), ?)');
+      params.push(`\n[${status}]: ${note}`);
+    }
+
+    updates.push('updated_at = CURRENT_TIMESTAMP');
+    params.push(id);
+
+    const [result] = await db.query(
+      `UPDATE appointments SET ${updates.join(', ')} WHERE id = ?`,
+      params
+    );
+
+    return result;
+  } catch (error) {
+    console.error('Error in updateAppointmentStatus:', error);
+    throw error;
+  }
 };

@@ -30,7 +30,17 @@ $params = array_slice($segments, 2);
 $routes = [
     'auth' => ['login', 'logout', 'register'],
     'patients' => ['index', 'create', 'update', 'delete', 'view', 'edit', 'search'],
-    'home' => ['index']
+    'home' => ['index'],
+    'appointments' => [
+        'index', 
+        'create', 
+        'view', 
+        'pending',
+        'propose', 
+        'confirm', 
+        'decline',
+        'getAvailableSlots'
+    ],
 ];
 
 try {
@@ -51,7 +61,6 @@ try {
                 throw new Exception('Action not found', 404);
             }
             break;
-
         case 'patients':
             AuthMiddleware::authenticate();
             require_once '../app/controllers/PatientController.php';
@@ -60,18 +69,39 @@ try {
             if (method_exists($controller, $action)) {
                 // Check role-based access
                 if ($action === 'create' || $action === 'update') {
-                    AuthMiddleware::authorizeRoles('bacsi', 'admin')();
+                    AuthMiddleware::authorizeRoles('letan', 'admin')();
+                } elseif ($action === 'search') {
+                    AuthMiddleware::authorizeRoles('bacsi', 'duocsi', 'letan', 'admin')();
                 }
                 call_user_func_array([$controller, $action], $params);
             } else {
                 throw new Exception('Action not found', 404);
             }
             break;
-
+        case 'appointments':
+            AuthMiddleware::authenticate();
+            require_once '../app/controllers/AppointmentController.php';
+            $controller = new AppointmentController();
+            if (method_exists($controller, $action)) {
+                switch ($action) {
+                    case 'create':
+                        AuthMiddleware::authorizeRoles('letan', 'admin')();
+                        break;
+                    case 'pending':
+                    case 'propose':
+                    case 'confirm':
+                    case 'decline':
+                        AuthMiddleware::authorizeRoles('bacsi', 'admin')();
+                        break;
+                }
+                call_user_func_array([$controller, $action], $params);
+            } else {
+                throw new Exception('Action not found', 404);
+            }
+            break;
         case 'home':
             require_once '../app/views/home.php';
             break;
-
         default:
             throw new Exception('Controller not found', 404);
     }

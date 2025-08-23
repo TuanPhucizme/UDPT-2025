@@ -19,9 +19,9 @@ export const getPatients = async (req, res) => {
   const filters = {
     name: req.query.name,
     gender: req.query.gender,
+    phone:req.query.phone,
     age: req.query.age ? parseInt(req.query.age) : undefined
   };
-
   const patients = await getAllPatients(filters);
   res.json(patients);
 };

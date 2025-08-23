@@ -155,129 +155,145 @@ import {
   getAppointments,
   updateAppointmentStatus,
   getAppointmentById,
-  proposeTime,         // NEW
-  confirmTime,         // NEW
-  declineRequest       // NEW
+  getDoctorSchedule
 } from '../models/appointment.model.js';
 
-import {
-  notifyAppointmentScheduled,
-  notifyAppointmentProposed,   // NEW
-  notifyAppointmentConfirmed,
-  notifyAppointmentDeclined    // NEW
-} from '../utils/notifications.js';
+import { notifyAppointment } from '../utils/notifications.js';
 
 export const bookAppointment = async (req, res) => {
   try {
-    const { patient_id, doctor_id, appointment_time, requested_time, note } = req.body;
+    const { 
+      patient_id, 
+      department_id,
+      doctor_id, 
+      thoi_gian_hen,
+      lydo,
+      note 
+    } = req.body;
+
+    // Validate required fields
+    if (!patient_id || !department_id || !doctor_id || !thoi_gian_hen) {
+      return res.status(400).json({ message: 'Thiếu thông tin bắt buộc' });
+    }
 
     const result = await createAppointment({
       patient_id,
+      department_id,
       doctor_id,
-      requested_time: requested_time || appointment_time || null,
+      receptionist_id: req.user.id,
+      thoi_gian_hen,
+      lydo,
       note
     });
 
-    const appointmentId = result.insertId;
-
-    await notifyAppointmentScheduled({
+    await notifyAppointment({
+      type: 'APPOINTMENT_CREATED',
       patientId: patient_id,
-      appointmentId,
-      time: requested_time || appointment_time || null
+      appointmentId: result.insertId,
+      time: thoi_gian_hen
     });
 
-    res.status(201).json({ message: 'Tạo yêu cầu lịch thành công', id: appointmentId });
+    res.status(201).json({ 
+      message: 'Đặt lịch thành công', 
+      id: result.insertId 
+    });
   } catch (err) {
-    res.status(500).json({ message: 'Lỗi tạo yêu cầu lịch', error: err.message });
+    res.status(500).json({ 
+      message: 'Lỗi đặt lịch', 
+      error: err.message 
+    });
   }
 };
 
 export const listAppointments = async (req, res) => {
   try {
-    const result = await getAppointments();
-    res.json(result);
-  } catch (err) {
-    res.status(500).json({ message: 'Lỗi lấy danh sách lịch', error: err.message });
-  }
-};
-
-// NEW: bác sĩ nhận đơn + đề xuất giờ
-export const proposeAppointmentTime = async (req, res) => {
-  try {
-    const id = req.params.id;
-    const { proposed_time } = req.body;
-
-    const apm = await getAppointmentById(id);
-    if (!apm) return res.status(404).json({ message: 'Không tìm thấy lịch' });
-
-    // chỉ đúng bác sĩ của lịch hoặc admin
-    if (apm.doctor_id !== req.user.id && req.user.role !== 'admin') {
-      return res.status(403).json({ message: 'Bạn không phải là bác sĩ của lịch này' });
+    const filters = {};
+    
+    // Filter by role
+    if (req.user.role === 'bacsi') {
+      filters.doctor_id = req.user.id;
     }
-
-    await proposeTime(id, apm.doctor_id, proposed_time);
-
-    await notifyAppointmentProposed({
-      patientId: apm.patient_id,
-      appointmentId: apm.id,
-      time: proposed_time
-    });
-
-    res.json({ message: 'Đã đề xuất thời gian khám' });
+    
+    const appointments = await getAppointments(filters);
+    console.log(appointments);
+    res.json(appointments);
   } catch (err) {
-    res.status(500).json({ message: 'Lỗi đề xuất thời gian', error: err.message });
+    res.status(500).json({ 
+      message: 'Lỗi lấy danh sách lịch hẹn',
+      error: err.message 
+    });
   }
 };
 
 export const confirmAppointment = async (req, res) => {
   try {
     const id = req.params.id;
-    const { appointment_time } = req.body; // giờ chốt
+    const appointment = await getAppointmentById(id);
 
-    const apm = await getAppointmentById(id);
-    if (!apm) return res.status(404).json({ message: 'Không tìm thấy lịch' });
-
-    if (apm.doctor_id !== req.user.id && req.user.role !== 'admin') {
-      return res.status(403).json({ message: 'Bạn không phải là bác sĩ của lịch này' });
+    if (!appointment) {
+      return res.status(404).json({ message: 'Không tìm thấy lịch hẹn' });
     }
 
-    await confirmTime(id, apm.doctor_id, appointment_time);
+    if (appointment.doctor_id !== req.user.id && req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Không có quyền xác nhận lịch hẹn này' });
+    }
 
-    await notifyAppointmentConfirmed({
-      patientId: apm.patient_id,
-      appointmentId: apm.id,
-      time: appointment_time
+    await updateAppointmentStatus(id, 'confirmed');
+
+    await notifyAppointment({
+      type: 'APPOINTMENT_CONFIRMED',
+      patientId: appointment.patient_id,
+      appointmentId: appointment.id,
+      time: appointment.thoi_gian_hen
     });
 
-    res.json({ message: 'Đã xác nhận lịch khám' });
+    res.json({ message: 'Đã xác nhận lịch hẹn' });
   } catch (err) {
-    res.status(500).json({ message: 'Lỗi xác nhận lịch', error: err.message });
+    res.status(500).json({ 
+      message: 'Lỗi xác nhận lịch hẹn', 
+      error: err.message 
+    });
   }
 };
 
-// NEW: bác sĩ từ chối
-export const declineAppointment = async (req, res) => {
+export const cancelAppointment = async (req, res) => {
   try {
     const id = req.params.id;
     const { reason } = req.body;
+    const appointment = await getAppointmentById(id);
 
-    const apm = await getAppointmentById(id);
-    if (!apm) return res.status(404).json({ message: 'Không tìm thấy lịch' });
-
-    if (apm.doctor_id !== req.user.id && req.user.role !== 'admin') {
-      return res.status(403).json({ message: 'Bạn không phải là bác sĩ của lịch này' });
+    if (!appointment) {
+      return res.status(404).json({ message: 'Không tìm thấy lịch hẹn' });
     }
 
-    await declineRequest(id, apm.doctor_id, reason || '');
+    await updateAppointmentStatus(id, 'cancelled', reason);
 
-    await notifyAppointmentDeclined({
-      patientId: apm.patient_id,
-      appointmentId: apm.id,
+    await notifyAppointment({
+      type: 'APPOINTMENT_CANCELLED',
+      patientId: appointment.patient_id,
+      appointmentId: appointment.id,
+      time: appointment.thoi_gian_hen,
       reason
     });
 
-    res.json({ message: 'Đã từ chối yêu cầu lịch' });
+    res.json({ message: 'Đã huỷ lịch hẹn' });
   } catch (err) {
-    res.status(500).json({ message: 'Lỗi từ chối lịch', error: err.message });
+    res.status(500).json({ 
+      message: 'Lỗi huỷ lịch hẹn', 
+      error: err.message 
+    });
+  }
+};
+
+export const getDoctorAvailability = async (req, res) => {
+  try {
+    const { doctor_id, date } = req.query;
+    const schedule = await getDoctorSchedule(doctor_id, date);
+    res.json(schedule);
+  } catch (err) {
+    res.status(500).json({ 
+      message: 'Lỗi lấy lịch bác sĩ', 
+      error: err.message 
+    });
   }
 };

@@ -1,15 +1,35 @@
 import db from '../db.js';
 
-export const createPatient = async ({ name, age, gender, phone, email }) => {
-  const [rows] = await db.query(
-    'INSERT INTO patients (name, age, gender, phone, email) VALUES (?, ?, ?, ?, ?)',
-    [name, age, gender, phone, email]
+export const createPatient = async (data) => {
+  const { 
+    hoten_bn, 
+    dob, 
+    gender, 
+    sdt, 
+    diachi, 
+    tiensu_benh, 
+    lichsu_kham 
+  } = data;
+
+  const [result] = await db.query(
+    `INSERT INTO patients (
+      hoten_bn, 
+      dob, 
+      gender, 
+      sdt, 
+      diachi, 
+      tiensu_benh, 
+      lichsu_kham, 
+      created_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())`,
+    [hoten_bn, dob, gender, sdt, diachi, tiensu_benh, lichsu_kham]
   );
-  return rows;
+
+  return result;
 };
 
 export const getAllPatients = async (filters = {}) => {
-  let sql = 'SELECT * FROM patients WHERE 1=1';
+  let sql = 'SELECT *, TIMESTAMPDIFF(YEAR, dob, CURDATE()) as age FROM patients WHERE 1=1';
   const params = [];
 
   if (filters.name) {
@@ -20,10 +40,16 @@ export const getAllPatients = async (filters = {}) => {
     sql += ' AND gender = ?';
     params.push(filters.gender);
   }
-  if (filters.age) {
-    sql += ' AND age = ?';
-    params.push(filters.age);
+  if (filters.phone) {
+    sql += ' AND sdt LIKE ?';
+    params.push(`%${filters.phone}%`);
   }
+  if (filters.age) {
+    sql += ' HAVING age = ?';
+    params.push(parseInt(filters.age));
+  }
+
+  sql += ' ORDER BY hoten_bn ASC';
 
   const [rows] = await db.query(sql, params);
   return rows;
@@ -36,10 +62,10 @@ export const getPatientById = async (id) => {
 };
 
 export const updatePatient = async (id, data) => {
-  const { name, age, gender, phone, email } = data;
+  const { hoten_bn, dob, gender, diachi, sdt } = data;
   const [rows] = await db.query(
-    `UPDATE patients SET name=?, age=?, gender=?, phone=?, email=? WHERE id=?`,
-    [name, age, gender, phone, email, id]
+    `UPDATE patients SET hoten_bn=?, dob=?, gender=?, sdt=?, diachi=? WHERE id=?`,
+    [hoten_bn, dob, gender, sdt, diachi, id]
   );
   return rows;
 };

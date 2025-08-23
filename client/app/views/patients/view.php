@@ -2,6 +2,7 @@
 
 <div class="container py-5">
     <div class="row">
+        <!-- Patient Info Card - Left Column -->
         <div class="col-md-4">
             <div class="card mb-4">
                 <div class="card-header">
@@ -31,26 +32,109 @@
             </div>
         </div>
 
+        <!-- Medical Records Timeline - Right Column -->
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">Lịch Sử Khám Bệnh</h5>
                 </div>
                 <div class="card-body">
                     <div class="timeline">
-                        <?php foreach ($medicalRecords as $record): ?>
-                            <div class="timeline-item">
-                                <div class="timeline-date">
-                                    <?= (new DateTime($record['ngaykham']))->format("d/m/Y") ?>
-                                </div>
-                                <div class="timeline-content">
-                                    <h6>Bác sĩ: <?= htmlspecialchars($record['ten_bacsi']) ?></h6>
-                                    <p><strong>Chẩn đoán:</strong> <?= htmlspecialchars($record['chan_doan']) ?></p>
-                                    <p><strong>Đơn thuốc:</strong> <?= htmlspecialchars($record['don_thuoc']) ?></p>
-                                    <p><strong>Ghi chú:</strong> <?= htmlspecialchars($record['ghi_chu']) ?></p>
-                                </div>
+                        <?php if (empty($medicalRecords)): ?>
+                            <div class="alert alert-info">
+                                Chưa có lịch sử khám bệnh
                             </div>
-                        <?php endforeach; ?>
+                        <?php else: ?>
+                            <?php foreach ($medicalRecords as $record): ?>
+                                <div class="timeline-item">
+                                    <div class="timeline-date">
+                                        Ngày khám: <?= (new DateTime($record['ngaykham']))->format("d/m/Y H:i") ?>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <div class="d-flex justify-content-between align-items-start mb-2">
+                                            <h6>
+                                                Bác sĩ: <?= htmlspecialchars($record['doctor_name']) ?>
+                                                <small class="text-muted">
+                                                    (<?= htmlspecialchars($record['department_name']) ?>)
+                                                </small>
+                                            </h6>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <strong>Lý do khám:</strong> 
+                                            <p><?= htmlspecialchars($record['lydo']) ?></p>
+                                        </div>
+
+                                        <?php if ($record['chan_doan']): ?>
+                                            <div class="mb-3">
+                                                <strong>Chẩn đoán:</strong>
+                                                <p><?= htmlspecialchars($record['chan_doan']) ?></p>
+                                            </div>
+                                        <?php endif; ?>
+
+                                        <?php if (!empty($record['prescriptions'])): ?>
+                                            <div class="mt-3">
+                                                <strong>Đơn thuốc:</strong>
+                                                <div class="table-responsive">
+                                                    <table class="table table-sm">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Thuốc</th>
+                                                                <th>Liều lượng</th>
+                                                                <th>Thời gian</th>
+                                                                <th>Ghi chú</th>
+                                                                <th>Trạng thái</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php foreach ($record['prescriptions'] as $prescription): ?>
+                                                                <tr>
+                                                                    <td>
+                                                                        <?= htmlspecialchars($prescription['medicine']['name']) ?>
+                                                                        <small class="text-muted">
+                                                                            (<?= htmlspecialchars($prescription['medicine']['unit']) ?>)
+                                                                        </small>
+                                                                    </td>
+                                                                    <td><?= htmlspecialchars($prescription['medicine']['dosage']) ?></td>
+                                                                    <td><?= htmlspecialchars($prescription['medicine']['frequency']) ?></td>
+                                                                    <td><?= htmlspecialchars($prescription['medicine']['note']) ?></td>
+                                                                    <td>
+                                                                        <span class="badge bg-<?= $prescription['status'] === 'collected' ? 'success' : 'warning' ?>">
+                                                                            <?= $prescription['status'] === 'collected' ? 'Đã phát' : 'Chờ phát' ?>
+                                                                        </span>
+                                                                        <?php if ($prescription['pharmacist_name']): ?>
+                                                                            <br>
+                                                                            <small class="text-muted">
+                                                                                Dược sĩ: <?= htmlspecialchars($prescription['pharmacist_name']) ?>
+                                                                            </small>
+                                                                        <?php endif; ?>
+                                                                    </td>
+                                                                </tr>
+                                                            <?php endforeach; ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        <?php endif; ?>
+
+                                        <?php if ($record['ghichu']): ?>
+                                            <div class="mt-3">
+                                                <strong>Ghi chú:</strong>
+                                                <p class="mb-0"><?= htmlspecialchars($record['ghichu']) ?></p>
+                                            </div>
+                                        <?php endif; ?>
+
+                                        <?php if ($record['ngay_taikham']): ?>
+                                            <div class="mt-3 text-info">
+                                                <i class="fas fa-calendar-alt"></i>
+                                                <strong>Ngày tái khám:</strong>
+                                                <?= (new DateTime($record['ngay_taikham']))->format("d/m/Y") ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -81,6 +165,10 @@
     background: #f8f9fa;
     padding: 15px;
     border-radius: 4px;
+}
+
+.table-sm td, .table-sm th {
+    padding: 0.5rem;
 }
 </style>
 

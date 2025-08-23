@@ -51,6 +51,36 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row g-4 justify-content-center">
+                        <?php if (isset($_SESSION['user'])): ?>
+                            <?php if (in_array($_SESSION['user']['role'], ['letan', 'admin'])): ?>
+                                <div class="col-md-4">
+                                    <div class="card h-100">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-calendar-plus fa-3x text-primary mb-3"></i>
+                                            <h5 class="card-title">Đặt Lịch Khám</h5>
+                                            <p class="card-text">Tạo lịch hẹn mới cho bệnh nhân</p>
+                                            <a href="/appointments/create" class="btn btn-outline-primary">Đặt Lịch</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                            
+                            <?php if (in_array($_SESSION['user']['role'], ['bacsi', 'admin'])): ?>
+                                <div class="col-md-4">
+                                    <div class="card h-100">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-calendar-check fa-3x text-success mb-3"></i>
+                                            <h5 class="card-title">Lịch Hẹn Chờ Duyệt</h5>
+                                            <p class="card-text">Xem và duyệt các yêu cầu lịch hẹn</p>
+                                            <a href="/appointments/pending" class="btn btn-outline-success">Xem Lịch</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </div>
                 <?php endif; ?>
             </div>
         </div>
