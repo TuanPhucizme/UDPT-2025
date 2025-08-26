@@ -5,7 +5,7 @@ import {
     getRecordDetails,
     updateRecord 
 } from '../controllers/record.controller.js';
-import { authMiddleware, internalAuthMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
+import { authMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
 
@@ -19,9 +19,4 @@ router.get(
 );
 router.get('/:id', authMiddleware, authorizeRoles('bacsi', 'duocsi', 'letan', 'admin'), getRecordDetails);
 router.put('/:id', authMiddleware, authorizeRoles('bacsi'), updateRecord);
-
-// Internal service routes
-router.get('/internal/:id', internalAuthMiddleware, getRecordDetails);
-router.get('/internal/patient/:id', internalAuthMiddleware, getPatientRecords);
-
 export default router;

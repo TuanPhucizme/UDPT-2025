@@ -5,7 +5,7 @@ import {
   getByPatient,
   getByRecordId
 } from '../controllers/prescription.controller.js';
-import { authMiddleware, internalAuthMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
+import { authMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
 
@@ -18,11 +18,9 @@ router.get(
   authorizeRoles('bacsi', 'duocsi', 'admin'),
   getByPatient
 );
-
-// Internal service routes
 router.get(
-  '/internal/record/:record_id',
-  internalAuthMiddleware,
+  '/record/:record_id',
+  authMiddleware,
   getByRecordId
 );
 

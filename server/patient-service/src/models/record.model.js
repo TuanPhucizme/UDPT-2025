@@ -17,10 +17,10 @@ export const createMedicalRecord = async (data) => {
   // Verify doctor and department exist in auth service
   try {
     const [doctorResponse, departmentResponse] = await Promise.all([
-      axios.get(`${services.AUTH_SERVICE_URL}/api/internal/staff/${doctor_id}`, {
+      axios.get(`${services.AUTH_SERVICE_URL}/api/staff/${doctor_id}`, {
         headers: { 'Authorization': `Bearer ${process.env.INTERNAL_API_TOKEN}` }
       }),
-      axios.get(`${services.AUTH_SERVICE_URL}/api/internal/departments/${department_id}`, {
+      axios.get(`${services.AUTH_SERVICE_URL}/api/departments/${department_id}`, {
         headers: { 'Authorization': `Bearer ${process.env.INTERNAL_API_TOKEN}` }
       })
     ]);
@@ -76,10 +76,10 @@ export const getMedicalRecordsByPatient = async (patientId) => {
       try {
         // Get doctor and department info from auth service
         const [doctorResponse, departmentResponse] = await Promise.all([
-          axios.get(`${services.AUTH_SERVICE_URL}/api/internal/staff/${record.doctor_id}`, {
+          axios.get(`${services.AUTH_SERVICE_URL}/api/staff/${record.doctor_id}`, {
             headers: { 'Authorization': `Bearer ${process.env.INTERNAL_API_TOKEN}` }
           }),
-          axios.get(`${services.AUTH_SERVICE_URL}/api/internal/departments/${record.department_id}`, {
+          axios.get(`${services.AUTH_SERVICE_URL}/api/departments/${record.department_id}`, {
             headers: { 'Authorization': `Bearer ${process.env.INTERNAL_API_TOKEN}` }
           })
         ]);
@@ -128,10 +128,10 @@ export const getMedicalRecordDetails = async (recordId) => {
 
     // Get doctor and department info from auth service
     const [doctorResponse, departmentResponse] = await Promise.all([
-      axios.get(`${services.AUTH_SERVICE_URL}/api/internal/staff/${record.doctor_id}`, {
+      axios.get(`${services.AUTH_SERVICE_URL}/api/staff/${record.doctor_id}`, {
         headers: { 'Authorization': `Bearer ${process.env.INTERNAL_API_TOKEN}` }
       }),
-      axios.get(`${services.AUTH_SERVICE_URL}/api/internal/departments/${record.department_id}`, {
+      axios.get(`${services.AUTH_SERVICE_URL}/api/departments/${record.department_id}`, {
         headers: { 'Authorization': `Bearer ${process.env.INTERNAL_API_TOKEN}` }
       })
     ]);
@@ -196,10 +196,10 @@ export const autoCreateRecord = async (data) => {
   try {
     // Verify doctor and department exist in auth service
     const [doctorResponse, departmentResponse] = await Promise.all([
-      axios.get(`${services.AUTH_SERVICE_URL}/api/internal/staff/${doctor_id}`, {
+      axios.get(`${services.AUTH_SERVICE_URL}/api/staff/${doctor_id}`, {
         headers: { 'Authorization': `Bearer ${process.env.INTERNAL_API_TOKEN}` }
       }),
-      axios.get(`${services.AUTH_SERVICE_URL}/api/internal/departments/${department_id}`, {
+      axios.get(`${services.AUTH_SERVICE_URL}/api/departments/${department_id}`, {
         headers: { 'Authorization': `Bearer ${process.env.INTERNAL_API_TOKEN}` }
       })
     ]);

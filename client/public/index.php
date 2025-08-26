@@ -1,5 +1,14 @@
 <?php
 session_start();
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+
+// Log errors to a file
+ini_set('log_errors', 1);
+ini_set('error_log', __DIR__ . '/error.log'); // Adjust path
+
+// Report all errors (but only log them)
+error_reporting(E_ALL);
 require_once '../configuration/services.php';
 require_once '../app/middleware/AuthMiddleware.php';
 
@@ -29,7 +38,7 @@ $params = array_slice($segments, 2);
 // Define valid routes
 $routes = [
     'auth' => ['login', 'logout', 'register'],
-    'patients' => ['index', 'create', 'update', 'delete', 'view', 'edit', 'search'],
+    'patients' => ['index', 'create', 'update', 'delete', 'view', 'edit', 'search','searchAjax'],
     'home' => ['index'],
     'appointments' => [
         'index', 
@@ -41,15 +50,18 @@ $routes = [
         'decline',
         'getAvailableSlots'
     ],
+    'api' => [
+        'patients',
+        'departments',
+        'doctors'
+    ]
 ];
-
 try {
     // Validate route
     if (!array_key_exists($controller, $routes) || 
         !in_array($action, $routes[$controller])) {
         throw new Exception('Route not found', 404);
     }
-
     switch ($controller) {
         case 'auth':
             require_once '../app/controllers/AuthController.php';
@@ -101,6 +113,42 @@ try {
             break;
         case 'home':
             require_once '../app/views/home.php';
+            break;
+        case 'api':
+            AuthMiddleware::authenticate();
+            $apiPath = implode('/', array_slice($segments, 1));
+            error_log("api path: $apiPath");
+            switch ($apiPath) {
+                case 'patients/search':
+                    require_once '../app/controllers/PatientController.php';
+                    $controller = new PatientController();
+                    $controller->searchAjax();
+                    break;
+                    
+                case (preg_match('/^departments\/(\d+)\/doctors$/', $apiPath, $matches) ? true : false):
+                    require_once '../app/controllers/AppointmentController.php';
+                    error_log('getDoctorsByDepartment called');
+                    $controller = new AppointmentController();
+                    $controller->getDoctorsByDepartment($matches[1]);
+                    break;
+                    
+                case (preg_match('/^doctors\/(\d+)\/schedule$/', $apiPath, $matches) ? true : false):
+                    require_once '../app/controllers/AppointmentController.php';
+                    error_log('getDoctorSchedule called');
+                    $controller = new AppointmentController();
+                    $controller->getDoctorSchedule();
+                    break;
+                    
+                case (preg_match('/^doctors\/(\d+)\/slots$/', $apiPath, $matches) ? true : false):
+                    require_once '../app/controllers/AppointmentController.php';
+                    error_log('getAvailableSlots called');
+                    $controller = new AppointmentController();
+                    $controller->getAvailableSlots();
+                    break;
+                    
+                default:
+                    throw new Exception('API route not found', 404);
+            }
             break;
         default:
             throw new Exception('Controller not found', 404);

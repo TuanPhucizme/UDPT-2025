@@ -215,7 +215,6 @@ export const listAppointments = async (req, res) => {
     }
     
     const appointments = await getAppointments(filters);
-    console.log(appointments);
     res.json(appointments);
   } catch (err) {
     res.status(500).json({ 

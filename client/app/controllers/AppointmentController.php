@@ -54,14 +54,56 @@ class AppointmentController {
         }
     }
 
-    public function getAvailableSlots() {
+    /**
+     * AJAX endpoint for doctor selection by department
+     */
+    public function getDoctorsByDepartment($departmentId) {
         try {
-            $doctorId = $_GET['doctor_id'];
+            $result = $this->appointmentService->getDoctorsByDepartment($departmentId);
+            header('Content-Type: application/json');
+            echo json_encode($result['data'] ?? []);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
+    /**
+     * AJAX endpoint for doctor schedule
+     */
+    public function getDoctorSchedule() {
+        try {
+            $doctorId = $_GET['doctor_id'] ?? null;
             $date = $_GET['date'] ?? date('Y-m-d');
             
-            $slots = $this->appointmentService->getAvailableSlots($doctorId, $date);
+            if (!$doctorId) {
+                throw new Exception('Doctor ID is required');
+            }
+            
+            $result = $this->appointmentService->getDoctorSchedule($doctorId, $date);
             header('Content-Type: application/json');
-            echo json_encode($slots);
+            echo json_encode($result['data'] ?? []);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
+    /**
+     * AJAX endpoint for available time slots
+     */
+    public function getAvailableSlots() {
+        try {
+            $doctorId = $_GET['doctor_id'] ?? null;
+            $date = $_GET['date'] ?? date('Y-m-d');
+            
+            if (!$doctorId) {
+                throw new Exception('Doctor ID is required');
+            }
+            
+            $result = $this->appointmentService->getAvailableSlots($doctorId, $date);
+            header('Content-Type: application/json');
+            echo json_encode($result['data'] ?? []);
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode(['error' => $e->getMessage()]);
@@ -148,7 +190,6 @@ class AppointmentController {
             }
             
             $result = $this->appointmentService->getAppointments($filters);
-            error_log(print_r($result, true)); // Debugging line
             $appointments = $result['data'] ?? [];
             
             require '../app/views/appointments/index.php';

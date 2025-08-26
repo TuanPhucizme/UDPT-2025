@@ -16,7 +16,7 @@ export const createAppointment = async (data) => {
   try {
     // Verify patient exists
     const patient = await serviceCall(
-      `${services.PATIENT_SERVICE_URL}/api/internal/patients/${patient_id}`
+      `${services.PATIENT_SERVICE_URL}/api/patients/${patient_id}`
     );
     if (!patient) {
       throw new Error('Patient not found');
@@ -24,8 +24,8 @@ export const createAppointment = async (data) => {
 
     // Verify doctor and department
     const [doctor, department] = await Promise.all([
-      serviceCall(`${services.AUTH_SERVICE_URL}/api/internal/staff/${doctor_id}`),
-      serviceCall(`${services.AUTH_SERVICE_URL}/api/internal/departments/${department_id}`)
+      serviceCall(`${services.AUTH_SERVICE_URL}/api/staff/${doctor_id}`),
+      serviceCall(`${services.AUTH_SERVICE_URL}/api/departments/${department_id}`)
     ]);
 
     if (!doctor || !department) {
@@ -94,9 +94,9 @@ export const getAppointments = async (filters = {}) => {
       appointments.map(async (apt) => {
         try {
           const [patient, doctor, department] = await Promise.all([
-            serviceCall(`${services.PATIENT_SERVICE_URL}/api/patients/internal/${apt.patient_id}`),
-            serviceCall(`${services.AUTH_SERVICE_URL}/api/internal/staff/${apt.doctor_id}`),
-            serviceCall(`${services.AUTH_SERVICE_URL}/api/internal/departments/${apt.department_id}`)
+            serviceCall(`${services.PATIENT_SERVICE_URL}/api/patients/${apt.patient_id}`),
+            serviceCall(`${services.AUTH_SERVICE_URL}/api/staff/${apt.doctor_id}`),
+            serviceCall(`${services.AUTH_SERVICE_URL}/api/departments/${apt.department_id}`)
           ]);
           
           return {
@@ -133,9 +133,9 @@ export const getAppointmentById = async (id) => {
 
     // Get related data from other services
     const [patient, doctor, department] = await Promise.all([
-      serviceCall(`${services.PATIENT_SERVICE_URL}/api/internal/patients/${apt.patient_id}`),
-      serviceCall(`${services.AUTH_SERVICE_URL}/api/internal/staff/${apt.doctor_id}`),
-      serviceCall(`${services.AUTH_SERVICE_URL}/api/internal/departments/${apt.department_id}`)
+      serviceCall(`${services.PATIENT_SERVICE_URL}/api/patients/${apt.patient_id}`),
+      serviceCall(`${services.AUTH_SERVICE_URL}/api/staff/${apt.doctor_id}`),
+      serviceCall(`${services.AUTH_SERVICE_URL}/api/departments/${apt.department_id}`)
     ]);
 
     return {
@@ -155,7 +155,7 @@ export const getDoctorSchedule = async (doctorId, date) => {
   try {
     // Verify doctor exists
     const doctor = await serviceCall(
-      `${services.AUTH_SERVICE_URL}/api/internal/staff/${doctorId}`
+      `${services.AUTH_SERVICE_URL}/api/staff/${doctorId}`
     );
     if (!doctor) {
       throw new Error('Doctor not found');

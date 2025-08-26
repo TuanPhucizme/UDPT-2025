@@ -5,7 +5,7 @@ import {
   listDepartments,
   getDepartmentStaff 
 } from '../controllers/staff.controller.js';
-import { authMiddleware, authorizeRoles, internalAuthMiddleware } from '../middleware/auth.middleware.js';
+import { authMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
 
@@ -15,25 +15,6 @@ router.get(
   authMiddleware,
   authorizeRoles('admin', 'bacsi', 'duocsi', 'letan'),
   getStaff
-);
-
-// Internal service routes
-router.get(
-  '/internal/staff/:id',
-  internalAuthMiddleware,
-  getStaff
-);
-
-router.get(
-  '/internal/departments',
-  authMiddleware,
-  authorizeRoles('admin', 'bacsi', 'duocsi', 'letan'),
-  listDepartments
-);
-router.get(
-  '/internal/departments/:id',
-  internalAuthMiddleware,
-  getDepartment
 );
 // Department routes
 router.get(

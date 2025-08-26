@@ -19,7 +19,7 @@ export const getPatientRecords = async (req, res) => {
       records.map(async (record) => {
         try {
           const prescriptionResponse = await axios.get(
-            `${services.PRESCRIPTION_SERVICE_URL}/api/prescriptions/internal/record/${record.id}`,
+            `${services.PRESCRIPTION_SERVICE_URL}/api/prescriptions/record/${record.id}`,
             {
               headers: {
                 'Authorization': `Bearer ${process.env.INTERNAL_API_TOKEN}`
@@ -70,7 +70,7 @@ export const createRecord = async (req, res) => {
     // Verify doctor exists in auth service
     try {
       await axios.get(
-        `${services.AUTH_SERVICE_URL}/api/staff/internal/${doctor_id}`,
+        `${services.AUTH_SERVICE_URL}/api/staff/${doctor_id}`,
         {
           headers: {
             'Authorization': `Bearer ${process.env.INTERNAL_API_TOKEN}`
@@ -226,7 +226,7 @@ export const getRecordDetails = async (req, res) => {
 
         try {
             const prescriptionResponse = await axios.get(
-                `${services.PRESCRIPTION_SERVICE_URL}/api/prescriptions/internal/record/${recordId}`,
+                `${services.PRESCRIPTION_SERVICE_URL}/api/prescriptions/record/${recordId}`,
                 {
                     headers: {
                         'Authorization': `Bearer ${process.env.INTERNAL_API_TOKEN}`
@@ -238,7 +238,7 @@ export const getRecordDetails = async (req, res) => {
         } catch (error) {
             console.error('Failed to fetch prescriptions:', error);
         }
-
+        console.log('Enriched Record:', enrichedRecord);
         res.json(enrichedRecord);
     } catch (error) {
         console.error('Error in getRecordDetails:', error);

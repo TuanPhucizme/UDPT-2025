@@ -6,7 +6,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 const INTERNAL_API_TOKEN = process.env.INTERNAL_API_TOKEN;
 
 /**
- * Middleware xác thực JWT
+ * Middleware xác thực JWT cho client requests
  */
 export const authMiddleware = (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -16,9 +16,16 @@ export const authMiddleware = (req, res, next) => {
 
   const token = authHeader.split(' ')[1];
 
+  // Check if it's an internal API call first
+  if (token === INTERNAL_API_TOKEN) {
+    req.isInternalRequest = true;
+    return next();
+  }
+
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
     req.user = decoded; // { id, role, iat, exp }
+    req.isInternalRequest = false;
     next();
   } catch (err) {
     res.status(401).json({ message: 'Token không hợp lệ' });
@@ -26,26 +33,17 @@ export const authMiddleware = (req, res, next) => {
 };
 
 /**
- * Middleware xác thực cho dịch vụ nội bộ
- */
-export const internalAuthMiddleware = (req, res, next) => {
-  const token = req.headers.authorization?.split(' ')[1];
-  console.log('Internal API Token:', token);
-  if (token !== INTERNAL_API_TOKEN) {
-    return res.status(401).json({ message: 'Invalid internal API token' });
-  }
-  
-  next();
-};
-
-/**
- * Middleware phân quyền theo role
- * @param  {...any} allowedRoles - các role được phép truy cập
+ * Middleware phân quyền theo role (chỉ áp dụng cho client requests)
  */
 export const authorizeRoles = (...allowedRoles) => {
   const allowed = allowedRoles.map(r => String(r).toLowerCase().trim());
 
   return (req, res, next) => {
+    // Skip role check for internal requests
+    if (req.isInternalRequest) {
+      return next();
+    }
+
     const userRole = String(req.user?.role ?? '').toLowerCase().trim();
     if (!userRole || !allowed.includes(userRole)) {
       return res.status(403).json({

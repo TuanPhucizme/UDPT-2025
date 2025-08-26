@@ -5,7 +5,7 @@ import {
   getPatient,
   updatePatientInfo
 } from '../controllers/patient.controller.js';
-import { authMiddleware, internalAuthMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
+import { authMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
 
@@ -14,8 +14,4 @@ router.post('/', authMiddleware, authorizeRoles('letan', 'admin'), registerPatie
 router.get('/', authMiddleware, authorizeRoles('bacsi', 'letan', 'admin'), getPatients);
 router.get('/:id', authMiddleware, authorizeRoles('bacsi', 'letan', 'duocsi', 'admin'), getPatient);
 router.put('/:id', authMiddleware, authorizeRoles('letan', 'admin'), updatePatientInfo);
-
-// Internal service routes
-router.get('/internal/:id', internalAuthMiddleware, getPatient);
-
 export default router;

@@ -1,0 +1,4 @@
+[26-Aug-2025 12:08:35 Europe/Berlin] api path: departments/4/doctors
+[26-Aug-2025 12:08:35 Europe/Berlin] getDoctorsByDepartment called
+[26-Aug-2025 12:08:36 Europe/Berlin] api path: departments/1/doctors
+[26-Aug-2025 12:08:36 Europe/Berlin] getDoctorsByDepartment called

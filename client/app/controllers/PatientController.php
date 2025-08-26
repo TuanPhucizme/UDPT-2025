@@ -16,7 +16,6 @@ class PatientController {
                 header('Location: /auth/login');
                 exit;
             }
-            error_log('statuscode:'.$result['statusCode']);
             $patients = $result['data'];
             require '../app/views/patients/index.php';
         } catch (Exception $e) {
@@ -72,7 +71,6 @@ class PatientController {
             'phone' => $_GET['phone'] ?? '',
             'age' => !empty($_GET['age']) ? intval($_GET['age']) : null
         ];
-
         try {
             $result = $this->patientService->searchPatients($filters);
             if ($result['statusCode'] === 401) {
@@ -130,6 +128,56 @@ class PatientController {
         } catch (Exception $e) {
             $error = $e->getMessage();
             require '../app/views/error.php';
+        }
+    }
+
+    public function searchAjax() {
+        try {
+            $term = $_GET['term'] ?? '';
+            
+            // Validate search term
+            if (strlen($term) < 2) {
+                header('Content-Type: application/json');
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'Từ khóa tìm kiếm phải có ít nhất 2 ký tự',
+                    'data' => []
+                ]);
+                return;
+            }
+
+            // Determine search type based on input
+            $isPhone = preg_match('/^\d+$/', $term);
+            $filters = $isPhone 
+                ? ['phone' => $term]
+                : ['name' => $term];
+
+            $result = $this->patientService->searchPatientsAjax($filters);
+            
+            if ($result['statusCode'] === 401) {
+                http_response_code(401);
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'Unauthorized',
+                    'data' => []
+                ]);
+                return;
+            }
+
+            header('Content-Type: application/json');
+            echo json_encode([
+                'status' => 'success',
+                'data' => array_slice($result['data'] ?? [], 0, 10)
+            ]);
+            
+        } catch (Exception $e) {
+            error_log("Patient search error: " . $e->getMessage());
+            http_response_code(500);
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Lỗi hệ thống',
+                'data' => []
+            ]);
         }
     }
 }

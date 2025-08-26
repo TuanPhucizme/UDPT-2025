@@ -1,47 +1,52 @@
 <?php
-abstract class BaseService {
+class BaseService {
     protected $baseUrl;
     protected $port;
 
-    protected function request($method, $endpoint, $data = null) {
-        $curl = curl_init();
-        $url = "{$this->baseUrl}:{$this->port}{$endpoint}";
+    protected function makeRequest($method, $url, $data = [], $useInternalToken = false) {
+        $ch = curl_init();
         
         $headers = [
-            'Content-Type: application/json',
-            'Accept: application/json'
+            'Content-Type: application/json'
         ];
-
-        // Add JWT token if available
-        if (isset($_SESSION['token'])) {
-            $headers[] = 'Authorization: Bearer ' . $_SESSION['token'];
+        // Choose between internal token and user token
+        if ($useInternalToken) {
+            $headers[] = 'Authorization: Bearer ' . INTERNAL_API_TOKEN;
+        } else {
+            $headers[] = 'Authorization: Bearer ' . ($_SESSION['token'] ?? '');
         }
-
-        $options = [
-            CURLOPT_URL => $url,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_HTTPHEADER => $headers,
-            CURLOPT_CUSTOMREQUEST => $method
-        ];
-
-        if ($data) {
-            $options[CURLOPT_POSTFIELDS] = json_encode($data);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        
+        if ($method === 'POST' || $method === 'PUT') {
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
         }
-
-        curl_setopt_array($curl, $options);
-
-        $response = curl_exec($curl);
-        $statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-        if (curl_errno($curl)) {
-            throw new Exception(curl_error($curl));
+        
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+        
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        
+        curl_close($ch);
+        
+        if ($response === false) {
+            throw new Exception('Failed to connect to service');
         }
-
-        curl_close($curl);
-
+        
+        $result = json_decode($response, true);
         return [
-            'data' => json_decode($response, true),
-            'statusCode' => $statusCode
+            'statusCode' => $httpCode,
+            'data' => $result,
+            'message' => $result['message'] ?? null
         ];
+    }
+
+    protected function request($method, $path, $data = []) {
+        return $this->makeRequest(
+            $method, 
+            "{$this->baseUrl}:{$this->port}{$path}", 
+            $data
+        );
     }
 }
