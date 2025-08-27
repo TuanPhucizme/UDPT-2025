@@ -184,21 +184,21 @@ export const getAllDepartments = async () => {
 };
 
 export const getStaffByDepartment = async (departmentId) => {
-  const [rows] = await db.query(
-    `SELECT 
-      s.id,
-      s.staff_code,
-      s.hoten_nv,
-      s.email,
-      s.sdt,
-      s.gender,
-      r.ten_role as role
-    FROM staff s
-    JOIN role r ON s.role_id = r.id_role
-    WHERE s.department_id = ?`,
-    [departmentId]
-  );
-  return rows;
+  try {
+    const [rows] = await db.query(
+      `SELECT s.*, r.ten_role as role_name 
+       FROM staff s
+       JOIN role r ON s.role_id = r.id_role
+       WHERE s.department_id = ? 
+       AND r.ten_role = 'bacsi'
+       ORDER BY s.hoten_nv`,
+      [departmentId]
+    );
+    return rows;
+  } catch (error) {
+    console.error('Error in getStaffByDepartment:', error);
+    throw error;
+  }
 };
 
 export const checkStaffExists = async (connection, field, value) => {

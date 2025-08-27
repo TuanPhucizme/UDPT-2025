@@ -31,8 +31,9 @@ class AppointmentController {
                     'patient_id' => $_POST['patient_id'],
                     'doctor_id' => $_POST['doctor_id'],
                     'department_id' => $_POST['department_id'],
-                    'requested_time' => $_POST['requested_time'],
+                    'thoi_gian_hen' => $_POST['requested_time'],
                     'lydo' => $_POST['lydo'],
+                    'note' => $_POST['note'],
                     'receptionist_id' => $_SESSION['user']['id']
                 ];
                 
@@ -71,20 +72,19 @@ class AppointmentController {
     /**
      * AJAX endpoint for doctor schedule
      */
-    public function getDoctorSchedule() {
+    public function getDoctorSchedule($doctorId) {
         try {
-            $doctorId = $_GET['doctor_id'] ?? null;
             $date = $_GET['date'] ?? date('Y-m-d');
             
             if (!$doctorId) {
                 throw new Exception('Doctor ID is required');
             }
-            
             $result = $this->appointmentService->getDoctorSchedule($doctorId, $date);
             header('Content-Type: application/json');
             echo json_encode($result['data'] ?? []);
         } catch (Exception $e) {
             http_response_code(500);
+            error_log($e->getMessage());
             echo json_encode(['error' => $e->getMessage()]);
         }
     }
@@ -92,9 +92,8 @@ class AppointmentController {
     /**
      * AJAX endpoint for available time slots
      */
-    public function getAvailableSlots() {
+    public function getAvailableSlots($doctorId) {
         try {
-            $doctorId = $_GET['doctor_id'] ?? null;
             $date = $_GET['date'] ?? date('Y-m-d');
             
             if (!$doctorId) {
@@ -196,6 +195,101 @@ class AppointmentController {
         } catch (Exception $e) {
             $error = $e->getMessage();
             require '../app/views/error.php';
+        }
+    }
+
+    public function view($id) {
+        try {
+            $result = $this->appointmentService->getAppointmentById($id);
+            
+            if ($result['statusCode'] === 404) {
+                throw new Exception('Không tìm thấy lịch hẹn');
+            }
+            
+            $appointment = $result['data'];
+            error_log($appointment['thoi_gian_hen']);
+            // Check permission
+            if ($_SESSION['user']['role'] === 'bacsi' && $appointment['doctor_id'] !== $_SESSION['user']['id']) {
+                throw new Exception('Bạn không có quyền xem lịch hẹn này');
+            }
+            
+            require '../app/views/appointments/view.php';
+        } catch (Exception $e) {
+            $_SESSION['error'] = $e->getMessage();
+            header('Location: /appointments');
+            exit;
+        }
+    }
+
+    public function confirm($id) {
+        try {
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+                throw new Exception('Invalid request method');
+            }
+
+            // Check if the doctor has permission
+            $appointmentResult = $this->appointmentService->getAppointmentById($id);
+            if ($appointmentResult['statusCode'] !== 200) {
+                throw new Exception('Không tìm thấy lịch hẹn');
+            }
+
+            $appointment = $appointmentResult['data'];
+            if ($_SESSION['user']['role'] === 'bacsi' && $appointment['doctor_id'] !== $_SESSION['user']['id']) {
+                throw new Exception('Bạn không có quyền xác nhận lịch hẹn này');
+            }
+
+            $result = $this->appointmentService->confirmAppointment($id);
+
+            if ($result['statusCode'] === 200) {
+                $_SESSION['success'] = 'Đã xác nhận lịch hẹn thành công';
+            } else {
+                $_SESSION['error'] = $result['message'] ?? 'Không thể xác nhận lịch hẹn';
+            }
+            
+            // Redirect back to the appointment view
+            header('Location: /appointments/view/' . $id);
+            exit;
+        } catch (Exception $e) {
+            $_SESSION['error'] = $e->getMessage();
+            header('Location: /appointments/view/' . $id);
+            exit;
+        }
+    }
+
+    public function cancel($id) {
+        try {
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+                throw new Exception('Invalid request method');
+            }
+
+            // Check if the doctor has permission
+            $appointmentResult = $this->appointmentService->getAppointmentById($id);
+            if ($appointmentResult['statusCode'] !== 200) {
+                throw new Exception('Không tìm thấy lịch hẹn');
+            }
+
+            $appointment = $appointmentResult['data'];
+            if ($_SESSION['user']['role'] === 'bacsi' && $appointment['doctor_id'] !== $_SESSION['user']['id']) {
+                throw new Exception('Bạn không có quyền hủy lịch hẹn này');
+            }
+
+            $result = $this->appointmentService->cancelAppointment($id, [
+                'reason' => $_POST['reason'] ?? ''
+            ]);
+
+            if ($result['statusCode'] === 200) {
+                $_SESSION['success'] = 'Đã hủy lịch hẹn thành công';
+            } else {
+                $_SESSION['error'] = $result['message'] ?? 'Không thể hủy lịch hẹn';
+            }
+            
+            // Redirect back to the appointment view
+            header('Location: /appointments/view/' . $id);
+            exit;
+        } catch (Exception $e) {
+            $_SESSION['error'] = $e->getMessage();
+            header('Location: /appointments/view/' . $id);
+            exit;
         }
     }
 }

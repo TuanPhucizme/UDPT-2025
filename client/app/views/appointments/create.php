@@ -1,5 +1,16 @@
 <?php require_once '../app/views/layouts/header.php'; ?>
 
+<style>
+.time-slot.active {
+    background-color: var(--bs-primary);
+    color: white;
+}
+
+.time-slot:not(.active):hover {
+    background-color: var(--bs-primary-subtle);
+}
+</style>
+
 <div class="container py-5">
     <div class="row">
         <div class="col-md-8">
@@ -68,9 +79,8 @@
 
                         <!-- Custom Time Selection -->
                         <div class="mb-3">
-                            <label class="form-label">Hoặc Chọn Thời Gian Khác</label>
                             <input type="datetime-local" class="form-control" name="requested_time" 
-                                   min="<?= date('Y-m-d\TH:i') ?>">
+                                   min="<?= date('Y-m-d\TH:i') ?>" hidden>
                         </div>
 
                         <!-- Reason for Visit -->
@@ -78,7 +88,10 @@
                             <label class="form-label">Lý Do Khám <span class="text-danger">*</span></label>
                             <textarea class="form-control" name="lydo" rows="2" required></textarea>
                         </div>
-
+                        <div class="mb-3">
+                            <label class="form-label">Ghi chú <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="note" rows="2" required></textarea>
+                        </div>
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-calendar-check"></i> Tạo Lịch Hẹn
@@ -93,7 +106,7 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="mb-0">Lịch Bác Sĩ</h5>
+                    <h5 class="mb-0">Lịch Bác Sĩ Đã Chọn</h5>
                 </div>
                 <div class="card-body">
                     <div id="doctorSchedule">
@@ -308,7 +321,6 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const response = await fetch(`/api/doctors/${doctorId}/schedule?date=${date}`);
             const schedule = await response.json();
-            
             if (!response.ok) throw new Error('Failed to load schedule');
             
             scheduleDiv.innerHTML = formatSchedule(schedule);
@@ -361,7 +373,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="appointment-item mb-2 p-2 border-bottom">
                 <div class="small text-muted">${formatDateTime(appt.thoi_gian_hen)}</div>
                 <div class="d-flex justify-content-between align-items-center">
-                    <span>${appt.patient_name}</span>
+                    <span>${appt.patient_name} (${appt.patient_phone})</span>
                     <span class="badge bg-${getStatusBadge(appt.status)}">
                         ${getStatusText(appt.status)}
                     </span>
@@ -388,6 +400,33 @@ document.addEventListener('DOMContentLoaded', function() {
             'completed': 'Hoàn thành'
         };
         return texts[status] || status;
+    }
+
+    function renderTimeSlots(slots) {
+        if (!Array.isArray(slots) || slots.length === 0) {
+            timeSlotsDiv.innerHTML = `
+                <div class="text-muted">
+                    <i class="fas fa-info-circle"></i> Không có khung giờ trống
+                </div>`;
+            return;
+        }
+
+        timeSlotsDiv.innerHTML = slots.map(slot => `
+            <button type="button" 
+                    class="btn btn-outline-primary btn-sm time-slot"
+                    data-time="${slot.datetime}">
+                ${formatDateTime(slot.datetime)}
+            </button>
+        `).join('');
+
+        // If there's a previously selected time, highlight it
+        const requestedTime = requestedTimeInput.value;
+        if (requestedTime) {
+            const matchingSlot = timeSlotsDiv.querySelector(`[data-time="${requestedTime}"]`);
+            if (matchingSlot) {
+                matchingSlot.classList.add('active');
+            }
+        }
     }
 });
 </script>

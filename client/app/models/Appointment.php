@@ -13,6 +13,7 @@ class Appointment {
     private $receptionist_id;
     private $created_at;
     private $updated_at;
+    private $note;
 
     public function __construct($data = []) {
         $this->id = $data['id'] ?? null;
@@ -28,6 +29,7 @@ class Appointment {
         $this->receptionist_id = $data['receptionist_id'] ?? null;
         $this->created_at = $data['created_at'] ?? null;
         $this->updated_at = $data['updated_at'] ?? null;
+        $this->note = $data['note'] ?? null;
     }
 
     public function toArray() {
@@ -44,7 +46,8 @@ class Appointment {
             'decline_reason' => $this->decline_reason,
             'receptionist_id' => $this->receptionist_id,
             'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
+            'updated_at' => $this->updated_at,
+            'note' => $this->note
         ];
     }
 }

@@ -11,7 +11,7 @@ class AppointmentService extends BaseService {
         $this->authServiceUrl = AUTH_SERVICE_URL . ':' . AUTH_SERVICE_PORT;
     }
     public function createAppointment($data) {
-        return $this->request('POST', '/api/appointments', $data);
+        return $this->request('POST', '/api/appointments/book', $data);
     }
     
     public function getAppointments($filters = []) {
@@ -24,7 +24,7 @@ class AppointmentService extends BaseService {
     }
 
     public function declineAppointment($id, $data) {
-        return $this->request('PUT', "/api/appointments/{$id}/decline", $data);
+        return $this->request('PUT', "/api/appointments/{$id}/cancel", $data);
     }
 
     /**
@@ -66,15 +66,27 @@ class AppointmentService extends BaseService {
      * Get doctor's schedule
      */
     public function getDoctorSchedule($doctorId, $date) {
-        $query = http_build_query(['date' => $date]);
-        return $this->request('GET', "/api/doctors/{$doctorId}/schedule?{$query}");
+        $query = http_build_query(['doctor_id' => $doctorId,'date' => $date]);
+        return $this->request('GET', "/api/appointments/doctor-schedule?{$query}");
     }
 
     /**
      * Get available time slots
      */
     public function getAvailableSlots($doctorId, $date) {
-        $query = http_build_query(['date' => $date]);
-        return $this->request('GET', "/api/doctors/{$doctorId}/slots?{$query}");
+        $query = http_build_query(['doctor_id' => $doctorId,'date' => $date]);
+        return $this->request('GET', "/api/appointments/doctor-slots?{$query}");
+    }
+
+    public function getAppointmentById($id) {
+        return $this->request('GET', "/api/appointments/{$id}");
+    }
+
+    public function confirmAppointment($id) {
+        return $this->request('PUT', "/api/appointments/{$id}/confirm", []);
+    }
+
+    public function cancelAppointment($id, $data) {
+        return $this->request('PUT', "/api/appointments/{$id}/cancel", $data);
     }
 }

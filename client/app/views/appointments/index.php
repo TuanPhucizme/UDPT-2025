@@ -89,12 +89,6 @@
                                    class="btn btn-sm btn-info">
                                     <i class="fas fa-eye"></i>
                                 </a>
-                                <?php if ($apt['status'] === 'pending' && $_SESSION['user']['role'] === 'bacsi'): ?>
-                                    <a href="/appointments/pending" 
-                                       class="btn btn-sm btn-warning">
-                                        <i class="fas fa-clock"></i>
-                                    </a>
-                                <?php endif; ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -124,4 +118,112 @@ function getStatusText($status) {
 }
 ?>
 
-<?php require_once '../app/views/layouts/footer.php'; ?>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchForm = document.querySelector('form');
+    const tableBody = document.querySelector('tbody');
+    
+    searchForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const params = new URLSearchParams();
+        
+        // Handle keyword param name based on content
+        const keyword = formData.get('keyword');
+        if (keyword) {
+            const paramName = /^\d+$/.test(keyword) ? 'phone' : 'name';
+            params.append(paramName, keyword);
+        }
+        
+        // Add other params
+        const date = formData.get('date');
+        if (date) params.append('date', date);
+        
+        const status = formData.get('status');
+        if (status) params.append('status', status);
+        try {
+            // Update URL with search params
+            const newUrl = `${window.location.pathname}?${params.toString()}`;
+            window.history.pushState({}, '', newUrl);
+            
+            // Show loading state
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="7" class="text-center">
+                        <div class="spinner-border spinner-border-sm"></div>
+                        <span class="ms-2">Đang tìm kiếm...</span>
+                    </td>
+                </tr>
+            `;
+            const response = await fetch(`/api/appointments?${params}`);
+            if (!response.ok) throw new Error('Search failed');
+            
+            const appointments = await response.json();
+            
+            if (appointments.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="text-center">
+                            <i class="fas fa-info-circle"></i> Không tìm thấy kết quả
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            // Render results
+            tableBody.innerHTML = appointments.map(apt => `
+                <tr>
+                    <td>${apt.id}</td>
+                    <td>
+                        <strong>${escapeHtml(apt.patient_name)}</strong><br>
+                        <small class="text-muted">SĐT: ${escapeHtml(apt.patient_phone || 'N/A')}</small>
+                    </td>
+                    <td>${escapeHtml(apt.doctor_name)}</td>
+                    <td>${escapeHtml(apt.department_name)}</td>
+                    <td>${new Date(apt.thoi_gian_hen)}</td>
+                    <td>
+                        <span class="badge bg-${getBadgeColor(apt.status)}">
+                            ${getStatusText(apt.status)}
+                        </span>
+                    </td>
+                    <td>
+                        <a href="/appointments/view/${apt.id}" 
+                           class="btn btn-sm btn-info">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                        ${apt.status === 'pending' && userRole === 'bacsi' ? `
+                            <a href="/appointments/pending" 
+                               class="btn btn-sm btn-warning">
+                                <i class="fas fa-clock"></i>
+                            </a>
+                        ` : ''}
+                    </td>
+                </tr>
+            `).join('');
+            
+        } catch (error) {
+            console.error('Search error:', error);
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="7" class="text-center text-danger">
+                        <i class="fas fa-exclamation-circle"></i> 
+                        Lỗi tìm kiếm: ${error.message}
+                    </td>
+                </tr>
+            `;
+        }
+    });
+    
+    // Helper function for HTML escaping
+    function escapeHtml(unsafe) {
+        return unsafe
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+});
+</script>

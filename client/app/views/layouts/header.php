@@ -33,7 +33,7 @@
                     <?php if (isset($_SESSION['user'])): ?>
                         <a class="nav-link" href="/home">Trang Chủ</a>
                         <a class="nav-link" href="/patients">Bệnh Nhân</a>
-                        <?php if (in_array($_SESSION['user']['role'], ['bacsi', 'admin'])): ?>
+                        <?php if (in_array($_SESSION['user']['role'], ['bacsi', 'admin','letan'])): ?>
                             <a class="nav-link" href="/appointments">Lịch Khám</a>
                         <?php endif; ?>
                     <?php endif; ?>

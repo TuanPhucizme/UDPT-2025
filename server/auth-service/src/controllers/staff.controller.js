@@ -62,14 +62,18 @@ export const getDepartmentStaff = async (req, res) => {
     const staff = await getStaffByDepartment(departmentId);
 
     if (staff.length === 0) {
-      return res.status(404).json({ message: 'Không tìm thấy nhân viên trong khoa này' });
+      return res.status(404).json({ 
+        message: 'Không tìm thấy bác sĩ trong khoa này' 
+      });
     }
 
-    res.json(staff);
+    // Remove sensitive information
+    const sanitizedStaff = staff.map(({ password, ...doctor }) => doctor);
+    res.json(sanitizedStaff);
   } catch (error) {
     console.error('Error in getDepartmentStaff:', error);
     res.status(500).json({ 
-      message: 'Lỗi lấy danh sách nhân viên', 
+      message: 'Lỗi lấy danh sách bác sĩ', 
       error: error.message 
     });
   }

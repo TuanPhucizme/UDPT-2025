@@ -4,7 +4,9 @@ import {
   listAppointments,
   confirmAppointment,
   cancelAppointment,
-  getDoctorAvailability
+  getDoctorAvailability,
+  getDoctorAvailableSlotsApi,
+  getAppointmentDetails
 } from '../controllers/appointment.controller.js';
 import { authMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
 
@@ -18,5 +20,7 @@ router.post('/book', authMiddleware, authorizeRoles('letan', 'admin'), bookAppoi
 router.put('/:id/confirm', authMiddleware, authorizeRoles('bacsi', 'admin'), confirmAppointment);
 router.put('/:id/cancel', authMiddleware, authorizeRoles('bacsi', 'letan', 'admin'), cancelAppointment);
 router.get('/doctor-schedule', authMiddleware, getDoctorAvailability);
+router.get('/doctor-slots', authMiddleware, getDoctorAvailableSlotsApi);
+router.get('/:id', authMiddleware, authorizeRoles('bacsi', 'letan', 'admin'), getAppointmentDetails);
 
 export default router;

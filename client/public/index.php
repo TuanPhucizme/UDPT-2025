@@ -43,10 +43,11 @@ $routes = [
     'appointments' => [
         'index', 
         'create', 
-        'view', 
+        'view',
         'pending',
         'propose', 
         'confirm', 
+        'cancel',    // Add these two routes
         'decline',
         'getAvailableSlots'
     ],
@@ -105,6 +106,9 @@ try {
                     case 'decline':
                         AuthMiddleware::authorizeRoles('bacsi', 'admin')();
                         break;
+                    case 'view':
+                        AuthMiddleware::authorizeRoles('bacsi', 'letan', 'admin')();
+                        break;
                 }
                 call_user_func_array([$controller, $action], $params);
             } else {
@@ -127,23 +131,20 @@ try {
                     
                 case (preg_match('/^departments\/(\d+)\/doctors$/', $apiPath, $matches) ? true : false):
                     require_once '../app/controllers/AppointmentController.php';
-                    error_log('getDoctorsByDepartment called');
                     $controller = new AppointmentController();
                     $controller->getDoctorsByDepartment($matches[1]);
                     break;
                     
                 case (preg_match('/^doctors\/(\d+)\/schedule$/', $apiPath, $matches) ? true : false):
                     require_once '../app/controllers/AppointmentController.php';
-                    error_log('getDoctorSchedule called');
                     $controller = new AppointmentController();
-                    $controller->getDoctorSchedule();
+                    $controller->getDoctorSchedule($matches[1]);
                     break;
                     
                 case (preg_match('/^doctors\/(\d+)\/slots$/', $apiPath, $matches) ? true : false):
                     require_once '../app/controllers/AppointmentController.php';
-                    error_log('getAvailableSlots called');
                     $controller = new AppointmentController();
-                    $controller->getAvailableSlots();
+                    $controller->getAvailableSlots($matches[1]);
                     break;
                     
                 default:
