@@ -55,7 +55,9 @@ $routes = [
         'patients',
         'departments',
         'doctors'
-    ]
+    ],
+    'reports' => ['prescriptions','patients']
+
 ];
 try {
     // Validate route
@@ -149,6 +151,17 @@ try {
                     
                 default:
                     throw new Exception('API route not found', 404);
+            }
+            break;
+        case 'reports':
+            AuthMiddleware::authenticate();
+            AuthMiddleware::authorizeRoles('admin','letan')();
+            require_once '../app/controllers/ReportController.php';
+            $controller = new ReportController();
+            if (method_exists($controller, $action)) {
+                call_user_func_array([$controller, $action], $params);
+            } else {
+                throw new Exception('Action not found', 404);
             }
             break;
         default:
