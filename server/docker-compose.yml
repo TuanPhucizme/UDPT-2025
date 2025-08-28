@@ -29,6 +29,11 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   # --- 2. CÁC DỊCH VỤ BACKEND (MICROSERVICES) ---
 
@@ -56,8 +61,10 @@ services:
     env_file:
       - ./patient-service/.env
     depends_on:
-      - hospital-db
-      - rabbitmq
+      hospital-db:
+        condition: service_started # Với DB, chỉ cần started là đủ
+      rabbitmq:
+        condition: service_healthy # Với RabbitMQ, phải chờ đến khi healthy
     restart: unless-stopped
     command: npm run dev
     volumes:
