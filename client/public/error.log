@@ -114,3 +114,13 @@ Stack trace:
 #0 D:\Ứng dụng phân tán\git_project\UDPT-2025\client\public\index.php(75): AuthController->register()
 #1 {main}
   thrown in D:\Ứng dụng phân tán\git_project\UDPT-2025\client\app\controllers\AuthController.php on line 66
+[28-Aug-2025 05:26:06 Europe/Berlin] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[28-Aug-2025 05:26:08 Europe/Berlin] Auth Service Error: Failed to connect to service
+[28-Aug-2025 05:27:11 Europe/Berlin] Auth Service Error: Failed to connect to service
+[28-Aug-2025 05:27:15 Europe/Berlin] Auth Service Error: Failed to connect to service
+[28-Aug-2025 05:38:23 Europe/Berlin] PHP Warning:  require(../app/views/auth/register.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\UDPT-2025\client\app\controllers\AuthController.php on line 66
+[28-Aug-2025 05:38:23 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/auth/register.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\UDPT-2025\client\app\controllers\AuthController.php:66
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\public\index.php(75): AuthController->register()
+#1 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\controllers\AuthController.php on line 66

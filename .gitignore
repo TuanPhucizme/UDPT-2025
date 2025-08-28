@@ -1,0 +1,65 @@
+# =========================================
+# Dependencies & Build Artifacts
+# =========================================
+# Thư mục chứa các thư viện được cài đặt bởi npm/yarn/pnpm.
+# Đây là thư mục quan trọng nhất cần bỏ qua.
+/node_modules
+**/node_modules
+
+# Thư mục chứa các file build của frontend (React, Vue, Angular, etc.)
+/build
+/dist
+/.output
+/.next
+
+# =========================================
+# Environment Variables & Sensitive Data
+# =========================================
+# File chứa các biến môi trường, mật khẩu, API keys.
+# CỰC KỲ QUAN TRỌNG: Không bao giờ commit các file này.
+.env
+.env.*
+!.env.example
+
+# =========================================
+# Logs
+# =========================================
+# Các file log được tạo ra trong quá trình chạy hoặc gỡ lỗi.
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# =========================================
+# Operating System Files
+# =========================================
+# Các file hệ thống tự động tạo ra bởi macOS, Windows, Linux.
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================================
+# IDE & Editor Directories
+# =========================================
+# Các thư mục cấu hình của các trình soạn thảo code.
+.idea
+.vscode/
+*.swp
+*.swo
+
+# =========================================
+# Docker
+# =========================================
+# Bỏ qua các file liên quan đến Docker Compose nếu chúng chứa thông tin nhạy cảm
+# (thường thì file docker-compose.yml vẫn được commit)
+# docker-compose.override.yml
+
+# =========================================
+# Test & Coverage Reports
+# =========================================
+# Các báo cáo được tạo ra khi chạy test.
+/coverage
+.nyc_output

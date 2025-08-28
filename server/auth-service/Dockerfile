@@ -2,7 +2,7 @@
 FROM node:16-alpine
 
 # Bước 2: Tạo và đặt thư mục làm việc bên trong container
-WORKDIR /src
+WORKDIR /app
 
 # Bước 3: Sao chép package.json và package-lock.json
 # Tách riêng bước này để tận dụng cache của Docker. Lệnh RUN tiếp theo chỉ chạy lại
@@ -10,7 +10,7 @@ WORKDIR /src
 COPY package*.json ./
 
 # Bước 4: Cài đặt các dependencies trong môi trường production
-RUN npm install --only=production
+RUN npm install
 
 # Bước 5: Sao chép toàn bộ mã nguồn còn lại của service
 COPY src/ .

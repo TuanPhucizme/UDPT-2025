@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const reportRoutes = require('./src/routes/report.routes');
-const { syncPatients, syncPrescriptions } = require('./src/services/sync.service');
+const { syncPatients, syncPrescriptions } = require('./src/routes/services/sync.service');
 
 // Đồng bộ khi service khởi động
 (async () => {

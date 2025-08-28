@@ -1,4 +1,4 @@
-const reportService = require('../services/report.service');
+const reportService = require('../routes/services/report.service');
 
 exports.getPatientStats = async (req, res) => {
   const data = await reportService.fetchPatientMonthlyStats();
