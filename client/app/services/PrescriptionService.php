@@ -46,8 +46,19 @@ class PrescriptionService extends BaseService {
         return $this->request('PUT', "/api/prescriptions/{$id}", $data);
     }
     
-    public function getAllMedicines() {
-        $result = $this->request('GET', "/api/prescriptions/medicines");
+    /**
+     * Get all medicines with optional filters
+     * 
+     * @param array $filters Optional filters: search, stock_status
+     * @return array The API response
+     */
+    public function getAllMedicines($filters = []) {
+        $queryString = '';
+        if (!empty($filters)) {
+            $queryString = '?' . http_build_query($filters);
+        }
+        
+        $result = $this->request('GET', "/api/medicines{$queryString}");
         return $result['data'] ?? [];
     }
     
@@ -63,5 +74,47 @@ class PrescriptionService extends BaseService {
      */
     public function getPrescriptionsByStatus($status) {
         return $this->request('GET', "/api/prescriptions/status/{$status}");
+    }
+
+    /**
+     * Get detailed information about a medicine
+     */
+    public function getMedicineById($id) {
+        return $this->request('GET', "/api/medicines/{$id}");
+    }
+
+    /**
+     * Create a new medicine
+     */
+    public function createMedicine($data) {
+        return $this->request('POST', "/api/medicines", $data);
+    }
+
+    /**
+     * Update medicine information
+     */
+    public function updateMedicine($id, $data) {
+        return $this->request('PUT', "/api/medicines/{$id}", $data);
+    }
+
+    /**
+     * Update medicine stock
+     */
+    public function updateMedicineStock($id, $data) {
+        return $this->request('PUT', "/api/medicines/{$id}/stock", $data);
+    }
+
+    /**
+     * Get medicine stock history
+     */
+    public function getMedicineStockHistory($id) {
+        return $this->request('GET', "/api/medicines/{$id}/stock-history");
+    }
+
+    /**
+     * Get liquid medicines usage report
+     */
+    public function getLiquidMedicinesReport() {
+        return $this->request('GET', "/api/reports/liquid-medicines");
     }
 }

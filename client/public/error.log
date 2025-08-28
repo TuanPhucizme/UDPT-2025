@@ -1,375 +1,1706 @@
-[28-Aug-2025 01:03:44 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:03:44 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: array_keys(): Argument #1 ($array) must be of type array, int given in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:28
+[28-Aug-2025 23:31:42 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\appointments\index.php:74
 Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php(28): array_keys(1)
-#1 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->create()
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\AppointmentController.php(194): require()
+#1 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(128): AppointmentController->index()
 #2 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 28
-[28-Aug-2025 01:05:49 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:05:49 Asia/Ho_Chi_Minh] 1
-[28-Aug-2025 01:06:07 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:06:07 Asia/Ho_Chi_Minh] 1
-[28-Aug-2025 01:06:24 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:06:24 Asia/Ho_Chi_Minh] 1
-[28-Aug-2025 01:06:24 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:06:25 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:06:25 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\appointments\index.php on line 74
+[28-Aug-2025 23:31:45 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:31:47 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:31:49 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:31:50 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:32:25 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:32:26 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:32:54 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:32:54 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:33:21 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:33:21 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:33:45 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:33:46 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:34:33 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:34:34 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:34:34 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:34:41 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:34:42 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:34:53 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:35:35 Asia/Ho_Chi_Minh] 2025-08-27 08:00:00
+[28-Aug-2025 23:35:36 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 23:35:37 Asia/Ho_Chi_Minh] 2025-08-27 08:00:00
+[28-Aug-2025 23:35:39 Asia/Ho_Chi_Minh] 2025-08-27 12:00:00
+[28-Aug-2025 23:35:42 Asia/Ho_Chi_Minh] 2023-07-04 15:00:00
+[28-Aug-2025 23:35:49 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:35:54 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 23:35:55 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:35:56 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 23:35:57 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:39:02 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:39:04 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:39:07 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:39:08 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 23:42:06 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[29-Aug-2025 01:14:53 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "requested_time" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\appointments\pending.php on line 47
+[29-Aug-2025 01:15:03 Asia/Ho_Chi_Minh] 2025-08-27 12:00:00
+[29-Aug-2025 01:15:19 Asia/Ho_Chi_Minh] 2025-08-27 12:00:00
+[29-Aug-2025 01:15:25 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "requested_time" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\appointments\pending.php on line 47
+[29-Aug-2025 01:24:22 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $controller in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 140
+[29-Aug-2025 01:24:22 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $controller in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 143
+[29-Aug-2025 01:24:22 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $controller in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 147
+[29-Aug-2025 01:24:22 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $controller in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 140
+[29-Aug-2025 01:24:22 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $controller in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 143
+[29-Aug-2025 01:24:22 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $controller in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 147
+[29-Aug-2025 01:26:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 47
+[29-Aug-2025 01:26:06 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 47
+[29-Aug-2025 01:26:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 47
+[29-Aug-2025 01:26:06 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 47
+[29-Aug-2025 01:26:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 139
+[29-Aug-2025 01:26:06 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 139
+[29-Aug-2025 01:26:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 139
+[29-Aug-2025 01:26:06 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 139
+[29-Aug-2025 01:26:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 47
+[29-Aug-2025 01:26:06 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 47
+[29-Aug-2025 01:26:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 47
+[29-Aug-2025 01:26:06 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 47
+[29-Aug-2025 01:26:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 139
+[29-Aug-2025 01:26:06 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 139
+[29-Aug-2025 01:26:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 139
+[29-Aug-2025 01:26:06 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 139
+[29-Aug-2025 01:26:07 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/auth/register.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\AuthController.php on line 66
+[29-Aug-2025 01:26:07 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/auth/register.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\AuthController.php:66
 Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(94): AuthController->register()
 #1 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:07:20 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:07:22 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:07:22 Asia/Ho_Chi_Minh] Không thể tạo hồ sơ khám bệnh
-[28-Aug-2025 01:07:22 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:07:22 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:07:22 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\AuthController.php on line 66
+[29-Aug-2025 01:26:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 47
+[29-Aug-2025 01:26:08 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 47
+[29-Aug-2025 01:26:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 47
+[29-Aug-2025 01:26:08 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 47
+[29-Aug-2025 01:26:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 139
+[29-Aug-2025 01:26:08 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 139
+[29-Aug-2025 01:26:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 139
+[29-Aug-2025 01:26:08 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 139
+[29-Aug-2025 01:26:13 Asia/Ho_Chi_Minh] PHP Warning:  require_once(../app/services/MedicineService.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 50
+[29-Aug-2025 01:26:13 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/services/MedicineService.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php:50
 Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
-#1 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:22:13 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:23:09 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] Checking field: 5
-[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] Checking field: 1
-[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] Checking field: 1
-[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] Checking field: eweqw
-[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] Checking field: yyyy
-[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] error: Không thể tạo hồ sơ khám bệnh
-[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php(9): require_once()
+#1 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(174): require_once('D:\\xampp\\htdocs...')
+#2 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 50
+[29-Aug-2025 01:26:25 Asia/Ho_Chi_Minh] PHP Warning:  require_once(../app/services/MedicineService.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 50
+[29-Aug-2025 01:26:25 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/services/MedicineService.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php:50
 Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
-#1 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:23:49 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] Checking field patient_id: 5
-[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] Checking field doctor_id: 1
-[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] Checking field department_id: 1
-[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] Checking field lydo: eweqw
-[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] Checking field chan_doan: yyyy
-[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] error: Không thể tạo hồ sơ khám bệnh
-[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php(9): require_once()
+#1 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(174): require_once('D:\\xampp\\htdocs...')
+#2 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 50
+[29-Aug-2025 01:26:30 Asia/Ho_Chi_Minh] PHP Warning:  require_once(../app/services/MedicineService.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 50
+[29-Aug-2025 01:26:30 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/services/MedicineService.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php:50
 Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
-#1 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:25:40 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:25:42 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:25:42 Asia/Ho_Chi_Minh] Creating record with data: Array
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\auth\login.php(1): require_once()
+#1 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\AuthController.php(43): require('D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(94): AuthController->login()
+#3 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 50
+[29-Aug-2025 01:26:34 Asia/Ho_Chi_Minh] PHP Warning:  require_once(../app/services/MedicineService.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 50
+[29-Aug-2025 01:26:34 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/services/MedicineService.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php:50
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php(9): require_once()
+#1 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(174): require_once('D:\\xampp\\htdocs...')
+#2 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 50
+[29-Aug-2025 01:26:35 Asia/Ho_Chi_Minh] PHP Warning:  require_once(../app/services/MedicineService.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 50
+[29-Aug-2025 01:26:35 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/services/MedicineService.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php:50
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php(9): require_once()
+#1 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(174): require_once('D:\\xampp\\htdocs...')
+#2 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 50
+[29-Aug-2025 01:26:35 Asia/Ho_Chi_Minh] PHP Warning:  require_once(../app/services/MedicineService.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 50
+[29-Aug-2025 01:26:35 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/services/MedicineService.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php:50
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\appointments\index.php(1): require_once()
+#1 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\AppointmentController.php(194): require('D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(135): AppointmentController->index()
+#3 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 50
+[29-Aug-2025 01:26:36 Asia/Ho_Chi_Minh] PHP Warning:  require_once(../app/services/MedicineService.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 50
+[29-Aug-2025 01:26:36 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/services/MedicineService.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php:50
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\patients\index.php(1): require_once()
+#1 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\PatientController.php(20): require('D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(111): PatientController->index()
+#3 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 50
+[29-Aug-2025 01:27:38 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $controller in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 140
+[29-Aug-2025 01:27:43 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\MedicineController.php on line 2
+[29-Aug-2025 01:29:43 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\MedicineController.php on line 2
+[29-Aug-2025 01:30:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:06 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:09 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:09 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:09 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:09 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:09 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:09 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:09 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:09 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:09 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:09 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:09 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:09 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:09 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:09 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:09 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:12 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 151
+[29-Aug-2025 01:30:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 173
+[29-Aug-2025 01:30:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 177
+[29-Aug-2025 01:30:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:45 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:45 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:45 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:45 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:45 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:45 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:45 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:45 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:45 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:45 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:45 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:45 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:45 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:45 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:45 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:47 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:47 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:47 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:47 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:47 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:47 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:47 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:47 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:47 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:47 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:47 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:47 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:47 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:47 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:47 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:49 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:49 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:49 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:49 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:49 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:49 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:49 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:49 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:49 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:49 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:49 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:49 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:49 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:49 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:49 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:30:50 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:19 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:19 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:19 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:19 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:19 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:19 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:19 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:19 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:19 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:19 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:19 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:19 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:19 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:19 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:19 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:26 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:26 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:26 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:26 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:26 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:26 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:26 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:26 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:26 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:26 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:26 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:26 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:26 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:26 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:26 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:27 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:27 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:27 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:27 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:27 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:27 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:27 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:27 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:27 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:27 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:27 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:27 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:27 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:27 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:27 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:28 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:29 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:30 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:54 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\error.php on line 7
+[29-Aug-2025 01:31:56 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:56 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:56 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:56 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:56 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:56 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:56 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:56 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:56 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:56 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:56 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:56 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:56 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:56 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:56 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:57 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\error.php on line 7
+[29-Aug-2025 01:31:58 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:58 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:58 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:58 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:58 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:58 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:58 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:58 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:58 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:58 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:58 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:58 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:31:58 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 118
+[29-Aug-2025 01:31:58 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 140
+[29-Aug-2025 01:31:58 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 144
+[29-Aug-2025 01:44:25 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 01:44:25 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 01:44:25 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 01:44:25 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 01:44:25 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 01:44:25 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 01:44:25 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 01:44:25 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 01:44:25 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 01:44:25 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 01:44:25 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 01:44:25 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 01:44:25 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 01:44:25 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 01:44:25 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 01:44:34 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 01:44:34 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 01:44:34 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 01:44:34 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 01:44:34 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 01:44:34 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 01:44:34 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 01:44:34 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 01:44:34 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 01:44:34 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 01:44:34 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 01:44:34 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 01:44:34 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 01:44:34 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 01:44:34 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:12:57 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:12:57 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:12:57 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:12:57 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:12:57 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:12:57 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:12:57 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:12:57 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:12:57 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:12:57 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:12:57 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:12:57 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:12:57 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:12:57 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:12:57 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:35 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:35 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:35 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:35 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:35 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:35 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:35 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:35 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:35 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:35 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:35 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:35 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:35 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:35 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:35 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:38 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:38 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:38 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:38 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:38 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:38 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:38 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:38 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:38 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:38 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:38 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:38 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:38 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:38 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:38 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:42 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:42 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:42 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:42 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:42 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:42 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:42 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:42 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:42 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:42 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:42 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:42 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:13:42 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:13:42 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:13:42 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:14:05 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:14:05 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:14:05 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:14:05 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:14:05 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:14:05 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:14:05 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:14:05 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:14:05 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:14:05 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:14:05 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:14:05 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:14:05 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:14:05 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:14:05 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:14:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:14:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:14:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:14:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:14:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:14:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:14:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:14:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:14:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:14:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:14:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:14:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:14:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:14:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:14:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:14:55 Asia/Ho_Chi_Minh] Medicines: Array
 (
-    [patient_id] => 5
-    [doctor_id] => 1
-    [department_id] => 1
-    [lydo] => eweqw
-    [chan_doan] => yyyy
-    [ngay_taikham] => 2025-08-21
-    [ghichu] => rtrtreret
+    [0] => Array
+        (
+            [id] => 2
+            [ten_thuoc] => Amoxicillin
+            [so_luong] => 150
+            [don_vi] => túi
+            [don_gia] => 2323
+        )
+
+    [1] => Array
+        (
+            [id] => 4
+            [ten_thuoc] => Aspirin
+            [so_luong] => 299
+            [don_vi] => viên
+            [don_gia] => 8080
+        )
+
+    [2] => Array
+        (
+            [id] => 5
+            [ten_thuoc] => Cetirizine
+            [so_luong] => 120
+            [don_vi] => ống
+            [don_gia] => 3000
+        )
+
+    [3] => Array
+        (
+            [id] => 1
+            [ten_thuoc] => Paracetamol
+            [so_luong] => 200
+            [don_vi] => viên
+            [don_gia] => 1000
+        )
+
+    [4] => Array
+        (
+            [id] => 3
+            [ten_thuoc] => Salbutamol
+            [so_luong] => 100
+            [don_vi] => chai
+            [don_gia] => 5555
+        )
+
 )
 
-[28-Aug-2025 01:25:42 Asia/Ho_Chi_Minh] error: Không thể tạo hồ sơ khám bệnh
-[28-Aug-2025 01:25:42 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:25:42 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:25:42 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
-Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
-#1 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:26:48 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:26:49 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:26:49 Asia/Ho_Chi_Minh] Creating record with data: Array
+[29-Aug-2025 02:14:55 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:14:55 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:14:55 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:14:55 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:14:55 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:14:55 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:14:55 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:14:55 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:14:55 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:14:55 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:14:55 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:14:55 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:14:55 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:14:55 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:14:55 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:15:21 Asia/Ho_Chi_Minh] Medicines: Array
 (
-    [patient_id] => 5
-    [doctor_id] => 1
-    [department_id] => 1
-    [lydo] => eweqw
-    [chan_doan] => yyyy
-    [ngay_taikham] => 2025-08-21
-    [ghichu] => rtrtreret
+    [0] => Array
+        (
+            [id] => 2
+            [ten_thuoc] => Amoxicillin
+            [so_luong] => 150
+            [don_vi] => túi
+            [don_gia] => 2323
+        )
+
+    [1] => Array
+        (
+            [id] => 4
+            [ten_thuoc] => Aspirin
+            [so_luong] => 299
+            [don_vi] => viên
+            [don_gia] => 8080
+        )
+
+    [2] => Array
+        (
+            [id] => 5
+            [ten_thuoc] => Cetirizine
+            [so_luong] => 120
+            [don_vi] => ống
+            [don_gia] => 3000
+        )
+
+    [3] => Array
+        (
+            [id] => 1
+            [ten_thuoc] => Paracetamol
+            [so_luong] => 200
+            [don_vi] => viên
+            [don_gia] => 1000
+        )
+
+    [4] => Array
+        (
+            [id] => 3
+            [ten_thuoc] => Salbutamol
+            [so_luong] => 100
+            [don_vi] => chai
+            [don_gia] => 5555
+        )
+
 )
 
-[28-Aug-2025 01:26:49 Asia/Ho_Chi_Minh] Create record result: Array
+[29-Aug-2025 02:15:21 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:15:21 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:15:21 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:15:21 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:15:21 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:15:21 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:15:21 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:15:21 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:15:21 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:15:21 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:15:21 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:15:21 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:15:21 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:15:21 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:15:21 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:16:13 Asia/Ho_Chi_Minh] Medicines from service: Array
 (
-    [statusCode] => 404
-    [data] => 
+    [statusCode] => 200
+    [data] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 2
+                    [ten_thuoc] => Amoxicillin
+                    [so_luong] => 150
+                    [don_vi] => túi
+                    [don_gia] => 2323
+                )
+
+            [1] => Array
+                (
+                    [id] => 4
+                    [ten_thuoc] => Aspirin
+                    [so_luong] => 299
+                    [don_vi] => viên
+                    [don_gia] => 8080
+                )
+
+            [2] => Array
+                (
+                    [id] => 5
+                    [ten_thuoc] => Cetirizine
+                    [so_luong] => 120
+                    [don_vi] => ống
+                    [don_gia] => 3000
+                )
+
+            [3] => Array
+                (
+                    [id] => 1
+                    [ten_thuoc] => Paracetamol
+                    [so_luong] => 200
+                    [don_vi] => viên
+                    [don_gia] => 1000
+                )
+
+            [4] => Array
+                (
+                    [id] => 3
+                    [ten_thuoc] => Salbutamol
+                    [so_luong] => 100
+                    [don_vi] => chai
+                    [don_gia] => 5555
+                )
+
+        )
+
     [message] => 
 )
 
-[28-Aug-2025 01:26:49 Asia/Ho_Chi_Minh] error: Không thể tạo hồ sơ khám bệnh
-[28-Aug-2025 01:26:49 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:26:49 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:26:49 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
-Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
-#1 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:28:57 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:28:58 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:29:04 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:29:04 Asia/Ho_Chi_Minh] Creating record with data: Array
+[29-Aug-2025 02:16:13 Asia/Ho_Chi_Minh] Medicines: Array
 (
-    [patient_id] => 5
-    [doctor_id] => 1
-    [department_id] => 1
-    [lydo] => eweqw
-    [chan_doan] => treter
-    [ngay_taikham] => 
-    [ghichu] => retert
-)
-
-[28-Aug-2025 01:29:04 Asia/Ho_Chi_Minh] Create record result: Array
-(
-    [statusCode] => 400
-    [data] => Array
+    [0] => Array
         (
-            [message] => Invalid patient ID
+            [id] => 2
+            [ten_thuoc] => Amoxicillin
+            [so_luong] => 150
+            [don_vi] => túi
+            [don_gia] => 2323
         )
 
-    [message] => Invalid patient ID
-)
-
-[28-Aug-2025 01:29:04 Asia/Ho_Chi_Minh] error: Invalid patient ID
-[28-Aug-2025 01:29:04 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:29:04 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:29:04 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
-Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
-#1 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:30:24 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:30:25 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:30:25 Asia/Ho_Chi_Minh] Creating record with data: Array
-(
-    [patient_id] => 5
-    [doctor_id] => 1
-    [department_id] => 1
-    [lydo] => eweqw
-    [chan_doan] => treter
-    [ngay_taikham] => 
-    [ghichu] => retert
-)
-
-[28-Aug-2025 01:30:25 Asia/Ho_Chi_Minh] Create record result: Array
-(
-    [statusCode] => 400
-    [data] => Array
+    [1] => Array
         (
-            [message] => Invalid patient ID
+            [id] => 4
+            [ten_thuoc] => Aspirin
+            [so_luong] => 299
+            [don_vi] => viên
+            [don_gia] => 8080
         )
 
-    [message] => Invalid patient ID
-)
-
-[28-Aug-2025 01:30:25 Asia/Ho_Chi_Minh] error: Invalid patient ID
-[28-Aug-2025 01:30:25 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:30:25 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:30:25 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
-Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
-#1 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:30:39 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:30:40 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:30:40 Asia/Ho_Chi_Minh] Creating record with data: Array
-(
-    [patient_id] => 5
-    [doctor_id] => 1
-    [department_id] => 1
-    [lydo] => eweqw
-    [chan_doan] => treter
-    [ngay_taikham] => 
-    [ghichu] => retert
-)
-
-[28-Aug-2025 01:30:40 Asia/Ho_Chi_Minh] Create record result: Array
-(
-    [statusCode] => 400
-    [data] => Array
+    [2] => Array
         (
-            [message] => Invalid patient ID
+            [id] => 5
+            [ten_thuoc] => Cetirizine
+            [so_luong] => 120
+            [don_vi] => ống
+            [don_gia] => 3000
         )
 
-    [message] => Invalid patient ID
-)
-
-[28-Aug-2025 01:30:40 Asia/Ho_Chi_Minh] error: Invalid patient ID
-[28-Aug-2025 01:30:40 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:30:40 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:30:40 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
-Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
-#1 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:31:04 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:31:09 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:31:09 Asia/Ho_Chi_Minh] Creating record with data: Array
-(
-    [patient_id] => 5
-    [doctor_id] => 1
-    [department_id] => 1
-    [lydo] => eweqw
-    [chan_doan] => treter
-    [ngay_taikham] => 
-    [ghichu] => retert
-)
-
-[28-Aug-2025 01:31:10 Asia/Ho_Chi_Minh] Create record result: Array
-(
-    [statusCode] => 400
-    [data] => Array
+    [3] => Array
         (
-            [message] => Invalid patient ID
+            [id] => 1
+            [ten_thuoc] => Paracetamol
+            [so_luong] => 200
+            [don_vi] => viên
+            [don_gia] => 1000
         )
 
-    [message] => Invalid patient ID
-)
-
-[28-Aug-2025 01:31:10 Asia/Ho_Chi_Minh] error: Invalid patient ID
-[28-Aug-2025 01:31:10 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:31:10 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:31:10 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
-Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
-#1 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
-[28-Aug-2025 01:31:51 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:31:57 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:31:57 Asia/Ho_Chi_Minh] Creating record with data: Array
-(
-    [patient_id] => 5
-    [doctor_id] => 1
-    [department_id] => 1
-    [lydo] => eweqw
-    [chan_doan] => treter
-    [ngay_taikham] => 
-    [ghichu] => retert
-)
-
-[28-Aug-2025 01:31:57 Asia/Ho_Chi_Minh] Create record result: Array
-(
-    [statusCode] => 201
-    [data] => Array
+    [4] => Array
         (
-            [message] => Medical record created successfully
-            [id] => 6
+            [id] => 3
+            [ten_thuoc] => Salbutamol
+            [so_luong] => 100
+            [don_vi] => chai
+            [don_gia] => 5555
         )
 
-    [message] => Medical record created successfully
 )
 
-[28-Aug-2025 01:31:57 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined method AppointmentService::completeAppointment() in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:80
-Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->create()
-#1 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 80
-[28-Aug-2025 01:32:37 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:32:38 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:32:38 Asia/Ho_Chi_Minh] Creating record with data: Array
+[29-Aug-2025 02:16:13 Asia/Ho_Chi_Minh] Medicines from service: Array
 (
-    [patient_id] => 5
-    [doctor_id] => 1
-    [department_id] => 1
-    [lydo] => eweqw
-    [chan_doan] => treter
-    [ngay_taikham] => 
-    [ghichu] => retert
-)
-
-[28-Aug-2025 01:32:38 Asia/Ho_Chi_Minh] Create record result: Array
-(
-    [statusCode] => 201
+    [statusCode] => 200
     [data] => Array
         (
-            [message] => Medical record created successfully
-            [id] => 7
+            [0] => Array
+                (
+                    [id] => 2
+                    [ten_thuoc] => Amoxicillin
+                    [so_luong] => 150
+                    [don_vi] => túi
+                    [don_gia] => 2323
+                )
+
+            [1] => Array
+                (
+                    [id] => 4
+                    [ten_thuoc] => Aspirin
+                    [so_luong] => 299
+                    [don_vi] => viên
+                    [don_gia] => 8080
+                )
+
+            [2] => Array
+                (
+                    [id] => 5
+                    [ten_thuoc] => Cetirizine
+                    [so_luong] => 120
+                    [don_vi] => ống
+                    [don_gia] => 3000
+                )
+
+            [3] => Array
+                (
+                    [id] => 1
+                    [ten_thuoc] => Paracetamol
+                    [so_luong] => 200
+                    [don_vi] => viên
+                    [don_gia] => 1000
+                )
+
+            [4] => Array
+                (
+                    [id] => 3
+                    [ten_thuoc] => Salbutamol
+                    [so_luong] => 100
+                    [don_vi] => chai
+                    [don_gia] => 5555
+                )
+
         )
 
-    [message] => Medical record created successfully
+    [message] => 
 )
 
-[28-Aug-2025 01:32:38 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined method AppointmentService::completeAppointment() in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:80
-Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->create()
-#1 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 80
-[28-Aug-2025 01:34:18 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:34:19 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:34:19 Asia/Ho_Chi_Minh] Creating record with data: Array
+[29-Aug-2025 02:16:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:16:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:16:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:16:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:16:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:16:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:16:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:16:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:16:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:16:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:16:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:16:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:16:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 119
+[29-Aug-2025 02:16:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 141
+[29-Aug-2025 02:16:13 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "is_liquid" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 145
+[29-Aug-2025 02:20:54 Asia/Ho_Chi_Minh] Medicines: Array
 (
-    [patient_id] => 5
-    [doctor_id] => 1
-    [department_id] => 1
-    [lydo] => eweqw
-    [chan_doan] => treter
-    [ngay_taikham] => 
-    [ghichu] => retert
+    [message] => Error retrieving medicines
+    [error] => Unknown column 'm.created_at' in 'field list'
 )
 
-[28-Aug-2025 01:34:19 Asia/Ho_Chi_Minh] Create record result: Array
-(
-    [statusCode] => 201
-    [data] => Array
-        (
-            [message] => Medical record created successfully
-            [id] => 8
-        )
-
-    [message] => Medical record created successfully
-)
-
-[28-Aug-2025 01:34:19 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined method AppointmentService::completeAppointment() in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:80
+[29-Aug-2025 02:20:54 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php:115
 Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->create()
-#1 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 80
-[28-Aug-2025 01:34:41 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:34:48 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 01:34:48 Asia/Ho_Chi_Minh] Creating record with data: Array
-(
-    [patient_id] => 5
-    [doctor_id] => 1
-    [department_id] => 1
-    [lydo] => eweqw
-    [chan_doan] => treter
-    [ngay_taikham] => 
-    [ghichu] => retert
-)
-
-[28-Aug-2025 01:34:48 Asia/Ho_Chi_Minh] Create record result: Array
-(
-    [statusCode] => 201
-    [data] => Array
-        (
-            [message] => Medical record created successfully
-            [id] => 9
-        )
-
-    [message] => Medical record created successfully
-)
-
-[28-Aug-2025 01:34:48 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined method AppointmentService::completeAppointment() in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:80
-Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->create()
-#1 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 80
-[28-Aug-2025 01:36:17 Asia/Ho_Chi_Minh] Accessing prescriptions controller
-[28-Aug-2025 01:36:17 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\prescriptions\create.php:111
-Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\PrescriptionController.php(52): require()
-#1 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(156): PrescriptionController->create()
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\MedicineController.php(28): require()
+#1 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(244): MedicineController->index()
 #2 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\prescriptions\create.php on line 111
-[28-Aug-2025 02:13:27 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 02:13:30 Asia/Ho_Chi_Minh] Accessing records controller
-[28-Aug-2025 02:13:31 Asia/Ho_Chi_Minh] Accessing prescriptions controller
-[28-Aug-2025 02:13:31 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\prescriptions\create.php:111
-Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\PrescriptionController.php(52): require()
-#1 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(156): PrescriptionController->create()
-#2 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\prescriptions\create.php on line 111
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\medicines\index.php on line 115
+[29-Aug-2025 02:22:31 Asia/Ho_Chi_Minh] Medicines: Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [ten_thuoc] => Amoxicillin
+            [so_luong] => 150
+            [don_vi] => túi
+            [don_gia] => 2323
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [1] => Array
+        (
+            [id] => 4
+            [ten_thuoc] => Aspirin
+            [so_luong] => 299
+            [don_vi] => viên
+            [don_gia] => 8080
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [2] => Array
+        (
+            [id] => 5
+            [ten_thuoc] => Cetirizine
+            [so_luong] => 120
+            [don_vi] => ống
+            [don_gia] => 3000
+            [is_liquid] => 1
+            [volume_per_bottle] => 30
+            [volume_unit] => ml
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [3] => Array
+        (
+            [id] => 1
+            [ten_thuoc] => Paracetamol
+            [so_luong] => 200
+            [don_vi] => viên
+            [don_gia] => 1000
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [4] => Array
+        (
+            [id] => 3
+            [ten_thuoc] => Salbutamol
+            [so_luong] => 100
+            [don_vi] => chai
+            [don_gia] => 5555
+            [is_liquid] => 1
+            [volume_per_bottle] => 100
+            [volume_unit] => ml
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+)
+
+[29-Aug-2025 02:22:41 Asia/Ho_Chi_Minh] Medicines: Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [ten_thuoc] => Amoxicillin
+            [so_luong] => 150
+            [don_vi] => túi
+            [don_gia] => 2323
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [1] => Array
+        (
+            [id] => 4
+            [ten_thuoc] => Aspirin
+            [so_luong] => 299
+            [don_vi] => viên
+            [don_gia] => 8080
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [2] => Array
+        (
+            [id] => 5
+            [ten_thuoc] => Cetirizine
+            [so_luong] => 120
+            [don_vi] => ống
+            [don_gia] => 3000
+            [is_liquid] => 1
+            [volume_per_bottle] => 30
+            [volume_unit] => ml
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [3] => Array
+        (
+            [id] => 1
+            [ten_thuoc] => Paracetamol
+            [so_luong] => 200
+            [don_vi] => viên
+            [don_gia] => 1000
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [4] => Array
+        (
+            [id] => 3
+            [ten_thuoc] => Salbutamol
+            [so_luong] => 100
+            [don_vi] => chai
+            [don_gia] => 5555
+            [is_liquid] => 1
+            [volume_per_bottle] => 100
+            [volume_unit] => ml
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+)
+
+[29-Aug-2025 02:22:47 Asia/Ho_Chi_Minh] Medicines: Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [ten_thuoc] => Amoxicillin
+            [so_luong] => 150
+            [don_vi] => túi
+            [don_gia] => 2323
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [1] => Array
+        (
+            [id] => 4
+            [ten_thuoc] => Aspirin
+            [so_luong] => 299
+            [don_vi] => viên
+            [don_gia] => 8080
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [2] => Array
+        (
+            [id] => 5
+            [ten_thuoc] => Cetirizine
+            [so_luong] => 120
+            [don_vi] => ống
+            [don_gia] => 3000
+            [is_liquid] => 1
+            [volume_per_bottle] => 30
+            [volume_unit] => ml
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [3] => Array
+        (
+            [id] => 1
+            [ten_thuoc] => Paracetamol
+            [so_luong] => 200
+            [don_vi] => viên
+            [don_gia] => 1000
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [4] => Array
+        (
+            [id] => 3
+            [ten_thuoc] => Salbutamol
+            [so_luong] => 100
+            [don_vi] => chai
+            [don_gia] => 5555
+            [is_liquid] => 1
+            [volume_per_bottle] => 100
+            [volume_unit] => ml
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+)
+
+[29-Aug-2025 02:22:49 Asia/Ho_Chi_Minh] Medicines: Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [ten_thuoc] => Amoxicillin
+            [so_luong] => 150
+            [don_vi] => túi
+            [don_gia] => 2323
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [1] => Array
+        (
+            [id] => 4
+            [ten_thuoc] => Aspirin
+            [so_luong] => 299
+            [don_vi] => viên
+            [don_gia] => 8080
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [2] => Array
+        (
+            [id] => 5
+            [ten_thuoc] => Cetirizine
+            [so_luong] => 120
+            [don_vi] => ống
+            [don_gia] => 3000
+            [is_liquid] => 1
+            [volume_per_bottle] => 30
+            [volume_unit] => ml
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [3] => Array
+        (
+            [id] => 1
+            [ten_thuoc] => Paracetamol
+            [so_luong] => 200
+            [don_vi] => viên
+            [don_gia] => 1000
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [4] => Array
+        (
+            [id] => 3
+            [ten_thuoc] => Salbutamol
+            [so_luong] => 100
+            [don_vi] => chai
+            [don_gia] => 5555
+            [is_liquid] => 1
+            [volume_per_bottle] => 100
+            [volume_unit] => ml
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+)
+
+[29-Aug-2025 02:22:51 Asia/Ho_Chi_Minh] Medicines: Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [ten_thuoc] => Amoxicillin
+            [so_luong] => 150
+            [don_vi] => túi
+            [don_gia] => 2323
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [1] => Array
+        (
+            [id] => 4
+            [ten_thuoc] => Aspirin
+            [so_luong] => 299
+            [don_vi] => viên
+            [don_gia] => 8080
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [2] => Array
+        (
+            [id] => 5
+            [ten_thuoc] => Cetirizine
+            [so_luong] => 120
+            [don_vi] => ống
+            [don_gia] => 3000
+            [is_liquid] => 1
+            [volume_per_bottle] => 30
+            [volume_unit] => ml
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [3] => Array
+        (
+            [id] => 1
+            [ten_thuoc] => Paracetamol
+            [so_luong] => 200
+            [don_vi] => viên
+            [don_gia] => 1000
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [4] => Array
+        (
+            [id] => 3
+            [ten_thuoc] => Salbutamol
+            [so_luong] => 100
+            [don_vi] => chai
+            [don_gia] => 5555
+            [is_liquid] => 1
+            [volume_per_bottle] => 100
+            [volume_unit] => ml
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+)
+
+[29-Aug-2025 02:22:51 Asia/Ho_Chi_Minh] Medicines: Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [ten_thuoc] => Amoxicillin
+            [so_luong] => 150
+            [don_vi] => túi
+            [don_gia] => 2323
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [1] => Array
+        (
+            [id] => 4
+            [ten_thuoc] => Aspirin
+            [so_luong] => 299
+            [don_vi] => viên
+            [don_gia] => 8080
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [2] => Array
+        (
+            [id] => 5
+            [ten_thuoc] => Cetirizine
+            [so_luong] => 120
+            [don_vi] => ống
+            [don_gia] => 3000
+            [is_liquid] => 1
+            [volume_per_bottle] => 30
+            [volume_unit] => ml
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [3] => Array
+        (
+            [id] => 1
+            [ten_thuoc] => Paracetamol
+            [so_luong] => 200
+            [don_vi] => viên
+            [don_gia] => 1000
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [4] => Array
+        (
+            [id] => 3
+            [ten_thuoc] => Salbutamol
+            [so_luong] => 100
+            [don_vi] => chai
+            [don_gia] => 5555
+            [is_liquid] => 1
+            [volume_per_bottle] => 100
+            [volume_unit] => ml
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+)
+
+[29-Aug-2025 02:22:52 Asia/Ho_Chi_Minh] Medicines: Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [ten_thuoc] => Amoxicillin
+            [so_luong] => 150
+            [don_vi] => túi
+            [don_gia] => 2323
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [1] => Array
+        (
+            [id] => 4
+            [ten_thuoc] => Aspirin
+            [so_luong] => 299
+            [don_vi] => viên
+            [don_gia] => 8080
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [2] => Array
+        (
+            [id] => 5
+            [ten_thuoc] => Cetirizine
+            [so_luong] => 120
+            [don_vi] => ống
+            [don_gia] => 3000
+            [is_liquid] => 1
+            [volume_per_bottle] => 30
+            [volume_unit] => ml
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [3] => Array
+        (
+            [id] => 1
+            [ten_thuoc] => Paracetamol
+            [so_luong] => 200
+            [don_vi] => viên
+            [don_gia] => 1000
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [4] => Array
+        (
+            [id] => 3
+            [ten_thuoc] => Salbutamol
+            [so_luong] => 100
+            [don_vi] => chai
+            [don_gia] => 5555
+            [is_liquid] => 1
+            [volume_per_bottle] => 100
+            [volume_unit] => ml
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+)
+
+[29-Aug-2025 02:22:54 Asia/Ho_Chi_Minh] Medicines: Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [ten_thuoc] => Amoxicillin
+            [so_luong] => 150
+            [don_vi] => túi
+            [don_gia] => 2323
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [1] => Array
+        (
+            [id] => 4
+            [ten_thuoc] => Aspirin
+            [so_luong] => 299
+            [don_vi] => viên
+            [don_gia] => 8080
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [2] => Array
+        (
+            [id] => 5
+            [ten_thuoc] => Cetirizine
+            [so_luong] => 120
+            [don_vi] => ống
+            [don_gia] => 3000
+            [is_liquid] => 1
+            [volume_per_bottle] => 30
+            [volume_unit] => ml
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [3] => Array
+        (
+            [id] => 1
+            [ten_thuoc] => Paracetamol
+            [so_luong] => 200
+            [don_vi] => viên
+            [don_gia] => 1000
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [4] => Array
+        (
+            [id] => 3
+            [ten_thuoc] => Salbutamol
+            [so_luong] => 100
+            [don_vi] => chai
+            [don_gia] => 5555
+            [is_liquid] => 1
+            [volume_per_bottle] => 100
+            [volume_unit] => ml
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+)
+
+[29-Aug-2025 02:22:55 Asia/Ho_Chi_Minh] Medicines: Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [ten_thuoc] => Amoxicillin
+            [so_luong] => 150
+            [don_vi] => túi
+            [don_gia] => 2323
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [1] => Array
+        (
+            [id] => 4
+            [ten_thuoc] => Aspirin
+            [so_luong] => 299
+            [don_vi] => viên
+            [don_gia] => 8080
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [2] => Array
+        (
+            [id] => 5
+            [ten_thuoc] => Cetirizine
+            [so_luong] => 120
+            [don_vi] => ống
+            [don_gia] => 3000
+            [is_liquid] => 1
+            [volume_per_bottle] => 30
+            [volume_unit] => ml
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [3] => Array
+        (
+            [id] => 1
+            [ten_thuoc] => Paracetamol
+            [so_luong] => 200
+            [don_vi] => viên
+            [don_gia] => 1000
+            [is_liquid] => 0
+            [volume_per_bottle] => 
+            [volume_unit] => 
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+    [4] => Array
+        (
+            [id] => 3
+            [ten_thuoc] => Salbutamol
+            [so_luong] => 100
+            [don_vi] => chai
+            [don_gia] => 5555
+            [is_liquid] => 1
+            [volume_per_bottle] => 100
+            [volume_unit] => ml
+            [created_at] => 2025-08-29 02:22:25
+            [updated_at] => 2025-08-29 02:22:25
+        )
+
+)
+
+[29-Aug-2025 02:24:19 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\error.php on line 7
+[29-Aug-2025 02:24:21 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\error.php on line 7
+[29-Aug-2025 02:24:25 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\error.php on line 7
+[29-Aug-2025 02:24:28 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\error.php on line 7
+[29-Aug-2025 02:25:12 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\error.php on line 7

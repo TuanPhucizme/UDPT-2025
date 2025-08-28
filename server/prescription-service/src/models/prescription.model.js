@@ -234,9 +234,8 @@ export const updatePrescriptionStatus = async (id, status, pharmacist_id) => {
       if (!pharmacist) {
         throw new Error('Invalid pharmacist ID');
       }
-      
       // Check if the user is a pharmacist (role_id = 2)
-      if (pharmacist.role_id !== 2) {
+      if (pharmacist.role !== 'duocsi') {
         throw new Error('Only pharmacists can dispense medications');
       }
     } else if (status === 'dispensed') {
@@ -280,6 +279,22 @@ export const updatePrescriptionStatus = async (id, status, pharmacist_id) => {
       
       // Check if we have enough stock and ensure bottle instructions
       for (const medicine of prescriptionMedicines) {
+        // Get medicine details to determine if it's liquid
+        const [medicineDetails] = await conn.query(
+          `SELECT 
+            is_liquid, 
+            volume_per_bottle,
+            volume_unit,
+            so_luong AS bottles_in_stock,
+            ten_thuoc,
+            don_vi
+          FROM medicines 
+          WHERE id = ?`,
+          [medicine.medicine_id]
+        );
+        
+        const isLiquid = medicineDetails[0]?.is_liquid || false;
+        
         // Add bottle usage note if missing
         if (medicine.don_vi.toLowerCase() === 'chai' && (!medicine.note || medicine.note.trim() === '')) {
           await conn.query(
@@ -290,18 +305,80 @@ export const updatePrescriptionStatus = async (id, status, pharmacist_id) => {
           );
         }
         
-        // Check stock availability
-        if (medicine.current_stock < medicine.dose) {
-          throw new Error(`Không đủ số lượng thuốc "${medicine.ten_thuoc}" trong kho (cần ${medicine.dose}, hiện có ${medicine.current_stock})`);
+        // Check stock differently based on whether it's liquid or not
+        if (isLiquid) {
+          // For liquid medicines, we need to calculate how many bottles we need
+          const volumePerBottle = medicineDetails[0].volume_per_bottle;
+          const bottlesInStock = medicineDetails[0].bottles_in_stock;
+          
+          // Calculate how many bottles we need based on prescribed volume
+          // If dose is in ml and bottle is 100ml, we might need multiple bottles
+          const totalVolumeNeeded = medicine.dose; // Assuming dose is already in correct units (ml)
+          const bottlesNeeded = Math.ceil(totalVolumeNeeded / volumePerBottle);
+          
+          if (bottlesNeeded > bottlesInStock) {
+            throw new Error(
+              `Không đủ số lượng thuốc "${medicineDetails[0].ten_thuoc}" trong kho ` +
+              `(cần ${bottlesNeeded} chai, hiện có ${bottlesInStock} chai)`
+            );
+          }
+          
+          // Store the calculated bottles needed for later use
+          medicine.bottlesNeeded = bottlesNeeded;
+        } else {
+          // Standard check for non-liquid medicines
+          if (medicineDetails[0].bottles_in_stock < medicine.dose) {
+            throw new Error(
+              `Không đủ số lượng thuốc "${medicineDetails[0].ten_thuoc}" trong kho ` +
+              `(cần ${medicine.dose}, hiện có ${medicineDetails[0].bottles_in_stock})`
+            );
+          }
         }
       }
       
       // Update stock for each medicine
       for (const medicine of prescriptionMedicines) {
-        await conn.query(
-          'UPDATE medicines SET so_luong = so_luong - ? WHERE id = ?',
-          [medicine.dose, medicine.medicine_id]
+        const [medicineDetails] = await conn.query(
+          `SELECT is_liquid FROM medicines WHERE id = ?`,
+          [medicine.medicine_id]
         );
+        
+        const isLiquid = medicineDetails[0]?.is_liquid || false;
+        
+        if (isLiquid) {
+          // For liquid medicines, subtract the number of bottles
+          await conn.query(
+            'UPDATE medicines SET so_luong = so_luong - ? WHERE id = ?',
+            [medicine.bottlesNeeded, medicine.medicine_id]
+          );
+          
+          // Log the transaction for tracking bottle usage
+          await conn.query(
+            `INSERT INTO medicine_stock_log (
+              medicine_id,
+              prescription_id,
+              action_type,
+              quantity_change,
+              bottles_used,
+              volume_used,
+              note
+            ) VALUES (?, ?, 'dispense', ?, ?, ?, ?)`,
+            [
+              medicine.medicine_id,
+              id,
+              medicine.bottlesNeeded,
+              medicine.bottlesNeeded,
+              medicine.dose, // Volume used
+              `Dispensed ${medicine.dose}${medicineDetails[0].volume_unit} from ${medicine.bottlesNeeded} bottles`
+            ]
+          );
+        } else {
+          // Standard update for non-liquid medicines
+          await conn.query(
+            'UPDATE medicines SET so_luong = so_luong - ? WHERE id = ?',
+            [medicine.dose, medicine.medicine_id]
+          );
+        }
       }
     }
     

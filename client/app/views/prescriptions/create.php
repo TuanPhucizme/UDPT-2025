@@ -312,6 +312,73 @@ document.addEventListener('DOMContentLoaded', function() {
     // [Code omitted for brevity - it's the same as in records/create.php]
     <?php endif; ?>
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  // When a medicine is selected, check if it's a liquid medicine
+  document.querySelectorAll('select[name="medicines[]"]').forEach(select => {
+    select.addEventListener('change', function() {
+      const medicineItem = this.closest('.medicine-item');
+      const selectedMedicineId = this.value;
+      
+      if (selectedMedicineId) {
+        // Fetch medicine details via AJAX
+        fetch(`/api/medicines/${selectedMedicineId}`)
+          .then(response => response.json())
+          .then(medicine => {
+            // Update the UI based on medicine type
+            if (medicine.is_liquid) {
+              // For liquid medicines, show volume fields
+              const doseInput = medicineItem.querySelector('input[name="dosage[]"]');
+              const doseLabel = medicineItem.querySelector('label[for^="dosage"]');
+              
+              // Change label to reflect volume
+              doseLabel.textContent = 'Thể tích (ml):';
+              
+              // Add volume-related fields
+              const volumePerBottle = medicine.volume_per_bottle || 100;
+              medicineItem.querySelector('.medicine-unit').textContent = medicine.volume_unit || 'ml';
+              
+              // Add a note about bottles
+              const noteField = medicineItem.querySelector('input[name="note[]"]');
+              if (!noteField.value) {
+                noteField.value = 'Tham khảo hướng dẫn sử dụng trên chai';
+              }
+              
+              // Display bottle calculation
+              const volumeInfo = document.createElement('small');
+              volumeInfo.className = 'text-muted d-block mt-1';
+              volumeInfo.innerHTML = `Mỗi chai chứa ${volumePerBottle}${medicine.volume_unit}. <span class="bottle-count"></span>`;
+              doseInput.parentNode.appendChild(volumeInfo);
+              
+              // Update bottle count when dose changes
+              doseInput.addEventListener('input', function() {
+                const volume = parseFloat(this.value) || 0;
+                const bottles = Math.ceil(volume / volumePerBottle);
+                const bottleCount = medicineItem.querySelector('.bottle-count');
+                bottleCount.textContent = `Cần dùng ${bottles} chai`;
+                
+                // Highlight if dose exceeds available stock
+                if (bottles > medicine.so_luong) {
+                  bottleCount.classList.add('text-danger');
+                  bottleCount.textContent += ` (chỉ có ${medicine.so_luong} chai trong kho)`;
+                } else {
+                  bottleCount.classList.remove('text-danger');
+                }
+              });
+              
+              // Trigger input event to calculate initial bottle count
+              doseInput.dispatchEvent(new Event('input'));
+            } else {
+              // For regular medicines (pills, tablets, etc.)
+              const doseLabel = medicineItem.querySelector('label[for^="dosage"]');
+              doseLabel.textContent = 'Liều dùng:';
+              medicineItem.querySelector('.medicine-unit').textContent = medicine.don_vi;
+            }
+          });
+      }
+    });
+  });
+});
 </script>
 
 <?php require_once '../app/views/layouts/footer.php'; ?>

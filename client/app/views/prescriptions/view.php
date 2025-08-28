@@ -121,7 +121,7 @@
                                 <tr>
                                     <th style="width: 5%">#</th>
                                     <th style="width: 30%">Tên thuốc</th>
-                                    <th style="width: 15%">Liều dùng</th>
+                                    <th style="width: 15%">Liều dùng mỗi lần</th>
                                     <th style="width: 15%">Tần suất</th>
                                     <th style="width: 15%">Thời gian dùng</th>
                                     <th style="width: 20%">Ghi chú</th>

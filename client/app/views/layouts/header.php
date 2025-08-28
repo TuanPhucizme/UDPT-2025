@@ -41,9 +41,52 @@
                                 <span>Phát thuốc</span>
                             </a>
                         <?php endif; ?>
+                        <?php if ($_SESSION['user']['role'] === 'duocsi' || $_SESSION['user']['role'] === 'admin'): ?>
+                            <a href="/medicines" class="nav-link"> Quản lý Thuốc
+                            </a>
+                        <?php endif; ?>
+                </div>
                     <?php endif; ?>
                 </div>
-
+                <ul class="navbar-nav ms-auto">
+                    <?php if ($_SESSION['user']['role'] === 'duocsi' || $_SESSION['user']['role'] === 'admin'): ?>
+                        <?php
+                        // Get low stock count - in a real app, this would come from a controller
+                        require_once '../app/services/PrescriptionService.php';
+                        $prescriptionService = new PrescriptionService();
+                        $lowStockResult = $prescriptionService->getAllMedicines(['stock_status' => 'low']);
+                        $lowStockCount = count($lowStockResult['data'] ?? []);
+                        ?>
+                        
+                        <?php if ($lowStockCount > 0): ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="alertsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <span class="badge badge-danger badge-counter"><?= $lowStockCount ?></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Cảnh báo kho thuốc
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="/medicines?filter=low">
+                                    <div class="me-3">
+                                        <div class="icon-circle bg-warning">
+                                            <i class="fas fa-exclamation-triangle text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500"><?= date('d/m/Y') ?></div>
+                                        <span class="font-weight-bold"><?= $lowStockCount ?> loại thuốc sắp hết hàng</span>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="/medicines?filter=low">Xem tất cả</a>
+                            </div>
+                        </li>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    
+                    <!-- Rest of the navbar items -->
+                </ul>
                 <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] !== 'benhnhan'): ?>
                     <form class="d-flex me-3" action="/patients/search" method="GET">
                         <input class="form-control me-2" type="search" 
@@ -93,3 +136,21 @@
     <?php endif; ?>
 
     <main class="py-4 mt-5">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-9">
+                    <!-- Main Content -->
+                    <!-- Content will be injected here based on the page -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // Custom JavaScript can be added here
+    </script>
+</body>
+</html>

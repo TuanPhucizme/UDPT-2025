@@ -69,8 +69,15 @@ $routes = [
         'pending'  // Add the new pending route
     ],
     'reports' => ['prescriptions','patients'],
-    'notifications' => ['index','read','readAll']
-
+    'notifications' => ['index','read','readAll'],
+    'medicines' => [
+        'index', 
+        'create', 
+        'edit', 
+        'update-stock',
+        'stock-history',
+        'report'
+    ],
 ];
 try {
     // Validate route
@@ -216,6 +223,23 @@ try {
             AuthMiddleware::authorizeRoles('patient','admin','letan')();
             require_once '../app/controllers/NotificationController.php';
             $controller = new NotificationController();
+            if (method_exists($controller, $action)) {
+                call_user_func_array([$controller, $action], $params);
+            } else {
+                throw new Exception('Action not found', 404);
+            }
+            break;
+        case 'medicines':
+            AuthMiddleware::authenticate();
+            // Only pharmacists and admins can create and update medicines
+            if (in_array($action, ['create', 'edit', 'update-stock'])) {
+                AuthMiddleware::authorizeRoles('duocsi', 'admin')();
+            } else {
+                // For viewing, all authenticated staff can access
+                AuthMiddleware::authorizeRoles('bacsi', 'duocsi', 'admin')();
+            }
+            require_once '../app/controllers/MedicineController.php';
+            $controller = new MedicineController();
             if (method_exists($controller, $action)) {
                 call_user_func_array([$controller, $action], $params);
             } else {

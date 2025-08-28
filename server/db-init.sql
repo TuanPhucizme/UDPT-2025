@@ -65,6 +65,7 @@ CREATE TABLE medical_records (
   ngay_taikham DATE,
   ghichu TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   FOREIGN KEY (patient_id) REFERENCES patients(id) -- Khóa ngoại trong cùng DB thì giữ lại
 );
 
@@ -118,7 +119,9 @@ CREATE TABLE medicines (
   id INT AUTO_INCREMENT PRIMARY KEY,
   ten_thuoc VARCHAR(255) NOT NULL UNIQUE,
   so_luong INT,
-  don_vi VARCHAR(50) NOT NULL
+  don_vi VARCHAR(50) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE prescriptions (
@@ -139,6 +142,20 @@ CREATE TABLE prescription_medicines (
   duration VARCHAR(50),
   note TEXT,
   FOREIGN KEY (prescription_id) REFERENCES prescriptions(id)
+);
+CREATE TABLE IF NOT EXISTS medicine_stock_log (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  medicine_id INT NOT NULL,
+  prescription_id INT NULL,
+  action_type ENUM('purchase', 'dispense', 'adjustment', 'return') NOT NULL,
+  quantity_change INT NOT NULL,
+  bottles_used INT NULL,
+  volume_used FLOAT NULL,
+  note TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  created_by INT NULL,
+  FOREIGN KEY (medicine_id) REFERENCES medicines(id),
+  FOREIGN KEY (prescription_id) REFERENCES prescriptions(id) ON DELETE SET NULL
 );
 -- Sample Data for prescription-service
 INSERT INTO medicines (ten_thuoc, so_luong,don_vi) VALUES
