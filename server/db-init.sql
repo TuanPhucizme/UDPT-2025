@@ -158,12 +158,14 @@ CREATE TABLE IF NOT EXISTS medicine_stock_log (
   FOREIGN KEY (prescription_id) REFERENCES prescriptions(id) ON DELETE SET NULL
 );
 -- Sample Data for prescription-service
-INSERT INTO medicines (ten_thuoc, so_luong,don_vi) VALUES
-('Paracetamol', 200,'viên'),
-('Amoxicillin', 150,'túi'),
-('Salbutamol', 100,'ống'),
-('Aspirin', 300,'viên'),
-('Cetirizine', 120,'chai');
+INSERT INTO medicines 
+(id, ten_thuoc, so_luong, don_vi, don_gia, is_liquid, bottle_volume_per_bottle, volume_unit, created_at, updated_at)
+VALUES
+(1, 'Paracetamol', 1, 'viên', 1000, 0, NULL, NULL, '2025-08-29 02:22:25', '2025-08-29 02:25:10'),
+(2, 'Amoxicillin', 150, 'túi', 2323, 0, NULL, NULL, '2025-08-29 02:22:25', '2025-08-29 02:22:25'),
+(3, 'Salbutamol', 100, 'chai', 5555, 1, 100, 'ml', '2025-08-29 02:22:25', '2025-08-29 02:22:25'),
+(4, 'Aspirin', 299, 'viên', 8080, 0, NULL, NULL, '2025-08-29 02:22:25', '2025-08-29 02:22:25'),
+(5, 'Cetirizine', 120, 'ống', 3000, 1, 30, 'ml', '2025-08-29 02:22:25', '2025-08-29 02:22:25');
 
 -- Updated sample prescriptions with numeric dose
 INSERT INTO prescriptions (record_id, pharmacist_id, status, created_at) VALUES
