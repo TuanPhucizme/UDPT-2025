@@ -3,7 +3,9 @@ import {
   create,
   updateStatus,
   getByPatient,
-  getByRecordId
+  getByRecordId,
+  getMedicines,
+  getById
 } from '../controllers/prescription.controller.js';
 import { authMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
 
@@ -23,5 +25,8 @@ router.get(
   authMiddleware,
   getByRecordId
 );
+router.get('/medicines', authMiddleware, getMedicines);
+router.get('/:id', authMiddleware, authorizeRoles('bacsi', 'duocsi', 'admin'), getById);
+router.get('/internal/medicines', authMiddleware, getMedicines); // Internal route
 
 export default router;

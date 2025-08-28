@@ -25,9 +25,25 @@
                         <dt class="col-sm-4">Địa chỉ</dt>
                         <dd class="col-sm-8"><?= htmlspecialchars($patient['diachi']) ?></dd>
                     </dl>
-                    <a href="/patients/edit/<?= $patient['id'] ?>" class="btn btn-primary">
-                        <i class="fas fa-edit"></i> Cập nhật thông tin
-                    </a>
+                    
+                    <!-- Add action buttons -->
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="/patients/edit/<?= $patient['id'] ?>" class="btn btn-primary">
+                            <i class="fas fa-edit"></i> Cập nhật thông tin
+                        </a>
+                        
+                        <?php if ($_SESSION['user']['role'] === 'bacsi'): ?>
+                        <a href="/records/create?patient_id=<?= $patient['id'] ?>" class="btn btn-success">
+                            <i class="fas fa-notes-medical"></i> Tạo hồ sơ khám bệnh
+                        </a>
+                        <?php endif; ?>
+                        
+                        <?php if ($_SESSION['user']['role'] === 'letan'): ?>
+                        <a href="/appointments/create?patient_id=<?= $patient['id'] ?>" class="btn btn-info">
+                            <i class="fas fa-calendar-plus"></i> Đặt lịch hẹn
+                        </a>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -37,6 +53,12 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">Lịch Sử Khám Bệnh</h5>
+                    
+                    <?php if ($_SESSION['user']['role'] === 'bacsi'): ?>
+                    <a href="/records/create?patient_id=<?= $patient['id'] ?>" class="btn btn-sm btn-success">
+                        <i class="fas fa-plus"></i> Khám mới
+                    </a>
+                    <?php endif; ?>
                 </div>
                 <div class="card-body">
                     <div class="timeline">
@@ -114,6 +136,14 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
+                                            </div>
+                                        <?php endif; ?>
+
+                                        <?php if (empty($record['prescriptions']) && $_SESSION['user']['role'] === 'bacsi'): ?>
+                                            <div class="mt-3">
+                                                <a href="/prescriptions/create?record_id=<?= $record['id'] ?>" class="btn btn-sm btn-warning">
+                                                    <i class="fas fa-prescription-bottle-alt"></i> Kê đơn thuốc
+                                                </a>
                                             </div>
                                         <?php endif; ?>
 

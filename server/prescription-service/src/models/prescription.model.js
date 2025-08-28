@@ -189,3 +189,24 @@ export const getPrescriptionsByRecordId = async (recordId) => {
     throw error;
   }
 };
+
+// Add this method
+export const getAllMedicines = async () => {
+  try {
+    const [rows] = await db.query(
+      `SELECT 
+        id, 
+        ten_thuoc, 
+        don_vi, 
+        gia,
+        huong_dan_su_dung,
+        tac_dung_phu
+      FROM medicines
+      ORDER BY ten_thuoc ASC`
+    );
+    return rows;
+  } catch (error) {
+    console.error('Error in getAllMedicines:', error);
+    throw error;
+  }
+};

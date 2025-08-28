@@ -3,7 +3,8 @@ import {
   updatePrescriptionStatus,
   getPrescriptionsByPatient,
   getPrescriptionById,
-  getPrescriptionsByRecordId
+  getPrescriptionsByRecordId,
+  getAllMedicines
 } from '../models/prescription.model.js';
 
 import {
@@ -75,5 +76,30 @@ export const getByRecordId = async (req, res) => {
       message: 'Lỗi lấy thông tin đơn thuốc', 
       error: error.message 
     });
+  }
+};
+
+// Add these controller methods
+export const getMedicines = async (req, res) => {
+  try {
+    const medicines = await getAllMedicines();
+    res.json(medicines);
+  } catch (err) {
+    res.status(500).json({ message: 'Lỗi lấy danh sách thuốc', error: err.message });
+  }
+};
+
+export const getById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const prescription = await getPrescriptionById(id);
+    
+    if (!prescription) {
+      return res.status(404).json({ message: 'Không tìm thấy đơn thuốc' });
+    }
+    
+    res.json(prescription);
+  } catch (err) {
+    res.status(500).json({ message: 'Lỗi lấy thông tin đơn thuốc', error: err.message });
   }
 };

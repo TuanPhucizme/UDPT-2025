@@ -4,6 +4,7 @@ import {
     getMedicalRecordDetails,
     updateMedicalRecord
 } from '../models/record.model.js';
+import { getPatientById } from '../models/patient.model.js';
 import axios from 'axios';
 import services from '../config/services.js';
 
@@ -95,24 +96,24 @@ export const createRecord = async (req, res) => {
     const result = await createMedicalRecord(recordData);
 
     // Notify appointment service to update appointment status if exists
-    try {
-      await axios.post(
-        `${services.NOTIFICATION_SERVICE_URL}/api/notifications`,
-        {
-          type: 'MEDICAL_RECORD_CREATED',
-          patient_id,
-          doctor_id,
-          record_id: result.insertId
-        },
-        {
-          headers: {
-            'Authorization': `Bearer ${process.env.INTERNAL_API_TOKEN}`
-          }
-        }
-      );
-    } catch (error) {
-      console.error('Failed to send notification:', error);
-    }
+    // try {
+    //   await axios.post(
+    //     `${services.NOTIFICATION_SERVICE_URL}/api/notifications`,
+    //     {
+    //       type: 'MEDICAL_RECORD_CREATED',
+    //       patient_id,
+    //       doctor_id,
+    //       record_id: result.insertId
+    //     },
+    //     {
+    //       headers: {
+    //         'Authorization': `Bearer ${process.env.INTERNAL_API_TOKEN}`
+    //       }
+    //     }
+    //   );
+    // } catch (error) {
+    //   console.error('Failed to send notification:', error);
+    // }
 
     res.status(201).json({
       message: 'Medical record created successfully',
@@ -170,26 +171,26 @@ export const updateRecord = async (req, res) => {
         await updateMedicalRecord(recordId, updateData);
 
         // Send notification if status changed to completed
-        if (status === 'completed' && existingRecord.status !== 'completed') {
-            try {
-                await axios.post(
-                    `${services.NOTIFICATION_SERVICE_URL}/api/notifications`,
-                    {
-                        type: 'MEDICAL_RECORD_COMPLETED',
-                        patient_id: existingRecord.patient_id,
-                        doctor_id: existingRecord.doctor_id,
-                        record_id: recordId
-                    },
-                    {
-                        headers: {
-                            'Authorization': `Bearer ${process.env.INTERNAL_API_TOKEN}`
-                        }
-                    }
-                );
-            } catch (error) {
-                console.error('Failed to send completion notification:', error);
-            }
-        }
+        // if (status === 'completed' && existingRecord.status !== 'completed') {
+        //     try {
+        //         await axios.post(
+        //             `${services.NOTIFICATION_SERVICE_URL}/api/notifications/test-publish`,
+        //             {
+        //                 type: 'MEDICAL_RECORD_COMPLETED',
+        //                 patient_id: existingRecord.patient_id,
+        //                 doctor_id: existingRecord.doctor_id,
+        //                 record_id: recordId
+        //             },
+        //             {
+        //                 headers: {
+        //                     'Authorization': `Bearer ${process.env.INTERNAL_API_TOKEN}`
+        //                 }
+        //             }
+        //         );
+        //     } catch (error) {
+        //         console.error('Failed to send completion notification:', error);
+        //     }
+        // }
 
         res.json({ 
             message: 'Cập nhật hồ sơ bệnh án thành công',
@@ -251,11 +252,8 @@ export const getRecordDetails = async (req, res) => {
 
 const checkPatientExists = async (patientId) => {
   try {
-    const [rows] = await db.query(
-      'SELECT id FROM patients WHERE id = ?',
-      [patientId]
-    );
-    return rows.length > 0;
+    const rows = await getPatientById(patientId);
+    return rows!= null;
   } catch (error) {
     console.error('Error checking patient:', error);
     return false;

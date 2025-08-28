@@ -1,86 +1,375 @@
-[27-Aug-2025 11:09:43 Europe/Berlin] 2023-07-01 09:00:00
-[27-Aug-2025 11:13:06 Europe/Berlin] 2025-08-27 12:30:00
-[27-Aug-2025 11:13:10 Europe/Berlin] 2025-08-27 08:00:00
-[27-Aug-2025 11:13:13 Europe/Berlin] 2023-07-05 08:30:00
-[27-Aug-2025 11:13:53 Europe/Berlin] 2025-08-27 12:30:00
-[27-Aug-2025 11:13:56 Europe/Berlin] 2025-08-27 08:00:00
-[27-Aug-2025 11:14:36 Europe/Berlin] 2023-07-01 09:00:00
-[27-Aug-2025 11:14:42 Europe/Berlin] 2023-07-01 09:00:00
-[27-Aug-2025 11:15:52 Europe/Berlin] 2025-08-27 12:30:00
-[27-Aug-2025 11:15:55 Europe/Berlin] 2025-08-27 08:00:00
-[27-Aug-2025 11:15:57 Europe/Berlin] 2023-07-05 08:30:00
-[27-Aug-2025 11:16:02 Europe/Berlin] api path: patients/search
-[27-Aug-2025 11:16:02 Europe/Berlin] name=&phone=1111
-[27-Aug-2025 11:16:06 Europe/Berlin] api path: departments/1/doctors
-[27-Aug-2025 11:16:08 Europe/Berlin] api path: doctors/2/schedule
-[27-Aug-2025 11:16:08 Europe/Berlin] api path: doctors/2/slots
-[27-Aug-2025 11:16:10 Europe/Berlin] api path: doctors/1/slots
-[27-Aug-2025 11:16:10 Europe/Berlin] api path: doctors/1/schedule
-[27-Aug-2025 11:17:16 Europe/Berlin] api path: doctors/1/schedule
-[27-Aug-2025 11:17:16 Europe/Berlin] api path: doctors/1/slots
-[27-Aug-2025 11:17:38 Europe/Berlin] api path: departments/1/doctors
-[27-Aug-2025 11:17:39 Europe/Berlin] api path: doctors/1/slots
-[27-Aug-2025 11:17:39 Europe/Berlin] api path: doctors/1/schedule
-[27-Aug-2025 11:19:13 Europe/Berlin] api path: departments/1/doctors
-[27-Aug-2025 11:19:13 Europe/Berlin] api path: doctors/1/schedule
-[27-Aug-2025 11:19:14 Europe/Berlin] api path: doctors/1/slots
-[27-Aug-2025 11:19:37 Europe/Berlin] api path: doctors/2/schedule
-[27-Aug-2025 11:19:37 Europe/Berlin] api path: doctors/2/slots
-[27-Aug-2025 11:19:42 Europe/Berlin] api path: doctors/1/slots
-[27-Aug-2025 11:19:42 Europe/Berlin] api path: doctors/1/schedule
-[27-Aug-2025 11:20:24 Europe/Berlin] api path: departments/1/doctors
-[27-Aug-2025 11:20:25 Europe/Berlin] api path: doctors/1/schedule
-[27-Aug-2025 11:20:25 Europe/Berlin] api path: doctors/1/slots
-[27-Aug-2025 11:21:01 Europe/Berlin] api path: departments/1/doctors
-[27-Aug-2025 11:21:02 Europe/Berlin] api path: doctors/1/slots
-[27-Aug-2025 11:21:02 Europe/Berlin] api path: doctors/1/schedule
-[27-Aug-2025 11:25:13 Europe/Berlin] api path: patients/search
-[27-Aug-2025 11:25:13 Europe/Berlin] name=&phone=11111
-[27-Aug-2025 11:25:25 Europe/Berlin] api path: patients/search
-[27-Aug-2025 11:25:26 Europe/Berlin] name=&phone=111
-[27-Aug-2025 11:25:44 Europe/Berlin] api path: departments/1/doctors
-[27-Aug-2025 11:25:45 Europe/Berlin] api path: doctors/1/schedule
-[27-Aug-2025 11:25:46 Europe/Berlin] api path: doctors/1/slots
-[27-Aug-2025 11:27:04 Europe/Berlin] api path: departments/1/doctors
-[27-Aug-2025 11:27:05 Europe/Berlin] api path: doctors/1/schedule
-[27-Aug-2025 11:27:05 Europe/Berlin] api path: doctors/1/slots
-[27-Aug-2025 11:27:24 Europe/Berlin] api path: departments/1/doctors
-[27-Aug-2025 11:27:25 Europe/Berlin] api path: doctors/1/slots
-[27-Aug-2025 11:27:25 Europe/Berlin] api path: doctors/1/schedule
-[27-Aug-2025 11:27:36 Europe/Berlin] api path: patients/search
-[27-Aug-2025 11:27:36 Europe/Berlin] name=&phone=1111
-[27-Aug-2025 11:27:39 Europe/Berlin] PHP Warning:  Undefined array key "requested_time" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\AppointmentController.php on line 34
-[27-Aug-2025 11:27:48 Europe/Berlin] api path: patients/search
-[27-Aug-2025 11:27:48 Europe/Berlin] name=&phone=1111
-[27-Aug-2025 11:27:51 Europe/Berlin] api path: departments/1/doctors
-[27-Aug-2025 11:28:15 Europe/Berlin] api path: doctors/1/schedule
-[27-Aug-2025 11:28:15 Europe/Berlin] api path: doctors/1/slots
-[27-Aug-2025 11:28:17 Europe/Berlin] api path: doctors/2/schedule
-[27-Aug-2025 11:28:17 Europe/Berlin] api path: doctors/2/slots
-[27-Aug-2025 11:28:22 Europe/Berlin] PHP Warning:  Undefined array key "requested_time" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\AppointmentController.php on line 34
-[27-Aug-2025 11:30:01 Europe/Berlin] PHP Warning:  Undefined array key "requested_time" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\AppointmentController.php on line 34
-[27-Aug-2025 11:30:03 Europe/Berlin] api path: patients/search
-[27-Aug-2025 11:30:03 Europe/Berlin] name=&phone=1111
-[27-Aug-2025 11:30:05 Europe/Berlin] api path: departments/1/doctors
-[27-Aug-2025 11:30:07 Europe/Berlin] api path: doctors/2/schedule
-[27-Aug-2025 11:30:07 Europe/Berlin] api path: doctors/2/slots
-[27-Aug-2025 11:30:09 Europe/Berlin] PHP Warning:  Undefined array key "requested_time" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\AppointmentController.php on line 34
-[27-Aug-2025 11:31:22 Europe/Berlin] PHP Warning:  Undefined array key "requested_time" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\AppointmentController.php on line 34
-[27-Aug-2025 11:31:24 Europe/Berlin] api path: patients/search
-[27-Aug-2025 11:31:24 Europe/Berlin] name=Nguyen+Van+A&phone=
-[27-Aug-2025 11:31:26 Europe/Berlin] api path: departments/1/doctors
-[27-Aug-2025 11:31:28 Europe/Berlin] api path: doctors/1/slots
-[27-Aug-2025 11:31:28 Europe/Berlin] api path: doctors/1/schedule
-[27-Aug-2025 11:31:29 Europe/Berlin] api path: doctors/2/slots
-[27-Aug-2025 11:31:29 Europe/Berlin] api path: doctors/2/schedule
-[27-Aug-2025 11:31:31 Europe/Berlin] PHP Warning:  Undefined array key "requested_time" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\AppointmentController.php on line 34
-[27-Aug-2025 11:32:04 Europe/Berlin] PHP Warning:  Undefined array key "requested_time" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\AppointmentController.php on line 34
-[27-Aug-2025 11:32:06 Europe/Berlin] api path: patients/search
-[27-Aug-2025 11:32:06 Europe/Berlin] name=Nguyen+Van+A&phone=
-[27-Aug-2025 11:32:11 Europe/Berlin] api path: departments/1/doctors
-[27-Aug-2025 11:32:12 Europe/Berlin] api path: doctors/1/schedule
-[27-Aug-2025 11:32:12 Europe/Berlin] api path: doctors/1/slots
-[27-Aug-2025 11:32:22 Europe/Berlin] 2025-08-27 12:00:00
-[27-Aug-2025 11:33:32 Europe/Berlin] 2025-08-27 08:00:00
-[27-Aug-2025 11:33:43 Europe/Berlin] 2025-08-27 08:00:00
-[27-Aug-2025 11:33:49 Europe/Berlin] 2025-08-27 12:00:00
+[28-Aug-2025 01:03:44 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:03:44 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: array_keys(): Argument #1 ($array) must be of type array, int given in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:28
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php(28): array_keys(1)
+#1 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->create()
+#2 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 28
+[28-Aug-2025 01:05:49 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:05:49 Asia/Ho_Chi_Minh] 1
+[28-Aug-2025 01:06:07 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:06:07 Asia/Ho_Chi_Minh] 1
+[28-Aug-2025 01:06:24 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:06:24 Asia/Ho_Chi_Minh] 1
+[28-Aug-2025 01:06:24 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:06:25 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:06:25 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
+#1 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:07:20 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:07:22 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:07:22 Asia/Ho_Chi_Minh] Không thể tạo hồ sơ khám bệnh
+[28-Aug-2025 01:07:22 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:07:22 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:07:22 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
+#1 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:22:13 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:23:09 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] Checking field: 5
+[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] Checking field: 1
+[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] Checking field: 1
+[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] Checking field: eweqw
+[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] Checking field: yyyy
+[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] error: Không thể tạo hồ sơ khám bệnh
+[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:23:18 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
+#1 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:23:49 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] Checking field patient_id: 5
+[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] Checking field doctor_id: 1
+[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] Checking field department_id: 1
+[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] Checking field lydo: eweqw
+[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] Checking field chan_doan: yyyy
+[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] error: Không thể tạo hồ sơ khám bệnh
+[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:23:51 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
+#1 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:25:40 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:25:42 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:25:42 Asia/Ho_Chi_Minh] Creating record with data: Array
+(
+    [patient_id] => 5
+    [doctor_id] => 1
+    [department_id] => 1
+    [lydo] => eweqw
+    [chan_doan] => yyyy
+    [ngay_taikham] => 2025-08-21
+    [ghichu] => rtrtreret
+)
+
+[28-Aug-2025 01:25:42 Asia/Ho_Chi_Minh] error: Không thể tạo hồ sơ khám bệnh
+[28-Aug-2025 01:25:42 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:25:42 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:25:42 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
+#1 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:26:48 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:26:49 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:26:49 Asia/Ho_Chi_Minh] Creating record with data: Array
+(
+    [patient_id] => 5
+    [doctor_id] => 1
+    [department_id] => 1
+    [lydo] => eweqw
+    [chan_doan] => yyyy
+    [ngay_taikham] => 2025-08-21
+    [ghichu] => rtrtreret
+)
+
+[28-Aug-2025 01:26:49 Asia/Ho_Chi_Minh] Create record result: Array
+(
+    [statusCode] => 404
+    [data] => 
+    [message] => 
+)
+
+[28-Aug-2025 01:26:49 Asia/Ho_Chi_Minh] error: Không thể tạo hồ sơ khám bệnh
+[28-Aug-2025 01:26:49 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:26:49 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:26:49 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
+#1 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:28:57 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:28:58 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:29:04 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:29:04 Asia/Ho_Chi_Minh] Creating record with data: Array
+(
+    [patient_id] => 5
+    [doctor_id] => 1
+    [department_id] => 1
+    [lydo] => eweqw
+    [chan_doan] => treter
+    [ngay_taikham] => 
+    [ghichu] => retert
+)
+
+[28-Aug-2025 01:29:04 Asia/Ho_Chi_Minh] Create record result: Array
+(
+    [statusCode] => 400
+    [data] => Array
+        (
+            [message] => Invalid patient ID
+        )
+
+    [message] => Invalid patient ID
+)
+
+[28-Aug-2025 01:29:04 Asia/Ho_Chi_Minh] error: Invalid patient ID
+[28-Aug-2025 01:29:04 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:29:04 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:29:04 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
+#1 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:30:24 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:30:25 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:30:25 Asia/Ho_Chi_Minh] Creating record with data: Array
+(
+    [patient_id] => 5
+    [doctor_id] => 1
+    [department_id] => 1
+    [lydo] => eweqw
+    [chan_doan] => treter
+    [ngay_taikham] => 
+    [ghichu] => retert
+)
+
+[28-Aug-2025 01:30:25 Asia/Ho_Chi_Minh] Create record result: Array
+(
+    [statusCode] => 400
+    [data] => Array
+        (
+            [message] => Invalid patient ID
+        )
+
+    [message] => Invalid patient ID
+)
+
+[28-Aug-2025 01:30:25 Asia/Ho_Chi_Minh] error: Invalid patient ID
+[28-Aug-2025 01:30:25 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:30:25 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:30:25 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
+#1 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:30:39 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:30:40 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:30:40 Asia/Ho_Chi_Minh] Creating record with data: Array
+(
+    [patient_id] => 5
+    [doctor_id] => 1
+    [department_id] => 1
+    [lydo] => eweqw
+    [chan_doan] => treter
+    [ngay_taikham] => 
+    [ghichu] => retert
+)
+
+[28-Aug-2025 01:30:40 Asia/Ho_Chi_Minh] Create record result: Array
+(
+    [statusCode] => 400
+    [data] => Array
+        (
+            [message] => Invalid patient ID
+        )
+
+    [message] => Invalid patient ID
+)
+
+[28-Aug-2025 01:30:40 Asia/Ho_Chi_Minh] error: Invalid patient ID
+[28-Aug-2025 01:30:40 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:30:40 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:30:40 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
+#1 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:31:04 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:31:09 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:31:09 Asia/Ho_Chi_Minh] Creating record with data: Array
+(
+    [patient_id] => 5
+    [doctor_id] => 1
+    [department_id] => 1
+    [lydo] => eweqw
+    [chan_doan] => treter
+    [ngay_taikham] => 
+    [ghichu] => retert
+)
+
+[28-Aug-2025 01:31:10 Asia/Ho_Chi_Minh] Create record result: Array
+(
+    [statusCode] => 400
+    [data] => Array
+        (
+            [message] => Invalid patient ID
+        )
+
+    [message] => Invalid patient ID
+)
+
+[28-Aug-2025 01:31:10 Asia/Ho_Chi_Minh] error: Invalid patient ID
+[28-Aug-2025 01:31:10 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:31:10 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:31:10 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->index()
+#1 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[28-Aug-2025 01:31:51 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:31:57 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:31:57 Asia/Ho_Chi_Minh] Creating record with data: Array
+(
+    [patient_id] => 5
+    [doctor_id] => 1
+    [department_id] => 1
+    [lydo] => eweqw
+    [chan_doan] => treter
+    [ngay_taikham] => 
+    [ghichu] => retert
+)
+
+[28-Aug-2025 01:31:57 Asia/Ho_Chi_Minh] Create record result: Array
+(
+    [statusCode] => 201
+    [data] => Array
+        (
+            [message] => Medical record created successfully
+            [id] => 6
+        )
+
+    [message] => Medical record created successfully
+)
+
+[28-Aug-2025 01:31:57 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined method AppointmentService::completeAppointment() in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:80
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->create()
+#1 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 80
+[28-Aug-2025 01:32:37 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:32:38 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:32:38 Asia/Ho_Chi_Minh] Creating record with data: Array
+(
+    [patient_id] => 5
+    [doctor_id] => 1
+    [department_id] => 1
+    [lydo] => eweqw
+    [chan_doan] => treter
+    [ngay_taikham] => 
+    [ghichu] => retert
+)
+
+[28-Aug-2025 01:32:38 Asia/Ho_Chi_Minh] Create record result: Array
+(
+    [statusCode] => 201
+    [data] => Array
+        (
+            [message] => Medical record created successfully
+            [id] => 7
+        )
+
+    [message] => Medical record created successfully
+)
+
+[28-Aug-2025 01:32:38 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined method AppointmentService::completeAppointment() in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:80
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->create()
+#1 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 80
+[28-Aug-2025 01:34:18 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:34:19 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:34:19 Asia/Ho_Chi_Minh] Creating record with data: Array
+(
+    [patient_id] => 5
+    [doctor_id] => 1
+    [department_id] => 1
+    [lydo] => eweqw
+    [chan_doan] => treter
+    [ngay_taikham] => 
+    [ghichu] => retert
+)
+
+[28-Aug-2025 01:34:19 Asia/Ho_Chi_Minh] Create record result: Array
+(
+    [statusCode] => 201
+    [data] => Array
+        (
+            [message] => Medical record created successfully
+            [id] => 8
+        )
+
+    [message] => Medical record created successfully
+)
+
+[28-Aug-2025 01:34:19 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined method AppointmentService::completeAppointment() in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:80
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->create()
+#1 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 80
+[28-Aug-2025 01:34:41 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:34:48 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 01:34:48 Asia/Ho_Chi_Minh] Creating record with data: Array
+(
+    [patient_id] => 5
+    [doctor_id] => 1
+    [department_id] => 1
+    [lydo] => eweqw
+    [chan_doan] => treter
+    [ngay_taikham] => 
+    [ghichu] => retert
+)
+
+[28-Aug-2025 01:34:48 Asia/Ho_Chi_Minh] Create record result: Array
+(
+    [statusCode] => 201
+    [data] => Array
+        (
+            [message] => Medical record created successfully
+            [id] => 9
+        )
+
+    [message] => Medical record created successfully
+)
+
+[28-Aug-2025 01:34:48 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined method AppointmentService::completeAppointment() in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:80
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(136): RecordController->create()
+#1 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 80
+[28-Aug-2025 01:36:17 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 01:36:17 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\prescriptions\create.php:111
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\PrescriptionController.php(52): require()
+#1 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(156): PrescriptionController->create()
+#2 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\prescriptions\create.php on line 111
+[28-Aug-2025 02:13:27 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 02:13:30 Asia/Ho_Chi_Minh] Accessing records controller
+[28-Aug-2025 02:13:31 Asia/Ho_Chi_Minh] Accessing prescriptions controller
+[28-Aug-2025 02:13:31 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\prescriptions\create.php:111
+Stack trace:
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\PrescriptionController.php(52): require()
+#1 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(156): PrescriptionController->create()
+#2 {main}
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\prescriptions\create.php on line 111

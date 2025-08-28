@@ -75,6 +75,23 @@
                             </dl>
                         </div>
 
+                        <!-- Medical Record Button -->
+                        <?php if ($appointment['status'] === 'confirmed' && $_SESSION['user']['role'] === 'bacsi'): ?>
+                            <div class="col-12">
+                                <div class="alert alert-info">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-0"><i class="fas fa-clipboard-list"></i> Khám và kê đơn</h6>
+                                            <p class="mb-0 small">Bạn có thể tạo hồ sơ khám bệnh và kê đơn thuốc cho lịch hẹn này</p>
+                                        </div>
+                                        <a href="/records/create?appointment_id=<?= $appointment['id'] ?>" class="btn btn-primary">
+                                            <i class="fas fa-notes-medical"></i> Tạo hồ sơ khám bệnh
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
                         <!-- Action Buttons -->
                         <div class="col-12">
                             <hr>

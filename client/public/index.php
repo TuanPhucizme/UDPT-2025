@@ -2,7 +2,7 @@
 session_start();
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
-
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 // Log errors to a file
 ini_set('log_errors', 1);
 ini_set('error_log', __DIR__ . '/error.log'); // Adjust path
@@ -55,6 +55,17 @@ $routes = [
         'patients',
         'departments',
         'doctors'
+    ],
+    'records' => [
+        'index',
+        'create',
+        'view'
+    ],
+    'prescriptions' => [
+        'index',
+        'create',
+        'view',
+        'dispense'
     ]
 ];
 try {
@@ -108,6 +119,38 @@ try {
                         break;
                     case 'view':
                         AuthMiddleware::authorizeRoles('bacsi', 'letan', 'admin')();
+                        break;
+                }
+                call_user_func_array([$controller, $action], $params);
+            } else {
+                throw new Exception('Action not found', 404);
+            }
+            break;
+        case 'records':
+            AuthMiddleware::authenticate();
+            AuthMiddleware::authorizeRoles('bacsi', 'admin')();
+            require_once '../app/controllers/RecordController.php';
+            error_log("Accessing records controller");
+            $controller = new RecordController();
+            if (method_exists($controller, $action)) {
+                call_user_func_array([$controller, $action], $params);
+            } else {
+                throw new Exception('Action not found', 404);
+            }
+            break;
+        case 'prescriptions':
+            AuthMiddleware::authenticate();
+            require_once '../app/controllers/PrescriptionController.php';
+            $controller = new PrescriptionController();
+            error_log("Accessing prescriptions controller");
+            if (method_exists($controller, $action)) {
+                // Role-based access control for specific actions
+                switch ($action) {
+                    case 'dispense':
+                        AuthMiddleware::authorizeRoles('duocsi', 'admin')();
+                        break;
+                    case 'create':
+                        AuthMiddleware::authorizeRoles('bacsi', 'admin')();
                         break;
                 }
                 call_user_func_array([$controller, $action], $params);
