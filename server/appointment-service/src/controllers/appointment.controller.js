@@ -171,7 +171,6 @@ export const bookAppointment = async (req, res) => {
       lydo,
       note 
     } = req.body;
-    console.log(req.body); 
     // Validate required fields
     if (!patient_id || !department_id || !doctor_id || !thoi_gian_hen) {
       return res.status(400).json({ message: 'Thiếu thông tin bắt buộc' });
@@ -225,7 +224,6 @@ export const listAppointments = async (req, res) => {
       filters.doctor_id = req.user.id;
     }
     const appointments = await getAppointments(filters);
-    console.log(appointments);
     res.json(appointments);
   } catch (err) {
     console.error('Error in listAppointments:', err);

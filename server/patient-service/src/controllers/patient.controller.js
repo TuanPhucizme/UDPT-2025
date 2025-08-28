@@ -39,3 +39,29 @@ export const updatePatientInfo = async (req, res) => {
   await updatePatient(id, req.body);
   res.json({ message: 'Cập nhật thành công' });
 };
+
+export const getPatientRecordIds = async (req, res) => {
+  try {
+    const patientId = req.params.id;
+    
+    // Get just the record IDs for this patient
+    const [records] = await db.query(
+      'SELECT id FROM medical_records WHERE patient_id = ?',
+      [patientId]
+    );
+    
+    // Extract just the IDs
+    const recordIds = records.map(record => record.id);
+    
+    res.json({
+      patient_id: patientId,
+      recordIds
+    });
+  } catch (error) {
+    console.error('Error in getPatientRecordIds:', error);
+    res.status(500).json({ 
+      message: 'Error retrieving patient record IDs', 
+      error: error.message 
+    });
+  }
+};

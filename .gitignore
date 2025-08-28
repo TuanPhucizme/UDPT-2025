@@ -63,3 +63,4 @@ desktop.ini
 # Các báo cáo được tạo ra khi chạy test.
 /coverage
 .nyc_output
+client/public/error.log

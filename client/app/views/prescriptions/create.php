@@ -116,17 +116,37 @@ require_once '../app/views/layouts/header.php';
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Liều dùng</label>
-                                            <input type="text" class="form-control" name="dosage[]" placeholder="VD: 1 viên" required>
+                                            <div class="input-group">
+                                                <input type="number" class="form-control" name="dosage[]" placeholder="Số lượng" min="1" required>
+                                                <span class="input-group-text medicine-unit">mg</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Tần suất</label>
-                                            <input type="text" class="form-control" name="frequency[]" placeholder="VD: Ngày 3 lần" required>
+                                            <div class="input-group">
+                                                <input type="number" class="form-control frequency-number" name="frequency_number[]" placeholder="Số lần" min="1" required>
+                                                <select class="form-select" name="frequency_unit[]">
+                                                    <option value="lần/ngày">lần/ngày</option>
+                                                    <option value="lần/tuần">lần/tuần</option>
+                                                    <option value="giờ/lần">giờ/lần</option>
+                                                    <option value="khi cần">khi cần</option>
+                                                </select>
+                                                <input type="hidden" name="frequency[]" class="frequency-hidden">
+                                            </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Thời gian dùng</label>
-                                            <input type="text" class="form-control" name="duration[]" placeholder="VD: 7 ngày" required>
+                                            <div class="input-group">
+                                                <input type="number" class="form-control duration-number" name="duration_number[]" placeholder="Số" min="1" required>
+                                                <select class="form-select" name="duration_unit[]">
+                                                    <option value="ngày">ngày</option>
+                                                    <option value="tuần">tuần</option>
+                                                    <option value="tháng">tháng</option>
+                                                </select>
+                                                <input type="hidden" name="duration[]" class="duration-hidden">
+                                            </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Ghi chú</label>
@@ -170,6 +190,70 @@ document.addEventListener('DOMContentLoaded', function() {
     const medicinesList = document.getElementById('medicinesList');
     const addMedicineBtn = document.getElementById('addMedicine');
     
+    // Initialize medicine selection handlers
+    function initMedicineHandlers() {
+        document.querySelectorAll('select[name="medicines[]"]').forEach(select => {
+            select.addEventListener('change', function() {
+                const medicineItem = this.closest('.medicine-item');
+                const selectedOption = this.options[this.selectedIndex];
+                
+                if (selectedOption && selectedOption.value) {
+                    // Extract the unit from the option text (format: "Medicine Name (unit)")
+                    const unitMatch = selectedOption.text.match(/\(([^)]+)\)$/);
+                    const unit = unitMatch ? unitMatch[1] : 'viên';
+                    
+                    // Update the unit in the UI
+                    medicineItem.querySelector('.medicine-unit').textContent = unit;
+                    
+                    // Auto-add note for bottle medicines
+                    const noteField = medicineItem.querySelector('input[name="note[]"]');
+                    if (unit.toLowerCase() === 'chai' && noteField && !noteField.value) {
+                        noteField.value = 'Tham khảo hướng dẫn sử dụng trên chai';
+                    }
+                    
+                    // Update the hidden field
+                    updateHiddenFields();
+                }
+            });
+        });
+    }
+    
+    // Function to update hidden fields with combined values for frequency and duration
+    function updateHiddenFields() {
+        document.querySelectorAll('.medicine-item').forEach(item => {
+            // Update frequency
+            const frequencyNumber = item.querySelector('.frequency-number').value;
+            const frequencyUnit = item.querySelector('select[name="frequency_unit[]"]').value;
+            const frequencyHidden = item.querySelector('.frequency-hidden');
+            
+            if (frequencyNumber && frequencyUnit) {
+                frequencyHidden.value = `${frequencyNumber} ${frequencyUnit}`;
+            }
+            
+            // Update duration
+            const durationNumber = item.querySelector('.duration-number').value;
+            const durationUnit = item.querySelector('select[name="duration_unit[]"]').value;
+            const durationHidden = item.querySelector('.duration-hidden');
+            
+            if (durationNumber && durationUnit) {
+                durationHidden.value = `${durationNumber} ${durationUnit}`;
+            }
+        });
+    }
+    
+    // Initialize input handlers
+    function initInputHandlers() {
+        document.querySelectorAll('.frequency-number, select[name="frequency_unit[]"]').forEach(el => {
+            el.addEventListener('input', updateHiddenFields);
+            el.addEventListener('change', updateHiddenFields);
+        });
+        
+        document.querySelectorAll('.duration-number, select[name="duration_unit[]"]').forEach(el => {
+            el.addEventListener('input', updateHiddenFields);
+            el.addEventListener('change', updateHiddenFields);
+        });
+    }
+    
     // Add new medicine item
     addMedicineBtn.addEventListener('click', function() {
         const firstItem = document.querySelector('.medicine-item');
@@ -180,13 +264,21 @@ document.addEventListener('DOMContentLoaded', function() {
             input.value = '';
         });
         
-        newItem.querySelector('select').value = '';
+        // Reset selects to first option
+        newItem.querySelectorAll('select').forEach(select => {
+            select.selectedIndex = 0;
+        });
+        
+        // Reset the unit to default
+        newItem.querySelector('.medicine-unit').textContent = 'mg';
         
         // Add to the list
         medicinesList.appendChild(newItem);
         
-        // Reinitialize remove buttons
+        // Reinitialize buttons and handlers
         initRemoveButtons();
+        initInputHandlers();
+        initMedicineHandlers();
     });
     
     // Initialize remove buttons
@@ -203,8 +295,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Form submission handler
+    document.querySelector('form').addEventListener('submit', function(e) {
+        // Update all hidden fields before submitting
+        updateHiddenFields();
+    });
+    
     // Initialize on page load
     initRemoveButtons();
+    initInputHandlers();
+    initMedicineHandlers();
+    updateHiddenFields(); // Initial update
     
     <?php if (empty($patient) && empty($record)): ?>
     // Patient search code (similar to record creation page)

@@ -124,30 +124,45 @@ CREATE TABLE medicines (
 CREATE TABLE prescriptions (
   id INT AUTO_INCREMENT PRIMARY KEY,
   record_id INT NOT NULL,
-  pharmacist_id INT NOT NULL,
-  medicine_id INT NOT NULL,
-  lieu VARCHAR(255),
-  thoigian VARCHAR(255),
-  ghichu VARCHAR(255),
-  status ENUM('pending','collected') DEFAULT 'pending',
+  pharmacist_id INT,
+  status ENUM('pending','dispensed','cancelled') DEFAULT 'pending',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (medicine_id) REFERENCES medicines(id)
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+CREATE TABLE prescription_medicines (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  prescription_id INT NOT NULL,
+  medicine_id INT NOT NULL,
+  dose INT NOT NULL,
+  frequency VARCHAR(50),
+  duration VARCHAR(50),
+  note TEXT,
+  FOREIGN KEY (prescription_id) REFERENCES prescriptions(id)
+);
 -- Sample Data for prescription-service
 INSERT INTO medicines (ten_thuoc, so_luong,don_vi) VALUES
-('Paracetamol', 200,'mg'),
-('Amoxicillin', 150,'mg'),
-('Salbutamol', 100,'mg'),
-('Aspirin', 300,'mg'),
-('Cetirizine', 120,'mg');
+('Paracetamol', 200,'viên'),
+('Amoxicillin', 150,'túi'),
+('Salbutamol', 100,'ống'),
+('Aspirin', 300,'viên'),
+('Cetirizine', 120,'chai');
 
-INSERT INTO prescriptions (record_id, pharmacist_id, medicine_id, lieu, thoigian, ghichu, status) VALUES
-(1, 1003, 1, '500mg', '2 lần/ngày', 'Uống sau ăn', 'collected'),
-(2, 1003, 2, '250mg', '3 lần/ngày', 'Uống đủ liệu trình', 'collected'),
-(3, 1003, 3, '2 nhát', 'Khi khó thở', 'Mang theo khi đi ra ngoài', 'pending'),
-(4, 1003, 5, '10mg', '1 lần/ngày', 'Trước khi ngủ', 'collected'),
-(5, 1003, 4, '100mg', '1 lần/ngày', 'Sau bữa sáng', 'collected');
+-- Updated sample prescriptions with numeric dose
+INSERT INTO prescriptions (record_id, pharmacist_id, status, created_at) VALUES
+(1, 1003, 'dispensed', '2023-06-01 10:00:00'),
+(2, 1003, 'dispensed', '2023-06-05 15:00:00'),
+(3, NULL, 'pending', '2023-06-07 11:00:00'),
+(4, 1003, 'dispensed', '2023-06-08 16:00:00'),
+(5, 1003, 'dispensed', '2023-06-09 09:30:00');
+
+-- Prescription medicines with numeric dose
+INSERT INTO prescription_medicines (prescription_id, medicine_id, dose, frequency, duration, note) VALUES
+(1, 1, 1, '2 lần/ngày', '5 ngày', 'Uống sau ăn'),
+(2, 2, 2, '3 lần/ngày', '7 ngày', 'Uống đủ liệu trình'),
+(3, 3, 3, 'Khi khó thở', '10 ngày', 'Mang theo khi đi ra ngoài'),
+(4, 5, 4, '1 lần/ngày', '14 ngày', 'Trước khi ngủ'),
+(5, 4, 5, '1 lần/ngày', '30 ngày', 'Sau bữa sáng');
 
 -- Bạn có thể thêm các CREATE DATABASE và bảng cho các service còn lại ở đây
 CREATE DATABASE IF NOT EXISTS notification_service;

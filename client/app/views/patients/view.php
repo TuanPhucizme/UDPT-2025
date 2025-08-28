@@ -5,9 +5,14 @@
         <!-- Patient Info Card - Left Column -->
         <div class="col-md-4">
             <div class="card mb-4">
-                <div class="card-header">
+                <!-- Card header with back button -->
+                <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">Thông Tin Bệnh Nhân</h5>
+                    <a href="/patients" class="btn btn-sm btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i> Danh sách
+                    </a>
                 </div>
+                
                 <div class="card-body">
                     <h3><?= htmlspecialchars($patient['hoten_bn']) ?></h3>
                     <p class="text-muted">ID: <?= htmlspecialchars($patient['id']) ?></p>
@@ -46,6 +51,40 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Add a new card for quick navigation -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Truy Cập Nhanh</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <?php if (!empty($medicalRecords)): ?>
+                            <!-- Show last 3 medical records for quick navigation -->
+                            <div class="mb-2 fw-bold">Hồ sơ gần đây:</div>
+                            <?php 
+                            $recentRecords = array_slice($medicalRecords, 0, 3);
+                            foreach($recentRecords as $record): 
+                            ?>
+                                <a href="/records/view/<?= $record['id'] ?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="fas fa-file-medical me-2"></i>
+                                        <?= (new DateTime($record['ngaykham']))->format("d/m/Y") ?>
+                                    </div>
+                                    <span class="badge bg-primary rounded-pill">
+                                        <?= htmlspecialchars($record['department_name']) ?>
+                                    </span>
+                                </a>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                        
+                        <!-- Add appointment history link if applicable -->
+                        <a href="/appointments/index?patient_id=<?= $patient['id'] ?>" class="list-group-item list-group-item-action">
+                            <i class="fas fa-calendar me-2"></i> Lịch sử lịch hẹn
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Medical Records Timeline - Right Column -->
@@ -70,8 +109,16 @@
                             <?php foreach ($medicalRecords as $record): ?>
                                 <div class="timeline-item">
                                     <div class="timeline-date">
-                                        Ngày khám: <?= (new DateTime($record['ngaykham']))->format("d/m/Y H:i") ?>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span>
+                                                Ngày khám: <?= (new DateTime($record['ngaykham']))->format("d/m/Y H:i") ?>
+                                            </span>
+                                            <a href="/records/view/<?= $record['id'] ?>" class="btn btn-sm btn-outline-primary">
+                                                <i class="fas fa-file-medical"></i> Chi tiết hồ sơ
+                                            </a>
+                                        </div>
                                     </div>
+                                    
                                     <div class="timeline-content">
                                         <div class="d-flex justify-content-between align-items-start mb-2">
                                             <h6>
@@ -97,45 +144,57 @@
                                         <?php if (!empty($record['prescriptions'])): ?>
                                             <div class="mt-3">
                                                 <strong>Đơn thuốc:</strong>
-                                                <div class="table-responsive">
-                                                    <table class="table table-sm">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Thuốc</th>
-                                                                <th>Liều lượng</th>
-                                                                <th>Thời gian</th>
-                                                                <th>Ghi chú</th>
-                                                                <th>Trạng thái</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <?php foreach ($record['prescriptions'] as $prescription): ?>
-                                                                <tr>
-                                                                    <td>
-                                                                        <?= htmlspecialchars($prescription['medicine']['name']) ?>
-                                                                        <small class="text-muted">
-                                                                            (<?= htmlspecialchars($prescription['medicine']['unit']) ?>)
-                                                                        </small>
-                                                                    </td>
-                                                                    <td><?= htmlspecialchars($prescription['medicine']['dosage']) ?></td>
-                                                                    <td><?= htmlspecialchars($prescription['medicine']['frequency']) ?></td>
-                                                                    <td><?= htmlspecialchars($prescription['medicine']['note']) ?></td>
-                                                                    <td>
-                                                                        <span class="badge bg-<?= $prescription['status'] === 'collected' ? 'success' : 'warning' ?>">
-                                                                            <?= $prescription['status'] === 'collected' ? 'Đã phát' : 'Chờ phát' ?>
-                                                                        </span>
-                                                                        <?php if ($prescription['pharmacist_name']): ?>
-                                                                            <br>
-                                                                            <small class="text-muted">
-                                                                                Dược sĩ: <?= htmlspecialchars($prescription['pharmacist_name']) ?>
-                                                                            </small>
-                                                                        <?php endif; ?>
-                                                                    </td>
-                                                                </tr>
-                                                            <?php endforeach; ?>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                <?php foreach ($record['prescriptions'] as $prescription): ?>
+                                                    <div class="card mt-2 mb-3 border-light">
+                                                        <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                                                            <div>
+                                                                <span class="badge bg-<?= $prescription['status'] === 'dispensed' ? 'success' : ($prescription['status'] === 'pending' ? 'warning' : 'danger')?>">
+                                                                    <?= $prescription['status'] === 'dispensed' ? 'Đã phát' : ($prescription['status'] === 'pending' ? 'Chờ phát' :'Đã hủy') ?>
+                                                                </span>
+                                                                <small class="ms-2">Ngày kê: <?= date('d/m/Y H:i', strtotime($prescription['created_at'])) ?></small>
+                                                            </div>
+                                                            <a href="/prescriptions/view/<?= $prescription['id'] ?>" class="btn btn-sm btn-outline-primary">
+                                                                <i class="fas fa-eye"></i> Chi tiết
+                                                            </a>
+                                                        </div>
+                                                        <div class="card-body p-0">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-sm mb-0">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Thuốc</th>
+                                                                            <th>Liều lượng</th>
+                                                                            <th>Tần suất</th>
+                                                                            <th>Thời gian</th>
+                                                                            <th>Ghi chú</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <?php foreach ($prescription['medicines'] as $medicine): ?>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <?= htmlspecialchars($medicine['name']) ?>
+                                                                            </td>
+                                                                            <td><?= htmlspecialchars($medicine['dosage']) ?></td>
+                                                                            <td><?= htmlspecialchars($medicine['frequency']) ?></td>
+                                                                            <td><?= htmlspecialchars($medicine['duration']) ?></td>
+                                                                            <td><?= htmlspecialchars($medicine['note'] ?? '') ?></td>
+                                                                        </tr>
+                                                                        <?php endforeach; ?>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-footer bg-white">
+                                                            <?php if ($prescription['status'] === 'dispensed' && $prescription['pharmacist_name']): ?>
+                                                                <small class="text-muted">
+                                                                    Dược sĩ phát thuốc: <?= htmlspecialchars($prescription['pharmacist_name']) ?> 
+                                                                    (<?= date('d/m/Y H:i', strtotime($prescription['updated_at'] ?? $prescription['created_at'])) ?>)
+                                                                </small>
+                                                            <?php endif; ?>
+                                                        </div>
+                                                    </div>
+                                                <?php endforeach; ?>
                                             </div>
                                         <?php endif; ?>
 

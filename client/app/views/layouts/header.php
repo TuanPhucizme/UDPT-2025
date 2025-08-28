@@ -36,6 +36,11 @@
                         <?php if (in_array($_SESSION['user']['role'], ['bacsi', 'admin','letan'])): ?>
                             <a class="nav-link" href="/appointments">Lịch Khám</a>
                         <?php endif; ?>
+                        <?php if ($_SESSION['user']['role'] === 'duocsi'): ?>
+                            <a class="nav-link" href="/prescriptions/pending">
+                                <span>Phát thuốc</span>
+                            </a>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </div>
 

@@ -16,9 +16,32 @@ class PrescriptionController {
     }
     
     public function index() {
-        // List prescriptions based on role
-        $prescriptions = $this->prescriptionService->getAllPrescriptions();
-        require '../app/views/prescriptions/index.php';
+        try {
+            // Build filters from GET parameters
+            $filters = [];
+            
+            if (!empty($_GET['status'])) {
+                $filters['status'] = $_GET['status'];
+            }
+            
+            if (!empty($_GET['start_date'])) {
+                $filters['start_date'] = $_GET['start_date'];
+            }
+            
+            if (!empty($_GET['end_date'])) {
+                $filters['end_date'] = $_GET['end_date'];
+            }
+            
+            // Get prescriptions based on filters
+            $result = $this->prescriptionService->getAllPrescriptions($filters);
+            $prescriptions = $result['data'] ?? [];
+            
+            require '../app/views/prescriptions/index.php';
+        } catch (Exception $e) {
+            $_SESSION['error'] = $e->getMessage();
+            header('Location: /home');
+            exit;
+        }
     }
     
     public function create() {
@@ -63,12 +86,39 @@ class PrescriptionController {
                 $medicines = [];
                 foreach ($_POST['medicines'] as $index => $medicineId) {
                     if (!empty($medicineId)) {
+                        // Get values from form
+                        $dosage = $_POST['dosage'][$index] ?? '';
+                        
+                        // For frequency and duration, use combined values from hidden fields
+                        // or fallback to constructing them from separate inputs
+                        $frequency = isset($_POST['frequency'][$index]) ? $_POST['frequency'][$index] : '';
+                        if (empty($frequency) && !empty($_POST['frequency_number'][$index]) && !empty($_POST['frequency_unit'][$index])) {
+                            $frequency = $_POST['frequency_number'][$index] . ' ' . $_POST['frequency_unit'][$index];
+                        }
+                        
+                        $duration = isset($_POST['duration'][$index]) ? $_POST['duration'][$index] : '';
+                        if (empty($duration) && !empty($_POST['duration_number'][$index]) && !empty($_POST['duration_unit'][$index])) {
+                            $duration = $_POST['duration_number'][$index] . ' ' . $_POST['duration_unit'][$index];
+                        }
+                        
+                        $note = $_POST['note'][$index] ?? '';
+                        
+                        // Validate required fields
+                        if (empty($dosage) || empty($frequency) || empty($duration)) {
+                            throw new Exception("Vui lòng điền đầy đủ thông tin liều dùng, tần suất và thời gian dùng cho tất cả thuốc");
+                        }
+                        
+                        // Ensure dosage is numeric
+                        if (!is_numeric($dosage)) {
+                            throw new Exception("Liều lượng phải là số");
+                        }
+                        
                         $medicines[] = [
                             'id' => $medicineId,
-                            'dosage' => $_POST['dosage'][$index],
-                            'frequency' => $_POST['frequency'][$index],
-                            'duration' => $_POST['duration'][$index],
-                            'note' => $_POST['note'][$index] ?? ''
+                            'dosage' => (int)$dosage,  // Cast to integer
+                            'frequency' => $frequency,
+                            'duration' => $duration,
+                            'note' => $note
                         ];
                     }
                 }
@@ -117,6 +167,7 @@ class PrescriptionController {
             require '../app/views/prescriptions/view.php';
         } catch (Exception $e) {
             $_SESSION['error'] = $e->getMessage();
+            error_log($e->getMessage());
             header('Location: /prescriptions');
             exit;
         }
@@ -128,7 +179,12 @@ class PrescriptionController {
                 throw new Exception('Invalid request method');
             }
             
-            $result = $this->prescriptionService->updateStatus($id, 'dispensed');
+            // Ensure the user is a pharmacist
+            if ($_SESSION['user']['role'] !== 'duocsi') {
+                throw new Exception('Only pharmacists can dispense medications');
+            }
+            
+            $result = $this->prescriptionService->updateStatus($id, 'dispensed', $_SESSION['user']['id']);
             
             if ($result['statusCode'] === 200) {
                 $_SESSION['success'] = 'Đơn thuốc đã được phát thuốc';
@@ -140,7 +196,26 @@ class PrescriptionController {
             exit;
         } catch (Exception $e) {
             $_SESSION['error'] = $e->getMessage();
-            header('Location: /prescriptions');
+            header('Location: /prescriptions/view/' . $id);
+            exit;
+        }
+    }
+    
+    public function pending() {
+        try {
+            // Ensure the user is a pharmacist
+            if ($_SESSION['user']['role'] !== 'duocsi') {
+                throw new Exception('Chỉ dược sĩ mới có thể truy cập trang này');
+            }
+            
+            // Get all pending prescriptions
+            $result = $this->prescriptionService->getAllPrescriptions(['status' => 'pending']);
+            $prescriptions = $result['data'] ?? [];
+            
+            require '../app/views/prescriptions/pending.php';
+        } catch (Exception $e) {
+            $_SESSION['error'] = $e->getMessage();
+            header('Location: /home');
             exit;
         }
     }

@@ -104,7 +104,6 @@ export const getAppointments = async (filters = {}) => {
           searchParams = `phone=${encodeURIComponent(filters.phone)}`;
         }
         
-        console.log(`Searching patients with: ${searchParams}`);
         
         // Call the patient service search endpoint
         const patients = await serviceCall(
@@ -116,7 +115,6 @@ export const getAppointments = async (filters = {}) => {
           sql += ` AND a.patient_id IN (${patientIds.join(',')})`;
         } else {
           // No matching patients, return empty result
-          console.log('No patients found matching search criteria');
           return [];
         }
       } catch (error) {
@@ -128,7 +126,6 @@ export const getAppointments = async (filters = {}) => {
     sql += ' ORDER BY a.thoi_gian_hen DESC';
 
     const [appointments] = await db.query(sql, params);
-    console.log(appointments);
     // Enrich with data from other services
     const enrichedAppointments = await Promise.all(
       appointments.map(async (apt) => {
@@ -278,7 +275,6 @@ export const getDoctorAvailableSlots = async (doctorId, date) => {
         slots.push(slot);
       }
     }
-    console.log(appointments);
     // Remove booked slots
     const booked = appointments.map(a => a.thoi_gian_hen.slice(0, 16)); // 'YYYY-MM-DD HH:MM'
     const available = slots.filter(slot => !booked.includes(slot.slice(0, 16)));

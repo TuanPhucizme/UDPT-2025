@@ -65,7 +65,8 @@ $routes = [
         'index',
         'create',
         'view',
-        'dispense'
+        'dispense',
+        'pending'  // Add the new pending route
     ],
     'reports' => ['prescriptions','patients'],
     'notifications' => ['index','read','readAll']
@@ -131,7 +132,8 @@ try {
             break;
         case 'records':
             AuthMiddleware::authenticate();
-            AuthMiddleware::authorizeRoles('bacsi', 'admin')();
+            // Change this line to include pharmacists
+            AuthMiddleware::authorizeRoles('bacsi', 'duocsi', 'admin')();
             require_once '../app/controllers/RecordController.php';
             error_log("Accessing records controller");
             $controller = new RecordController();

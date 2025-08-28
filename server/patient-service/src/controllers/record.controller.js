@@ -27,7 +27,6 @@ export const getPatientRecords = async (req, res) => {
               }
             }
           );
-          
           return {
             ...record,
             prescriptions: prescriptionResponse.data
@@ -234,12 +233,10 @@ export const getRecordDetails = async (req, res) => {
                     }
                 }
             );
-            
             enrichedRecord.prescriptions = prescriptionResponse.data;
         } catch (error) {
             console.error('Failed to fetch prescriptions:', error);
         }
-        console.log('Enriched Record:', enrichedRecord);
         res.json(enrichedRecord);
     } catch (error) {
         console.error('Error in getRecordDetails:', error);
@@ -247,6 +244,33 @@ export const getRecordDetails = async (req, res) => {
             message: 'Lỗi lấy thông tin hồ sơ bệnh án', 
             error: error.message 
         });
+    }
+};
+
+export const getInternalRecordDetails = async (req, res) => {
+    try {
+        const recordId = req.params.id;
+        const record = await getMedicalRecordDetails(recordId);
+
+        if (!record) {
+            return res.status(404).json({ message: 'Record not found' });
+        }
+
+        // Return essential data only
+        res.json({
+            id: record.id,
+            patient_id: record.patient_id,
+            doctor_id: record.doctor_id,
+            department_id: record.department_id,
+            ngaykham: new Date(record.ngaykham).toISOString(),
+            chan_doan: record.chan_doan,
+            patient_name: record.patient_name,
+            doctor_name: record.doctor_name,
+            department_name: record.department_name
+        });
+    } catch (error) {
+        console.error('Error in getInternalRecordDetails:', error);
+        res.status(500).json({ message: 'Internal server error', error: error.message });
     }
 };
 

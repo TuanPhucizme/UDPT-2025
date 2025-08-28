@@ -3,7 +3,8 @@ import {
     createRecord, 
     getPatientRecords, 
     getRecordDetails,
-    updateRecord 
+    updateRecord,
+    getInternalRecordDetails
 } from '../controllers/record.controller.js';
 import { authMiddleware, authorizeRoles } from '../middleware/auth.middleware.js';
 
@@ -17,6 +18,7 @@ router.get(
     authorizeRoles('bacsi', 'duocsi', 'letan', 'admin'),
     getPatientRecords
 );
+router.get('/internal/:id',authMiddleware, getInternalRecordDetails);
 router.get('/:id', authMiddleware, authorizeRoles('bacsi', 'duocsi', 'letan', 'admin'), getRecordDetails);
 router.put('/:id', authMiddleware, authorizeRoles('bacsi'), updateRecord);
 export default router;
