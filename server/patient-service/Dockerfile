@@ -13,7 +13,7 @@ COPY package*.json ./
 RUN npm install
 
 # Bước 5: Sao chép toàn bộ mã nguồn còn lại của service
-COPY src/ .
+COPY . .
 
 # Bước 6: Expose cổng mà ứng dụng sẽ lắng nghe bên trong container
 # Dựa vào code của bạn, đó là biến PORT, chúng ta đã đặt là 3000 trong file .env
@@ -21,4 +21,4 @@ EXPOSE 3001
 
 # Bước 7: Lệnh để khởi chạy ứng dụng
 # Sử dụng "node index.js" vì bạn dùng cú pháp ES Module (import/export)
-CMD [ "node", "index.js" ]
+CMD [ "node", "src/index.js" ]
