@@ -32,7 +32,7 @@ class NotificationController {
       $notifications = $items;
       $filters = $query;
       $filters['patientId'] = $patientId;
-      require __DIR__ . '/../views/notifications_list.php';
+      require __DIR__ . '/../views/notifications/notifications_list.php';
     } catch (Exception $e) {
       http_response_code(500);
       echo 'Lỗi lấy thông báo: ' . htmlspecialchars($e->getMessage());

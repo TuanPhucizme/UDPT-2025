@@ -10,7 +10,7 @@ class ReportController {
     // nạp view
     $data = compact('stats','labels','counts');
     extract($data);
-    require __DIR__ . '/../views/report_prescriptions.php';
+    require __DIR__ . '/../views/reports/report_prescriptions.php';
   }
 
   public function patients() {

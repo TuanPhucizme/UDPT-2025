@@ -84,3 +84,33 @@
 [27-Aug-2025 11:33:32 Europe/Berlin] 2025-08-27 08:00:00
 [27-Aug-2025 11:33:43 Europe/Berlin] 2025-08-27 08:00:00
 [27-Aug-2025 11:33:49 Europe/Berlin] 2025-08-27 12:00:00
+[28-Aug-2025 03:38:14 Europe/Berlin] PHP Warning:  require(../app/views/auth/register.php): Failed to open stream: No such file or directory in D:\Ứng dụng phân tán\git_project\UDPT-2025\client\app\controllers\AuthController.php on line 66
+[28-Aug-2025 03:38:14 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/auth/register.php' (include_path='D:\xampp\php\PEAR') in D:\Ứng dụng phân tán\git_project\UDPT-2025\client\app\controllers\AuthController.php:66
+Stack trace:
+#0 D:\Ứng dụng phân tán\git_project\UDPT-2025\client\public\index.php(75): AuthController->register()
+#1 {main}
+  thrown in D:\Ứng dụng phân tán\git_project\UDPT-2025\client\app\controllers\AuthController.php on line 66
+[28-Aug-2025 03:38:15 Europe/Berlin] PHP Warning:  require(../app/views/auth/register.php): Failed to open stream: No such file or directory in D:\Ứng dụng phân tán\git_project\UDPT-2025\client\app\controllers\AuthController.php on line 66
+[28-Aug-2025 03:38:15 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/auth/register.php' (include_path='D:\xampp\php\PEAR') in D:\Ứng dụng phân tán\git_project\UDPT-2025\client\app\controllers\AuthController.php:66
+Stack trace:
+#0 D:\Ứng dụng phân tán\git_project\UDPT-2025\client\public\index.php(75): AuthController->register()
+#1 {main}
+  thrown in D:\Ứng dụng phân tán\git_project\UDPT-2025\client\app\controllers\AuthController.php on line 66
+[28-Aug-2025 03:38:16 Europe/Berlin] PHP Warning:  require(../app/views/auth/register.php): Failed to open stream: No such file or directory in D:\Ứng dụng phân tán\git_project\UDPT-2025\client\app\controllers\AuthController.php on line 66
+[28-Aug-2025 03:38:16 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/auth/register.php' (include_path='D:\xampp\php\PEAR') in D:\Ứng dụng phân tán\git_project\UDPT-2025\client\app\controllers\AuthController.php:66
+Stack trace:
+#0 D:\Ứng dụng phân tán\git_project\UDPT-2025\client\public\index.php(75): AuthController->register()
+#1 {main}
+  thrown in D:\Ứng dụng phân tán\git_project\UDPT-2025\client\app\controllers\AuthController.php on line 66
+[28-Aug-2025 03:38:36 Europe/Berlin] PHP Warning:  require(../app/views/auth/register.php): Failed to open stream: No such file or directory in D:\Ứng dụng phân tán\git_project\UDPT-2025\client\app\controllers\AuthController.php on line 66
+[28-Aug-2025 03:38:36 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/auth/register.php' (include_path='D:\xampp\php\PEAR') in D:\Ứng dụng phân tán\git_project\UDPT-2025\client\app\controllers\AuthController.php:66
+Stack trace:
+#0 D:\Ứng dụng phân tán\git_project\UDPT-2025\client\public\index.php(75): AuthController->register()
+#1 {main}
+  thrown in D:\Ứng dụng phân tán\git_project\UDPT-2025\client\app\controllers\AuthController.php on line 66
+[28-Aug-2025 03:38:38 Europe/Berlin] PHP Warning:  require(../app/views/auth/register.php): Failed to open stream: No such file or directory in D:\Ứng dụng phân tán\git_project\UDPT-2025\client\app\controllers\AuthController.php on line 66
+[28-Aug-2025 03:38:38 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/auth/register.php' (include_path='D:\xampp\php\PEAR') in D:\Ứng dụng phân tán\git_project\UDPT-2025\client\app\controllers\AuthController.php:66
+Stack trace:
+#0 D:\Ứng dụng phân tán\git_project\UDPT-2025\client\public\index.php(75): AuthController->register()
+#1 {main}
+  thrown in D:\Ứng dụng phân tán\git_project\UDPT-2025\client\app\controllers\AuthController.php on line 66
