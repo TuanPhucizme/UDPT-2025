@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS medicine_stock_log (
 );
 -- Sample Data for prescription-service
 INSERT INTO medicines 
-(id, ten_thuoc, so_luong, don_vi, don_gia, is_liquid, bottle_volume_per_bottle, volume_unit, created_at, updated_at)
+(id, ten_thuoc, so_luong, don_vi, don_gia, is_liquid, volume_per_bottle, volume_unit, created_at, updated_at)
 VALUES
 (1, 'Paracetamol', 1, 'viên', 1000, 0, NULL, NULL, '2025-08-29 02:22:25', '2025-08-29 02:25:10'),
 (2, 'Amoxicillin', 150, 'túi', 2323, 0, NULL, NULL, '2025-08-29 02:22:25', '2025-08-29 02:22:25'),
