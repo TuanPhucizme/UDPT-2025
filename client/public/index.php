@@ -66,7 +66,10 @@ $routes = [
         'create',
         'view',
         'dispense'
-    ]
+    ],
+    'reports' => ['prescriptions','patients'],
+    'notifications' => ['index','read','readAll']
+
 ];
 try {
     // Validate route
@@ -192,6 +195,29 @@ try {
                     
                 default:
                     throw new Exception('API route not found', 404);
+            }
+            break;
+        case 'reports':
+            AuthMiddleware::authenticate();
+            AuthMiddleware::authorizeRoles('admin','letan')();
+            require_once '../app/controllers/ReportController.php';
+            $controller = new ReportController();
+            if (method_exists($controller, $action)) {
+                call_user_func_array([$controller, $action], $params);
+            } else {
+                throw new Exception('Action not found', 404);
+            }
+            break;
+        case 'notifications':
+            AuthMiddleware::authenticate();
+            //patient xem của mình; admin/letan cũng có thể xem
+            AuthMiddleware::authorizeRoles('patient','admin','letan')();
+            require_once '../app/controllers/NotificationController.php';
+            $controller = new NotificationController();
+            if (method_exists($controller, $action)) {
+                call_user_func_array([$controller, $action], $params);
+            } else {
+                throw new Exception('Action not found', 404);
             }
             break;
         default:

@@ -37,6 +37,8 @@ if (!isset($_SESSION['username'])) {
                 <a href="../bacsi/thembacsi.php" class="btn btn-outline-success btn-lg">👩‍⚕️ Quản lý Bác sĩ</a>
                 <a href="./loading/lichkham.php" class="btn btn-outline-warning btn-lg">📅 Lịch Khám</a>
                 <a href="./loading/donthuoc.php" class="btn btn-outline-info btn-lg">💊 Quản lý Thuốc</a>
+                <li><a href="/reports/prescriptions">Báo cáo đơn thuốc</a></li>
+                <li><a href="/reports/patients">Báo cáo bệnh nhân</a></li>
                 <a href="logout.php" class="btn btn-outline-danger btn-lg">🚪 Đăng xuất</a>
             </div>
         </div>
