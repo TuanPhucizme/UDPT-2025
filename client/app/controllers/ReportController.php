@@ -156,7 +156,7 @@ class ReportController {
             // Check if a sync operation is requested
             if (isset($_GET['type'])) {
                 $type = $_GET['type'];
-                $syncResult = $reportService->syncData($type);
+                $syncResult = $reportService->syncReportData($type);
                 
                 if (isset($syncResult['error'])) {
                     $_SESSION['error'] = "Lỗi đồng bộ dữ liệu: " . $syncResult['error'];
