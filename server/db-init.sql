@@ -121,6 +121,10 @@ CREATE TABLE medicines (
   ten_thuoc VARCHAR(255) NOT NULL UNIQUE,
   so_luong INT,
   don_vi VARCHAR(50) NOT NULL,
+  don_gia INT,
+  is_liquid TINYINT(1),
+  volume_per_bottle FLOAT,
+  volume_unit VARCHAR(20),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -180,7 +184,7 @@ INSERT INTO prescriptions (record_id, pharmacist_id, status, created_at) VALUES
 INSERT INTO prescription_medicines (prescription_id, medicine_id, dose, frequency, duration, note) VALUES
 (1, 1, 1, '2 lần/ngày', '5 ngày', 'Uống sau ăn'),
 (2, 2, 2, '3 lần/ngày', '7 ngày', 'Uống đủ liệu trình'),
-(3, 3, 3, 'Khi khó thở', '10 ngày', 'Mang theo khi đi ra ngoài'),
+(3, 3, 3, '3 lần/ngày', '10 ngày', 'Mang theo khi đi ra ngoài'),
 (4, 5, 4, '1 lần/ngày', '14 ngày', 'Trước khi ngủ'),
 (5, 4, 5, '1 lần/ngày', '30 ngày', 'Sau bữa sáng');
 
