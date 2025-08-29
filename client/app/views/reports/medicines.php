@@ -37,7 +37,7 @@
                 <div class="col-md-3">
                     <label for="is_liquid" class="form-label">Loại thuốc</label>
                     <select class="form-select" id="is_liquid" name="is_liquid">
-                        <option value="">Tất cả</option>
+                        <option selected disabled>Chọn loại thuốc</option>
                         <option value="true" <?= isset($_GET['is_liquid']) && $_GET['is_liquid'] === 'true' ? 'selected' : '' ?>>
                             Thuốc dạng lỏng
                         </option>

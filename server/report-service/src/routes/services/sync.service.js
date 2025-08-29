@@ -162,6 +162,10 @@ async function syncPrescriptions() {
   let recordsProcessed = 0;
   
   try {
+    
+    await db.query('TRUNCATE TABLE medicine_prescription_stats');
+    console.log("[✓] Reset medicine prescription statistics table");
+    
     // Get all prescriptions first
     const res = await axios.get(`${PRESCRIPTION_SERVICE_URL}/api/prescriptions`, AUTH_HEADER);
     const prescriptions = res.data;

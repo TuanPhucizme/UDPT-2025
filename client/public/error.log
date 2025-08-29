@@ -1773,3 +1773,26 @@ Stack trace:
 #0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(223): ReportController->patients()
 #1 {main}
   thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\ReportController.php on line 58
+[29-Aug-2025 14:10:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 52
+[29-Aug-2025 14:10:10 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 52
+[29-Aug-2025 14:10:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 52
+[29-Aug-2025 14:10:10 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 52
+[29-Aug-2025 14:10:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 52
+[29-Aug-2025 14:10:11 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 52
+[29-Aug-2025 14:10:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 52
+[29-Aug-2025 14:10:11 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 52
+[29-Aug-2025 14:10:18 Asia/Ho_Chi_Minh] Auth Service Error: Failed to connect to service
+[29-Aug-2025 14:10:18 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 52
+[29-Aug-2025 14:10:18 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 52
+[29-Aug-2025 14:10:18 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 52
+[29-Aug-2025 14:10:18 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 52
+[29-Aug-2025 14:55:40 Asia/Ho_Chi_Minh] Error in getSyncStatus: Failed to connect to service
+[29-Aug-2025 14:57:44 Asia/Ho_Chi_Minh] Error in getSyncStatus: Failed to connect to service
+[29-Aug-2025 14:57:44 Asia/Ho_Chi_Minh] Error in getSyncStatus: Failed to connect to service
+[29-Aug-2025 14:57:47 Asia/Ho_Chi_Minh] Error in getSyncStatus: Failed to connect to service
+[29-Aug-2025 14:57:47 Asia/Ho_Chi_Minh] Error in getSyncStatus: Failed to connect to service
+[29-Aug-2025 14:57:48 Asia/Ho_Chi_Minh] Error in getSyncStatus: Failed to connect to service
+[29-Aug-2025 14:57:54 Asia/Ho_Chi_Minh] Error in getSyncStatus: Failed to connect to service
+[29-Aug-2025 14:57:57 Asia/Ho_Chi_Minh] Error in getSyncStatus: Failed to connect to service
+[29-Aug-2025 14:58:00 Asia/Ho_Chi_Minh] Error in getSyncStatus: Failed to connect to service
+[29-Aug-2025 14:58:00 Asia/Ho_Chi_Minh] Error in getSyncStatus: Failed to connect to service
