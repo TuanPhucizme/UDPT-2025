@@ -1,4 +1,3 @@
-<?php
 <?php require_once '../app/views/layouts/header.php'; ?>
 
 <div class="container-fluid py-4">

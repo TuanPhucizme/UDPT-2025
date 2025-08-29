@@ -121,7 +121,7 @@ exports.fetchDepartmentStats = async (options = {}) => {
   let query = `
     SELECT 
       department_id,
-      department_name,
+      MAX(department_name) as department_name, /* Using MAX to comply with ONLY_FULL_GROUP_BY */
       COUNT(DISTINCT record_id) as record_count,
       COUNT(DISTINCT patient_id) as patient_count
     FROM patient_record_stats
