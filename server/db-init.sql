@@ -27,7 +27,13 @@ CREATE TABLE staff (
   FOREIGN KEY (role_id) REFERENCES role(id_role),
   FOREIGN KEY (department_id) REFERENCES department(id)
 );
-
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  role_id INT NOT NULL,
+  FOREIGN KEY (role_id) REFERENCES role(id_role)
+);
 -- Sample Data for auth-service
 INSERT INTO role (ten_role) VALUES ('bacsi'), ('duocsi'), ('letan'), ('admin');
 INSERT INTO department (ten_ck) VALUES ('Nội tổng quát'), ('Ngoại khoa'), ('Nhi khoa'), ('Tim mạch'), ('Da liễu');
@@ -37,7 +43,12 @@ INSERT INTO staff (staff_code, hoten_nv, email, sdt, gender, dob, role_id, depar
 (1003, 'Pharmacist Le Duoc', 'duocle@example.com', '0913333333', 'nam', '1985-06-10', 2, NULL, '2010-01-01'),
 (1004, 'Receptionist Pham Letan', 'letanpham@example.com', '0914444444', 'nu', '1990-07-20', 3, NULL, '2015-01-01'),
 (1005, 'Admin Hoang', 'adminhoang@example.com', '0915555555', 'nam', '1975-09-25', 4, NULL, '2000-01-01');
-
+INSERT INTO users (username, password, role_id) VALUES
+('bacsi1', '$2a$12$HFPc2MAAByA7mYQm2fJpgOdbGpcAZ/yNXDAe7sFywyegyU7KQ/ZqC', 1),
+('bacsi2', '$2a$12$KK1I9WaXgU.sV6KAaptNROvIrwNY/64SOidByO3s/oFWRm9xs4aMC', 1),
+('duocsi1', '$2a$12$EA1YaTqq6CLFvQqENIrp5.yKtwWLhsX3sx1fAzN11lFQ5O9pHkktK', 2),
+('letan1', '$2a$12$PU2pCGoEsTR418j/fuOf6O7oimwaPhw1qvh/EgJW/RcEEZPy6eD6S', 3),
+('admin', '$2a$12$7TY7NeHT4tS1cZPglO6w/.MQQse8msHf9/T2.GC1oRpmaslhJyk.y', 4);
 -- ########## PATIENT SERVICE ##########
 CREATE DATABASE IF NOT EXISTS patient_service;
 USE patient_service;
