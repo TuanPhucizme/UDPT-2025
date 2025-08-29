@@ -12,7 +12,6 @@ export const getAllMedicines = async (req, res) => {
     try {
         const { search, stock_status } = req.query;
         const medicines = await getAllMedicinesFromDB(search, stock_status);
-        console.log(medicines);
         res.json(medicines);
     } catch (error) {
         console.error('Error in getAllMedicines:', error);

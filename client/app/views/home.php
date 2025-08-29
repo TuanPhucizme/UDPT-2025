@@ -81,6 +81,103 @@
                             <?php endif; ?>
                         <?php endif; ?>
                     </div>
+
+                    <!-- For pharmacists, add these cards to the dashboard -->
+                    <?php if ($_SESSION['user']['role'] === 'duocsi'): ?>
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h5 class="border-bottom pb-2 mb-3">Quản lý thuốc</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card mb-3">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-pills fa-3x text-primary mb-3"></i>
+                                        <h5>Danh sách thuốc</h5>
+                                        <p class="text-muted">Quản lý danh mục thuốc</p>
+                                        <a href="/medicines" class="btn btn-primary">Xem danh sách</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card mb-3">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-prescription-bottle-alt fa-3x text-success mb-3"></i>
+                                        <h5>Nhập thuốc</h5>
+                                        <p class="text-muted">Nhập thêm thuốc vào kho</p>
+                                        <a href="/medicines/create" class="btn btn-success">Nhập thuốc</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card mb-3">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-chart-pie fa-3x text-info mb-3"></i>
+                                        <h5>Báo cáo thuốc</h5>
+                                        <p class="text-muted">Thống kê sử dụng thuốc</p>
+                                        <a href="/medicines/report" class="btn btn-info">Xem báo cáo</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card mb-3">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-clipboard-check fa-3x text-warning mb-3"></i>
+                                        <h5>Đơn thuốc chờ</h5>
+                                        <p class="text-muted">Phát thuốc cho bệnh nhân</p>
+                                        <a href="/prescriptions/pending" class="btn btn-warning">Phát thuốc</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($_SESSION['user']['role'] === 'admin'): ?>
+<div class="row mb-4">
+    <div class="col-12">
+        <h5 class="border-bottom pb-2 mb-3">Báo cáo và phân tích</h5>
+    </div>
+    <div class="col-md-3">
+        <div class="card mb-3">
+            <div class="card-body text-center">
+                <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
+                <h5>Báo cáo tổng quan</h5>
+                <p class="text-muted">Thống kê hoạt động chung</p>
+                <a href="/reports" class="btn btn-primary">Xem báo cáo</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card mb-3">
+            <div class="card-body text-center">
+                <i class="fas fa-users fa-3x text-info mb-3"></i>
+                <h5>Báo cáo bệnh nhân</h5>
+                <p class="text-muted">Thống kê bệnh nhân</p>
+                <a href="/reports/patients" class="btn btn-info">Xem báo cáo</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card mb-3">
+            <div class="card-body text-center">
+                <i class="fas fa-hospital fa-3x text-success mb-3"></i>
+                <h5>Báo cáo chuyên khoa</h5>
+                <p class="text-muted">Thống kê chuyên khoa</p>
+                <a href="/reports/departments" class="btn btn-success">Xem báo cáo</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card mb-3">
+            <div class="card-body text-center">
+                <i class="fas fa-pills fa-3x text-warning mb-3"></i>
+                <h5>Báo cáo thuốc</h5>
+                <p class="text-muted">Thống kê sử dụng thuốc</p>
+                <a href="/reports/medicines" class="btn btn-warning">Xem báo cáo</a>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
                 <?php endif; ?>
             </div>
         </div>

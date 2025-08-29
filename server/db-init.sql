@@ -190,8 +190,7 @@ USE report_service;
 
 -- Table for medicine prescriptions reporting
 CREATE TABLE IF NOT EXISTS medicine_prescription_stats (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  medicine_id INT NOT NULL,
+  medicine_id INT NOT NULL PRIMARY KEY,
   medicine_name VARCHAR(255) NOT NULL,
   total_prescribed INT DEFAULT 0,
   total_quantity INT DEFAULT 0,
@@ -218,4 +217,38 @@ CREATE TABLE IF NOT EXISTS patient_record_stats (
   INDEX (patient_id),
   INDEX (department_id),
   UNIQUE KEY (record_id)
+);
+
+CREATE TABLE IF NOT EXISTS patients (
+  id INT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  gender VARCHAR(10),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  last_synced TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Base table for prescriptions
+CREATE TABLE IF NOT EXISTS prescriptions (
+  id INT PRIMARY KEY,
+  patient_id INT,
+  medicine TEXT,
+  status VARCHAR(20) DEFAULT 'pending',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  last_synced TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX (patient_id),
+  INDEX (status)
+);
+
+
+-- Table to track sync operations
+CREATE TABLE IF NOT EXISTS sync_log (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  sync_type VARCHAR(50) NOT NULL,
+  start_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  end_time TIMESTAMP NULL,
+  records_processed INT DEFAULT 0,
+  status VARCHAR(20) DEFAULT 'running',
+  message TEXT,
+  INDEX (sync_type),
+  INDEX (status)
 );

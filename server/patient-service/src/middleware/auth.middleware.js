@@ -18,7 +18,6 @@ export const authMiddleware = (req, res, next) => {
 
   // Check if it's an internal API call first
   if (token === INTERNAL_API_TOKEN) {
-    console.log('Internal API call authenticated');
     req.isInternalRequest = true;
     return next();
   }

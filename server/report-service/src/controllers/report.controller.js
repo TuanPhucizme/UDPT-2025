@@ -1,4 +1,5 @@
 const reportService = require('../routes/services/report.service');
+const db = require('../config/db'); // Ensure correct path to your db config
 
 exports.getPatientStats = async (req, res) => {
   try {
@@ -105,5 +106,33 @@ exports.syncReportData = async (req, res) => {
   } catch (error) {
     console.error('Error in syncReportData:', error);
     res.status(500).json({ error: 'Data synchronization failed' });
+  }
+};
+
+exports.getSyncStatus = async (req, res) => {
+  try {
+    // Get last sync status for each type
+    const [rows] = await db.query(`
+      SELECT sync_type, 
+             MAX(start_time) as last_start_time, 
+             MAX(end_time) as last_end_time,
+             SUM(CASE WHEN status = 'completed' OR status = 'partially_completed' THEN records_processed ELSE 0 END) as total_records,
+             MAX(CASE WHEN id = (SELECT MAX(id) FROM sync_log WHERE sync_type = s.sync_type) THEN status END) as last_status,
+             MAX(CASE WHEN id = (SELECT MAX(id) FROM sync_log WHERE sync_type = s.sync_type) THEN message END) as last_message
+      FROM sync_log s
+      GROUP BY sync_type
+      ORDER BY MAX(start_time) DESC
+    `);
+    
+    res.json({
+      sync_status: rows,
+      last_sync: rows.length > 0 ? {
+        time: rows[0].last_end_time || rows[0].last_start_time,
+        status: rows[0].last_status
+      } : null
+    });
+  } catch (error) {
+    console.error('Error in getSyncStatus:', error);
+    res.status(500).json({ error: 'Failed to fetch sync status' });
   }
 };

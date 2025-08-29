@@ -42,7 +42,6 @@ export const updatePatientInfo = async (req, res) => {
 };
 
 export const getPatientRecordIds = async (req, res) => {
-  console.log('getPatientRecordIds called with params:', req.params);
   try {
     const patientId = req.params.id;
 
@@ -59,7 +58,6 @@ export const getPatientRecordIds = async (req, res) => {
 
     // Extract just the IDs
     const recordIds = records.map(record => record.id);
-    console.log(`Found ${recordIds.length} records for patient ID ${patientId}`);
     res.json({
       patient_id: patientId,
       recordIds

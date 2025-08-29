@@ -68,7 +68,15 @@ $routes = [
         'dispense',
         'pending'  // Add the new pending route
     ],
-    'reports' => ['prescriptions','patients'],
+    'reports' => [
+        'index',
+        'patients',
+        'prescriptions',
+        'medicines',
+        'departments',
+        'diagnoses',
+        'sync'
+    ],
     'notifications' => ['index','read','readAll'],
     'medicines' => [
         'index', 

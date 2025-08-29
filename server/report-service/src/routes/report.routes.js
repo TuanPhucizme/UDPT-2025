@@ -14,4 +14,7 @@ router.get('/diagnoses', controller.getDiagnosisStats);
 // Sync data on demand
 router.post('/sync', controller.syncReportData);
 
+// Sync status endpoint
+router.get('/sync-status', controller.getSyncStatus);
+
 module.exports = router;
