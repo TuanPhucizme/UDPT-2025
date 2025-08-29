@@ -48,6 +48,7 @@
                 </div>
                     <?php endif; ?>
                 </div>
+                <?php if (isset($_SESSION['user'])): ?>
                 <ul class="navbar-nav ms-auto">
                     <?php if ($_SESSION['user']['role'] === 'duocsi' || $_SESSION['user']['role'] === 'admin'): ?>
                         <?php
@@ -55,7 +56,7 @@
                         require_once '../app/services/PrescriptionService.php';
                         $prescriptionService = new PrescriptionService();
                         $lowStockResult = $prescriptionService->getAllMedicines(['stock_status' => 'low']);
-                        $lowStockCount = count($lowStockResult['data'] ?? []);
+                        $lowStockCount = count($lowStockResult??[]);
                         ?>
                         
                         <?php if ($lowStockCount > 0): ?>
@@ -87,6 +88,7 @@
                     
                     <!-- Rest of the navbar items -->
                 </ul>
+                <?php endif; ?>
                 <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] !== 'benhnhan'): ?>
                     <form class="d-flex me-3" action="/patients/search" method="GET">
                         <input class="form-control me-2" type="search" 

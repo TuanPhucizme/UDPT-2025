@@ -151,7 +151,6 @@ try {
             // Change this line to include pharmacists
             AuthMiddleware::authorizeRoles('bacsi', 'duocsi', 'admin')();
             require_once '../app/controllers/RecordController.php';
-            error_log("Accessing records controller");
             $controller = new RecordController();
             if (method_exists($controller, $action)) {
                 call_user_func_array([$controller, $action], $params);
@@ -163,7 +162,6 @@ try {
             AuthMiddleware::authenticate();
             require_once '../app/controllers/PrescriptionController.php';
             $controller = new PrescriptionController();
-            error_log("Accessing prescriptions controller");
             if (method_exists($controller, $action)) {
                 // Role-based access control for specific actions
                 switch ($action) {
