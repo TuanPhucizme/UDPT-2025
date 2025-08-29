@@ -186,3 +186,36 @@ INSERT INTO prescription_medicines (prescription_id, medicine_id, dose, frequenc
 -- Bạn có thể thêm các CREATE DATABASE và bảng cho các service còn lại ở đây
 CREATE DATABASE IF NOT EXISTS notification_service;
 CREATE DATABASE IF NOT EXISTS report_service;
+USE report_service;
+
+-- Table for medicine prescriptions reporting
+CREATE TABLE IF NOT EXISTS medicine_prescription_stats (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  medicine_id INT NOT NULL,
+  medicine_name VARCHAR(255) NOT NULL,
+  total_prescribed INT DEFAULT 0,
+  total_quantity INT DEFAULT 0,
+  total_liquid_volume FLOAT DEFAULT 0,
+  is_liquid BOOLEAN DEFAULT FALSE,
+  month_year DATE NOT NULL,
+  last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX (month_year),
+  INDEX (medicine_id)
+);
+
+-- Table for patient records reporting
+CREATE TABLE IF NOT EXISTS patient_record_stats (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  patient_id INT NOT NULL,
+  department_id INT,
+  department_name VARCHAR(255),
+  diagnosis VARCHAR(255),
+  visit_date DATE NOT NULL,
+  month_year DATE NOT NULL,
+  record_id INT NOT NULL,
+  last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX (month_year),
+  INDEX (patient_id),
+  INDEX (department_id),
+  UNIQUE KEY (record_id)
+);

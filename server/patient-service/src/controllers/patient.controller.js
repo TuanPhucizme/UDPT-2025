@@ -5,6 +5,7 @@ import {
   getPatientById,
   updatePatient,
 } from '../models/patient.model.js';
+import db from '../db.js'; // Add this import at the top if not present
 
 export const registerPatient = async (req, res) => {
   try {
@@ -41,27 +42,33 @@ export const updatePatientInfo = async (req, res) => {
 };
 
 export const getPatientRecordIds = async (req, res) => {
+  console.log('getPatientRecordIds called with params:', req.params);
   try {
     const patientId = req.params.id;
-    
+
+    // Validate patientId
+    if (!patientId || isNaN(patientId)) {
+      return res.status(400).json({ message: 'Invalid patient ID' });
+    }
+
     // Get just the record IDs for this patient
     const [records] = await db.query(
       'SELECT id FROM medical_records WHERE patient_id = ?',
       [patientId]
     );
-    
+
     // Extract just the IDs
     const recordIds = records.map(record => record.id);
-    
+    console.log(`Found ${recordIds.length} records for patient ID ${patientId}`);
     res.json({
       patient_id: patientId,
       recordIds
     });
   } catch (error) {
     console.error('Error in getPatientRecordIds:', error);
-    res.status(500).json({ 
-      message: 'Error retrieving patient record IDs', 
-      error: error.message 
+    res.status(500).json({
+      message: 'Error retrieving patient record IDs',
+      error: error.message
     });
   }
 };

@@ -1704,3 +1704,7 @@ Stack trace:
 [29-Aug-2025 02:24:25 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\error.php on line 7
 [29-Aug-2025 02:24:28 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\error.php on line 7
 [29-Aug-2025 02:25:12 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\error.php on line 7
+[29-Aug-2025 12:54:18 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 52
+[29-Aug-2025 12:54:18 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 52
+[29-Aug-2025 12:54:18 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 52
+[29-Aug-2025 12:54:18 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\layouts\header.php on line 52
