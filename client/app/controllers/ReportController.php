@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../services/ReportService.php';
 require_once __DIR__ . '/../services/PrescriptionService.php';
 require_once __DIR__ . '/../services/AuthService.php';
-
+require_once __DIR__ . '/../services/AppointmentService.php';
 class ReportController {
     private $reportService;
     private $prescriptionService;
@@ -13,6 +13,7 @@ class ReportController {
         $this->reportService = new ReportService();
         $this->prescriptionService = new PrescriptionService();
         $this->authService = new AuthService();
+        $this->appointmentService = new AppointmentService();
     }
     
     /**
@@ -55,7 +56,7 @@ class ReportController {
             $patientStats = $this->reportService->getPatientStats($startDate, $endDate);
             
             // Get departments for filtering
-            $departments = $this->authService->getDepartments();
+            $departments = $this->appointmentService->getDepartments();
             
             require '../app/views/reports/patients.php';
         } catch (Exception $e) {

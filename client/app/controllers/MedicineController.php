@@ -231,4 +231,32 @@ class MedicineController {
             exit;
         }
     }
+    
+    /**
+     * API method to get medicine details
+     * 
+     * @param int $id Medicine ID
+     * @return void Outputs JSON
+     */
+    public function apiGetMedicineDetails($id) {
+        try {
+            $result = $this->prescriptionService->getMedicineById($id);
+            
+            if ($result['statusCode'] !== 200) {
+                http_response_code($result['statusCode']);
+                echo json_encode(['error' => $result['message'] ?? 'Medicine not found']);
+                return;
+            }
+            
+            // Return medicine data
+            header('Content-Type: application/json');
+            echo json_encode($result['data']);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                'error' => $e->getMessage(),
+                'message' => 'An error occurred while fetching medicine details'
+            ]);
+        }
+    }
 }

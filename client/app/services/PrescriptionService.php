@@ -115,6 +115,6 @@ class PrescriptionService extends BaseService {
      * Get liquid medicines usage report
      */
     public function getLiquidMedicinesReport() {
-        return $this->request('GET', "/api/reports/liquid-medicines");
+        return $this->request('GET', "/api/medicines/reports/liquid-medicines");
     }
 }

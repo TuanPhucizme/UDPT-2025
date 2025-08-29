@@ -118,7 +118,8 @@ class PrescriptionController {
                             'dosage' => (int)$dosage,  // Cast to integer
                             'frequency' => $frequency,
                             'duration' => $duration,
-                            'note' => $note
+                            'note' => $note,
+                            'total_amount' => $_POST['total_amount'][$index] ?? 0 // Include total amount
                         ];
                     }
                 }

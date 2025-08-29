@@ -260,7 +260,7 @@ export const updatePrescriptionStatus = async (id, status, pharmacist_id) => {
     
     let prescriptionMedicines = [];
     if (shouldReduceStock) {
-      // Get all medicines for this prescription
+      // Get all medicines for this prescription with frequency and duration details
       const [medicinesResult] = await conn.query(
         `SELECT 
           pm.medicine_id, 
@@ -268,6 +268,8 @@ export const updatePrescriptionStatus = async (id, status, pharmacist_id) => {
           m.ten_thuoc,
           m.don_vi,
           pm.dose,
+          pm.frequency,
+          pm.duration,
           pm.note
         FROM prescription_medicines pm
         JOIN medicines m ON pm.medicine_id = m.id
@@ -295,6 +297,10 @@ export const updatePrescriptionStatus = async (id, status, pharmacist_id) => {
         
         const isLiquid = medicineDetails[0]?.is_liquid || false;
         
+        // Calculate total quantity needed based on frequency and duration
+        const totalQuantity = calculateTotalQuantity(medicine.dose, medicine.frequency, medicine.duration);
+        medicine.totalQuantity = totalQuantity;
+        
         // Add bottle usage note if missing
         if (medicine.don_vi.toLowerCase() === 'chai' && (!medicine.note || medicine.note.trim() === '')) {
           await conn.query(
@@ -312,25 +318,26 @@ export const updatePrescriptionStatus = async (id, status, pharmacist_id) => {
           const bottlesInStock = medicineDetails[0].bottles_in_stock;
           
           // Calculate how many bottles we need based on prescribed volume
-          // If dose is in ml and bottle is 100ml, we might need multiple bottles
-          const totalVolumeNeeded = medicine.dose; // Assuming dose is already in correct units (ml)
+          // If total dose is in ml and bottle is 100ml, we might need multiple bottles
+          const totalVolumeNeeded = totalQuantity; // Using calculated total quantity
           const bottlesNeeded = Math.ceil(totalVolumeNeeded / volumePerBottle);
           
           if (bottlesNeeded > bottlesInStock) {
             throw new Error(
               `Không đủ số lượng thuốc "${medicineDetails[0].ten_thuoc}" trong kho ` +
-              `(cần ${bottlesNeeded} chai, hiện có ${bottlesInStock} chai)`
+              `(cần ${bottlesNeeded} chai cho ${totalVolumeNeeded}${medicineDetails[0].volume_unit}, hiện có ${bottlesInStock} chai)`
             );
           }
           
           // Store the calculated bottles needed for later use
           medicine.bottlesNeeded = bottlesNeeded;
+          medicine.totalVolumeNeeded = totalVolumeNeeded;
         } else {
           // Standard check for non-liquid medicines
-          if (medicineDetails[0].bottles_in_stock < medicine.dose) {
+          if (medicineDetails[0].bottles_in_stock < totalQuantity) {
             throw new Error(
               `Không đủ số lượng thuốc "${medicineDetails[0].ten_thuoc}" trong kho ` +
-              `(cần ${medicine.dose}, hiện có ${medicineDetails[0].bottles_in_stock})`
+              `(cần ${totalQuantity} ${medicineDetails[0].don_vi}, hiện có ${medicineDetails[0].bottles_in_stock})`
             );
           }
         }
@@ -361,22 +368,43 @@ export const updatePrescriptionStatus = async (id, status, pharmacist_id) => {
               quantity_change,
               bottles_used,
               volume_used,
-              note
-            ) VALUES (?, ?, 'dispense', ?, ?, ?, ?)`,
+              note,
+              created_by
+            ) VALUES (?, ?, 'dispense', ?, ?, ?, ?, ?)`,
             [
               medicine.medicine_id,
               id,
               medicine.bottlesNeeded,
               medicine.bottlesNeeded,
-              medicine.dose, // Volume used
-              `Dispensed ${medicine.dose}${medicineDetails[0].volume_unit} from ${medicine.bottlesNeeded} bottles`
+              medicine.totalVolumeNeeded, // Volume used
+              `Dispensed ${medicine.totalVolumeNeeded}${medicineDetails[0].volume_unit} from ${medicine.bottlesNeeded} bottles`,
+              pharmacist_id || null
             ]
           );
         } else {
-          // Standard update for non-liquid medicines
+          // Standard update for non-liquid medicines - use totalQuantity instead of dose
           await conn.query(
             'UPDATE medicines SET so_luong = so_luong - ? WHERE id = ?',
-            [medicine.dose, medicine.medicine_id]
+            [medicine.totalQuantity, medicine.medicine_id]
+          );
+          
+          // Log the transaction
+          await conn.query(
+            `INSERT INTO medicine_stock_log (
+              medicine_id,
+              prescription_id,
+              action_type,
+              quantity_change,
+              note,
+              created_by
+            ) VALUES (?, ?, 'dispense', ?, ?, ?)`,
+            [
+              medicine.medicine_id,
+              id,
+              medicine.totalQuantity,
+              `Dispensed ${medicine.totalQuantity} ${medicine.don_vi}`,
+              pharmacist_id || null
+            ]
           );
         }
       }
@@ -457,7 +485,10 @@ export const getPrescriptionById = async (id) => {
       `SELECT 
         pm.*,
         m.ten_thuoc as name,
-        m.don_vi as unit
+        m.don_vi as unit,
+        m.is_liquid,
+        m.volume_per_bottle,
+        m.volume_unit
       FROM prescription_medicines pm
       JOIN medicines m ON pm.medicine_id = m.id
       WHERE pm.prescription_id = ?`,
@@ -469,12 +500,11 @@ export const getPrescriptionById = async (id) => {
       id: med.medicine_id,
       name: med.name,
       unit: med.unit,
-      dosage: `${med.dose} ${med.unit}`, // Combine numeric dose with unit for display
+      dosage: `${med.dose} ${med.is_liquid?med.volume_unit:med.unit}`, // Combine numeric dose with unit for display
       frequency: med.frequency,
       duration: med.duration,
       note: med.note || ''
     }));
-
     // Get record details to fetch patient and doctor info
     const record = await serviceCall(
       `${services.PATIENT_SERVICE_URL}/api/medical-records/internal/${prescription.record_id}`
@@ -669,6 +699,9 @@ export const getPrescriptionsByStatus = async (status) => {
         pm.*,
         m.ten_thuoc as name,
         m.don_vi as unit,
+        m.is_liquid,
+        m.volume_per_bottle,
+        m.volume_unit,
         pm.prescription_id
       FROM prescription_medicines pm
       JOIN medicines m ON pm.medicine_id = m.id
@@ -685,7 +718,7 @@ export const getPrescriptionsByStatus = async (status) => {
         id: med.medicine_id,
         name: med.name,
         unit: med.unit,
-        dosage: `${med.dose} ${med.unit}`, // Format dosage for display
+        dosage: `${med.dose} ${med.is_liquid?med.volume_unit:med.unit}`, // Format dosage for display
         frequency: med.frequency,
         duration: med.duration,
         note: med.note || ''
@@ -816,6 +849,9 @@ export const getAllPrescriptions = async (filters = {}) => {
         pm.*,
         m.ten_thuoc as name,
         m.don_vi as unit,
+        m.is_liquid,
+        m.volume_per_bottle,
+        m.volume_unit,
         pm.prescription_id
       FROM prescription_medicines pm
       JOIN medicines m ON pm.medicine_id = m.id
@@ -832,14 +868,13 @@ export const getAllPrescriptions = async (filters = {}) => {
         id: med.medicine_id,
         name: med.name,
         unit: med.unit,
-        dosage: `${med.dose} ${med.unit}`,
+        dosage: `${med.dose} ${med.is_liquid ? med.volume_unit : med.unit}`, // Format dosage for display
         frequency: med.frequency,
         duration: med.duration,
         note: med.note || ''
       });
       return acc;
     }, {});
-
     // Get unique record IDs to fetch record details in batches
     const recordIds = [...new Set(prescriptionRows.map(p => p.record_id))];
     const recordDetailsPromises = recordIds.map(id => 
@@ -922,3 +957,88 @@ export const getAllPrescriptions = async (filters = {}) => {
     throw error;
   }
 };
+
+// Helper function to calculate total quantity based on dose, frequency, and duration
+function calculateTotalQuantity(dose, frequency, duration) {
+  if (!dose || !frequency || !duration) {
+    return dose || 0; // Default to just dose if other parameters are missing
+  }
+  
+  const doseValue = parseFloat(dose);
+  
+  // Parse frequency (e.g., "3 lần/ngày")
+  const frequencyParts = frequency.split(' ');
+  if (frequencyParts.length < 2) return doseValue;
+  
+  const frequencyValue = parseFloat(frequencyParts[0]);
+  const frequencyUnit = frequencyParts[1];
+  
+  // Parse duration (e.g., "7 ngày")
+  const durationParts = duration.split(' ');
+  if (durationParts.length < 2) return doseValue;
+  
+  const durationValue = parseFloat(durationParts[0]);
+  const durationUnit = durationParts[1];
+  
+  // Calculate total doses based on frequency and duration
+  let totalDoses = 0;
+  
+  if (frequencyUnit === 'lần/ngày') {
+    // Frequency per day
+    let daysTotal = 0;
+    
+    if (durationUnit === 'ngày') {
+      daysTotal = durationValue;
+    } else if (durationUnit === 'tuần') {
+      daysTotal = durationValue * 7;
+    } else if (durationUnit === 'tháng') {
+      daysTotal = durationValue * 30;
+    }
+    
+    totalDoses = frequencyValue * daysTotal;
+  } else if (frequencyUnit === 'lần/tuần') {
+    // Frequency per week
+    let weeksTotal = 0;
+    
+    if (durationUnit === 'ngày') {
+      weeksTotal = durationValue / 7;
+    } else if (durationUnit === 'tuần') {
+      weeksTotal = durationValue;
+    } else if (durationUnit === 'tháng') {
+      weeksTotal = durationValue * 4.3;
+    }
+    
+    totalDoses = frequencyValue * weeksTotal;
+  } else if (frequencyUnit === 'giờ/lần') {
+    // Hours between doses
+    let hoursTotal = 0;
+    
+    if (durationUnit === 'ngày') {
+      hoursTotal = durationValue * 24;
+    } else if (durationUnit === 'tuần') {
+      hoursTotal = durationValue * 24 * 7;
+    } else if (durationUnit === 'tháng') {
+      hoursTotal = durationValue * 24 * 30;
+    }
+    
+    if (frequencyValue > 0) {
+      totalDoses = hoursTotal / frequencyValue;
+    }
+  } else if (frequencyUnit === 'khi cần') {
+    // As needed - estimate based on 3 times per week
+    let weeksTotal = 0;
+    
+    if (durationUnit === 'ngày') {
+      weeksTotal = durationValue / 7;
+    } else if (durationUnit === 'tuần') {
+      weeksTotal = durationValue;
+    } else if (durationUnit === 'tháng') {
+      weeksTotal = durationValue * 4.3;
+    }
+    
+    totalDoses = 3 * weeksTotal; // Estimate as 3 times per week
+  }
+  
+  // Calculate total amount needed
+  return Math.ceil(doseValue * totalDoses);
+}

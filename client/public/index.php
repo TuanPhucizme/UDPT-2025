@@ -54,7 +54,8 @@ $routes = [
     'api' => [
         'patients',
         'departments',
-        'doctors'
+        'doctors',
+        'medicines'
     ],
     'records' => [
         'index',
@@ -208,6 +209,12 @@ try {
                     require_once '../app/controllers/AppointmentController.php';
                     $controller = new AppointmentController();
                     $controller->getAvailableSlots($matches[1]);
+                    break;
+                    
+                case (preg_match('/^medicines\/(\d+)$/', $apiPath, $matches) ? true : false):
+                    require_once '../app/controllers/MedicineController.php';
+                    $controller = new MedicineController();
+                    $controller->apiGetMedicineDetails($matches[1]);
                     break;
                     
                 default:

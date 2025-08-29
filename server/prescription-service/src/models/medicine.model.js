@@ -350,7 +350,7 @@ export const getLiquidMedicinesReportFromDB = async () => {
                 };
             }
         }));
-        
+        console.log(enrichedMedicines);
         return enrichedMedicines;
     } catch (error) {
         console.error('Error in getLiquidMedicinesReportFromDB:', error);
