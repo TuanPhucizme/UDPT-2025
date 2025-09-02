@@ -28,8 +28,8 @@ INSERT INTO department (ten_ck) VALUES
 INSERT INTO staff (staff_code, hoten_nv, email, sdt, gender, dob, role_id, department_id, begin_date) VALUES
 (1, 'Dr. Nguyen Bac Si', 'bsnguyen@example.com', '0911111111', 'nam', '1970-03-01', 1, 1, '2000-01-01'),
 (2, 'Dr. Tran Van Ky', 'kytran@example.com', '0916666666', 'nam', '1982-09-12', 1, 2, '2012-02-01'),
-(3, 'Dr. Le Thi Hue', 'huele@example.com', '0917777777', 'nu', '1988-03-18', 1, 3, '2014-03-01'),
-(4, 'Dr. Nguyen Quang', 'quangnguyen@example.com', '0918888888', 'nam', '1990-11-20', 1, 4, '2017-05-15'),
+-- (3, 'Dr. Le Thi Hue', 'huele@example.com', '0917777777', 'nu', '1988-03-18', 1, 3, '2014-03-01'),
+-- (4, 'Dr. Nguyen Quang', 'quangnguyen@example.com', '0918888888', 'nam', '1990-11-20', 1, 4, '2017-05-15'),
 
 (5, 'Pharmacist Le Duoc', 'duocle@example.com', '0913333333', 'nam', '1985-06-10', 2, NULL, '2010-01-01'),
 (6, 'Receptionist Pham Letan', 'letanpham@example.com', '0914444444', 'nu', '1990-07-20', 3, NULL, '2015-01-01'),

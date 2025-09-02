@@ -139,6 +139,7 @@ CREATE TABLE prescriptions (
   pharmacist_id INT NULL, -- Links to staff in auth_service (can be NULL if not yet dispensed)
   status ENUM('pending','collected','dispensed') DEFAULT 'pending', -- Renamed 'collected' to 'dispensed' for clarity
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (record_id) REFERENCES patient_service.medical_records(id)
   -- FOREIGN KEY (pharmacist_id) REFERENCES auth_service.staff(id) -- Added later for clarity, can be omitted if not critical for initial creation
 );

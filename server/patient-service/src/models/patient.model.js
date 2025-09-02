@@ -49,7 +49,11 @@ export const getAllPatients = async (filters = {}) => {
     params.push(parseInt(filters.age));
   }
 
-  sql += ' ORDER BY hoten_bn ASC';
+  const validSortBy = ['id', 'hoten_bn', 'dob', 'created_at'];
+  const sortBy = validSortBy.includes(filters.sortBy) ? filters.sortBy : 'id';
+  const sortOrder = filters.sortOrder === 'desc' ? 'DESC' : 'ASC';
+
+  sql += ` ORDER BY ${sortBy} ${sortOrder}`;
 
   const [rows] = await db.query(sql, params);
   return rows;
