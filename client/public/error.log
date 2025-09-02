@@ -1,0 +1,239 @@
+[02-Sep-2025 20:48:23 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[02-Sep-2025 20:48:32 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[02-Sep-2025 20:48:37 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[02-Sep-2025 20:58:39 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/auth/register.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\UDPT-2025\client\app\controllers\AuthController.php on line 66
+[02-Sep-2025 20:58:39 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/auth/register.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\UDPT-2025\client\app\controllers\AuthController.php:66
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\public\index.php(103): AuthController->register()
+#1 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\controllers\AuthController.php on line 66
+[02-Sep-2025 21:07:34 Asia/Ho_Chi_Minh] api path: patients/search
+[02-Sep-2025 21:07:34 Asia/Ho_Chi_Minh] name=Le+Van+C&phone=
+[02-Sep-2025 21:07:37 Asia/Ho_Chi_Minh] api path: departments/1/doctors
+[02-Sep-2025 21:07:39 Asia/Ho_Chi_Minh] api path: doctors/1/schedule
+[02-Sep-2025 21:07:39 Asia/Ho_Chi_Minh] api path: doctors/1/slots
+[02-Sep-2025 21:11:06 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/error/403.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
+[02-Sep-2025 21:11:06 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/error/403.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php:32
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\public\index.php(132): AuthMiddleware::{closure}()
+#1 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
+[02-Sep-2025 21:15:35 Asia/Ho_Chi_Minh] api path: patients/search
+[02-Sep-2025 21:15:35 Asia/Ho_Chi_Minh] name=Le+Van+C&phone=
+[02-Sep-2025 21:15:38 Asia/Ho_Chi_Minh] api path: departments/1/doctors
+[02-Sep-2025 21:15:40 Asia/Ho_Chi_Minh] api path: doctors/1/schedule
+[02-Sep-2025 21:15:40 Asia/Ho_Chi_Minh] api path: doctors/1/slots
+[02-Sep-2025 21:26:20 Asia/Ho_Chi_Minh] api path: departments/1/doctors
+[02-Sep-2025 21:29:38 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:108
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 108
+[02-Sep-2025 21:29:42 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:108
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 108
+[02-Sep-2025 21:32:44 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:105
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 105
+[02-Sep-2025 21:32:54 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:105
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 105
+[02-Sep-2025 21:33:22 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:105
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 105
+[02-Sep-2025 21:33:27 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:105
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 105
+[02-Sep-2025 21:35:33 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:108
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 108
+[02-Sep-2025 21:36:03 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:108
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 108
+[02-Sep-2025 21:36:51 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:108
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 108
+[02-Sep-2025 21:38:08 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:108
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 108
+[02-Sep-2025 21:38:10 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:108
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 108
+[02-Sep-2025 21:38:22 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:108
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 108
+[02-Sep-2025 21:38:42 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:110
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 110
+[02-Sep-2025 21:38:47 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:110
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 110
+[02-Sep-2025 21:38:51 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:110
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 110
+[02-Sep-2025 21:38:58 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:110
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 110
+[02-Sep-2025 21:41:25 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/error/403.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
+[02-Sep-2025 21:41:25 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/error/403.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php:32
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\public\index.php(152): AuthMiddleware::{closure}()
+#1 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
+[02-Sep-2025 21:42:05 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/error/403.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
+[02-Sep-2025 21:42:05 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/error/403.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php:32
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\public\index.php(152): AuthMiddleware::{closure}()
+#1 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
+[02-Sep-2025 21:43:10 Asia/Ho_Chi_Minh] Không tìm thấy đơn thuốc
+[02-Sep-2025 21:43:10 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:110
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 110
+[02-Sep-2025 21:43:24 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/error/403.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
+[02-Sep-2025 21:43:24 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/error/403.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php:32
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\public\index.php(152): AuthMiddleware::{closure}()
+#1 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
+[02-Sep-2025 21:43:26 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/error/403.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
+[02-Sep-2025 21:43:26 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/error/403.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php:32
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\public\index.php(152): AuthMiddleware::{closure}()
+#1 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
+[02-Sep-2025 21:52:48 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:110
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 110
+[02-Sep-2025 21:53:11 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:110
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 110
+[02-Sep-2025 21:53:13 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:110
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 110
+[02-Sep-2025 21:53:15 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:110
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 110
+[02-Sep-2025 21:53:17 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:110
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 110
+[02-Sep-2025 21:53:18 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:110
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 110
+[02-Sep-2025 21:53:38 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:110
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 110
+[02-Sep-2025 21:59:13 Asia/Ho_Chi_Minh] api path: patients/search
+[02-Sep-2025 21:59:13 Asia/Ho_Chi_Minh] name=Le+Van+C&phone=
+[02-Sep-2025 21:59:13 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[02-Sep-2025 21:59:13 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[02-Sep-2025 22:00:03 Asia/Ho_Chi_Minh] api path: departments/1/doctors
+[02-Sep-2025 22:00:05 Asia/Ho_Chi_Minh] api path: doctors/1/schedule
+[02-Sep-2025 22:00:05 Asia/Ho_Chi_Minh] api path: doctors/1/slots
+[02-Sep-2025 22:01:03 Asia/Ho_Chi_Minh] api path: patients/search
+[02-Sep-2025 22:01:03 Asia/Ho_Chi_Minh] name=Le+Van+C&phone=
+[02-Sep-2025 22:01:03 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[02-Sep-2025 22:01:46 Asia/Ho_Chi_Minh] api path: patients/search
+[02-Sep-2025 22:01:46 Asia/Ho_Chi_Minh] name=Le+Van+C&phone=
+[02-Sep-2025 22:01:57 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php:110
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\prescriptions\index.php on line 110
+[02-Sep-2025 22:02:10 Asia/Ho_Chi_Minh] 2025-09-02 08:00:00
+[02-Sep-2025 22:02:12 Asia/Ho_Chi_Minh] 2025-09-02 08:00:00
+[02-Sep-2025 22:02:17 Asia/Ho_Chi_Minh] 2025-09-02 10:00:00
+[02-Sep-2025 22:02:19 Asia/Ho_Chi_Minh] 2025-09-02 10:00:00
+[02-Sep-2025 22:02:21 Asia/Ho_Chi_Minh] 2023-07-01 09:00:00
+[02-Sep-2025 22:02:24 Asia/Ho_Chi_Minh] 2023-07-01 09:00:00
+[02-Sep-2025 22:02:27 Asia/Ho_Chi_Minh] 2025-09-02 10:00:00
+[02-Sep-2025 22:07:23 Asia/Ho_Chi_Minh] 2025-09-02 10:00:00
+[02-Sep-2025 22:07:26 Asia/Ho_Chi_Minh] 2025-09-02 10:00:00
+[02-Sep-2025 22:07:30 Asia/Ho_Chi_Minh] 2025-09-02 10:00:00
+[02-Sep-2025 22:11:36 Asia/Ho_Chi_Minh] 2025-09-02 10:00:00
+[02-Sep-2025 22:13:02 Asia/Ho_Chi_Minh] 2025-09-02 10:00:00
+[02-Sep-2025 22:15:54 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[02-Sep-2025 22:15:57 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[02-Sep-2025 22:16:01 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[02-Sep-2025 22:16:03 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[02-Sep-2025 22:16:21 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $liquidMedicines in C:\xampp\htdocs\UDPT-2025\client\app\views\records\view.php on line 193
+[02-Sep-2025 22:16:21 Asia/Ho_Chi_Minh] PHP Warning:  foreach() argument must be of type array|object, null given in C:\xampp\htdocs\UDPT-2025\client\app\views\records\view.php on line 193
+[02-Sep-2025 22:19:04 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/error/403.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
+[02-Sep-2025 22:19:04 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/error/403.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php:32
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\public\index.php(116): AuthMiddleware::{closure}()
+#1 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
+[02-Sep-2025 22:25:21 Asia/Ho_Chi_Minh] 2025-09-02 10:00:00
+[02-Sep-2025 22:25:24 Asia/Ho_Chi_Minh] 2025-09-02 10:00:00

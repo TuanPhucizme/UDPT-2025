@@ -1,100 +1,149 @@
 <?php require_once '../app/views/layouts/header.php'; ?>
 
+<!-- CSS TÙY CHỈNH CHO GIAO DIỆN NÀY -->
 <style>
-.time-slot.active {
-    background-color: var(--bs-primary);
-    color: white;
-}
-
-.time-slot:not(.active):hover {
-    background-color: var(--bs-primary-subtle);
-}
+    body {
+        background-color: #f8fafc;
+    }
+    .card {
+        border: none;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        height: 100%;
+    }
+    .card-header {
+        background-color: transparent;
+        border-bottom: 1px solid #e9ecef;
+        padding: 1rem 1.5rem;
+        font-weight: 600;
+    }
+    .form-step {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--bs-primary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .form-control, .form-select {
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+    }
+    .form-control:focus, .form-select:focus {
+        border-color: var(--bs-primary);
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.1);
+    }
+    #patientResults {
+        position: absolute;
+        z-index: 1000;
+        width: 100%;
+        max-height: 250px;
+        overflow-y: auto;
+        border-radius: 0.5rem;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .patient-item img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+    .time-slot {
+        border-radius: 0.5rem !important;
+        transition: all 0.2s ease-in-out;
+    }
+    .time-slot.active {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(13,110,253,0.2);
+    }
+    .appointment-item {
+        background-color: #f8fafc;
+        border-left: 3px solid var(--bs-primary);
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+    }
 </style>
 
 <div class="container py-5">
-    <div class="row">
-        <div class="col-md-8">
+    <div class="row g-4">
+        <!-- CỘT CHÍNH: BIỂU MẪU ĐẶT LỊCH -->
+        <div class="col-lg-8">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">Đặt Lịch Khám</h5>
-                    <a href="/appointments" class="btn btn-secondary btn-sm">Quay lại</a>
+                    <h5 class="mb-0"><i class="fas fa-calendar-plus text-primary me-2"></i> Tạo Lịch Hẹn Mới</h5>
+                    <a href="/" class="btn btn-sm btn-outline-secondary">
+                        <i class="fas fa-times"></i>
+                    </a>
                 </div>
-                <div class="card-body">
+                <div class="card-body p-4">
                     <?php if (isset($error)): ?>
                         <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
                     <?php endif; ?>
 
-                    <form method="POST" action="/appointments/create" class="needs-validation" novalidate>
-                        <!-- Search Patient -->
+                    <form method="POST" action="/appointments/create" novalidate>
+                        <!-- BƯỚC 1: BỆNH NHÂN -->
                         <div class="mb-4">
-                            <label class="form-label">Tìm Bệnh Nhân</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="searchPatient" 
-                                       placeholder="Tên hoặc SĐT...">
+                            <p class="form-step mb-2">Bước 1: Chọn Bệnh Nhân</p>
+                            <div class="position-relative">
+                                <input type="text" class="form-control" id="searchPatient" placeholder="Nhập tên, SĐT hoặc mã bệnh nhân...">
+                                <div id="patientResults" class="list-group mt-1" style="display:none;"></div>
+                                <input type="hidden" name="patient_id" id="patient_id" required>
                             </div>
-                            <div id="patientResults" class="list-group mt-2" style="display:none;">
-                                <!-- Search results will be inserted here -->
-                            </div>
-                            <input type="hidden" name="patient_id" id="patient_id" required>
                         </div>
 
-                        <!-- Selected Patient Info -->
                         <div id="selectedPatient" class="mb-4" style="display:none;">
-                            <h6>Thông Tin Bệnh Nhân</h6>
-                            <div class="card">
-                                <div class="card-body" id="patientInfo">
-                                    <!-- Patient info will be inserted here -->
+                            <div class="card bg-light">
+                                <div class="card-body" id="patientInfo"></div>
+                            </div>
+                        </div>
+
+                        <!-- BƯỚC 2: LỊCH HẸN -->
+                        <div class="mb-3">
+                            <p class="form-step mb-2">Bước 2: Chọn Lịch Hẹn</p>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Chuyên Khoa <span class="text-danger">*</span></label>
+                                    <select class="form-select" name="department_id" id="department_id" required>
+                                        <option value="">Chọn khoa...</option>
+                                        <?php foreach ($departments as $dept): ?>
+                                            <option value="<?= $dept['id'] ?>"><?= htmlspecialchars($dept['ten_ck']) ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Bác Sĩ <span class="text-danger">*</span></label>
+                                    <select class="form-select" name="doctor_id" id="doctor_id" required disabled>
+                                        <option value="">Vui lòng chọn khoa trước</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Department Selection -->
-                        <div class="mb-3">
-                            <label class="form-label">Chọn Khoa <span class="text-danger">*</span></label>
-                            <select class="form-select" name="department_id" id="department_id" required>
-                                <option value="">Chọn khoa...</option>
-                                <?php foreach ($departments as $dept): ?>
-                                    <option value="<?= $dept['id'] ?>">
-                                        <?= htmlspecialchars($dept['ten_ck']) ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-
-                        <!-- Doctor Selection -->
-                        <div class="mb-3">
-                            <label class="form-label">Chọn Bác Sĩ <span class="text-danger">*</span></label>
-                            <select class="form-select" name="doctor_id" id="doctor_id" required disabled>
-                                <option value="">Chọn bác sĩ...</option>
-                            </select>
-                        </div>
-
-                        <!-- Suggested Time Slots -->
-                        <div class="mb-3">
-                            <label class="form-label">Thời Gian Đề Xuất</label>
+                        <div class="mb-4">
+                            <label class="form-label">Khung Giờ Có Thể Đặt</label>
                             <div id="timeSlots" class="d-flex flex-wrap gap-2">
-                                <!-- Time slots will be inserted here -->
+                                <div class="text-muted small">Vui lòng chọn bác sĩ để xem khung giờ trống.</div>
+                            </div>
+                            <input type="datetime-local" name="requested_time" hidden>
+                        </div>
+
+                        <!-- BƯỚC 3: THÔNG TIN BỔ SUNG -->
+                        <div class="mb-3">
+                            <p class="form-step mb-2">Bước 3: Thông tin bổ sung</p>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="form-label">Lý Do Khám <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" name="lydo" rows="2" required placeholder="Ví dụ: Tái khám, đau đầu..."></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Ghi Chú</label>
+                                    <textarea class="form-control" name="note" rows="2" placeholder="Ví dụ: Bệnh nhân có tiền sử dị ứng..."></textarea>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Custom Time Selection -->
-                        <div class="mb-3">
-                            <input type="datetime-local" class="form-control" name="requested_time" 
-                                   min="<?= date('Y-m-d\TH:i') ?>" hidden>
-                        </div>
-
-                        <!-- Reason for Visit -->
-                        <div class="mb-3">
-                            <label class="form-label">Lý Do Khám <span class="text-danger">*</span></label>
-                            <textarea class="form-control" name="lydo" rows="2" required></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Ghi chú <span class="text-danger">*</span></label>
-                            <textarea class="form-control" name="note" rows="2" required></textarea>
-                        </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-calendar-check"></i> Tạo Lịch Hẹn
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary py-2">
+                                <i class="fas fa-calendar-check me-2"></i> Xác nhận Đặt Lịch
                             </button>
                         </div>
                     </form>
@@ -102,15 +151,16 @@
             </div>
         </div>
 
-        <!-- Doctor's Schedule -->
-        <div class="col-md-4">
+        <!-- CỘT PHỤ: LỊCH BÁC SĨ -->
+        <div class="col-lg-4">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="mb-0">Lịch Bác Sĩ Đã Chọn</h5>
+                    <h5 class="mb-0"><i class="fas fa-user-md text-primary me-2"></i> Lịch trống của Bác sĩ</h5>
                 </div>
-                <div class="card-body">
-                    <div id="doctorSchedule">
-                        <!-- Doctor's schedule will be shown here -->
+                <div class="card-body p-3" id="doctorSchedule">
+                    <div class="text-center text-muted p-5">
+                        <i class="fas fa-hand-pointer fa-2x mb-2"></i>
+                        <p>Vui lòng chọn một bác sĩ để xem lịch hẹn đã có.</p>
                     </div>
                 </div>
             </div>
@@ -120,87 +170,59 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const searchPatient = document.getElementById('searchPatient');
-    const patientResults = document.getElementById('patientResults');
-    const selectedPatient = document.getElementById('selectedPatient');
-    const patientInfo = document.getElementById('patientInfo');
-    const patientIdInput = document.getElementById('patient_id');
-    const departmentSelect = document.getElementById('department_id');
-    const doctorSelect = document.getElementById('doctor_id');
-    const timeSlotsDiv = document.getElementById('timeSlots');
-    const requestedTimeInput = document.querySelector('input[name="requested_time"]');
-    
-    // Patient Search with Debounce
-    let searchTimeout;
-    searchPatient.addEventListener('input', function() {
-        clearTimeout(searchTimeout);
-        const searchTerm = this.value.trim();
-        if (searchTerm.length < 2) {
-            patientResults.style.display = 'none';
-            return;
-        }
-
-        searchTimeout = setTimeout(async () => {
-            try {
-                patientResults.innerHTML = `
-                    <div class="list-group-item">
-                        <div class="spinner-border spinner-border-sm"></div>
-                        <span class="ms-2">Đang tìm kiếm...</span>
-                    </div>`;
-                patientResults.style.display = 'block';
-
-                const response = await fetch(`/api/patients/search?term=${encodeURIComponent(searchTerm)}`);
-                const result = await response.json();
-                
-                if (!response.ok) {
-                    throw new Error(result.message || 'Search failed');
-                }
-                
-                if (result.status === 'error') {
-                    throw new Error(result.message);
-                }
-
-                renderPatientResults(result.data);
-            } catch (error) {
-                console.error('Search error:', error);
-                patientResults.innerHTML = `
-                    <div class="list-group-item text-danger">
-                        <i class="fas fa-exclamation-circle"></i> 
-                        ${error.message || 'Lỗi tìm kiếm'}
-                    </div>`;
+        const searchPatient = document.getElementById('searchPatient');
+        const patientResults = document.getElementById('patientResults');
+        const selectedPatient = document.getElementById('selectedPatient');
+        const patientInfo = document.getElementById('patientInfo');
+        const patientIdInput = document.getElementById('patient_id');
+        const departmentSelect = document.getElementById('department_id');
+        const doctorSelect = document.getElementById('doctor_id');
+        const timeSlotsDiv = document.getElementById('timeSlots');
+        const requestedTimeInput = document.querySelector('input[name="requested_time"]');
+        
+        // Patient Search with Debounce
+        let searchTimeout;
+        searchPatient.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            const searchTerm = this.value.trim();
+            if (searchTerm.length < 2) {
+                patientResults.style.display = 'none';
+                return;
             }
-        }, 300);
-    });
+            searchTimeout = setTimeout(async () => {
+                try {
+                    patientResults.innerHTML = `<div class="list-group-item"><div class="spinner-border spinner-border-sm"></div> Đang tìm...</div>`;
+                    patientResults.style.display = 'block';
+                    const response = await fetch(`/api/patients/search?term=${encodeURIComponent(searchTerm)}`);
+                    const result = await response.json();
+                    if (!response.ok) throw new Error(result.message || 'Search failed');
+                    if (result.status === 'error') throw new Error(result.message);
+                    renderPatientResults(result.data);
+                } catch (error) {
+                    patientResults.innerHTML = `<div class="list-group-item text-danger">${error.message}</div>`;
+                }
+            }, 300);
+        });
 
-    // Patient Selection
-    patientResults.addEventListener('click', function(e) {
-        if (e.target.closest('.patient-item')) {
-            e.preventDefault();
-            const item = e.target.closest('.patient-item');
-            const patientData = JSON.parse(item.dataset.info);
-            
-            // Update hidden input and display selected patient info
-            patientIdInput.value = patientData.id;
-            patientInfo.innerHTML = `
-                <div class="row">
-                    <div class="col-md-6">
-                        <strong>${patientData.hoten_bn}</strong><br>
-                        <small class="text-muted">
-                            ${calculateAge(patientData.dob)} tuổi | ${patientData.gender}
-                        </small>
-                    </div>
-                    <div class="col-md-6 text-md-end">
-                        <small class="text-muted">SĐT: ${patientData.sdt || 'N/A'}</small><br>
-                        <small class="text-muted">${patientData.diachi || 'Chưa có địa chỉ'}</small>
-                    </div>
-                </div>
-            `;
-            
-            selectedPatient.style.display = 'block';
-            patientResults.style.display = 'none';
-            searchPatient.value = patientData.hoten_bn;
-        }
-    });
+        // Patient Selection
+        patientResults.addEventListener('click', function(e) {
+            if (e.target.closest('.patient-item')) {
+                e.preventDefault();
+                const item = e.target.closest('.patient-item');
+                const patientData = JSON.parse(item.dataset.info);
+                patientIdInput.value = patientData.id;
+                patientInfo.innerHTML = `
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <strong>${patientData.hoten_bn}</strong>
+                            <div class="small text-muted">${calculateAge(patientData.dob)} tuổi | ${patientData.gender} | SĐT: ${patientData.sdt || 'N/A'}</div>
+                        </div>
+                    </div>`;
+                selectedPatient.style.display = 'block';
+                patientResults.style.display = 'none';
+                searchPatient.value = patientData.hoten_bn;
+            }
+        });
 
     // Department Change - Load Doctors
     departmentSelect.addEventListener('change', async function() {
@@ -271,33 +293,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function renderPatientResults(patients) {
         if (!Array.isArray(patients) || patients.length === 0) {
-            patientResults.innerHTML = `
-                <div class="list-group-item text-muted">
-                    <i class="fas fa-info-circle"></i> Không tìm thấy bệnh nhân
-                </div>`;
+            patientResults.innerHTML = `<div class="list-group-item text-muted">Không tìm thấy</div>`;
             return;
         }
-
-        patientResults.innerHTML = patients.map(patient => `
-            <a href="#" class="list-group-item list-group-item-action patient-item" 
-               data-id="${patient.id}" 
-               data-info='${JSON.stringify(patient)}'>
-                <div class="d-flex justify-content-between align-items-center">
+        patientResults.innerHTML = patients.map(p => `
+            <a href="#" class="list-group-item list-group-item-action patient-item" data-info='${JSON.stringify(p)}'>
+                <div class="d-flex align-items-center">
                     <div>
-                        <strong>${patient.hoten_bn}</strong>
-                        <br>
-                        <small class="text-muted">
-                            ${new Date(patient.dob).toLocaleDateString('vi-VN')} | 
-                            ${patient.gender}
-                        </small>
-                    </div>
-                    <div class="text-end">
-                        <span class="badge bg-secondary">${patient.sdt || 'Không có SĐT'}</span>
+                        <strong>${p.hoten_bn}</strong>
+                        <div class="small text-muted">${p.sdt || 'Không có SĐT'}</div>
                     </div>
                 </div>
-            </a>
-        `).join('');
+            </a>`).join('');
     }
+
 
     function renderDoctorOptions(doctors) {
         doctorSelect.innerHTML = `
@@ -354,32 +363,28 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function formatDateTime(datetime) {
-        return new Date(datetime).toLocaleString('vi-VN', {
-            weekday: 'short',
-            day: '2-digit',
-            month: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit'
-        });
+    function formatDateTime(datetimeStr) {
+        const dt = new Date(datetimeStr);
+        return `${dt.getHours().toString().padStart(2, '0')}:${dt.getMinutes().toString().padStart(2, '0')}`;
     }
 
     function formatSchedule(schedule) {
         if (!schedule.length) {
-            return '<div class="text-center text-muted">Không có lịch hẹn</div>';
+            return `<div class="text-center text-muted p-5">
+                        <i class="fas fa-check-circle fa-2x text-success mb-2"></i>
+                        <p>Bác sĩ chưa có lịch hẹn nào trong hôm nay.</p>
+                    </div>`;
         }
-
         return schedule.map(appt => `
-            <div class="appointment-item mb-2 p-2 border-bottom">
-                <div class="small text-muted">${formatDateTime(appt.thoi_gian_hen)}</div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <span>${appt.patient_name} (${appt.patient_phone})</span>
-                    <span class="badge bg-${getStatusBadge(appt.status)}">
-                        ${getStatusText(appt.status)}
-                    </span>
+            <div class="appointment-item mb-2">
+                <div class="d-flex justify-content-between">
+                    <strong>${appt.patient_name}</strong>
+                    <span class="badge bg-${getStatusBadge(appt.status)}">${getStatusText(appt.status)}</span>
                 </div>
-            </div>
-        `).join('');
+                <div class="small text-muted">
+                    <i class="fas fa-clock"></i> ${new Date(appt.thoi_gian_hen).toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'})}
+                </div>
+            </div>`).join('');
     }
 
     function getStatusBadge(status) {
@@ -404,29 +409,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function renderTimeSlots(slots) {
         if (!Array.isArray(slots) || slots.length === 0) {
-            timeSlotsDiv.innerHTML = `
-                <div class="text-muted">
-                    <i class="fas fa-info-circle"></i> Không có khung giờ trống
-                </div>`;
+            timeSlotsDiv.innerHTML = `<div class="text-muted small">Bác sĩ không có khung giờ trống.</div>`;
             return;
         }
-
         timeSlotsDiv.innerHTML = slots.map(slot => `
-            <button type="button" 
-                    class="btn btn-outline-primary btn-sm time-slot"
-                    data-time="${slot.datetime}">
+            <button type="button" class="btn btn-outline-primary time-slot" data-time="${slot.datetime}">
                 ${formatDateTime(slot.datetime)}
-            </button>
-        `).join('');
-
-        // If there's a previously selected time, highlight it
-        const requestedTime = requestedTimeInput.value;
-        if (requestedTime) {
-            const matchingSlot = timeSlotsDiv.querySelector(`[data-time="${requestedTime}"]`);
-            if (matchingSlot) {
-                matchingSlot.classList.add('active');
-            }
-        }
+            </button>`).join('');
     }
 });
 </script>
