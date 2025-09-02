@@ -1,19 +1,30 @@
 <?php require_once '../app/views/layouts/header.php'; ?>
 
 <div class="container py-5">
+    <!-- Header -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Danh Sách Lịch Hẹn</h2>
-        <div>
+        <h2 class="fw-bold text-primary mb-0">
+            <i class="fas fa-calendar-check me-2"></i>Danh Sách Lịch Hẹn
+        </h2>
+        <div class="d-flex">
             <?php if (in_array($_SESSION['user']['role'], ['letan', 'admin'])): ?>
-                <a href="/appointments/create" class="btn btn-primary">
-                    <i class="fas fa-plus"></i> Tạo Lịch Hẹn
+                <a href="/appointments/create" class="btn btn-primary shadow-sm px-3 me-2">
+                    <i class="fas fa-plus me-1"></i> Tạo Lịch Hẹn
+                </a>
+            <?php endif; ?>
+
+            <?php if (in_array($_SESSION['user']['role'], ['letan', 'admin', 'bacsi'])): ?>
+                <a href="/" class="btn btn-light shadow-sm px-3 me-2">
+                    <i class="fas fa-arrow-left ms-1"></i> Quay lại
                 </a>
             <?php endif; ?>
         </div>
     </div>
 
+    <!-- Success Alert -->
     <?php if (isset($_SESSION['success'])): ?>
-        <div class="alert alert-success alert-dismissible fade show">
+        <div class="alert alert-success alert-dismissible fade show shadow-sm">
+            <i class="fas fa-check-circle me-2"></i> 
             <?= htmlspecialchars($_SESSION['success']) ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
@@ -21,80 +32,94 @@
     <?php endif; ?>
 
     <!-- Search Filters -->
-    <div class="card mb-4">
+    <div class="card shadow-sm mb-4 border-0">
         <div class="card-body">
-            <form method="GET" class="row g-3">
+            <form method="GET" class="row g-3 align-items-end">
                 <div class="col-md-4">
+                    <label class="form-label fw-semibold">Tên bệnh nhân</label>
                     <input type="text" class="form-control" name="keyword" 
-                           placeholder="Tên bệnh nhân..." 
+                           placeholder="Nhập tên bệnh nhân..." 
                            value="<?= htmlspecialchars($_GET['keyword'] ?? '') ?>">
                 </div>
                 <div class="col-md-3">
+                    <label class="form-label fw-semibold">Ngày hẹn</label>
                     <input type="date" class="form-control" name="date"
                            value="<?= htmlspecialchars($_GET['date'] ?? '') ?>">
                 </div>
                 <div class="col-md-3">
+                    <label class="form-label fw-semibold">Trạng thái</label>
                     <select class="form-select" name="status">
-                        <option value="">Tất cả trạng thái</option>
+                        <option value="">Tất cả</option>
                         <option value="pending" <?= ($_GET['status'] ?? '') === 'pending' ? 'selected' : '' ?>>Chờ duyệt</option>
                         <option value="confirmed" <?= ($_GET['status'] ?? '') === 'confirmed' ? 'selected' : '' ?>>Đã xác nhận</option>
                         <option value="cancelled" <?= ($_GET['status'] ?? '') === 'cancelled' ? 'selected' : '' ?>>Đã hủy</option>
                     </select>
                 </div>
-                <div class="col-md-2">
-                    <button type="submit" class="btn btn-primary w-100">
-                        <i class="fas fa-search"></i> Tìm
+                <div class="col-md-2 d-grid">
+                    <button type="submit" class="btn btn-primary shadow-sm">
+                        <i class="fas fa-search me-1"></i> Tìm kiếm
                     </button>
                 </div>
             </form>
         </div>
     </div>
 
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Bệnh Nhân</th>
-                    <th>Bác Sĩ</th>
-                    <th>Khoa</th>
-                    <th>Thời Gian</th>
-                    <th>Trạng Thái</th>
-                    <th>Thao Tác</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (empty($appointments)): ?>
-                    <tr>
-                        <td colspan="7" class="text-center">Không có lịch hẹn nào</td>
-                    </tr>
-                <?php else: ?>
-                    <?php foreach ($appointments as $apt): ?>
+    <!-- Appointments Table -->
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table align-middle table-hover mb-0">
+                    <thead class="table-light">
                         <tr>
-                            <td><?= htmlspecialchars($apt['id']) ?></td>
-                            <td>
-                                <strong><?= htmlspecialchars($apt['patient_name']) ?></strong><br>
-                                <small class="text-muted">SĐT: <?= htmlspecialchars($apt['patient_phone']) ?></small>
-                            </td>
-                            <td><?= htmlspecialchars($apt['doctor_name']) ?></td>
-                            <td><?= htmlspecialchars($apt['department_name']) ?></td>
-                            <td><?= (new DateTime($apt['thoi_gian_hen']))->format('d/m/Y H:i') ?></td>
-                            <td>
-                                <span class="badge bg-<?= getBadgeColor($apt['status']) ?>">
-                                    <?= getStatusText($apt['status']) ?>
-                                </span>
-                            </td>
-                            <td>
-                                <a href="/appointments/view/<?= $apt['id'] ?>" 
-                                   class="btn btn-sm btn-info">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                            </td>
+                            <th>ID</th>
+                            <th>Bệnh Nhân</th>
+                            <th>Bác Sĩ</th>
+                            <th>Khoa</th>
+                            <th>Thời Gian</th>
+                            <th>Trạng Thái</th>
+                            <th class="text-center">Thao Tác</th>
                         </tr>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </tbody>
-        </table>
+                    </thead>
+                    <tbody>
+                        <?php if (empty($appointments)): ?>
+                            <tr>
+                                <td colspan="7" class="text-center text-muted py-4">
+                                    <i class="fas fa-calendar-times fa-2x mb-2"></i><br>
+                                    Không có lịch hẹn nào
+                                </td>
+                            </tr>
+                        <?php else: ?>
+                            <?php foreach ($appointments as $apt): ?>
+                                <tr>
+                                    <td><span class="fw-semibold text-secondary">#<?= htmlspecialchars($apt['id']) ?></span></td>
+                                    <td>
+                                        <div class="fw-bold"><?= htmlspecialchars($apt['patient_name']) ?></div>
+                                        <small class="text-muted">📞 <?= htmlspecialchars($apt['patient_phone']) ?></small>
+                                    </td>
+                                    <td><?= htmlspecialchars($apt['doctor_name']) ?></td>
+                                    <td><?= htmlspecialchars($apt['department_name']) ?></td>
+                                    <td>
+                                        <i class="fas fa-clock me-1 text-muted"></i>
+                                        <?= (new DateTime($apt['thoi_gian_hen']))->format('d/m/Y H:i') ?>
+                                    </td>
+                                    <td>
+                                        <span class="badge rounded-pill bg-<?= getBadgeColor($apt['status']) ?> px-3 py-2">
+                                            <?= getStatusText($apt['status']) ?>
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="/appointments/view/<?= $apt['id'] ?>" 
+                                           class="btn btn-sm btn-outline-info rounded-pill px-3">
+                                            <i class="fas fa-eye me-1"></i> Xem
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 
