@@ -47,28 +47,6 @@ CREATE TABLE staff (
   FOREIGN KEY (role_id) REFERENCES role(id_role),
   FOREIGN KEY (department_id) REFERENCES department(id)
 );
-CREATE TABLE users (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(50) NOT NULL UNIQUE,
-  password VARCHAR(255) NOT NULL,
-  role_id INT NOT NULL,
-  FOREIGN KEY (role_id) REFERENCES role(id_role)
-);
--- Sample Data for auth-service
-INSERT INTO role (ten_role) VALUES ('bacsi'), ('duocsi'), ('letan'), ('admin');
-INSERT INTO department (ten_ck) VALUES ('Nội tổng quát'), ('Ngoại khoa'), ('Nhi khoa'), ('Tim mạch'), ('Da liễu');
-INSERT INTO staff (staff_code, hoten_nv, email, sdt, gender, dob, role_id, department_id, begin_date) VALUES
-(1, 'Dr. Nguyen Bac Si', 'bsnguyen@example.com', '0911111111', 'nam', '1970-03-01', 1, 1, '2000-01-01'),
-(2, 'Nurse Tran Y Ta', 'ytatran@example.com', '0912222222', 'nu', '1980-04-15', 1, 1, '2005-01-01'),
-(3, 'Pharmacist Le Duoc', 'duocle@example.com', '0913333333', 'nam', '1985-06-10', 2, NULL, '2010-01-01'),
-(4, 'Receptionist Pham Letan', 'letanpham@example.com', '0914444444', 'nu', '1990-07-20', 3, NULL, '2015-01-01'),
-(5, 'Admin Hoang', 'adminhoang@example.com', '0915555555', 'nam', '1975-09-25', 4, NULL, '2000-01-01');
-INSERT INTO users (username, password, role_id) VALUES
-('bacsi1', '$2a$12$HFPc2MAAByA7mYQm2fJpgOdbGpcAZ/yNXDAe7sFywyegyU7KQ/ZqC', 1),
-('bacsi2', '$2a$12$KK1I9WaXgU.sV6KAaptNROvIrwNY/64SOidByO3s/oFWRm9xs4aMC', 1),
-('duocsi1', '$2a$12$EA1YaTqq6CLFvQqENIrp5.yKtwWLhsX3sx1fAzN11lFQ5O9pHkktK', 2),
-('letan1', '$2a$12$PU2pCGoEsTR418j/fuOf6O7oimwaPhw1qvh/EgJW/RcEEZPy6eD6S', 3),
-('admin', '$2a$12$IjizNHphZoYzKuW2ZPebzuPi0ONMeWpTjL23mbSkYGkAX4WjAzWUq', 4);
 -- ########## PATIENT SERVICE ##########
 CREATE DATABASE IF NOT EXISTS patient_service;
 USE patient_service;
@@ -98,25 +76,9 @@ CREATE TABLE medical_records (
   ngay_taikham DATE, -- Re-examination date
   ghichu TEXT, -- Notes
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (patient_id) REFERENCES patients(id) -- Khóa ngoại trong cùng DB thì giữ lại
 );
-
--- Sample Data for patient-service
-INSERT INTO patients (hoten_bn, dob, gender, sdt, diachi, tiensu_benh, lichsu_kham) VALUES
-('Nguyen Van A', '1990-05-12', 'nam', '0901111111', 'Hanoi', 'Tăng huyết áp', 'Khám năm 2021'),
-('Tran Thi B', '1985-08-20', 'nu', '0902222222', 'HCM', 'Tiểu đường', 'Khám năm 2022'),
-('Le Van C', '2000-01-01', 'nam', '0903333333', 'Danang', 'Hen suyễn', 'Khám năm 2023'),
-('Pham Thi D', '1995-11-15', 'nu', '0904444444', 'Hue', 'Không', 'Chưa có'),
-('Hoang Van E', '1975-07-30', 'nam', '0905555555', 'Can Tho', 'Bệnh tim', 'Khám năm 2020');
-
-INSERT INTO medical_records (patient_id, doctor_id, department_id, ngaykham, lydo, chan_doan, ngay_taikham, ghichu) VALUES
-(1, 1, 1, '2023-06-01 09:00:00', 'Đau đầu', 'Cảm cúm', '2023-06-10', 'Nghỉ ngơi'),
-(2, 1, 1, '2023-06-05 14:00:00', 'Đau bụng', 'Viêm dạ dày', '2023-06-12', 'Uống thuốc đầy đủ'),
-(3, 1, 4, '2023-06-07 10:00:00', 'Khó thở', 'Hen suyễn', '2023-06-14', 'Tránh dị ứng'),
-(4, 1, 5, '2023-06-08 15:00:00', 'Nổi mẩn', 'Viêm da', '2023-06-15', 'Bôi thuốc ngoài da'),
-(5, 1, 4, '2023-06-09 08:30:00', 'Đau ngực', 'Bệnh tim', '2023-06-16', 'Theo dõi thêm');
-
 -- ########## APPOINTMENT SERVICE ##########
 CREATE DATABASE IF NOT EXISTS appointment_service;
 USE appointment_service;
@@ -133,11 +95,7 @@ CREATE TABLE appointments (
   status ENUM('pending','confirmed','cancelled') DEFAULT 'pending',
   note TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  FOREIGN KEY (patient_id) REFERENCES patient_service.patients(id),
-  FOREIGN KEY (department_id) REFERENCES auth_service.department(id),
-  FOREIGN KEY (doctor_id) REFERENCES auth_service.staff(id),
-  FOREIGN KEY (receptionist_id) REFERENCES auth_service.staff(id)
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- =========================================================
@@ -168,8 +126,7 @@ CREATE TABLE prescriptions (
   pharmacist_id INT NULL, -- Links to staff in auth_service (can be NULL if not yet dispensed)
   status ENUM('pending','collected','dispensed') DEFAULT 'pending', -- Renamed 'collected' to 'dispensed' for clarity
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (record_id) REFERENCES patient_service.medical_records(id)
-  -- FOREIGN KEY (pharmacist_id) REFERENCES auth_service.staff(id) -- Added later for clarity, can be omitted if not critical for initial creation
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- Prescription Medicines Table: Links prescriptions to specific medicines with dosage details
@@ -200,31 +157,6 @@ CREATE TABLE medicine_stock_log (
   FOREIGN KEY (medicine_id) REFERENCES medicines(id),
   FOREIGN KEY (prescription_id) REFERENCES prescriptions(id) ON DELETE SET NULL
 );
--- Sample Data for prescription-service
-INSERT INTO medicines 
-(id, ten_thuoc, so_luong, don_vi, don_gia, is_liquid, volume_per_bottle, volume_unit, created_at, updated_at)
-VALUES
-(1, 'Paracetamol', 100, 'viên', 1000, 0, NULL, NULL, '2025-08-29 02:22:25', '2025-08-29 02:25:10'),
-(2, 'Amoxicillin', 150, 'túi', 2323, 0, NULL, NULL, '2025-08-29 02:22:25', '2025-08-29 02:22:25'),
-(3, 'Salbutamol', 100, 'chai', 5555, 1, 100, 'ml', '2025-08-29 02:22:25', '2025-08-29 02:22:25'),
-(4, 'Aspirin', 299, 'viên', 8080, 0, NULL, NULL, '2025-08-29 02:22:25', '2025-08-29 02:22:25'),
-(5, 'Cetirizine', 120, 'ống', 3000, 1, 30, 'ml', '2025-08-29 02:22:25', '2025-08-29 02:22:25');
-
--- Updated sample prescriptions with numeric dose
-INSERT INTO prescriptions (record_id, pharmacist_id, status, created_at) VALUES
-(1, 3, 'dispensed', '2023-06-01 10:00:00'),
-(2, 3, 'dispensed', '2023-06-05 15:00:00'),
-(3, NULL, 'pending', '2023-06-07 11:00:00'),
-(4, 3, 'dispensed', '2023-06-08 16:00:00'),
-(5, 3, 'dispensed', '2023-06-09 09:30:00');
-
--- Prescription medicines with numeric dose
-INSERT INTO prescription_medicines (prescription_id, medicine_id, dose, frequency, duration, note) VALUES
-(1, 1, 1, '2 lần/ngày', '5 ngày', 'Uống sau ăn'),
-(2, 2, 2, '3 lần/ngày', '7 ngày', 'Uống đủ liệu trình'),
-(3, 3, 3, '3 lần/ngày', '10 ngày', 'Mang theo khi đi ra ngoài'),
-(4, 5, 4, '1 lần/ngày', '14 ngày', 'Trước khi ngủ'),
-(5, 4, 5, '1 lần/ngày', '30 ngày', 'Sau bữa sáng');
 
 -- Bạn có thể thêm các CREATE DATABASE và bảng cho các service còn lại ở đây
 CREATE DATABASE IF NOT EXISTS notification_service;
@@ -238,9 +170,7 @@ CREATE TABLE IF NOT EXISTS notifications (
     type VARCHAR(50) NOT NULL,
     message TEXT NOT NULL,
     is_read BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES auth_service.users(id),
-    FOREIGN KEY (patient_id) REFERENCES patient_service.patients(id)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- =========================================================
@@ -330,9 +260,11 @@ INSERT INTO role (ten_role) VALUES
 INSERT INTO users (username, password, role_id) VALUES
 ('bacsi1', '$2a$12$HFPc2MAAByA7mYQm2fJpgOdbGpcAZ/yNXDAe7sFywyegyU7KQ/ZqC', 1),
 ('bacsi2', '$2a$12$KK1I9WaXgU.sV6KAaptNROvIrwNY/64SOidByO3s/oFWRm9xs4aMC', 1),
+('bacsi3', '$2a$12$5.aXKsM5qQumDJih9vxPX.eTvqC.iZrVVK3vuNPhkEba2EHCWH4aa', 1),
+('bacsi4', '$2a$12$UCkSh.o8JsiRMuCpaE/P8ekg9RqS6zaCLX.HNavDD5ZYU18KJgZai', 1),
 ('duocsi1', '$2a$12$EA1YaTqq6CLFvQqENIrp5.yKtwWLhsX3sx1fAzN11lFQ5O9pHkktK', 2),
 ('letan1', '$2a$12$PU2pCGoEsTR418j/fuOf6O7oimwaPhw1qvh/EgJW/RcEEZPy6eD6S', 3),
-('admin', '$2a$12$7TY7NeHT4tS1cZPglO6w/.MQQse8msHf9/T2.GC1oRpmaslhJyk.y', 4);
+('admin', '$2a$12$IjizNHphZoYzKuW2ZPebzuPi0ONMeWpTjL23mbSkYGkAX4WjAzWUq', 4);
 
 -- Sample Data for auth-service: Departments
 INSERT INTO department (ten_ck) VALUES
