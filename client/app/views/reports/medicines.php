@@ -6,14 +6,14 @@
             <i class="fas fa-pills me-2"></i> Báo cáo thuốc
         </h1>
         <div>
-            <a href="/reports" class="btn btn-outline-secondary me-2">
-                <i class="fas fa-arrow-left me-1"></i> Quay lại tổng quan
-            </a>
             <?php if ($_SESSION['user']['role'] === 'admin'): ?>
                 <a href="/reports/sync?type=prescriptions" class="btn btn-outline-primary">
                     <i class="fas fa-sync-alt me-1"></i> Đồng bộ dữ liệu thuốc
                 </a>
             <?php endif; ?>
+            <a href="/reports" class="btn btn-outline-secondary me-2">
+                <i class="fas fa-arrow-left me-1"></i> Quay lại tổng quan
+            </a>
         </div>
     </div>
 

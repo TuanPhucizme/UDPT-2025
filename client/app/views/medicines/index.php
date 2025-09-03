@@ -1,28 +1,33 @@
 <?php require_once '../app/views/layouts/header.php'; ?>
 
 <div class="container py-4">
-    <div class="row mb-4">
-        <div class="col-md-8">
-            <h2><i class="fas fa-pills me-2"></i> Quản lý thuốc</h2>
-            <p class="text-muted">Quản lý danh sách thuốc và kho thuốc</p>
+    <!-- Tiêu đề + nhóm nút -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-primary mb-0">
+                <i class="fas fa-pills me-2"></i> Quản lý thuốc
+            </h2>
+            <p class="text-muted mb-0">Quản lý danh sách thuốc và kho thuốc</p>
         </div>
-        <div class="col-md-4 text-end">
-            <div class="btn-group">
-                <a href="/medicines" class="btn btn-primary active">
-                    <i class="fas fa-list me-1"></i> Danh sách thuốc
-                </a>
-                <a href="/medicines/report" class="btn btn-outline-secondary">
-                    <i class="fas fa-chart-bar me-1"></i> Báo cáo thuốc
-                </a>
-                <?php if ($_SESSION['user']['role'] === 'duocsi' || $_SESSION['user']['role'] === 'admin'): ?>
-                <a href="/medicines/create" class="btn btn-success">
+        <div class="d-flex">
+            <!-- <a href="/medicines" class="btn btn-primary shadow-sm px-3 me-2">
+                <i class="fas fa-list me-1"></i> Danh sách thuốc
+            </a> -->
+            <a href="/medicines/report" class="btn btn-outline-secondary shadow-sm px-3 me-2">
+                <i class="fas fa-chart-bar me-1"></i> Báo cáo thuốc
+            </a>
+            <?php if ($_SESSION['user']['role'] === 'duocsi' || $_SESSION['user']['role'] === 'admin'): ?>
+                <a href="/medicines/create" class="btn btn-success shadow-sm px-3 me-2">
                     <i class="fas fa-plus me-1"></i> Thêm thuốc mới
                 </a>
-                <?php endif; ?>
-            </div>
+            <?php endif; ?>
+            <a href="/" class="btn btn-outline-dark shadow-sm px-3">
+                <i class="fas fa-arrow-left me-1"></i> Quay lại
+            </a>
         </div>
     </div>
 
+    <!-- Alert -->
     <?php if (isset($_SESSION['success'])): ?>
         <div class="alert alert-success alert-dismissible fade show">
             <?= htmlspecialchars($_SESSION['success']) ?>
@@ -39,56 +44,48 @@
         <?php unset($_SESSION['error']); ?>
     <?php endif; ?>
 
-    <!-- Filter Card -->
+    <!-- Bộ lọc -->
     <div class="card shadow mb-4">
         <div class="card-header bg-white">
-            <h5 class="mb-0">Bộ lọc</h5>
+            <h5 class="mb-0"><i class="fas fa-filter me-2 text-primary"></i> Bộ lọc</h5>
         </div>
         <div class="card-body">
-            <!-- Replace the filter form in index.php -->
-<form action="/medicines" method="GET" class="row g-3">
-    <div class="col-md-5">
-        <label for="search" class="form-label">Tìm kiếm</label>
-        <input type="text" class="form-control" id="search" name="search" 
-            placeholder="Tên thuốc..."
-            value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
-    </div>
-    <div class="col-md-4">
-        <label for="filter" class="form-label">Tình trạng kho</label>
-        <select class="form-select" id="filter" name="filter">
-            <option value="all">Tất cả</option>
-            <option value="low" <?= isset($_GET['filter']) && $_GET['filter'] === 'low' ? 'selected' : '' ?>>
-                Sắp hết
-            </option>
-            <option value="out" <?= isset($_GET['filter']) && $_GET['filter'] === 'out' ? 'selected' : '' ?>>
-                Hết hàng
-            </option>
-            <option value="liquid" <?= isset($_GET['filter']) && $_GET['filter'] === 'liquid' ? 'selected' : '' ?>>
-                Thuốc dạng lỏng
-            </option>
-        </select>
-    </div>
-    <div class="col-md-3 d-flex align-items-end">
-        <button type="submit" class="btn btn-primary me-2">
-            <i class="fas fa-filter me-1"></i> Lọc
-        </button>
-        <a href="/medicines" class="btn btn-outline-secondary">
-            <i class="fas fa-redo me-1"></i> Đặt lại
-        </a>
-    </div>
-</form>
+            <form action="/medicines" method="GET" class="row g-3">
+                <div class="col-md-5">
+                    <label for="search" class="form-label">Tìm kiếm</label>
+                    <input type="text" class="form-control" id="search" name="search" 
+                        placeholder="Tên thuốc..."
+                        value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
+                </div>
+                <div class="col-md-4">
+                    <label for="filter" class="form-label">Tình trạng kho</label>
+                    <select class="form-select" id="filter" name="filter">
+                        <option value="all">Tất cả</option>
+                        <option value="low" <?= isset($_GET['filter']) && $_GET['filter'] === 'low' ? 'selected' : '' ?>>Sắp hết</option>
+                        <option value="out" <?= isset($_GET['filter']) && $_GET['filter'] === 'out' ? 'selected' : '' ?>>Hết hàng</option>
+                        <option value="liquid" <?= isset($_GET['filter']) && $_GET['filter'] === 'liquid' ? 'selected' : '' ?>>Thuốc dạng lỏng</option>
+                    </select>
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary shadow-sm px-3 me-2">
+                        <i class="fas fa-filter me-1"></i> Lọc
+                    </button>
+                    <a href="/medicines" class="btn btn-outline-secondary shadow-sm px-3">
+                        <i class="fas fa-redo me-1"></i> Đặt lại
+                    </a>
+                </div>
+            </form>
         </div>
     </div>
 
-    <!-- Medicine List -->
+    <!-- Danh sách thuốc -->
     <div class="card shadow">
         <div class="card-body">
             <!-- Tabs -->
             <ul class="nav nav-tabs mb-4">
                 <li class="nav-item">
                     <a class="nav-link <?= !isset($_GET['filter']) || $_GET['filter'] === 'all' ? 'active' : '' ?>" href="/medicines?filter=all">
-                        Tất cả thuốc
-                        <span class="badge bg-secondary ms-1"><?= count($medicines) ?></span>
+                        Tất cả thuốc <span class="badge bg-secondary ms-1"><?= count($medicines) ?></span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -117,21 +114,21 @@
                 </li>
             </ul>
 
+            <!-- Nội dung danh sách -->
             <?php if (empty($medicines)): ?>
                 <div class="text-center py-5">
                     <img src="/assets/images/empty-list.svg" alt="Không có thuốc" style="width: 120px;" class="mb-3">
                     <h5>Không tìm thấy thuốc nào</h5>
                     <p class="text-muted">Hãy thử thay đổi bộ lọc hoặc thêm thuốc mới</p>
-                    
                     <?php if ($_SESSION['user']['role'] === 'duocsi' || $_SESSION['user']['role'] === 'admin'): ?>
-                        <a href="/medicines/create" class="btn btn-primary">
+                        <a href="/medicines/create" class="btn btn-primary shadow-sm px-3">
                             <i class="fas fa-plus me-1"></i> Thêm thuốc mới
                         </a>
                     <?php endif; ?>
                 </div>
             <?php else: ?>
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-hover align-middle">
                         <thead class="table-light">
                             <tr>
                                 <th>Mã</th>
@@ -151,35 +148,22 @@
                                     <td><?= htmlspecialchars($medicine['don_vi']) ?></td>
                                     <td>
                                         <?php if ($medicine['is_liquid']): ?>
-                                            <span class="badge bg-info">
-                                                <i class="fas fa-tint me-1"></i> Dạng lỏng
-                                            </span>
-                                            <div class="small text-muted mt-1">
-                                                <?= $medicine['volume_per_bottle'] ?> <?= $medicine['volume_unit'] ?>/chai
-                                            </div>
+                                            <span class="badge bg-info"><i class="fas fa-tint me-1"></i> Dạng lỏng</span>
+                                            <div class="small text-muted mt-1"><?= $medicine['volume_per_bottle'] ?> <?= $medicine['volume_unit'] ?>/chai</div>
                                         <?php else: ?>
-                                            <span class="badge bg-secondary">
-                                                <i class="fas fa-pills me-1"></i> Dạng rắn
-                                            </span>
+                                            <span class="badge bg-secondary"><i class="fas fa-pills me-1"></i> Dạng rắn</span>
                                         <?php endif; ?>
                                     </td>
                                     <td>
                                         <?php if ($medicine['so_luong'] <= 0): ?>
                                             <span class="badge bg-danger">Hết hàng</span>
                                         <?php elseif ($medicine['so_luong'] <= 10): ?>
-                                            <span class="badge bg-warning text-dark">
-                                                Sắp hết (<?= $medicine['so_luong'] ?>)
-                                            </span>
+                                            <span class="badge bg-warning text-dark">Sắp hết (<?= $medicine['so_luong'] ?>)</span>
                                         <?php else: ?>
-                                            <span class="badge bg-success">
-                                                <?= $medicine['so_luong'] ?> <?= $medicine['is_liquid'] ? 'chai' : $medicine['don_vi'] ?>
-                                            </span>
+                                            <span class="badge bg-success"><?= $medicine['so_luong'] ?> <?= $medicine['is_liquid'] ? 'chai' : $medicine['don_vi'] ?></span>
                                         <?php endif; ?>
-                                        
                                         <?php if ($medicine['is_liquid']): ?>
-                                            <div class="small text-muted mt-1">
-                                                Tổng: <?= $medicine['so_luong'] * $medicine['volume_per_bottle'] ?> <?= $medicine['volume_unit'] ?>
-                                            </div>
+                                            <div class="small text-muted mt-1">Tổng: <?= $medicine['so_luong'] * $medicine['volume_per_bottle'] ?> <?= $medicine['volume_unit'] ?></div>
                                         <?php endif; ?>
                                     </td>
                                     <td><?= number_format($medicine['don_gia']) ?> VNĐ</td>
@@ -189,9 +173,7 @@
                                                 <a href="/medicines/update-stock/<?= $medicine['id'] ?>" class="btn btn-sm btn-primary">
                                                     <i class="fas fa-boxes me-1"></i> Cập nhật kho
                                                 </a>
-                                                <button type="button" class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <span class="visually-hidden">Toggle Dropdown</span>
-                                                </button>
+                                                <button type="button" class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"></button>
                                                 <ul class="dropdown-menu">
                                                     <li>
                                                         <a class="dropdown-item" href="/medicines/edit/<?= $medicine['id'] ?>">

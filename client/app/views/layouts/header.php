@@ -90,15 +90,6 @@
                 </ul>
                 <?php endif; ?>
                 <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] !== 'benhnhan'): ?>
-                    <form class="d-flex me-3" action="/patients/search" method="GET">
-                        <input class="form-control me-2" type="search" 
-                               placeholder="Tìm bệnh nhân..." 
-                               name="name"
-                               aria-label="Search">
-                        <button class="btn btn-outline-light" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
                 <?php endif; ?>
 
                 <div class="d-flex align-items-center">
