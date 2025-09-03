@@ -38,17 +38,17 @@ CREATE TABLE users (
 INSERT INTO role (ten_role) VALUES ('bacsi'), ('duocsi'), ('letan'), ('admin');
 INSERT INTO department (ten_ck) VALUES ('Nội tổng quát'), ('Ngoại khoa'), ('Nhi khoa'), ('Tim mạch'), ('Da liễu');
 INSERT INTO staff (staff_code, hoten_nv, email, sdt, gender, dob, role_id, department_id, begin_date) VALUES
-(1001, 'Dr. Nguyen Bac Si', 'bsnguyen@example.com', '0911111111', 'nam', '1970-03-01', 1, 1, '2000-01-01'),
-(1002, 'Nurse Tran Y Ta', 'ytatran@example.com', '0912222222', 'nu', '1980-04-15', 1, 1, '2005-01-01'),
-(1003, 'Pharmacist Le Duoc', 'duocle@example.com', '0913333333', 'nam', '1985-06-10', 2, NULL, '2010-01-01'),
-(1004, 'Receptionist Pham Letan', 'letanpham@example.com', '0914444444', 'nu', '1990-07-20', 3, NULL, '2015-01-01'),
-(1005, 'Admin Hoang', 'adminhoang@example.com', '0915555555', 'nam', '1975-09-25', 4, NULL, '2000-01-01');
+(1, 'Dr. Nguyen Bac Si', 'bsnguyen@example.com', '0911111111', 'nam', '1970-03-01', 1, 1, '2000-01-01'),
+(2, 'Nurse Tran Y Ta', 'ytatran@example.com', '0912222222', 'nu', '1980-04-15', 1, 1, '2005-01-01'),
+(3, 'Pharmacist Le Duoc', 'duocle@example.com', '0913333333', 'nam', '1985-06-10', 2, NULL, '2010-01-01'),
+(4, 'Receptionist Pham Letan', 'letanpham@example.com', '0914444444', 'nu', '1990-07-20', 3, NULL, '2015-01-01'),
+(5, 'Admin Hoang', 'adminhoang@example.com', '0915555555', 'nam', '1975-09-25', 4, NULL, '2000-01-01');
 INSERT INTO users (username, password, role_id) VALUES
 ('bacsi1', '$2a$12$HFPc2MAAByA7mYQm2fJpgOdbGpcAZ/yNXDAe7sFywyegyU7KQ/ZqC', 1),
 ('bacsi2', '$2a$12$KK1I9WaXgU.sV6KAaptNROvIrwNY/64SOidByO3s/oFWRm9xs4aMC', 1),
 ('duocsi1', '$2a$12$EA1YaTqq6CLFvQqENIrp5.yKtwWLhsX3sx1fAzN11lFQ5O9pHkktK', 2),
 ('letan1', '$2a$12$PU2pCGoEsTR418j/fuOf6O7oimwaPhw1qvh/EgJW/RcEEZPy6eD6S', 3),
-('admin', '$2a$12$7TY7NeHT4tS1cZPglO6w/.MQQse8msHf9/T2.GC1oRpmaslhJyk.y', 4);
+('admin', '$2a$12$IjizNHphZoYzKuW2ZPebzuPi0ONMeWpTjL23mbSkYGkAX4WjAzWUq', 4);
 -- ########## PATIENT SERVICE ##########
 CREATE DATABASE IF NOT EXISTS patient_service;
 USE patient_service;
@@ -90,11 +90,11 @@ INSERT INTO patients (hoten_bn, dob, gender, sdt, diachi, tiensu_benh, lichsu_kh
 ('Hoang Van E', '1975-07-30', 'nam', '0905555555', 'Can Tho', 'Bệnh tim', 'Khám năm 2020');
 
 INSERT INTO medical_records (patient_id, doctor_id, department_id, ngaykham, lydo, chan_doan, ngay_taikham, ghichu) VALUES
-(1, 1001, 1, '2023-06-01 09:00:00', 'Đau đầu', 'Cảm cúm', '2023-06-10', 'Nghỉ ngơi'),
-(2, 1001, 1, '2023-06-05 14:00:00', 'Đau bụng', 'Viêm dạ dày', '2023-06-12', 'Uống thuốc đầy đủ'),
-(3, 1001, 4, '2023-06-07 10:00:00', 'Khó thở', 'Hen suyễn', '2023-06-14', 'Tránh dị ứng'),
-(4, 1001, 5, '2023-06-08 15:00:00', 'Nổi mẩn', 'Viêm da', '2023-06-15', 'Bôi thuốc ngoài da'),
-(5, 1001, 4, '2023-06-09 08:30:00', 'Đau ngực', 'Bệnh tim', '2023-06-16', 'Theo dõi thêm');
+(1, 1, 1, '2023-06-01 09:00:00', 'Đau đầu', 'Cảm cúm', '2023-06-10', 'Nghỉ ngơi'),
+(2, 1, 1, '2023-06-05 14:00:00', 'Đau bụng', 'Viêm dạ dày', '2023-06-12', 'Uống thuốc đầy đủ'),
+(3, 1, 4, '2023-06-07 10:00:00', 'Khó thở', 'Hen suyễn', '2023-06-14', 'Tránh dị ứng'),
+(4, 1, 5, '2023-06-08 15:00:00', 'Nổi mẩn', 'Viêm da', '2023-06-15', 'Bôi thuốc ngoài da'),
+(5, 1, 4, '2023-06-09 08:30:00', 'Đau ngực', 'Bệnh tim', '2023-06-16', 'Theo dõi thêm');
 
 -- ########## APPOINTMENT SERVICE ##########
 CREATE DATABASE IF NOT EXISTS appointment_service;
@@ -177,7 +177,7 @@ CREATE TABLE IF NOT EXISTS medicine_stock_log (
 INSERT INTO medicines 
 (id, ten_thuoc, so_luong, don_vi, don_gia, is_liquid, volume_per_bottle, volume_unit, created_at, updated_at)
 VALUES
-(1, 'Paracetamol', 1, 'viên', 1000, 0, NULL, NULL, '2025-08-29 02:22:25', '2025-08-29 02:25:10'),
+(1, 'Paracetamol', 100, 'viên', 1000, 0, NULL, NULL, '2025-08-29 02:22:25', '2025-08-29 02:25:10'),
 (2, 'Amoxicillin', 150, 'túi', 2323, 0, NULL, NULL, '2025-08-29 02:22:25', '2025-08-29 02:22:25'),
 (3, 'Salbutamol', 100, 'chai', 5555, 1, 100, 'ml', '2025-08-29 02:22:25', '2025-08-29 02:22:25'),
 (4, 'Aspirin', 299, 'viên', 8080, 0, NULL, NULL, '2025-08-29 02:22:25', '2025-08-29 02:22:25'),
@@ -185,11 +185,11 @@ VALUES
 
 -- Updated sample prescriptions with numeric dose
 INSERT INTO prescriptions (record_id, pharmacist_id, status, created_at) VALUES
-(1, 1003, 'dispensed', '2023-06-01 10:00:00'),
-(2, 1003, 'dispensed', '2023-06-05 15:00:00'),
+(1, 3, 'dispensed', '2023-06-01 10:00:00'),
+(2, 3, 'dispensed', '2023-06-05 15:00:00'),
 (3, NULL, 'pending', '2023-06-07 11:00:00'),
-(4, 1003, 'dispensed', '2023-06-08 16:00:00'),
-(5, 1003, 'dispensed', '2023-06-09 09:30:00');
+(4, 3, 'dispensed', '2023-06-08 16:00:00'),
+(5, 3, 'dispensed', '2023-06-09 09:30:00');
 
 -- Prescription medicines with numeric dose
 INSERT INTO prescription_medicines (prescription_id, medicine_id, dose, frequency, duration, note) VALUES
