@@ -237,3 +237,109 @@ Stack trace:
   thrown in C:\xampp\htdocs\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
 [02-Sep-2025 22:25:21 Asia/Ho_Chi_Minh] 2025-09-02 10:00:00
 [02-Sep-2025 22:25:24 Asia/Ho_Chi_Minh] 2025-09-02 10:00:00
+[03-Sep-2025 08:54:24 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[03-Sep-2025 08:56:13 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\appointments\index.php:94
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\AppointmentController.php(194): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(144): AppointmentController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\appointments\index.php on line 94
+[03-Sep-2025 09:01:39 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[03-Sep-2025 09:13:25 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[03-Sep-2025 09:13:27 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[03-Sep-2025 09:41:46 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 100
+[03-Sep-2025 09:41:46 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 100
+[03-Sep-2025 09:41:46 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 115
+[03-Sep-2025 09:41:46 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 115
+[03-Sep-2025 09:41:46 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 150
+[03-Sep-2025 09:41:46 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 150
+[03-Sep-2025 09:41:51 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 100
+[03-Sep-2025 09:41:51 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 100
+[03-Sep-2025 09:41:51 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 115
+[03-Sep-2025 09:41:51 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 115
+[03-Sep-2025 09:41:51 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 150
+[03-Sep-2025 09:41:51 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 150
+[03-Sep-2025 10:07:02 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[03-Sep-2025 10:07:05 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\views\medicines\report.php:60
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\app\controllers\MedicineController.php(227): require()
+#1 C:\xampp\htdocs\UDPT-2025\client\public\index.php(257): MedicineController->report()
+#2 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\views\medicines\report.php on line 60
+[03-Sep-2025 10:07:07 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[03-Sep-2025 10:07:11 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[03-Sep-2025 10:07:12 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[03-Sep-2025 10:07:13 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[03-Sep-2025 10:07:13 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\controllers\MedicineController.php:40
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\public\index.php(257): MedicineController->index()
+#1 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\controllers\MedicineController.php on line 40
+[03-Sep-2025 10:07:15 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in C:\xampp\htdocs\UDPT-2025\client\app\controllers\MedicineController.php:40
+Stack trace:
+#0 C:\xampp\htdocs\UDPT-2025\client\public\index.php(257): MedicineController->index()
+#1 {main}
+  thrown in C:\xampp\htdocs\UDPT-2025\client\app\controllers\MedicineController.php on line 40
+[03-Sep-2025 10:21:46 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[03-Sep-2025 10:21:48 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[03-Sep-2025 10:21:53 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in C:\xampp\htdocs\UDPT-2025\client\app\views\error.php on line 7
+[03-Sep-2025 10:22:07 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 100
+[03-Sep-2025 10:22:07 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 100
+[03-Sep-2025 10:22:07 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 115
+[03-Sep-2025 10:22:07 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 115
+[03-Sep-2025 10:22:07 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 150
+[03-Sep-2025 10:22:07 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 150
+[03-Sep-2025 10:22:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 100
+[03-Sep-2025 10:22:11 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 100
+[03-Sep-2025 10:22:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 115
+[03-Sep-2025 10:22:11 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 115
+[03-Sep-2025 10:22:11 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 150
+[03-Sep-2025 10:22:11 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 150
+[03-Sep-2025 10:22:14 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 100
+[03-Sep-2025 10:22:14 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 100
+[03-Sep-2025 10:22:14 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 115
+[03-Sep-2025 10:22:14 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 115
+[03-Sep-2025 10:22:14 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 150
+[03-Sep-2025 10:22:14 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\UDPT-2025\client\app\views\home.php on line 150
+[03-Sep-2025 10:22:25 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:22:49 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:22:52 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:22:54 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:22:55 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:23:03 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:23:08 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:23:10 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:23:12 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:23:14 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:23:15 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:23:18 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:23:28 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:23:30 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:23:31 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:23:32 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:23:32 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:23:46 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:23:46 Asia/Ho_Chi_Minh] Error in getSyncStatus: Failed to connect to service
+[03-Sep-2025 10:23:48 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:23:53 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:23:56 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:24:43 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:25:18 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:25:20 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:25:40 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:25:43 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:26:02 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:26:03 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:26:06 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:26:25 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:26:27 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:26:40 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:26:41 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:26:58 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:26:59 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:27:01 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:27:02 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:27:04 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:27:07 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:27:24 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16
+[03-Sep-2025 10:27:25 Asia/Ho_Chi_Minh] PHP Deprecated:  Creation of dynamic property ReportController::$appointmentService is deprecated in C:\xampp\htdocs\UDPT-2025\client\app\controllers\ReportController.php on line 16

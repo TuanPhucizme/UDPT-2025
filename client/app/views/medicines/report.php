@@ -1,18 +1,25 @@
 <?php require_once '../app/views/layouts/header.php'; ?>
 
+
 <div class="container py-4">
-    <div class="row mb-4">
-        <div class="col-md-8">
-            <h2><i class="fas fa-chart-bar me-2"></i> Báo cáo thuốc</h2>
-            <p class="text-muted">Báo cáo sử dụng thuốc và tình trạng kho</p>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-primary mb-0">
+                <i class="fas fa-chart-bar me-2"></i> Báo cáo thuốc
+            </h2>
+            <p class="text-muted mb-0">Báo cáo sử dụng thuốc và tình trạng kho</p>
         </div>
-        <div class="col-md-4 text-end">
-            <div class="btn-group">
-                <a href="/medicines" class="btn btn-outline-secondary">
+
+        <div class="d-flex">
+            <div class="d-flex justify-content-end">
+                <a href="/medicines/report" class="btn btn-outline-secondary shadow-sm d-inline-flex align-items-center px-3 me-2">
+                    <i class="fas fa-chart-bar me-1"></i> Báo cáo thuốc
+                </a>
+                <a href="/medicines" class="btn btn-primary shadow-sm d-inline-flex align-items-center px-3 me-2 active">
                     <i class="fas fa-list me-1"></i> Danh sách thuốc
                 </a>
-                <a href="/medicines/report" class="btn btn-primary active">
-                    <i class="fas fa-chart-bar me-1"></i> Báo cáo thuốc
+                <a href="/" class="btn btn-outline-dark shadow-sm d-inline-flex align-items-center px-3">
+                    <i class="fas fa-arrow-left me-1"></i> Quay lại
                 </a>
             </div>
         </div>

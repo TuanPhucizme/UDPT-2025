@@ -53,7 +53,7 @@
             <div class="col-12 text-center">
                 <div class="hero-section">
                     <h1 class="display-5 fw-bold mb-3">Hệ thống Quản lý Bệnh viện ABC</h1>
-                    <p class="lead mb-3">Giải pháp quản lý hiện đại, tối ưu hóa quy trình khám chữa bệnh</p>
+                    <p class="lead mb-5">Giải pháp quản lý hiện đại, tối ưu hóa quy trình khám chữa bệnh</p>
 
                     <?php if (!isset($_SESSION['user'])): ?>
                         <a href="/auth/login" class="btn btn-light btn-lg px-5 shadow">
@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <?php if (isset($_SESSION['user'])): ?>
+        <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] !== 'duocsi'): ?>
             <!-- Dashboard chính -->
             <h4 class="section-title">Chức năng chính</h4>
             <div class="row g-4 justify-content-center">
@@ -93,6 +93,8 @@
                     </div>
                 </div>
             </div>
+        <?php endif; ?>
+
 
             <!-- Lễ tân / Admin -->
             <?php if (in_array($_SESSION['user']['role'], ['letan', 'admin'])): ?>
@@ -178,7 +180,6 @@
                     </div>
                 </div>
             <?php endif; ?>
-        <?php endif; ?>
     </div>
 
     <?php require_once __DIR__ . '/layouts/footer.php'; ?>

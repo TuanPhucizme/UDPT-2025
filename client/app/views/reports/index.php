@@ -14,6 +14,9 @@
             <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#filterModal">
                 <i class="fas fa-filter me-1"></i> Lọc dữ liệu
             </button>
+            <a href="/" class="btn btn-outline-secondary me-2">
+                <i class="fas fa-arrow-left me-1"></i> Quay lại
+            </a>
         </div>
     </div>
 

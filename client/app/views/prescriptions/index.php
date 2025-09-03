@@ -4,25 +4,23 @@
     <!-- Page Header -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-            <h2 class="fw-bold mb-1"><i class="fas fa-prescription me-2 text-primary"></i> Quản lý đơn thuốc</h2>
+            <h2 class="fw-bold mb-1">
+                <i class="fas fa-prescription text-primary me-2"></i> Quản lý đơn thuốc
+            </h2>
             <p class="text-muted mb-0">Danh sách toàn bộ đơn thuốc trong hệ thống</p>
         </div>
-        <div>
-            <div class="btn-group">
-                <?php if ($_SESSION['user']['role'] === 'duocsi'): ?>
-                    <a href="/prescriptions/pending" class="btn btn-outline-primary">
-                        <i class="fas fa-clock me-1"></i> Chờ phát
-                    </a>
-                <?php endif; ?>
-                <div>
-                    <a href="/prescriptions" class="btn btn-primary shadow-sm px-3 me-2">
-                        <i class="fas fa-list me-1"></i> Tất cả
-                    </a>
-                    <a href="/" class="btn btn-light shadow-sm px-3 me-2">
-                        <i class="fas fa-arrow-left"></i> Quay lại
-                    </a>
-                </div>
-            </div>
+        <div class="btn-group">
+            <?php if ($_SESSION['user']['role'] === 'duocsi'): ?>
+                <a href="/prescriptions/pending" class="btn btn-outline-primary">
+                    <i class="fas fa-clock me-1"></i> Chờ phát
+                </a>
+            <?php endif; ?>
+            <a href="/prescriptions" class="btn btn-primary">
+                <i class="fas fa-list me-1"></i> Tất cả
+            </a>
+            <a href="/" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-1"></i> Quay lại
+            </a>
         </div>
     </div>
 
