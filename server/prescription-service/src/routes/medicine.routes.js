@@ -28,7 +28,7 @@ router.put('/:id', authMiddleware, authorizeRoles('duocsi', 'admin'), updateMedi
 router.put('/:id/stock', authMiddleware, authorizeRoles('duocsi', 'admin'), updateMedicineStock);
 
 // Get medicine stock history
-router.get('/:id/stock-history', authMiddleware, getMedicineStockHistory);
+router.get('/:id/stockHistory', authMiddleware, getMedicineStockHistory);
 
 // Get liquid medicines report
 router.get('/reports/liquid-medicines', authMiddleware, getLiquidMedicinesReport);

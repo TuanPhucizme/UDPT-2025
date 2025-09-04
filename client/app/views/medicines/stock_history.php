@@ -134,7 +134,7 @@
                     
                     <?php if ($_SESSION['user']['role'] === 'duocsi' || $_SESSION['user']['role'] === 'admin'): ?>
                         <div class="mt-3 text-center">
-                            <a href="/medicines/update-stock/<?= $medicine['id'] ?>" class="btn btn-primary">
+                            <a href="/medicines/updateStock/<?= $medicine['id'] ?>" class="btn btn-primary">
                                 <i class="fas fa-plus-circle me-1"></i> Thêm nhập/xuất kho mới
                             </a>
                         </div>

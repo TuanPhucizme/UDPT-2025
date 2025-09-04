@@ -165,6 +165,21 @@ class PrescriptionController {
                 throw new Exception('Không tìm thấy đơn thuốc');
             }
             
+            // If we don't have medicine prices in the response, fetch them
+            if (isset($prescription['data']['medicines']) && is_array($prescription['data']['medicines'])) {
+                foreach ($prescription['data']['medicines'] as $index => $medicine) {
+                    if (!isset($medicine['unit_price'])) {
+                        // Fetch medicine details to get price
+                        $medicineDetails = $this->prescriptionService->getMedicineById($medicine['id']);
+                        if ($medicineDetails['statusCode'] === 200 && isset($medicineDetails['data'])) {
+                            $prescription['data']['medicines'][$index]['unit_price'] = $medicineDetails['data']['don_gia'] ?? 0;
+                        } else {
+                            $prescription['data']['medicines'][$index]['unit_price'] = 0;
+                        }
+                    }
+                }
+            }
+            
             require '../app/views/prescriptions/view.php';
         } catch (Exception $e) {
             $_SESSION['error'] = $e->getMessage();

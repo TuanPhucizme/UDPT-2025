@@ -19,7 +19,7 @@ router.put('/:id', authMiddleware, authorizeRoles('duocsi', 'admin'), updateStat
 router.get(
   '/patient/:patient_id',
   authMiddleware,
-  authorizeRoles('bacsi', 'duocsi', 'admin'),
+  authorizeRoles('bacsi', 'duocsi', 'admin','letan'),
   getByPatient
 );
 router.get(
@@ -28,7 +28,7 @@ router.get(
   getByRecordId
 );
 router.get('/medicines', authMiddleware, getMedicines);
-router.get('/:id', authMiddleware, authorizeRoles('bacsi', 'duocsi', 'admin'), getById);
+router.get('/:id', authMiddleware, authorizeRoles('bacsi', 'duocsi', 'admin','letan'), getById);
 router.get('/internal/medicines', authMiddleware, getMedicines); // Internal route
 router.get(
   '/status/:status',

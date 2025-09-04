@@ -83,8 +83,8 @@ $routes = [
         'index', 
         'create', 
         'edit', 
-        'update-stock',
-        'stock-history',
+        'updateStock',
+        'stockHistory',
         'report'
     ],
 ];
@@ -149,7 +149,7 @@ try {
         case 'records':
             AuthMiddleware::authenticate();
             // Change this line to include pharmacists
-            AuthMiddleware::authorizeRoles('bacsi', 'duocsi', 'admin')();
+            AuthMiddleware::authorizeRoles('bacsi', 'duocsi', 'admin','letan')();
             require_once '../app/controllers/RecordController.php';
             $controller = new RecordController();
             if (method_exists($controller, $action)) {
@@ -245,7 +245,7 @@ try {
         case 'medicines':
             AuthMiddleware::authenticate();
             // Only pharmacists and admins can create and update medicines
-            if (in_array($action, ['create', 'edit', 'update-stock'])) {
+            if (in_array($action, ['create', 'edit', 'updateStock'])) {
                 AuthMiddleware::authorizeRoles('duocsi', 'admin')();
             } else {
                 // For viewing, all authenticated staff can access

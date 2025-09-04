@@ -5,7 +5,7 @@
         <div class="card shadow-lg border-0 rounded-4">
             <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center rounded-top-4">
                 <h5 class="mb-0"><i class="fas fa-plus-circle me-2"></i> Thêm thuốc mới</h5>
-                <a href="/" class="btn btn-outline-light btn-sm">
+                <a href="/medicines" class="btn btn-outline-light btn-sm">
                     <i class="fas fa-arrow-left"></i> Quay lại
                 </a>
             </div>

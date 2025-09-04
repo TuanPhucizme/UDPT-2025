@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     
-                    <form method="POST" action="/medicines/update-stock/<?= $medicine['id'] ?>">
+                    <form method="POST" action="/medicines/updateStock/<?= $medicine['id'] ?>">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">

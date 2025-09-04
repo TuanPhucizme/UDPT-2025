@@ -108,7 +108,7 @@ class PrescriptionService extends BaseService {
      * Get medicine stock history
      */
     public function getMedicineStockHistory($id) {
-        return $this->request('GET', "/api/medicines/{$id}/stock-history");
+        return $this->request('GET', "/api/medicines/{$id}/stockHistory");
     }
 
     /**

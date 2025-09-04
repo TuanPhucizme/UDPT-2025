@@ -170,7 +170,7 @@
                                     <td>
                                         <?php if ($_SESSION['user']['role'] === 'duocsi' || $_SESSION['user']['role'] === 'admin'): ?>
                                             <div class="btn-group">
-                                                <a href="/medicines/update-stock/<?= $medicine['id'] ?>" class="btn btn-sm btn-primary">
+                                                <a href="/medicines/updateStock/<?= $medicine['id'] ?>" class="btn btn-sm btn-primary">
                                                     <i class="fas fa-boxes me-1"></i> Cập nhật kho
                                                 </a>
                                                 <button type="button" class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"></button>
@@ -181,14 +181,14 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a class="dropdown-item" href="/medicines/stock-history/<?= $medicine['id'] ?>">
+                                                        <a class="dropdown-item" href="/medicines/stockHistory/<?= $medicine['id'] ?>">
                                                             <i class="fas fa-history me-1"></i> Lịch sử kho
                                                         </a>
                                                     </li>
                                                 </ul>
                                             </div>
                                         <?php else: ?>
-                                            <a href="/medicines/stock-history/<?= $medicine['id'] ?>" class="btn btn-sm btn-info">
+                                            <a href="/medicines/stockHistory/<?= $medicine['id'] ?>" class="btn btn-sm btn-info">
                                                 <i class="fas fa-history me-1"></i> Lịch sử kho
                                             </a>
                                         <?php endif; ?>

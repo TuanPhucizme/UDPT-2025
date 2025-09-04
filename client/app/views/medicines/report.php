@@ -64,7 +64,7 @@
                                     ?>
                                     <tr>
                                         <td>
-                                            <a href="/medicines/stock-history/<?= $medicine['id'] ?>" class="text-decoration-none">
+                                            <a href="/medicines/stockHistory/<?= $medicine['id'] ?>" class="text-decoration-none">
                                                 <?= htmlspecialchars($medicine['ten_thuoc']) ?>
                                             </a>
                                         </td>
@@ -157,11 +157,11 @@
                                         <td><?= date('d/m/Y', strtotime($medicine['last_purchase_date'])) ?></td>
                                         <td>
                                             <?php if ($_SESSION['user']['role'] === 'duocsi' || $_SESSION['user']['role'] === 'admin'): ?>
-                                                <a href="/medicines/update-stock/<?= $medicine['id'] ?>" class="btn btn-sm btn-primary">
+                                                <a href="/medicines/updateStock/<?= $medicine['id'] ?>" class="btn btn-sm btn-primary">
                                                     <i class="fas fa-plus me-1"></i> Nhập kho
                                                 </a>
                                             <?php else: ?>
-                                                <a href="/medicines/stock-history/<?= $medicine['id'] ?>" class="btn btn-sm btn-info">
+                                                <a href="/medicines/stockHistory/<?= $medicine['id'] ?>" class="btn btn-sm btn-info">
                                                     <i class="fas fa-history me-1"></i> Xem lịch sử
                                                 </a>
                                             <?php endif; ?>

@@ -171,55 +171,6 @@ require_once '../app/views/layouts/header.php';
                     <?php endif; ?>
                 </div>
             </div>
-
-            <!-- Report: Liquid Medicine Usage -->
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h5 class="mb-0">Báo cáo sử dụng thuốc dạng lỏng</h5>
-                </div>
-                <div class="card-body">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>Tên thuốc</th>
-                                <th>Thể tích mỗi chai</th>
-                                <th>Số chai trong kho</th>
-                                <th>Tổng thể tích hiện có</th>
-                                <th>Đã sử dụng tháng này</th>
-                                <th>Tỷ lệ sử dụng</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($liquidMedicines as $medicine): ?>
-                              <?php
-                                $totalVolume = $medicine['volume_per_bottle'] * $medicine['so_luong'];
-                                $usedVolume = $medicine['volume_used'] ?? 0;
-                                $usageRate = ($medicine['so_luong'] > 0) ? 
-                                  ($usedVolume / $totalVolume) * 100 : 0;
-                              ?>
-                              <tr>
-                                <td><?= htmlspecialchars($medicine['ten_thuoc']) ?></td>
-                                <td><?= $medicine['volume_per_bottle'] ?> <?= $medicine['volume_unit'] ?></td>
-                                <td><?= $medicine['so_luong'] ?></td>
-                                <td><?= $totalVolume ?> <?= $medicine['volume_unit'] ?></td>
-                                <td><?= $usedVolume ?> <?= $medicine['volume_unit'] ?></td>
-                                <td>
-                                  <div class="progress">
-                                    <div class="progress-bar" role="progressbar" 
-                                         style="width: <?= $usageRate ?>%" 
-                                         aria-valuenow="<?= $usageRate ?>" 
-                                         aria-valuemin="0" 
-                                         aria-valuemax="100">
-                                      <?= number_format($usageRate, 1) ?>%
-                                    </div>
-                                  </div>
-                                </td>
-                              </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
     </div>
 </div>

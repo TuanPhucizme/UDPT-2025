@@ -134,7 +134,7 @@ CREATE TABLE prescription_medicines (
   id INT AUTO_INCREMENT PRIMARY KEY,
   prescription_id INT NOT NULL,
   medicine_id INT NOT NULL,
-  dose VARCHAR(255), -- Dosage (e.g., "500mg", "2 nhát", "10ml")
+  dose INT NOT NULL, -- Dosage (e.g., "500mg", "2 nhát", "10ml")
   frequency VARCHAR(255), -- How often (e.g., "2 lần/ngày", "Khi khó thở")
   duration VARCHAR(255), -- How long (e.g., "5 ngày", "1 tháng")
   note TEXT,
@@ -335,11 +335,11 @@ INSERT INTO prescriptions (record_id, pharmacist_id, status, created_at) VALUES
 
 -- Sample Data for prescription-service: Prescription Medicines
 INSERT INTO prescription_medicines (prescription_id, medicine_id, dose, frequency, duration, note) VALUES
-(1, 1, '1 viên', '2 lần/ngày', '5 ngày', 'Uống sau ăn'),
-(2, 2, '2 túi', '3 lần/ngày', '7 ngày', 'Uống đủ liệu trình'),
-(3, 3, '3 nhát', '3 lần/ngày', '10 ngày', 'Mang theo khi đi ra ngoài'),
-(4, 5, '4 ống', '1 lần/ngày', '14 ngày', 'Trước khi ngủ'),
-(5, 4, '5 viên', '1 lần/ngày', '30 ngày', 'Sau bữa sáng');
+(1, 1, 1, '2 lần/ngày', '5 ngày', 'Uống sau ăn'),
+(2, 2, 2, '3 lần/ngày', '7 ngày', 'Uống đủ liệu trình'),
+(3, 3, 3, '3 lần/ngày', '10 ngày', 'Mang theo khi đi ra ngoài'),
+(4, 5, 4, '1 lần/ngày', '14 ngày', 'Trước khi ngủ'),
+(5, 4, 5, '1 lần/ngày', '30 ngày', 'Sau bữa sáng');
 
 INSERT INTO medicine_stock_log (
     medicine_id, 

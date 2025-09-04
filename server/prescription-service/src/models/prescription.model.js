@@ -488,7 +488,8 @@ export const getPrescriptionById = async (id) => {
         m.don_vi as unit,
         m.is_liquid,
         m.volume_per_bottle,
-        m.volume_unit
+        m.volume_unit,
+        m.don_gia as unit_price
       FROM prescription_medicines pm
       JOIN medicines m ON pm.medicine_id = m.id
       WHERE pm.prescription_id = ?`,
@@ -500,11 +501,16 @@ export const getPrescriptionById = async (id) => {
       id: med.medicine_id,
       name: med.name,
       unit: med.unit,
-      dosage: `${med.dose} ${med.is_liquid?med.volume_unit:med.unit}`, // Combine numeric dose with unit for display
+      is_liquid: med.is_liquid,
+      volume_per_bottle: med.volume_per_bottle,
+      volume_unit: med.volume_unit,
+      dosage: `${med.dose} ${med.is_liquid ? med.volume_unit : med.unit}`,
       frequency: med.frequency,
       duration: med.duration,
-      note: med.note || ''
+      note: med.note || '',
+      unit_price: med.unit_price || 0
     }));
+    
     // Get record details to fetch patient and doctor info
     const record = await serviceCall(
       `${services.PATIENT_SERVICE_URL}/api/medical-records/internal/${prescription.record_id}`
