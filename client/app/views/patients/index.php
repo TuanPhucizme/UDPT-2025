@@ -70,10 +70,12 @@
                                        class="btn btn-sm btn-outline-info me-2">
                                         <i class="fas fa-eye"></i> Chi tiết
                                     </a>
+                                    <?php if (in_array($_SESSION['user']['role'], ['letan', 'admin'])): ?>
                                     <a href="/patients/edit/<?= $patient['id'] ?>" 
                                        class="btn btn-sm btn-outline-primary">
                                         <i class="fas fa-edit"></i> Sửa
                                     </a>
+                                    <?php endif; ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

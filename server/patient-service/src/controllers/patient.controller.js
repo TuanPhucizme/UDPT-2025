@@ -36,9 +36,42 @@ export const getPatient = async (req, res) => {
 };
 
 export const updatePatientInfo = async (req, res) => {
-  const id = req.params.id;
-  await updatePatient(id, req.body);
-  res.json({ message: 'Cập nhật thành công' });
+  try {
+    const id = req.params.id;
+    
+    // First, get the original patient record to check phone number
+    const originalPatient = await getPatientById(id, { adminMode: true });
+    
+    if (!originalPatient) {
+      return res.status(404).json({ message: 'Patient not found' });
+    }
+    
+    // Prepare data for update
+    const updateData = { ...req.body };
+    // Handle phone number cases:
+    // 1. If the phone in the request is encoded (like 'xxxxxxxxx123'), use the original
+    // 2. If the phone is explicitly changed (non-encoded), use the new value
+    // 3. If phone_changed flag is present, ensure we use the new phone number
+    if (updateData.sdt) {
+      const isPhoneEncoded = updateData.sdt && updateData.sdt.match(/^x+\d{3}$/);
+      
+      if (isPhoneEncoded && !updateData.phone_changed) {
+        // If the phone appears encoded and not explicitly changed, 
+        // use the original phone from the database
+        updateData.sdt = originalPatient.sdt;
+      }
+    }
+    
+    // Remove the phone_changed flag as it's not needed in the database
+    delete updateData.phone_changed;
+    
+    // Update the patient
+    await updatePatient(id, updateData);
+    res.json({ message: 'Cập nhật thành công' });
+  } catch (err) {
+    console.error('Error updating patient:', err);
+    res.status(500).json({ message: 'Error updating patient', error: err.message });
+  }
 };
 
 export const getPatientRecordIds = async (req, res) => {

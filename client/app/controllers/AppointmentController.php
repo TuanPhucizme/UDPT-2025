@@ -207,7 +207,6 @@ class AppointmentController {
             }
             
             $appointment = $result['data'];
-            error_log($appointment['thoi_gian_hen']);
             // Check permission
             if ($_SESSION['user']['role'] === 'bacsi' && $appointment['doctor_id'] !== $_SESSION['user']['id']) {
                 throw new Exception('Bạn không có quyền xem lịch hẹn này');

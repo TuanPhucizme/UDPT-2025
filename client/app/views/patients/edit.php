@@ -52,9 +52,21 @@
                                    id="sdt" 
                                    name="sdt" 
                                    value="<?= htmlspecialchars($patient['sdt']) ?>"
+                                   <?php if (preg_match('/^x+\d{3}$/', $patient['sdt'])): ?>
+                                   placeholder="Nhập số điện thoại mới hoặc để trống để giữ nguyên"
+                                   pattern="[0-9]{10,11}|^x+\d{3}$"
+                                   title="Để trống để giữ số cũ hoặc nhập số điện thoại mới (10-11 chữ số)"
+                                   <?php else: ?>
                                    pattern="[0-9]{10,11}"
                                    title="Số điện thoại phải có 10-11 chữ số"
-                                   required>
+                                   required
+                                   <?php endif; ?>>
+                            <?php if (preg_match('/^x+\d{3}$/', $patient['sdt'])): ?>
+                            <div class="form-text">
+                                <i class="fas fa-info-circle"></i> 
+                                Số điện thoại hiện tại đã được mã hóa để bảo mật. Để thay đổi, hãy nhập số mới, hoặc để trống để giữ số hiện tại.
+                            </div>
+                            <?php endif; ?>
                         </div>
 
                         <div class="mb-3">

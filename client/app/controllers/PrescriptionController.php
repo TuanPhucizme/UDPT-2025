@@ -35,11 +35,14 @@ class PrescriptionController {
             // Get prescriptions based on filters
             $result = $this->prescriptionService->getAllPrescriptions($filters);
             $prescriptions = $result['data'] ?? [];
-            
+            if (isset($prescriptions['serviceUnavailable']) && $prescriptions['serviceUnavailable']) {
+                $this->handleServiceUnavailable($prescriptions);
+                return;
+            }
             require '../app/views/prescriptions/index.php';
         } catch (Exception $e) {
             $_SESSION['error'] = $e->getMessage();
-            header('Location: /home');
+            header('Location: /');
             exit;
         }
     }
@@ -136,7 +139,11 @@ class PrescriptionController {
                 ];
                 
                 $result = $this->prescriptionService->createPrescription($data);
-                
+                // Check for service unavailability
+                if (isset($result['serviceUnavailable']) && $result['serviceUnavailable']) {
+                    $this->handleServiceUnavailable($result);
+                    return;
+                }
                 if ($result['statusCode'] === 201) {
                     $_SESSION['success'] = 'Đã tạo đơn thuốc thành công';
                     header('Location: /records/view/' . $_POST['record_id']);
@@ -156,10 +163,26 @@ class PrescriptionController {
             exit;
         }
     }
-    
+    private function handleServiceUnavailable($response) {
+        $_SESSION['error'] = $response['message'] ?? 'Dịch vụ hiện không khả dụng';
+        
+        // Log technical details for debugging
+        if (isset($response['technicalDetails'])) {
+            error_log('Service unavailable: ' . $response['technicalDetails']);
+        }
+        
+        // Redirect to appropriate page
+        header('Location: /');
+        exit;
+    }
     public function view($id) {
         try {
             $prescription = $this->prescriptionService->getPrescriptionById($id);
+            
+            if (isset($prescription['serviceUnavailable']) && $prescription['serviceUnavailable']) {
+                $this->handleServiceUnavailable($prescription);
+                return;
+            }
             
             if ($prescription['statusCode'] !== 200) {
                 throw new Exception('Không tìm thấy đơn thuốc');
@@ -201,7 +224,10 @@ class PrescriptionController {
             }
             
             $result = $this->prescriptionService->updateStatus($id, 'dispensed', $_SESSION['user']['id']);
-            
+            if (isset($result['serviceUnavailable']) && $result['serviceUnavailable']) {
+                    $this->handleServiceUnavailable($result);
+                    return;
+                }
             if ($result['statusCode'] === 200) {
                 $_SESSION['success'] = 'Đơn thuốc đã được phát thuốc';
             } else {
@@ -226,6 +252,10 @@ class PrescriptionController {
             
             // Get all pending prescriptions
             $result = $this->prescriptionService->getAllPrescriptions(['status' => 'pending']);
+            if (isset($result['serviceUnavailable']) && $result['serviceUnavailable']) {
+                    $this->handleServiceUnavailable($result);
+                    return;
+                }
             $prescriptions = $result['data'] ?? [];
             
             require '../app/views/prescriptions/pending.php';

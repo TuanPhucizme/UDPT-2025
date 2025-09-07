@@ -28,7 +28,19 @@ $uri = str_replace($basePath, '', $uri);
 if (empty($uri)) {
     $uri = 'home';
 }
+if ($uri === 'maintenance') {
+    require_once '../app/views/maintenance.php';
+    exit;
+}
 
+if ($uri === 'maintenance-check') {
+    // Clear maintenance status
+    unset($_SESSION['maintenance']);
+    
+    // Redirect to homepage
+    header('Location: /');
+    exit;
+}
 // Parse route parameters
 $segments = explode('/', $uri);
 $controller = $segments[0] ?? 'home';
@@ -87,6 +99,7 @@ $routes = [
         'stockHistory',
         'report'
     ],
+    'admin' => ['dashboard','serviceHealth']
 ];
 try {
     // Validate route
@@ -253,6 +266,17 @@ try {
             }
             require_once '../app/controllers/MedicineController.php';
             $controller = new MedicineController();
+            if (method_exists($controller, $action)) {
+                call_user_func_array([$controller, $action], $params);
+            } else {
+                throw new Exception('Action not found', 404);
+            }
+            break;
+        case 'admin':
+            AuthMiddleware::authenticate();
+            AuthMiddleware::authorizeRoles('admin')();
+            require_once '../app/controllers/AdminController.php';
+            $controller = new AdminController();
             if (method_exists($controller, $action)) {
                 call_user_func_array([$controller, $action], $params);
             } else {

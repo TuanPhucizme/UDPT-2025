@@ -1,29 +1,40 @@
 <?php
+// filepath: d:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\PatientController.php
+
 require_once '../app/services/PatientService.php';
+require_once '../app/middleware/ServiceAvailabilityMiddleware.php';
 
 class PatientController {
     private $patientService;
-
+    
     public function __construct() {
         $this->patientService = new PatientService();
+        
+        // Check required services
+        $serviceStatus = ServiceAvailabilityMiddleware::checkMultipleServices(['patient']);
+        ServiceAvailabilityMiddleware::handleUnavailableServices($serviceStatus);
     }
-
+    
     public function index() {
         try {
             $result = $this->patientService->getAllPatients();
-            if ($result['statusCode'] === 401) {
-                session_destroy();
-                header('Location: /auth/login');
-                exit;
+            
+            // Check for service unavailability
+            if (isset($result['serviceUnavailable']) && $result['serviceUnavailable']) {
+                $_SESSION['error'] = $result['message'] ?? 'Dịch vụ bệnh nhân hiện không khả dụng';
+                require '../app/views/patients/index.php';
+                return;
             }
-            $patients = $result['data'];
+            
+            $patients = $result['data'] ?? [];
+            
             require '../app/views/patients/index.php';
         } catch (Exception $e) {
-            $error = $e->getMessage();
-            require '../app/views/error.php';
+            $_SESSION['error'] = 'Không thể lấy danh sách bệnh nhân: ' . $e->getMessage();
+            require '../app/views/patients/index.php';
         }
     }
-
+    
     public function create() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {

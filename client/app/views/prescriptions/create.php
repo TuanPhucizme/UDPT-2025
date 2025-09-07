@@ -192,30 +192,51 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize medicine selection handlers
     function initMedicineHandlers() {
-        document.querySelectorAll('select[name="medicines[]"]').forEach(select => {
-            select.addEventListener('change', function() {
-                const medicineItem = this.closest('.medicine-item');
-                const selectedOption = this.options[this.selectedIndex];
-                
-                if (selectedOption && selectedOption.value) {
-                    // Extract the unit from the option text (format: "Medicine Name (unit)")
-                    const unitMatch = selectedOption.text.match(/\(([^)]+)\)$/);
-                    const unit = unitMatch ? unitMatch[1] : 'viên';
-                    
-                    // Update the unit in the UI
-                    medicineItem.querySelector('.medicine-unit').textContent = unit;
-                    
-                    // Auto-add note for bottle medicines
-                    const noteField = medicineItem.querySelector('input[name="note[]"]');
-                    if (unit.toLowerCase() === 'chai' && noteField && !noteField.value) {
-                        noteField.value = 'Tham khảo hướng dẫn sử dụng trên chai';
-                    }
-                    
-                    // Update the hidden field
-                    updateHiddenFields();
-                }
-            });
-        });
+    document.querySelectorAll('select[name="medicines[]"]').forEach(select => {
+      select.addEventListener('change', function() {
+        const medicineItem = this.closest('.medicine-item');
+        const selectedOption = this.options[this.selectedIndex];
+        if (selectedOption && selectedOption.value) {
+          // Extract the unit from the option text (format: "Medicine Name (unit)")
+          const unitMatch = selectedOption.text.match(/\(([^)]+)\)$/);
+          const unit = unitMatch ? unitMatch[1] : 'viên';
+          // Update the unit in the UI
+          medicineItem.querySelector('.medicine-unit').textContent = unit;
+          // Auto-add note for bottle medicines
+          const noteField = medicineItem.querySelector('input[name="note[]"]');
+          if (unit.toLowerCase() === 'chai' && noteField && !noteField.value) {
+            noteField.value = 'Tham khảo hướng dẫn sử dụng trên chai';
+          }
+          // Update the hidden field
+          updateHiddenFields();
+        }
+        // Prevent duplicate medicine selection
+        updateMedicineSelectOptions();
+      });
+    });
+    // Also update on page load
+    updateMedicineSelectOptions();
+  }
+
+  // Prevent selecting the same medicine in multiple dropdowns
+  function updateMedicineSelectOptions() {
+    // Get all selected medicine values
+    const selectedValues = Array.from(document.querySelectorAll('select[name="medicines[]"]'))
+      .map(sel => sel.value)
+      .filter(val => val !== '');
+    // For each select, disable options that are already selected in other selects
+    document.querySelectorAll('select[name="medicines[]"]').forEach(select => {
+      const currentValue = select.value;
+      Array.from(select.options).forEach(option => {
+        if (option.value === '') return; // skip placeholder
+        // Disable if selected elsewhere and not the current value
+        if (selectedValues.includes(option.value) && option.value !== currentValue) {
+          option.disabled = true;
+        } else {
+          option.disabled = false;
+        }
+      });
+    });
     }
     
     // Function to update hidden fields with combined values for frequency and duration
@@ -256,29 +277,26 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add new medicine item
     addMedicineBtn.addEventListener('click', function() {
-        const firstItem = document.querySelector('.medicine-item');
-        const newItem = firstItem.cloneNode(true);
-        
-        // Clear values in the new item
-        newItem.querySelectorAll('input').forEach(input => {
-            input.value = '';
-        });
-        
-        // Reset selects to first option
-        newItem.querySelectorAll('select').forEach(select => {
-            select.selectedIndex = 0;
-        });
-        
-        // Reset the unit to default
-        newItem.querySelector('.medicine-unit').textContent = 'mg';
-        
-        // Add to the list
-        medicinesList.appendChild(newItem);
-        
-        // Reinitialize buttons and handlers
-        initRemoveButtons();
-        initInputHandlers();
-        initMedicineHandlers();
+    const firstItem = document.querySelector('.medicine-item');
+    const newItem = firstItem.cloneNode(true);
+    // Clear values in the new item
+    newItem.querySelectorAll('input').forEach(input => {
+      input.value = '';
+    });
+    // Reset selects to first option
+    newItem.querySelectorAll('select').forEach(select => {
+      select.selectedIndex = 0;
+    });
+    // Reset the unit to default
+    newItem.querySelector('.medicine-unit').textContent = 'mg';
+    // Add to the list
+    medicinesList.appendChild(newItem);
+    // Reinitialize buttons and handlers
+    initRemoveButtons();
+    initInputHandlers();
+    initMedicineHandlers();
+    // Prevent duplicate selection after adding
+    updateMedicineSelectOptions();
     });
     
     // Initialize remove buttons
@@ -302,10 +320,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Initialize on page load
-    initRemoveButtons();
-    initInputHandlers();
-    initMedicineHandlers();
-    updateHiddenFields(); // Initial update
+  initRemoveButtons();
+  initInputHandlers();
+  initMedicineHandlers();
+  updateHiddenFields(); // Initial update
+  // Prevent duplicate selection on page load
+  updateMedicineSelectOptions();
     
     <?php if (empty($patient) && empty($record)): ?>
     // Patient search code (similar to record creation page)

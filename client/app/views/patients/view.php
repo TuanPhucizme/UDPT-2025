@@ -33,10 +33,11 @@
                     
                     <!-- Add action buttons -->
                     <div class="d-flex flex-wrap gap-2">
+                        <?php if (in_array($_SESSION['user']['role'], ['letan', 'admin'])): ?>
                         <a href="/patients/edit/<?= $patient['id'] ?>" class="btn btn-primary">
                             <i class="fas fa-edit"></i> Cập nhật thông tin
                         </a>
-                        
+                        <?php endif; ?>
                         <?php if ($_SESSION['user']['role'] === 'bacsi'): ?>
                         <a href="/records/create?patient_id=<?= $patient['id'] ?>" class="btn btn-success">
                             <i class="fas fa-notes-medical"></i> Tạo hồ sơ khám bệnh

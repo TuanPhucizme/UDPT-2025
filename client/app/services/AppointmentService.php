@@ -8,7 +8,7 @@ class AppointmentService extends BaseService {
     public function __construct() {
         $this->baseUrl = BASE_URL;
         $this->port = APPOINTMENT_SERVICE_PORT;
-        $this->authServiceUrl = AUTH_SERVICE_URL . ':' . AUTH_SERVICE_PORT;
+        $this->authServiceUrl = AUTH_SERVICE_URL;
     }
     public function createAppointment($data) {
         return $this->request('POST', '/api/appointments/book', $data);

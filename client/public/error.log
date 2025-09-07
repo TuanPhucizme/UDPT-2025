@@ -1,54 +1,109 @@
-[04-Sep-2025 14:39:52 Asia/Ho_Chi_Minh] PHP Warning:  Array to string conversion in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\error.php on line 7
-[04-Sep-2025 15:47:35 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 100
-[04-Sep-2025 15:47:35 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 100
-[04-Sep-2025 15:47:35 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 115
-[04-Sep-2025 15:47:35 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 115
-[04-Sep-2025 15:47:35 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 150
-[04-Sep-2025 15:47:35 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 150
-[04-Sep-2025 15:47:42 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\prescriptions\index.php:108
+[07-Sep-2025 03:29:28 Asia/Ho_Chi_Minh] Creating medical record
+[07-Sep-2025 03:29:28 Asia/Ho_Chi_Minh] Error getting departments: Failed to connect to service
+[07-Sep-2025 03:29:28 Asia/Ho_Chi_Minh] error: Failed to connect to service
+[07-Sep-2025 03:29:28 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[07-Sep-2025 03:29:28 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
 Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
-#1 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
-#2 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\prescriptions\index.php on line 108
-[04-Sep-2025 15:47:52 Asia/Ho_Chi_Minh] Không tìm thấy đơn thuốc
-[04-Sep-2025 15:47:52 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\prescriptions\index.php:108
-Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\PrescriptionController.php(39): require()
-#1 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(175): PrescriptionController->index()
-#2 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\prescriptions\index.php on line 108
-[04-Sep-2025 15:54:57 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/error/403.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
-[04-Sep-2025 15:54:57 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/error/403.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\middleware\AuthMiddleware.php:32
-Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(152): AuthMiddleware::{closure}()
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(169): RecordController->index()
 #1 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
-[04-Sep-2025 15:55:09 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/error/403.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
-[04-Sep-2025 15:55:09 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/error/403.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\middleware\AuthMiddleware.php:32
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[07-Sep-2025 03:31:37 Asia/Ho_Chi_Minh] Error getting departments: Failed to connect to service
+[07-Sep-2025 03:31:37 Asia/Ho_Chi_Minh] error: Failed to connect to service
+[07-Sep-2025 03:31:37 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/records/index.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[07-Sep-2025 03:31:37 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/records/index.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php:24
 Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(152): AuthMiddleware::{closure}()
+#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(169): RecordController->index()
 #1 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
-[04-Sep-2025 15:55:16 Asia/Ho_Chi_Minh] PHP Warning:  require(../app/views/error/403.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
-[04-Sep-2025 15:55:16 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Failed opening required '../app/views/error/403.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\middleware\AuthMiddleware.php:32
-Stack trace:
-#0 D:\xampp\htdocs\UDPT\UDPT-2025\client\public\index.php(152): AuthMiddleware::{closure}()
-#1 {main}
-  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\middleware\AuthMiddleware.php on line 32
-[04-Sep-2025 15:56:14 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $liquidMedicines in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\records\view.php on line 193
-[04-Sep-2025 15:56:14 Asia/Ho_Chi_Minh] PHP Warning:  foreach() argument must be of type array|object, null given in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\records\view.php on line 193
-[04-Sep-2025 15:56:24 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $liquidMedicines in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\records\view.php on line 193
-[04-Sep-2025 15:56:24 Asia/Ho_Chi_Minh] PHP Warning:  foreach() argument must be of type array|object, null given in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\records\view.php on line 193
-[04-Sep-2025 15:56:33 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 100
-[04-Sep-2025 15:56:33 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 100
-[04-Sep-2025 15:56:33 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 115
-[04-Sep-2025 15:56:33 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 115
-[04-Sep-2025 15:56:33 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 150
-[04-Sep-2025 15:56:33 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 150
-[04-Sep-2025 15:56:44 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $liquidMedicines in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\records\view.php on line 193
-[04-Sep-2025 15:56:44 Asia/Ho_Chi_Minh] PHP Warning:  foreach() argument must be of type array|object, null given in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\records\view.php on line 193
-[04-Sep-2025 15:56:49 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $liquidMedicines in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\records\view.php on line 193
-[04-Sep-2025 15:56:49 Asia/Ho_Chi_Minh] PHP Warning:  foreach() argument must be of type array|object, null given in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\records\view.php on line 193
-[04-Sep-2025 15:56:53 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $liquidMedicines in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\records\view.php on line 193
-[04-Sep-2025 15:56:53 Asia/Ho_Chi_Minh] PHP Warning:  foreach() argument must be of type array|object, null given in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\records\view.php on line 193
+  thrown in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\controllers\RecordController.php on line 24
+[07-Sep-2025 03:36:25 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:36:28 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:36:30 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:36:32 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:36:34 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:36:38 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:37:53 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 100
+[07-Sep-2025 03:37:53 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 100
+[07-Sep-2025 03:37:53 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 115
+[07-Sep-2025 03:37:53 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 115
+[07-Sep-2025 03:37:53 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 150
+[07-Sep-2025 03:37:53 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 150
+[07-Sep-2025 03:38:04 Asia/Ho_Chi_Minh] api path: patients/search
+[07-Sep-2025 03:38:04 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:38:04 Asia/Ho_Chi_Minh] name=&phone=555
+[07-Sep-2025 03:38:11 Asia/Ho_Chi_Minh] api path: patients/search
+[07-Sep-2025 03:38:11 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:38:11 Asia/Ho_Chi_Minh] name=&phone=1234
+[07-Sep-2025 03:38:16 Asia/Ho_Chi_Minh] api path: departments/2/doctors
+[07-Sep-2025 03:38:17 Asia/Ho_Chi_Minh] api path: doctors/2/schedule
+[07-Sep-2025 03:38:17 Asia/Ho_Chi_Minh] api path: doctors/2/slots
+[07-Sep-2025 03:38:30 Asia/Ho_Chi_Minh] api path: departments/1/doctors
+[07-Sep-2025 03:38:31 Asia/Ho_Chi_Minh] api path: doctors/1/schedule
+[07-Sep-2025 03:38:31 Asia/Ho_Chi_Minh] api path: doctors/1/slots
+[07-Sep-2025 03:38:41 Asia/Ho_Chi_Minh] api path: patients/search
+[07-Sep-2025 03:38:41 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:38:41 Asia/Ho_Chi_Minh] name=tg&phone=
+[07-Sep-2025 03:38:43 Asia/Ho_Chi_Minh] api path: patients/search
+[07-Sep-2025 03:38:43 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:38:43 Asia/Ho_Chi_Minh] name=tt&phone=
+[07-Sep-2025 03:38:45 Asia/Ho_Chi_Minh] api path: patients/search
+[07-Sep-2025 03:38:45 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:38:45 Asia/Ho_Chi_Minh] name=thi&phone=
+[07-Sep-2025 03:38:48 Asia/Ho_Chi_Minh] api path: departments/1/doctors
+[07-Sep-2025 03:38:49 Asia/Ho_Chi_Minh] api path: doctors/1/schedule
+[07-Sep-2025 03:38:49 Asia/Ho_Chi_Minh] api path: doctors/1/slots
+[07-Sep-2025 03:39:03 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:40:16 Asia/Ho_Chi_Minh] api path: medicines/2
+[07-Sep-2025 03:40:16 Asia/Ho_Chi_Minh] api path: medicines/2
+[07-Sep-2025 03:40:18 Asia/Ho_Chi_Minh] api path: medicines/1
+[07-Sep-2025 03:40:18 Asia/Ho_Chi_Minh] api path: medicines/1
+[07-Sep-2025 03:40:19 Asia/Ho_Chi_Minh] api path: medicines/1
+[07-Sep-2025 03:40:20 Asia/Ho_Chi_Minh] api path: medicines/1
+[07-Sep-2025 03:40:20 Asia/Ho_Chi_Minh] api path: medicines/1
+[07-Sep-2025 03:40:20 Asia/Ho_Chi_Minh] api path: medicines/1
+[07-Sep-2025 03:40:21 Asia/Ho_Chi_Minh] api path: medicines/1
+[07-Sep-2025 03:40:21 Asia/Ho_Chi_Minh] api path: medicines/1
+[07-Sep-2025 03:40:26 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:40:33 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:40:35 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:40:37 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:40:56 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:41:10 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:41:11 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:41:12 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:41:14 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:41:39 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:42:10 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:42:11 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:42:41 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:42:50 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:42:50 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:42:51 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:42:53 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:43:07 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:43:29 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:43:31 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:44:09 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:44:09 Asia/Ho_Chi_Minh] Checking service prescription at http://localhost:3003
+[07-Sep-2025 03:44:09 Asia/Ho_Chi_Minh] Checking service auth at http://localhost:3000
+[07-Sep-2025 03:44:09 Asia/Ho_Chi_Minh] Checking service appointment at http://localhost:3002
+[07-Sep-2025 03:44:09 Asia/Ho_Chi_Minh] Checking service report at http://localhost:3005
+[07-Sep-2025 03:44:16 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 03:44:18 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 12:54:46 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 12:54:49 Asia/Ho_Chi_Minh] Checking service patient at http://localhost:3001
+[07-Sep-2025 12:55:00 Asia/Ho_Chi_Minh] api path: medicines/4
+[07-Sep-2025 12:55:00 Asia/Ho_Chi_Minh] api path: medicines/4
+[07-Sep-2025 12:55:02 Asia/Ho_Chi_Minh] api path: medicines/4
+[07-Sep-2025 12:55:03 Asia/Ho_Chi_Minh] api path: medicines/4
+[07-Sep-2025 12:55:03 Asia/Ho_Chi_Minh] api path: medicines/4
+[07-Sep-2025 12:55:04 Asia/Ho_Chi_Minh] api path: medicines/4
+[07-Sep-2025 12:55:05 Asia/Ho_Chi_Minh] api path: medicines/4
+[07-Sep-2025 12:55:05 Asia/Ho_Chi_Minh] api path: medicines/4
+[07-Sep-2025 12:55:06 Asia/Ho_Chi_Minh] api path: medicines/4
+[07-Sep-2025 12:55:07 Asia/Ho_Chi_Minh] api path: medicines/4
+[07-Sep-2025 12:55:44 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 100
+[07-Sep-2025 12:55:44 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 100
+[07-Sep-2025 12:55:44 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 115
+[07-Sep-2025 12:55:44 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 115
+[07-Sep-2025 12:55:44 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "user" in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 150
+[07-Sep-2025 12:55:44 Asia/Ho_Chi_Minh] PHP Warning:  Trying to access array offset on value of type null in D:\xampp\htdocs\UDPT\UDPT-2025\client\app\views\home.php on line 150

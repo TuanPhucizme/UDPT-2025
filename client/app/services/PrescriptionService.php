@@ -8,7 +8,7 @@ class PrescriptionService extends BaseService {
     public function __construct() {
         $this->baseUrl = BASE_URL;
         $this->port = PRESCRIPTION_SERVICE_PORT;
-        $this->prescriptionServiceUrl = PRESCRIPTION_SERVICE_URL . ':' . PRESCRIPTION_SERVICE_PORT;
+        $this->prescriptionServiceUrl = PRESCRIPTION_SERVICE_URL;
     }
     
     /**

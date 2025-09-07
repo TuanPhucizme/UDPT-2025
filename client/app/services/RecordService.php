@@ -8,7 +8,7 @@ class RecordService extends BaseService {
     public function __construct() {
         $this->baseUrl = BASE_URL;
         $this->port = PATIENT_SERVICE_PORT;
-        $this->patientServiceUrl = PATIENT_SERVICE_URL . ':' . PATIENT_SERVICE_PORT;
+        $this->patientServiceUrl = PATIENT_SERVICE_URL;
     }
     
     public function getAllRecords() {

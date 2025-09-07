@@ -45,6 +45,10 @@
                             <a href="/medicines" class="nav-link"> Quản lý Thuốc
                             </a>
                         <?php endif; ?>
+                        <?php if ($_SESSION['user']['role'] === 'admin'): ?>
+                            <a href="/admin/serviceHealth" class="nav-link"> Trạng Thái Hệ Thống
+                            </a>
+                        <?php endif; ?>
                 </div>
                     <?php endif; ?>
                 </div>
